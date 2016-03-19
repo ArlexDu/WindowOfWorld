@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<package name="Login" namespace="/Action" extends="struts-default">
+        <!-- 相当于servlet，也就是对应一个name的请求，它的rul为
+        localhost:8080/项目名称/namespace/name.action或者localhost:8080/项目名称/namespace/name.do -->
+            <action name="userlogin" class="edu.tongji.amazing.action.LoginAction">
+                <!-- 请求处理之后返回的页面 -->
+                <result name="success">/Website/Pages/success.jsp</result>
+                <result name="fail">/Website/Pages/fail.jsp</result>
+            </action>
+            <action name="register" class="edu.tongji.amazing.action.RegisterAction">
+                <result name="success">/Website/Pages/success.jsp</result>
+                <!-- 拦截器，运行action之前的动作  -->
+                <!-- 用于封装数据的拦截器 -->
+                <interceptor-ref name="modelDriven"></interceptor-ref>
+                <!-- 系统默认的拦截器都要加入 -->
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </action>
+      </package> 
+  
+</struts>
