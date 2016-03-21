@@ -1,5 +1,8 @@
 package edu.tongji.amazing.action;
 
+import org.springframework.stereotype.Controller;
+
+@Controller("login")
 public class LoginAction {
 
 	//属性数据封装

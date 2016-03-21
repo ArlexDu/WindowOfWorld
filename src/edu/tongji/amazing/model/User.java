@@ -2,12 +2,16 @@ package edu.tongji.amazing.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
+
+@Repository("user")
+@Scope("prototype")
 @Entity
 @Table(name="User_table")
 public class User implements Serializable {
@@ -16,16 +20,12 @@ public class User implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4136775472696389375L;
-	@Id
-	private int u_id;
-    public int getId() {
-		return u_id;
-	}
-	public void setId(int id) {
-		this.u_id = id;
-	}
+	@Column(name = "username")
 	private String username;
+	@Column(name = "password")
     private String password;
+    @Id
+    @Column(name = "identity",unique= true,nullable = false)
     private String identity_id;
 	public String getUsername() {
 		return username;

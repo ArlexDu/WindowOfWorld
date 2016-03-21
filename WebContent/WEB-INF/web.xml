@@ -10,7 +10,7 @@
         <!-- 改变struts.xml的存储位置，默认是在src目录下 -->
         <init-param>
             <param-name>filterConfig</param-name>
-            <param-value>classpath*:../config/struts.xml</param-value>
+            <param-value>classpath:config/struts.xml</param-value>
         </init-param>
     </filter>
 
@@ -23,7 +23,7 @@
     <!-- 配置spring IOC 容器-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:../config/applicationContext.xml</param-value>
+        <param-value>classpath:config/applicationContext.xml</param-value>
     </context-param>
     
     <listener>

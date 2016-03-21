@@ -16,6 +16,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.opensymphony.xwork2.inject.Context;
 
+import edu.tongji.amazing.action.LoginAction;
+import edu.tongji.amazing.action.RegisterAction;
 import edu.tongji.amazing.model.User;
 
 
@@ -26,8 +28,9 @@ public class TestHibernate {
 	public void testName() throws Exception {
 		
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		User user = (User) context.getBean("User");
-		System.out.println("username is "+user.getUsername());
+		LoginAction user = (LoginAction) context.getBean("login");
+//		user.setUsername("happy");
+//		System.out.println("username is "+user.getUsername());
 	}
 	
 //    public void createTable(){
@@ -36,7 +39,7 @@ public class TestHibernate {
 //		SchemaExport export = new SchemaExport(configuration);
 //    	export.create(true, true);
 //    }
-	@Test
+//	@Test
 	public void testDataSource() throws SQLException{
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 //		System.out.println(context);
@@ -49,9 +52,8 @@ public class TestHibernate {
 //		开启事务
 		Transaction transaction = session.beginTransaction();
 		User user = new User();
-		user.setId(2);
-		user.setIdentity_id("130823199511258097");
-		user.setUsername("happy");
+		user.setIdentity_id("130823199511258098");
+		user.setUsername("roth");
 		user.setPassword("123456");
 		session.save(user);
 		transaction.commit();

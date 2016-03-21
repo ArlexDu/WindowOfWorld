@@ -10,24 +10,24 @@
 
 	<!-- 配置自动扫描包 从而也就避免了每写一个类，都要在这个文件中信定义一个bean -->
 	<context:component-scan base-package="edu.tongji.amazing"
-		use-default-filters="false">
+		use-default-filters="true">
 	</context:component-scan>
 	<!-- 配置数据源 -->
 	<bean id="myConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>classpath*:../config/oracle.properties</value>
+				<value>classpath:config/oracle.properties</value>
 			</list>
 		</property>
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 	</bean>
 	<!-- 配置datasource -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@10.60.42.70:1521:orcl"></property>
-		<property name="user" value="c##amazinger"></property>
-		<property name="password" value="123456"></property>
+		<property name="driverClass" value="${jdbc.driverClass}"></property>
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
 	</bean>
 
 	<!-- 配置sessionFactory -->
@@ -60,10 +60,4 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
-	<!-- 配置DAO -->
-	<bean id="User" class="edu.tongji.amazing.model.User" scope="prototype">
-		<property name="username" value="happy"></property>
-	</bean>
-
 </beans>  

@@ -2,4 +2,4 @@ eclipse.preferences.version=1
 encoding//WebContent/Website/Pages/fail.jsp=UTF-8
 encoding//WebContent/Website/Pages/login.jsp=UTF-8
 encoding//WebContent/Website/Pages/success.jsp=UTF-8
-encoding//config/oracle.properties=UTF-8
+encoding//src/config/oracle.properties=UTF-8

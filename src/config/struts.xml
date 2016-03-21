@@ -5,15 +5,16 @@
 
 <struts>
 	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<constant name="struts.objectFactory" value="spring"></constant>
 	<package name="Login" namespace="/Action" extends="struts-default">
         <!-- 相当于servlet，也就是对应一个name的请求，它的rul为
         localhost:8080/项目名称/namespace/name.action或者localhost:8080/项目名称/namespace/name.do -->
-            <action name="userlogin" class="edu.tongji.amazing.action.LoginAction">
+            <action name="userlogin" class="login">
                 <!-- 请求处理之后返回的页面 -->
                 <result name="success">/Website/Pages/success.jsp</result>
                 <result name="fail">/Website/Pages/fail.jsp</result>
             </action>
-            <action name="register" class="edu.tongji.amazing.action.RegisterAction">
+            <action name="register" class="register">
                 <result name="success">/Website/Pages/success.jsp</result>
                 <!-- 拦截器，运行action之前的动作  -->
                 <!-- 用于封装数据的拦截器 -->
