@@ -8,14 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-@Repository("user")
+@Component("user")
 @Scope("prototype")
 @Entity
-@Table(name="User_table")
+@Table(name = "User_table")
 public class User implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -23,27 +24,33 @@ public class User implements Serializable {
 	@Column(name = "username")
 	private String username;
 	@Column(name = "password")
-    private String password;
-    @Id
-    @Column(name = "identity",unique= true,nullable = false)
-    private String identity_id;
+	private String password;
+	@Id
+	@Column(name = "identity", unique = true, nullable = false)
+	private String identity_id;
+    
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getIdentity_id() {
 		return identity_id;
 	}
+
 	public void setIdentity_id(String identity_id) {
 		this.identity_id = identity_id;
 	}
-   
+
 }
