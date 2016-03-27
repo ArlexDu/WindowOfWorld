@@ -1,4 +1,4 @@
-package edu.tongji.amazing.serive.impl;
+package edu.tongji.amazing.service.impl;
 
 import javax.annotation.Resource;
 
@@ -9,7 +9,7 @@ import edu.tongji.amazing.dao.impl.UserDao;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IUserService;
 
-@Service
+@Service("userservice")
 public class UserService implements IUserService{
 
 	@Resource

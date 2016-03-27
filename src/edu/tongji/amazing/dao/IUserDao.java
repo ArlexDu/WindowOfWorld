@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 
 import edu.tongji.amazing.model.User;
 
-@Repository
 public interface IUserDao {
 
 	// 检查用户

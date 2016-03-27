@@ -14,21 +14,31 @@ import org.springframework.stereotype.Repository;
 @Component("user")
 @Scope("prototype")
 @Entity
-@Table(name = "User_table")
+@Table(name = "wowuser")
 public class User implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4136775472696389375L;
+
 	@Column(name = "username")
 	private String username;
+
 	@Column(name = "password")
 	private String password;
+
 	@Id
-	@Column(name = "identity", unique = true, nullable = false)
+	@Column(name = "identity")
+
 	private String identity_id;
-    
+
+	@Column(name = "phone")
+	private String phone;
+
+	@Column(name = "balance")
+	private String balance;
+
 	public String getUsername() {
 		return username;
 	}
@@ -53,4 +63,21 @@ public class User implements Serializable {
 		this.identity_id = identity_id;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getBalance() {
+		return balance;
+	}
+
+	public void setBalance(String balance) {
+		this.balance = balance;
+	}
+
+	
 }

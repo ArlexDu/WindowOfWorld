@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import edu.tongji.amazing.dao.IUserDao;
 import edu.tongji.amazing.model.User;
 
-@Repository
+@Repository("userdao")
 public class UserDao implements IUserDao{
 
 	@Resource

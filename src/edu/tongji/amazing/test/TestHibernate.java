@@ -18,7 +18,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import edu.tongji.amazing.dao.impl.AdDao;
+import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.User;
+import edu.tongji.amazing.service.impl.AdService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath*:applicationContext.xml"})
@@ -29,33 +32,22 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 	@Resource(name="user")
 	private User user;
 	
-	@Test
+	@Resource(name="advertisement")
+	private Advertisement ad;
+	
+	@Resource(name="adservice")
+	private AdService service;
+	
+//	@Test
 	public void testName() throws Exception {
 		
 		user.setUsername("happy");
 		System.out.println("username is "+user.getUsername());
 	}
-
-
-//	public void testDataSource() throws SQLException{
-//		context = new ClassPathXmlApplicationContext("applicationContext.xml");
-////		System.out.println(context);
-//		DataSource datasource = context.getBean(DataSource.class);
-////		System.out.println(datasource.getConnection().toString());
-//		SessionFactory factory = context.getBean(SessionFactory.class);
-////		System.out.println(factory);
-////		打开session
-//		Session session = factory.openSession();
-////		开启事务
-//		Transaction transaction = session.beginTransaction();
-//		User user = new User();
-//		user.setIdentity_id("130823199511258098");
-//		user.setUsername("roth");
-//		user.setPassword("123456");
-//		session.save(user);
-//		transaction.commit();
-//		session.close();
-//		
-//	}
+    @Test
+    public void addad(){
+    	ad.setIdentity("123456789");
+    	service.AddNewAd(ad);
+    }
 	
 }

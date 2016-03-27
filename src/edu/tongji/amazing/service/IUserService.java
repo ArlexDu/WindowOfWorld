@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import edu.tongji.amazing.model.User;
 
-@Service("iservice")
 public interface IUserService {
 	// 检查用户
 	public User checkUser(User user);
