@@ -22,6 +22,7 @@ import edu.tongji.amazing.dao.impl.AdDao;
 import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.impl.AdService;
+import edu.tongji.amazing.service.impl.BulletService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath*:applicationContext.xml"})
@@ -44,10 +45,19 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 		user.setUsername("happy");
 		System.out.println("username is "+user.getUsername());
 	}
-    @Test
+    //@Test
     public void addad(){
     	ad.setIdentity("123456789");
     	service.AddNewAd(ad);
     }
+    
+  @Resource(name="bulletservice")
+	private BulletService bulletService;
+  @Test
+	public void getBullet() throws Exception {
+		
+		
+		System.out.println("bullet::"+bulletService.getBullet("123123"));
+	}
 	
 }
