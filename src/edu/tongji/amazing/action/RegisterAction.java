@@ -16,7 +16,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 	@Resource
 	private User user;
 	
-	@Resource(name = "iservice")
+	@Resource(name = "userservice")
 	private IUserService userService ;
 
 	@Override

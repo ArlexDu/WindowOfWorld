@@ -1,34 +1,34 @@
 package edu.tongji.amazing.action;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 
-@Controller("login")
-public class LoginAction {
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
-	//属性数据封装
-	private String username;
-	private String password;
+import edu.tongji.amazing.model.User;
+import edu.tongji.amazing.service.IUserService;
+
+@Controller("login")
+public class LoginAction extends ActionSupport implements ModelDriven<User>{
+
+	@Resource(name="user")
+	private User user;
 	
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	@Resource(name="userservice")
+	private IUserService userservice;
 	
 	public String execute(){
-//		System.out.println(username);
-//		System.out.println(password);
-		if(username.equals("admin")&&password.equals("123")){
-			return "success";
-		}else{
-			return "fail";
-		}
+		System.out.println(user.getUsername());
+		System.out.println(user.getPassword());
+		userservice.checkUser(user);
+		return "success";
+		
+	}
+	@Override
+	public User getModel() {
+		// TODO Auto-generated method stub
+		return user;
 	}
 }
