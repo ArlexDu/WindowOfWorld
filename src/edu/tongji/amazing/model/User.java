@@ -30,14 +30,13 @@ public class User implements Serializable {
 
 	@Id
 	@Column(name = "identity")
-
 	private String identity_id;
 
 	@Column(name = "phone")
 	private String phone;
 
 	@Column(name = "balance")
-	private String balance;
+	private float balance;
 
 	public String getUsername() {
 		return username;
@@ -71,13 +70,15 @@ public class User implements Serializable {
 		this.phone = phone;
 	}
 
-	public String getBalance() {
+	public float getBalance() {
 		return balance;
 	}
 
-	public void setBalance(String balance) {
+	public void setBalance(float balance) {
 		this.balance = balance;
 	}
+
+
 
 	
 }

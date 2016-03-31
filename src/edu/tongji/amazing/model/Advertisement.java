@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 @Table(name = "ADS")
 public class Advertisement implements Serializable {
 
-	/**
+	/*
 	 * 
 	 */
 	private static final long serialVersionUID = 5892217915877750303L;

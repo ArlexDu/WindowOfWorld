@@ -4,33 +4,34 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import edu.tongji.amazing.dao.IUserDao;
-import edu.tongji.amazing.dao.impl.UserDao;
+import edu.tongji.amazing.dao.ICarOwnerDao;
+import edu.tongji.amazing.dao.impl.CarOwnerDao;
+import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
-import edu.tongji.amazing.service.IUserService;
+import edu.tongji.amazing.service.ICarOwnerService;
 
 @Service("userservice")
-public class UserService implements IUserService{
+public class CarOwnerService implements ICarOwnerService{
 
 	@Resource
-	private IUserDao userdao;
+	private CarOwnerDao userdao;
 
 	@Override
-	public User checkUser(User user) {
+	public CarOwner checkUser(CarOwner user) {
 		// TODO Auto-generated method stub
 		return userdao.checkUser(user);
 	}
 
 	@Override
-	public boolean addUser(User user) {
+	public void addUser(CarOwner user) {
 		// TODO Auto-generated method stub
-		return userdao.addUser(user);
+		userdao.Insert(user);
 	}
 
 	@Override
-	public boolean updateUser(User user) {
+	public void updateUser(CarOwner user) {
 		// TODO Auto-generated method stub
-		return userdao.updateUser(user);
+		userdao.Update(user);
 	}
 
 	@Override
@@ -46,7 +47,7 @@ public class UserService implements IUserService{
 	}
 
 	@Override
-	public User getUserbyIndentity(long identity) {
+	public CarOwner getUserbyIndentity(long identity) {
 		// TODO Auto-generated method stub
 		return userdao.getUserbyIndentity(identity);
 	}

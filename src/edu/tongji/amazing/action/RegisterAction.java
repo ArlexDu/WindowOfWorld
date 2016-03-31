@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import edu.tongji.amazing.model.User;
-import edu.tongji.amazing.service.IUserService;
+import edu.tongji.amazing.service.ICarOwnerService;
 
 @Controller("register")
 public class RegisterAction extends ActionSupport implements ModelDriven<User> {
@@ -17,7 +17,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 	private User user;
 	
 	@Resource(name = "userservice")
-	private IUserService userService ;
+	private ICarOwnerService userService ;
 
 	@Override
 	public String execute() throws Exception {
@@ -25,7 +25,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
 		System.out.println(user.getIdentity_id());
-		userService.addUser(user);
+//		userService.addUser(user);
 		return "success";
 	}
 

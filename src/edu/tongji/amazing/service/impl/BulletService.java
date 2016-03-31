@@ -23,31 +23,22 @@ public class BulletService implements IBulletService {
 	@Resource(name="bulletdao")
 	private BulletDao bulletdao;
 	
-	@Resource
-	private SessionFactory factory;
 	
-	//�ɵ�Ļid��ȡ
+	//根据某一个id获得具体的弹幕内容
 	@Override
 	public Bullet getBullet(String id){
-		return bulletdao.queryById(id);
+		return bulletdao.QueryById(id);
 	}
 	
-	//���û�id��ȡ 
+	//返回一个用户的所有弹幕
 	@Override
 	public List<Bullet> getAllBullet(String userId){
-		String hql = "from bullet where identity = '"+userId+"'";
-		Session session = factory.openSession();
-		Transaction transaction = session.beginTransaction();
-		Query query = session.createQuery(hql);
-		List<Bullet> bulletList = query.list();
-		transaction.commit();
-		session.close();
-		return bulletList;
+		return bulletdao.QueryByIdentity(userId);
 	}
 	
-	//���ӵ�Ļ
+	//增加新的弹幕
 	@Override
 	public void addBulet(Bullet bullet){
-		bulletdao.insert(bullet);
+		bulletdao.Insert(bullet);
 	}
 }

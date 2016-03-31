@@ -1,10 +1,12 @@
 package edu.tongji.amazing.dao.impl;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -12,37 +14,59 @@ import org.springframework.stereotype.Repository;
 
 import edu.tongji.amazing.dao.IGeneralDao;
 
-@Repository("generaldao")
-public abstract class GeneralDao<T> implements IGeneralDao<T> {
+/*
+ * 大多数模块都需要处理的共同的函数
+ */
+
+public class GeneralDao<T> implements IGeneralDao<T> {
+	
     private Class<T> entityClass;
 
     public GeneralDao (Class<T> clazz) {
         this.entityClass = clazz;
     }
-
+    
     @Resource
     protected  SessionFactory sessionFactory;
 
+//插入对象
     @Override
-    public void insert(T t) {
+    public void Insert(T t) {
     	Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		session.save(t);
 		transaction.commit();
 		session.close();
     }
-
+//根据id删除对象
     @Override
-    public void delete(T t) {
+    public void DeleteViaId(String id) {
+    	String dataname = entityClass.getName();
+    	String hql = "delete from "+dataname+" where id = '"+id+"'";
     	Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
-		session.delete(t);
+		Query query = session.createQuery(hql);
+		//int num = query.
 		transaction.commit();
 		session.close();
     }
-
+    
     @Override
-    public void update(T t) {
+	public void DeleteViaIdentity(String identity) {
+		// TODO Auto-generated method stub
+    	String dataname = entityClass.getName();
+    	String hql = "delete from "+dataname+" where identity = '"+identity+"'";
+    	Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		//int num = query.
+		transaction.commit();
+		session.close();
+	}
+    
+//更新对象
+    @Override
+    public void Update(T t) {
     	Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		session.update(t);
@@ -50,37 +74,36 @@ public abstract class GeneralDao<T> implements IGeneralDao<T> {
 		session.close();
     }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public T queryById(String id) {
-    	Session session = sessionFactory.openSession();
-		Transaction transaction = session.beginTransaction();
-		T t=(T) session.get(entityClass, id);
-		transaction.commit();
-		session.close();
-        return t;
-    }
-
-    @SuppressWarnings("unchecked")
+    //获得一个人发的所有的弹幕或者广告或者个性化操作
 	@Override
-    public T queryByIntId(int id) {
+	public List<T> QueryByIdentity(String identity) {
+		// TODO Auto-generated method stub
+		String dataname = entityClass.getName();
+    	String hql = "from "+dataname+" where identity = '"+identity+"'";
     	Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
-		T t=(T) session.get(entityClass, id);
+		Query query = session.createQuery(hql);
+		List<T> list = query.list();
 		transaction.commit();
 		session.close();
-        return t;
-    }
+		return list;
+	}
 
-    @SuppressWarnings("unchecked")
+
 	@Override
-    public List<T> queryAll() {
+	public T QueryById(String id) {
+		// TODO Auto-generated method stub
+		String dataname = entityClass.getName();
+    	String hql = "from "+dataname+" where identity = '"+id+"'";
     	Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
-		Criteria criteria = session.createCriteria(entityClass);
+		Query query = session.createQuery(hql);
+		Iterator iterator = query.iterate();
+		iterator.hasNext();
+		T ob = (T) iterator.next();
 		transaction.commit();
 		session.close();
-        return criteria.list();
-    }
+		return ob;
+	}
 
 }

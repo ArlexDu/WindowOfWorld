@@ -10,31 +10,19 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Repository;
 
-import edu.tongji.amazing.dao.IUserDao;
+import edu.tongji.amazing.dao.ICarOwnerDao;
+import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
 
 @Repository("userdao")
-public class UserDao implements IUserDao{
+public class CarOwnerDao extends GeneralDao<CarOwner> implements ICarOwnerDao{
+
+	public CarOwnerDao() {
+		super(CarOwner.class);
+	}
 
 	@Resource
 	private SessionFactory factory;
-
-	@Override
-	public boolean addUser(User user) {
-		// TODO Auto-generated method stub
-		Session session = factory.openSession();
-		Transaction transaction = session.beginTransaction();
-		session.save(user);
-        transaction.commit();
-        session.close();
-		return true;
-	}
-
-	@Override
-	public boolean updateUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public boolean RvokeAccount(long identity) {
@@ -49,7 +37,7 @@ public class UserDao implements IUserDao{
 	}
 
 	@Override
-	public User getUserbyIndentity(long identity) {
+	public CarOwner getUserbyIndentity(long identity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -61,7 +49,7 @@ public class UserDao implements IUserDao{
 	}
 
 	@Override
-	public User checkUser(User user) {
+	public CarOwner checkUser(CarOwner user) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import edu.tongji.amazing.model.User;
-import edu.tongji.amazing.service.IUserService;
+import edu.tongji.amazing.service.ICarOwnerService;
 
 @Controller("login")
 public class LoginAction extends ActionSupport implements ModelDriven<User>{
@@ -17,12 +17,12 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>{
 	private User user;
 	
 	@Resource(name="userservice")
-	private IUserService userservice;
+	private ICarOwnerService userservice;
 	
 	public String execute(){
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
-		userservice.checkUser(user);
+//		userservice.checkUser(user);
 		return "success";
 		
 	}
