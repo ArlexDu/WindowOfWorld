@@ -4,8 +4,8 @@ package edu.tongji.amazing.service;
 import edu.tongji.amazing.model.CarOwner;
 
 public interface ICarOwnerService {
-	// 检查用户
-	public CarOwner checkUser(CarOwner user);
+	// 登录的时候查看是否有此用户
+	public boolean checkUser(String username,String password);
 
 	// 增加用户
 	public void addUser(CarOwner user);

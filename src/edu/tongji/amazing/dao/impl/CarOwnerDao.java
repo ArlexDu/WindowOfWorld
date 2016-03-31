@@ -1,8 +1,11 @@
 package edu.tongji.amazing.dao.impl;
 
 
+import java.util.Iterator;
+
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -49,9 +52,23 @@ public class CarOwnerDao extends GeneralDao<CarOwner> implements ICarOwnerDao{
 	}
 
 	@Override
-	public CarOwner checkUser(CarOwner user) {
+	public boolean checkUser(String username, String password) {
 		// TODO Auto-generated method stub
-		return null;
+		String hql = "from User where username = '"+username+"' and password = '"
+		                   +password+"'";
+		boolean result = false;
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		Iterator iterator = query.iterate();
+		if(iterator.hasNext()){
+			result = true;
+		}
+		transaction.commit();
+		session.close();
+		return result;
 	}
+
+	
 
 }

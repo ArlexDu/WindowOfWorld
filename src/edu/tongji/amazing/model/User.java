@@ -30,7 +30,7 @@ public class User implements Serializable {
 
 	@Id
 	@Column(name = "identity")
-	private String identity_id;
+	private String identity;
 
 	@Column(name = "phone")
 	private String phone;
@@ -38,6 +38,9 @@ public class User implements Serializable {
 	@Column(name = "balance")
 	private float balance;
 
+	@Column(name = "mail")
+	private String mail; 
+	
 	public String getUsername() {
 		return username;
 	}
@@ -54,12 +57,12 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public String getIdentity_id() {
-		return identity_id;
+	public String getIdentity() {
+		return identity;
 	}
 
-	public void setIdentity_id(String identity_id) {
-		this.identity_id = identity_id;
+	public void setIdentity(String identity) {
+		this.identity = identity;
 	}
 
 	public String getPhone() {
@@ -76,6 +79,14 @@ public class User implements Serializable {
 
 	public void setBalance(float balance) {
 		this.balance = balance;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 

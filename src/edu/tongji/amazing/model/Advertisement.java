@@ -27,8 +27,8 @@ public class Advertisement implements Serializable {
 	@Id
 	@GeneratedValue(generator="system_uuid")
     @GenericGenerator(name="system_uuid",strategy="uuid")
-	@Column(name = "ad_id")
-	private String ad_id;
+	@Column(name = "id")
+	private String id;
 	
 	@Column(name = "identity")
 	private String identity;
@@ -58,11 +58,11 @@ public class Advertisement implements Serializable {
 	private String content;
 
 	public String getAd_id() {
-		return ad_id;
+		return id;
 	}
 
 	public void setAd_id(String ad_id) {
-		this.ad_id = ad_id;
+		this.id = ad_id;
 	}
 
 	public String getIdentity() {

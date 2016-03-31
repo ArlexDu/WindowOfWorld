@@ -10,17 +10,12 @@ import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.ICarOwnerService;
 
-@Service("userservice")
+@Service("carownerservice")
 public class CarOwnerService implements ICarOwnerService{
 
 	@Resource
 	private CarOwnerDao userdao;
 
-	@Override
-	public CarOwner checkUser(CarOwner user) {
-		// TODO Auto-generated method stub
-		return userdao.checkUser(user);
-	}
 
 	@Override
 	public void addUser(CarOwner user) {
@@ -50,6 +45,12 @@ public class CarOwnerService implements ICarOwnerService{
 	public CarOwner getUserbyIndentity(long identity) {
 		// TODO Auto-generated method stub
 		return userdao.getUserbyIndentity(identity);
+	}
+
+	@Override
+	public boolean checkUser(String username, String password) {
+		// TODO Auto-generated method stub
+		return userdao.checkUser(username, password);
 	}
 
 }

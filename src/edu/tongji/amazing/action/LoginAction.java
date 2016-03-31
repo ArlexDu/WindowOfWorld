@@ -11,24 +11,40 @@ import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.ICarOwnerService;
 
 @Controller("login")
-public class LoginAction extends ActionSupport implements ModelDriven<User>{
+public class LoginAction extends ActionSupport {
 
-	@Resource(name="user")
-	private User user;
 	
-	@Resource(name="userservice")
+	@Resource(name="carownerservice")
 	private ICarOwnerService userservice;
 	
+	private String username;
+	private String password;
+	
 	public String execute(){
-		System.out.println(user.getUsername());
-		System.out.println(user.getPassword());
-//		userservice.checkUser(user);
-		return "success";
+		boolean isok ;
+		isok = userservice.checkUser(username,password);
+		if(isok){
+			return "success";
+		}
+		return "fail";
 		
 	}
-	@Override
-	public User getModel() {
-		// TODO Auto-generated method stub
-		return user;
+
+	public String getUsername() {
+		return username;
 	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 }
