@@ -1,6 +1,5 @@
 package edu.tongji.amazing.dao.impl;
 
-
 import java.util.Iterator;
 
 import javax.annotation.Resource;
@@ -18,8 +17,9 @@ import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
 
 @Repository("userdao")
-public class CarOwnerDao extends GeneralDao<CarOwner> implements ICarOwnerDao{
+public class CarOwnerDao extends GeneralDao<CarOwner> implements ICarOwnerDao {
 
+	
 	public CarOwnerDao() {
 		super(CarOwner.class);
 	}
@@ -40,35 +40,42 @@ public class CarOwnerDao extends GeneralDao<CarOwner> implements ICarOwnerDao{
 	}
 
 	@Override
-	public CarOwner getUserbyIndentity(long identity) {
-		// TODO Auto-generated method stub
-		return null;
+	public CarOwner getUserbyIndentity(String identity) {
+		CarOwner owner = null;
+		String hql = "from CarOwner where Identity = '" + identity + "'";
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		Iterator iterator = query.iterate();
+		if (iterator.hasNext()) {
+			owner = (CarOwner) iterator.next();
+		}
+		transaction.commit();
+		session.close();
+		return owner;
 	}
 
 	@Override
 	public void Disconnect() {
 		// TODO Auto-generated method stub
-//		factory.close();
+		// factory.close();
 	}
 
 	@Override
 	public boolean checkUser(String username, String password) {
 		// TODO Auto-generated method stub
-		String hql = "from User where username = '"+username+"' and password = '"
-		                   +password+"'";
+		String hql = "from User where username = '" + username + "' and password = '" + password + "'";
 		boolean result = false;
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);
 		Iterator iterator = query.iterate();
-		if(iterator.hasNext()){
+		if (iterator.hasNext()) {
 			result = true;
 		}
 		transaction.commit();
 		session.close();
 		return result;
 	}
-
-	
 
 }

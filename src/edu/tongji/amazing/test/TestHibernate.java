@@ -54,17 +54,8 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
   @Test
 	public void getBullet() throws Exception {
 		
-		user.setIdentity("100000001");
-		user.setUsername("hello");
-		user.setPassword("123456");
-		user.setPhone("15021799675");
-		carowner.setIdentity("100000001");
-		carowner.setMoney(100);
-		carowner.setUser(user);
-		carowner.setCarnumber("779988");
-		carowner.setDrivinglicense("110119120112");
-		carowner.setProduct_id(013);
-		s.addUser(carowner);
+	    carowner = s.getUserbyIndentity("130823200001290001");
+		System.out.println(carowner);
 	}
 	
 }

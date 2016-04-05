@@ -20,5 +20,6 @@ public interface ICarOwnerService {
 	public boolean ResumeAccount(long identity);
 
 	// 根据身份证查找用户
-	public CarOwner getUserbyIndentity(long identity);
+	public CarOwner getUserbyIndentity(String identity);
+	
 }

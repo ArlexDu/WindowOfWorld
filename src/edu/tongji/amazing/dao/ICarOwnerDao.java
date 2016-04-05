@@ -16,8 +16,8 @@ public interface ICarOwnerDao {
 	// 恢复用户身份
 	public boolean ResumeAccount(long identity);
 
-	// 根据身份证查找用户
-	public CarOwner getUserbyIndentity(long identity);
 	
 	public void Disconnect();
+//	根据身份证查找用户
+	public CarOwner getUserbyIndentity(String identity);
 }

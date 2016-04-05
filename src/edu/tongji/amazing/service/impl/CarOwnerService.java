@@ -42,7 +42,7 @@ public class CarOwnerService implements ICarOwnerService{
 	}
 
 	@Override
-	public CarOwner getUserbyIndentity(long identity) {
+	public CarOwner getUserbyIndentity(String identity) {
 		// TODO Auto-generated method stub
 		return userdao.getUserbyIndentity(identity);
 	}
