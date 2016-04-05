@@ -16,7 +16,7 @@
 <div class=".container">
 <h1 class="col-sm-12 text-center">加入我们</h1>
 </div>
-	<form id="mform" class="form-horizontal" action="<%=request.getContextPath() %>/Action/Web_register.action" method="post">
+	<form id="mform" class="form-horizontal" action="<%=request.getContextPath() %>/web/wregister.action" method="post">
 		<div class="form-group">
 			<label class="col-sm-offset-2 col-sm-1">用    户   名 :</label>
 			<div class="col-sm-7">

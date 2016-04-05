@@ -31,7 +31,7 @@ public class AddAdAction extends ActionSupport implements ModelDriven<Advertisem
 		System.out.println("status: "+advertisement.getStatus());
 		System.out.println("content: "+advertisement.getContent());
 
-		adservice.AddNewAd(advertisement);
+	//	adservice.AddNewAd(advertisement);
 		return "success";
 		
 	}

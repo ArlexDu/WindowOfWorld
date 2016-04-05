@@ -10,7 +10,7 @@
 <title>Login</title>
 </head>
 <body>
-<s:form action="/Action/Web_login" method="post">
+<s:form action="/web/wlogin" method="post">
 	<s:textfield label="用户名" name="username"></s:textfield>
 	<s:password label="密码" name="password"></s:password>
 	<s:submit value="提交"></s:submit>

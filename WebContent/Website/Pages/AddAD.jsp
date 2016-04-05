@@ -21,7 +21,7 @@
 <div class="container">
 	<h1>添加广告</h1>
 	<hr/>
-	<form action="addAdP" method="post">
+	<form action="<%=request.getContextPath() %>/web/addAdP" method="post">
 		<div class="form-group" >
 			<label for="identity">发布者身份证号</label>
 			<input id="identity" name="identity" />

@@ -6,15 +6,17 @@
 <struts>
 	<constant name="struts.configuration.xml.reload" value="true"></constant>
 	<constant name="struts.objectFactory" value="spring"></constant>
-	<package name="edu.tongji.amazing.action" namespace="/Action" extends="struts-default">
+	<!-- web端对应的action -->
+	<package name="edu.tongji.amazing.action" namespace="/web" extends="struts-default">
         <!-- 相当于servlet，也就是对应一个name的请求，它的rul为
         localhost:8080/项目名称/namespace/name.action或者localhost:8080/项目名称/namespace/name.do -->
-            <action name="Web_login" class="login">
+            <action name="wlogin" class="login">
                 <!-- 请求处理之后返回的页面 -->
                 <result name="success">/Website/Pages/success.jsp</result>
                 <result name="fail">/Website/Pages/fail.jsp</result>
             </action>
-            <action name="Web_register" class="register">
+            
+            <action name="wregister" class="register">
                 <result name="success">/Website/Pages/success.jsp</result>
                 <!-- 拦截器，运行action之前的动作  -->
                 <!-- 用于封装数据的拦截器 -->
@@ -22,27 +24,20 @@
                 <!-- 系统默认的拦截器都要加入 -->
                 <interceptor-ref name="defaultStack"></interceptor-ref>
             </action>
+     		
+     		<action name="addAdP" class="addadpost">
+     			<result name="success">/Website/Pages/success.jsp</result>
+                <result name="fail">/Website/Pages/fail.jsp</result>
+     		</action>
       </package> 
-      
+      <!-- android端对应的action -->
       <package name="edu.tongji.amazing.action.android" namespace="/android" extends="struts-default,json-default">
-          <action name="Android_login" class="loginAndroid">
+          <action name="alogin" class="loginAndroid">
               <result name="success" type="json">
                   <param name="root">data</param>
               </result>
           </action>
       </package>
-
-      </package>
-     <!-- lyz -->
-     <package name="advertisement" namespace="/admin" extends="struts-default">
-     		<action name="addAd" class="addadget">
-     			<result name="AddAD">/Website/Pages/AddAD.jsp</result>
-     		</action>
-     		<action name="addAdP" class="addadpost">
-     			<result name="success">/Website/Pages/success.jsp</result>
-                <result name="fail">/Website/Pages/fail.jsp</result>
-     		</action>
-     </package>
      
   
 </struts>
