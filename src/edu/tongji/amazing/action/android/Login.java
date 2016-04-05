@@ -24,7 +24,7 @@ public class Login extends ActionSupport {
 		// TODO Auto-generated method stub
 		data = new HashMap<String,Object>();
 		CarOwner carowner = service.getUserbyIndentity("130823200001290001");
-		data.put("user", carowner);
+		data.put("carowner", carowner);
 		return "success";
 	}
 	public Map<String, Object> getData() {
