@@ -42,6 +42,11 @@
                   <param name="root">data</param>
               </result>
           </action>
+          <action name="authcode" class="authcode">
+             <result name="success" type="json">
+                  <param name="root">authcode</param>
+              </result>
+          </action>
       </package>
      
   
