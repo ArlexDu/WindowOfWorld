@@ -37,6 +37,20 @@
                   <param name="root">data</param>
               </result>
           </action>
+          <action name="abullet" class="bulletAndroid">
+              <result name="getBullet" type="json">
+              	<param name="bullet">data</param>
+              </result>
+              <result name="getAllBullet" type="json">
+              	<param name="bulletList">data</param>
+              </result>
+              <result name="success">
+             	 /Website/Pages/success.jsp
+              </result>
+              <result name="fail">
+            	/Website/Pages/fail.jsp
+              </result>
+          </action>
       </package>
      
   
