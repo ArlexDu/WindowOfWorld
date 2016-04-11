@@ -37,6 +37,11 @@
                   <param name="root">data</param>
               </result>
           </action>
+          <action name="aregister" class="registerAndroid">
+              <result name="success" type="json">
+                  <param name="root">data</param>
+              </result>
+          </action>
           <action name="abullet" class="bulletAndroid">
              <result name="success" type="json">
                   <param name="root">data</param>

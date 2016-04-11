@@ -8,7 +8,7 @@ import edu.tongji.amazing.model.CarOwner;
 public interface ICarOwnerDao {
 
 	// 检查用户
-	public boolean checkUser(String username,String password);
+	public boolean checkUser(String phone,String password);
 
 	// 挂失用户
 	public boolean RvokeAccount(long identity);

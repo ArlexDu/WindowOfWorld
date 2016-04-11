@@ -62,9 +62,9 @@ public class CarOwnerDao extends GeneralDao<CarOwner> implements ICarOwnerDao {
 	}
 
 	@Override
-	public boolean checkUser(String username, String password) {
+	public boolean checkUser(String phone, String password) {
 		// TODO Auto-generated method stub
-		String hql = "from User where username = '" + username + "' and password = '" + password + "'";
+		String hql = "from User where phone = '" + phone + "' and password = '" + password + "'";
 		boolean result = false;
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();

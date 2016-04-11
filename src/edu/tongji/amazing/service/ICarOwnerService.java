@@ -5,7 +5,7 @@ import edu.tongji.amazing.model.CarOwner;
 
 public interface ICarOwnerService {
 	// 登录的时候查看是否有此用户
-	public boolean checkUser(String username,String password);
+	public boolean checkUser(String phone,String password);
 
 	// 增加用户
 	public void addUser(CarOwner user);
@@ -21,5 +21,6 @@ public interface ICarOwnerService {
 
 	// 根据身份证查找用户
 	public CarOwner getUserbyIndentity(String identity);
+	
 	
 }

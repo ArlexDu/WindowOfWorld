@@ -48,9 +48,9 @@ public class CarOwnerService implements ICarOwnerService{
 	}
 
 	@Override
-	public boolean checkUser(String username, String password) {
+	public boolean checkUser(String phone, String password) {
 		// TODO Auto-generated method stub
-		return userdao.checkUser(username, password);
+		return userdao.checkUser(phone, password);
 	}
 
 }
