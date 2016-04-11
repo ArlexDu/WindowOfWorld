@@ -99,8 +99,10 @@ public class GeneralDao<T> implements IGeneralDao<T> {
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);
 		Iterator iterator = query.iterate();
-		iterator.hasNext();
-		T ob = (T) iterator.next();
+		T ob = null;
+		if(iterator.hasNext()){
+			ob = (T) iterator.next();			
+		}
 		transaction.commit();
 		session.close();
 		return ob;

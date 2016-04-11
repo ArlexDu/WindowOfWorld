@@ -72,21 +72,27 @@ public class BulletAction extends ActionSupport {
 		return data;
 	}
 
-	public void setData(Map<String, Object> data) {
-		this.data = data;
-	}
-
 	@Override
 	public String execute() throws Exception {
 		data = new HashMap<String, Object>();
 		 if(method.equals("getBullet")){
 			 bullet = bulletservice.getBullet(id);
-			 data.put("bullet", bullet);
-			 return "getBullet";
+			 if(bullet == null){
+				 data.put("errCode", 0);
+			 }else{
+				 data.put("errCode", 1);
+				 data.put("bullet", bullet);
+			 }
+			 return "success";
 		 }else if(method.equals("getAllBullet")){
 			 bulletList= bulletservice.getAllBullet(identity);
-			 data.put("bulletList", bulletList);
-			 return "getAllBullet";
+			 if(bulletList.size()==0){
+				 data.put("errCode", 0);
+			 }else{
+				 data.put("errCode", 1);
+				 data.put("bulletList", bulletList);
+			 }
+			 return "success";
 		 }else if(method.equals("addBullet")){
 			 Bullet addbullet=new Bullet();
 			 addbullet.setUserId(identity);
@@ -99,21 +105,6 @@ public class BulletAction extends ActionSupport {
 			 System.out.println("xxxxxxx"+method);
 			 return "fail";
 		 }
-
-		// bullet = bulletservice.getBullet(id);
-		// data.put("bullet", bullet);
-		// return "getBullet";
-
-//		bulletList = bulletservice.getAllBullet(identity);
-//		data.put("bulletList", bulletList);
-//		return "getAllBullet";
-		
-//		Bullet addbullet=new Bullet();
-//		 addbullet.setUserId(identity);	
-//		 addbullet.setTime(time);
-//		 addbullet.setContent(content);
-//		 bulletservice.addBulet(addbullet);
-//		 return "success";
 
 	}
 
