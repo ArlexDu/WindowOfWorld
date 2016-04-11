@@ -3,6 +3,8 @@ package edu.tongji.amazing.test;
 
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -12,6 +14,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.tongji.amazing.model.Advertisement;
+import edu.tongji.amazing.model.Bullet;
 import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.impl.AdService;
@@ -47,15 +50,35 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
     
   @Resource(name="bulletservice")
 	private BulletService bulletService;
-  @Resource
-    private CarOwner carowner;
-  @Resource
-  private CarOwnerService s;
-  @Test
-	public void getBullet() throws Exception {
-		
-	    carowner = s.getUserbyIndentity("130823200001290001");
-		System.out.println(carowner);
-	}
+//  @Resource
+//    private CarOwner carowner;
+//  @Resource
+//  private CarOwnerService s;
+//  @Test
+//	public void getBullet() throws Exception {
+//		
+//	    carowner = s.getUserbyIndentity("130823200001290001");
+//		System.out.println(carowner);
+//	}
 	
+  //@Test
+	public void getBullet(){
+	  Bullet bullet = bulletService.getBullet("25");
+	  System.out.println(bullet.getTime());
+}
+  
+  //@Test
+  	public void getAllBullet(){
+	  List<Bullet> bulletList = bulletService.getAllBullet("100000001");
+	  System.out.println(bulletList.size());
+  }
+  	@Test
+  	public void addBullet(){
+  		Bullet addbullet=new Bullet();
+		 addbullet.setUserId("100000001");
+		 addbullet.setTime("time");
+		 addbullet.setContent("path");
+		 System.out.println(addbullet.getUserId());
+		 bulletService.addBulet(addbullet);
+  	}
 }

@@ -94,7 +94,7 @@ public class GeneralDao<T> implements IGeneralDao<T> {
 	public T QueryById(String id) {
 		// TODO Auto-generated method stub
 		String dataname = entityClass.getName();
-    	String hql = "from "+dataname+" where identity = '"+id+"'";
+    	String hql = "from "+dataname+" where id = '"+id+"'";
     	Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);

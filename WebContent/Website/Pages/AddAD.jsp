@@ -24,39 +24,39 @@
 	<form action="<%=request.getContextPath() %>/web/addAdP" method="post">
 		<div class="form-group" >
 			<label for="identity">发布者身份证号</label>
-			<input id="identity" name="identity" />
+			<input id="identity" name="identity" class="form-control" required/>
 		</div>
 		<div class="form-group" >
 			<label for="begin_time">开始时间</label>
-			<input id="begin_time" name="begin_time" />
+			<input id="begin_time" name="begin_time" class="form-control" required/>
 		</div>
 		<div class="form-group" >
 			<label for="end_time">结束时间</label>
-			<input id="end_time" name="end_time" />
+			<input id="end_time" name="end_time" class="form-control" required/>
 		</div>
 		<div class="form-group" >
 			<label for="place">地点</label>
-			<input id="place" name="place" />
+			<input id="place" name="place" class="form-control" required/>
 		</div>
 		<div class="form-group" >
 			<label for="price">价格</label>
-			<input id="price" name="price" />
+			<input id="price" name="price" class="form-control" required/>
 		</div>
 		<div class="form-group" >
 			<label for="priority">优先级</label>
-			<input id="priority" name="priority" />
+			<input id="priority" name="priority" class="form-control" required/>
 		</div>
 		<div class="form-group" >
 			<label for="time">时间</label>
-			<input id="time" name="time" />
+			<input id="time" name="time" class="form-control" required/>
 		</div>
 		<div class="form-group" >
 			<label for="status">状态</label>
-			<input id="status" name="status" />
+			<input id="status" name="status" class="form-control" required/>
 		</div>
 		<div class="form-group" >
 			<label for="content">内容</label>
-			<input id="content" name="content" />
+			<input id="content" name="content" class="form-control" required/>
 		</div>
 		
 		<div class="form-group">
