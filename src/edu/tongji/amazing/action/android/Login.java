@@ -25,11 +25,11 @@ public class Login extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("username is "+ username);
-		System.out.println("password is "+ password);
-		//data = new HashMap<String,Object>();
-		//CarOwner carowner = service.getUserbyIndentity("130823200001290001");
-		//data.put("carowner", carowner);
+		System.out.println("username is "+username);
+		System.out.println("password is "+password);
+		data = new HashMap<String,Object>();
+		CarOwner carowner = service.getUserbyIndentity("130823200001290001");
+		data.put("carowner", carowner);
 		return "success";
 	}
 	public Map<String, Object> getData() {
