@@ -30,20 +30,16 @@
                 <result name="fail">/Website/Pages/fail.jsp</result>
      		</action>
       </package> 
-      <!-- android端对应的action -->
-      <package name="edu.tongji.amazing.action.android" namespace="/android" extends="struts-default,json-default">
-          <action name="alogin" class="loginAndroid">
+      
+<!-- android端对应的user action -->
+      <package name="edu.tongji.amazing.action.android.user" namespace="/android/user" extends="struts-default,json-default">
+          <action name="login" class="loginAndroid">
               <result name="success" type="json">
                   <param name="root">data</param>
               </result>
           </action>
-          <action name="aregister" class="registerAndroid">
+          <action name="register" class="registerAndroid">
               <result name="success" type="json">
-                  <param name="root">data</param>
-              </result>
-          </action>
-          <action name="abullet" class="bulletAndroid">
-             <result name="success" type="json">
                   <param name="root">data</param>
               </result>
           </action>
@@ -52,6 +48,35 @@
                   <param name="root">authcode</param>
               </result>
           </action>
+      </package>
+      
+      
+<!-- android端对应的bullet action -->
+      <package name="edu.tongji.amazing.action.android.bullet" namespace="/android/bullet" extends="struts-default,json-default">
+          <action name="getbullet" class="bulletAndroid" method="getBullet">
+             <result name="success" type="json">
+                  <param name="root">data</param>
+              </result>
+          </action>
+          <action name="getallbullets" class="bulletAndroid" method="getAllBullet">
+             <result name="success" type="json">
+                  <param name="root">data</param>
+              </result>
+          </action>
+          <action name="addbullet" class="bulletAndroid" method="addBullet">
+             <result name="success" type="json">
+                  <param name="root">data</param>
+              </result>
+          </action>
+      </package>
+      
+<!-- android端对应的advertisement action -->
+      <package name="edu.tongji.amazing.action.android.advertisement" namespace="/android/advertisement" extends="struts-default,json-default">
+      
+      </package>
+<!-- android端对应的个性化 action -->
+      <package name="edu.tongji.amazing.action.android.individuation" namespace="/android/individuation" extends="struts-default,json-default">
+      
       </package>
      
   

@@ -21,14 +21,15 @@ public class BulletAction extends ActionSupport {
 	private BulletService bulletservice;
 	private String method = null;
 	private String id = null;
-	private String identity = null;
+	private String phone = null;
 
-	public String getIdentity() {
-		return identity;
+
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setIdentity(String identity) {
-		this.identity = identity;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getTime() {
@@ -72,10 +73,9 @@ public class BulletAction extends ActionSupport {
 		return data;
 	}
 
-	@Override
-	public String execute() throws Exception {
+	//处理 android/bullet/getbullet 请求
+	public String getBullet() throws Exception{
 		data = new HashMap<String, Object>();
-		 if(method.equals("getBullet")){
 			 bullet = bulletservice.getBullet(id);
 			 if(bullet == null){
 				 data.put("errCode", 0);
@@ -83,9 +83,12 @@ public class BulletAction extends ActionSupport {
 				 data.put("errCode", 1);
 				 data.put("bullet", bullet);
 			 }
-			 return "success";
-		 }else if(method.equals("getAllBullet")){
-			 bulletList= bulletservice.getAllBullet(identity);
+			return "success";
+	}
+	//处理 android/bullet/getallbullets 请求
+	public String getAllBullet() throws Exception{
+		data = new HashMap<String, Object>();
+			 bulletList= bulletservice.getAllBullet(phone);
 			 if(bulletList.size()==0){
 				 data.put("errCode", 0);
 			 }else{
@@ -93,19 +96,16 @@ public class BulletAction extends ActionSupport {
 				 data.put("bulletList", bulletList);
 			 }
 			 return "success";
-		 }else if(method.equals("addBullet")){
-			 Bullet addbullet=new Bullet();
-			 addbullet.setUserId(identity);
-			 addbullet.setTime(time);
-			 addbullet.setContent(content);
-			 bulletservice.addBulet(addbullet);
-			 return "success";
-		 }
-		 else{
-			 System.out.println("xxxxxxx"+method);
-			 return "fail";
-		 }
-
+	}
+	//处理 android/bullet/addbullet 请求
+	public String addBullet() throws Exception{
+		 data = new HashMap<String, Object>();
+		 Bullet addbullet=new Bullet();
+		 addbullet.setUserId(phone);
+		 addbullet.setTime(time);
+		 addbullet.setContent(content);
+		 bulletservice.addBulet(addbullet);
+		 return "success";
 	}
 
 }
