@@ -9,6 +9,11 @@ import edu.tongji.amazing.model.Bullet;
  */
 public interface IBulletDao {
 
-
+	//设置弹幕的快捷键
+	public boolean setShortCut(String id,String key);
+	
+	//清空对应弹幕的key
+	public boolean clearShortCut(String phone,String key);
+	
 
 }

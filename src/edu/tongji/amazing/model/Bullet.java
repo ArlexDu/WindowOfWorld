@@ -38,6 +38,9 @@ public class Bullet implements Serializable {
 	
 	@Column(name = "content")
 	private String content;
+	
+	@Column(name = "key")
+	private String key;
 
 	public String getUserId() {
 		return userId;
@@ -71,5 +74,15 @@ public class Bullet implements Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+	
+	
 	
 }

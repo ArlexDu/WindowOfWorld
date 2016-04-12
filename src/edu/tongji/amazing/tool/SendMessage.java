@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.annotation.Resource;
+
 /**
  * 短信http接口的java代码调用示例
  * 基于Apache HttpClient 4.3
@@ -33,11 +35,12 @@ public class SendMessage {
 
     //编码格式。发送编码格式统一用UTF-8
     private static String ENCODING = "UTF-8";
-    //修改为您的apikey.apikey可在官网（http://www.yuanpian.com)登录后获取
-    static String apikey = "1d2113d4b2e5178c1d097916c5f691e8";
     
     private String phonenumber;
     private int code;
+    
+    @Resource(name = "define")
+    private Defined define;
 	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
 	}
@@ -61,7 +64,7 @@ public class SendMessage {
 //        System.out.println("code is "+code);
         String text = "【WOW】您的验证码是"+code;
         //发短信调用示例
-        sendSms(apikey, text, mobile);
+        sendSms(define.apikey, text, mobile);
     }
 
 

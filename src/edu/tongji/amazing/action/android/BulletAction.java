@@ -11,19 +11,83 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionSupport;
 import edu.tongji.amazing.model.Bullet;
 import edu.tongji.amazing.service.impl.BulletService;
+import edu.tongji.amazing.tool.Defined;
 
 @Controller("bulletAndroid")
 public class BulletAction extends ActionSupport {
 
 	private Map<String, Object> data;
-
 	@Resource(name = "bulletservice")
 	private BulletService bulletservice;
 	private String method = null;
 	private String id = null;
 	private String phone = null;
+	private String time = null;
+	private String content = null;
+	@Resource(name="bullet")
+	private Bullet bullet;
+	private List<Bullet> bulletList = null;
+	private String key;
+	private String bulletid;
+	
+	@Resource(name ="define")
+	private Defined defined;
 
 
+	//处理 android/barrage/getbarrage 请求
+	public String getbarrage() throws Exception{
+		data = new HashMap<String, Object>();
+			 bullet = bulletservice.getBullet(id);
+			 if(bullet == null){
+				 data.put(defined.Error, defined.FAIL);
+			 }else{
+				 data.put(defined.Error, defined.SUCCESS);
+				 data.put("bulletId", bullet.getBulletId());
+				 data.put("content", bullet.getContent());
+				 data.put("key", bullet.getKey());
+				 data.put("time", bullet.getTime());
+			 }
+			return "success";
+	}
+	//处理 android/barrage/getallbarrages 请求
+	public String getAllbarrage() throws Exception{
+		data = new HashMap<String, Object>();
+			 bulletList= bulletservice.getAllBullet(phone);
+			 if(bulletList.size()==0){
+				 data.put(defined.Error, defined.FAIL);
+			 }else{
+				 data.put(defined.Error, defined.SUCCESS);
+				 data.put("bulletList", bulletList);
+			 }
+			 return "success";
+	}
+	//处理 android/barrage/addbarrage 请求
+	public String addbarrage() throws Exception{
+		 data = new HashMap<String, Object>();
+		 bullet.setUserId(phone);
+		 bullet.setTime(time);
+		 bullet.setContent(content);
+		 if(bulletservice.addBulet(bullet)){
+			 data.put(defined.Error, defined.SUCCESS);
+		 }else{
+			 data.put(defined.Error, defined.FAIL);
+		 }
+		 return "success";
+	}
+	//处理 android/barrage/shortcut 请求
+	public String shortcut() throws Exception{
+		 data = new HashMap<String, Object>();
+		 if(!bulletservice.clearShortCut(phone, key)){
+			data.put(defined.Error, defined.FAIL);
+			return "result";
+		 }
+		 if(!bulletservice.addShortCut(bulletid, key)){
+			 data.put(defined.Error, defined.FAIL);
+			 return "result";
+		 }
+		 data.put(defined.Error, defined.SUCCESS);
+		 return "result";
+	}
 	public String getPhone() {
 		return phone;
 	}
@@ -48,11 +112,6 @@ public class BulletAction extends ActionSupport {
 		this.content = content;
 	}
 
-	private String time = null;
-	private String content = null;
-	private Bullet bullet = null;
-	private List<Bullet> bulletList = null;
-
 	public String getId() {
 		return id;
 	}
@@ -72,40 +131,19 @@ public class BulletAction extends ActionSupport {
 	public Map<String, Object> getData() {
 		return data;
 	}
-
-	//处理 android/bullet/getbullet 请求
-	public String getbarrage() throws Exception{
-		data = new HashMap<String, Object>();
-			 bullet = bulletservice.getBullet(id);
-			 if(bullet == null){
-				 data.put("errCode", 0);
-			 }else{
-				 data.put("errCode", 1);
-				 data.put("bullet", bullet);
-			 }
-			return "success";
+	public String getKey() {
+		return key;
 	}
-	//处理 android/bullet/getallbullets 请求
-	public String getAllbarrage() throws Exception{
-		data = new HashMap<String, Object>();
-			 bulletList= bulletservice.getAllBullet(phone);
-			 if(bulletList.size()==0){
-				 data.put("errCode", 0);
-			 }else{
-				 data.put("errCode", 1);
-				 data.put("bulletList", bulletList);
-			 }
-			 return "success";
+	public void setKey(String key) {
+		this.key = key;
 	}
-	//处理 android/bullet/addbullet 请求
-	public String addbarrage() throws Exception{
-		 data = new HashMap<String, Object>();
-		 Bullet addbullet=new Bullet();
-		 addbullet.setUserId(phone);
-		 addbullet.setTime(time);
-		 addbullet.setContent(content);
-		 bulletservice.addBulet(addbullet);
-		 return "success";
+	public String getBulletid() {
+		return bulletid;
 	}
+	public void setBulletid(String bulletid) {
+		this.bulletid = bulletid;
+	}
+	
+	
 
 }

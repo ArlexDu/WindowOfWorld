@@ -9,5 +9,9 @@ public interface IBulletService {
 	
 	public List<Bullet> getAllBullet(String userId);
 	
-	public void addBulet(Bullet bullet);
+	public boolean addBulet(Bullet bullet);
+	
+	public boolean clearShortCut(String phone,String key);
+	
+	public boolean addShortCut(String id,String key);
 }

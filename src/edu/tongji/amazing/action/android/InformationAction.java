@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.impl.CarOwnerService;
+import edu.tongji.amazing.tool.Defined;
 
 @Controller("infromation")
 public class InformationAction extends ActionSupport {
@@ -26,6 +27,8 @@ public class InformationAction extends ActionSupport {
 	private User user;
 	@Resource(name="carowner")
 	private CarOwner carowner;
+	@Resource(name ="define")
+	private Defined defined;
 
 	//对应的android/user/addinformation 的执行方法
 	public String addInfromation() throws Exception {
@@ -37,9 +40,9 @@ public class InformationAction extends ActionSupport {
         carowner.setMoney(0.0f);
         data = new HashMap<String,Object>();
         if(service.updateUser(carowner)){
-        	 data.put("errCode", 1);
+        	 data.put(defined.Error, defined.SUCCESS);
         }else{
-        	 data.put("errCode", 0);
+        	 data.put(defined.Error, defined.FAIL);
         }
         return "result";
 	}
@@ -48,10 +51,10 @@ public class InformationAction extends ActionSupport {
 		data = new HashMap<String,Object>();
 		carowner = service.getUserbyPhone(phone);
 		if(carowner != null){
-			data.put("errCode", 1);
+			data.put(defined.Error, defined.SUCCESS);
 			data.put("carowner",carowner);
 		}else{
-			data.put("errCode", 0);
+			data.put(defined.Error, defined.FAIL);
 		}
 		return "result";
 	}

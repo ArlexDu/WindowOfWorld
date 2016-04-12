@@ -38,7 +38,19 @@ public class BulletService implements IBulletService {
 	
 	//增加新的弹幕
 	@Override
-	public void addBulet(Bullet bullet){
-		bulletdao.Insert(bullet);
+	public boolean addBulet(Bullet bullet){
+		return bulletdao.Insert(bullet);
+	}
+
+	@Override
+	public boolean clearShortCut(String phone, String key) {
+		// TODO Auto-generated method stub
+		return bulletdao.clearShortCut(phone, key);
+	}
+
+	@Override
+	public boolean addShortCut(String id, String key) {
+		// TODO Auto-generated method stub
+		return bulletdao.setShortCut(id, key);
 	}
 }

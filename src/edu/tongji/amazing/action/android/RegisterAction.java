@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.impl.CarOwnerService;
+import edu.tongji.amazing.tool.Defined;
 import sun.print.resources.serviceui;
 
 @Controller("registerAndroid")
@@ -26,6 +27,10 @@ public class RegisterAction extends ActionSupport {
 	private CarOwnerService service;
 	@Resource(name = "carowner")
 	private CarOwner carowner;
+	
+	@Resource(name ="define")
+	private Defined defined;
+	
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
@@ -36,9 +41,9 @@ public class RegisterAction extends ActionSupport {
 		carowner.setPhone(phone);
 		data = new HashMap<String,Object>();
 		if(service.addUser(carowner)){
-			data.put("errCode", 1);
+			data.put(defined.Error, defined.SUCCESS);
 		}else{
-			data.put("errCode", 0);
+			data.put(defined.Error, defined.FAIL);
 		}
 		return "success";
 	}

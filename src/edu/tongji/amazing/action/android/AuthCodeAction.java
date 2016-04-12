@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sun.javafx.collections.MappingChange.Map;
 
+import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.tool.SendMessage;
 @Controller("authcode")
 public class AuthCodeAction extends ActionSupport {
@@ -17,6 +18,10 @@ public class AuthCodeAction extends ActionSupport {
 	private HashMap<String, Object> authcode;
     @Resource(name="sendmessage")
     private SendMessage send;
+    
+    @Resource(name ="define")
+	private Defined defined;
+    
 	public String getPhone() {
 		return phone;
 	}
@@ -47,7 +52,7 @@ public class AuthCodeAction extends ActionSupport {
 		send.Send();
 		int code = send.getCode();
 		authcode = new HashMap<String, Object>();
-		authcode.put("errCode", 1);
+		authcode.put(defined.Error, defined.SUCCESS);
 		authcode.put("authCode", String.valueOf(code));
 		return "success";
 	}

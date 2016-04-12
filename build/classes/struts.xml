@@ -80,6 +80,11 @@
 				<param name="root">data</param>
 			</result>
 		</action>
+		<action name="shortcut" class="bulletAndroid" method="shortcut">
+		<result name="success" type="json">
+			<param name="root">data</param>
+		</result>
+		</action>
 	</package>
 
 	<!-- android端对应的advertisement action -->

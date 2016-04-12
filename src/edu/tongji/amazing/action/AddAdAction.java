@@ -19,6 +19,8 @@ public class AddAdAction extends ActionSupport implements ModelDriven<Advertisem
 	@Resource(name="adservice")
 	private IAdService adservice;
 	
+	
+	
 	public String execute(){
 		
 //		userservice.checkUser(user);
