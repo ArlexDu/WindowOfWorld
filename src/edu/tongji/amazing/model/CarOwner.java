@@ -35,9 +35,6 @@ public class CarOwner {
 	@Column(name = "carnumber")
 	private String carnumber;
 	
-	@Column(name = "money")
-	private float money;
-	
     @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity=User.class)
     @JoinColumn(name="phone")
 	private User user;
@@ -73,16 +70,6 @@ public class CarOwner {
 
 	public void setCarnumber(String carnumber) {
 		this.carnumber = carnumber;
-	}
-
-   
-
-	public float getMoney() {
-		return money;
-	}
-
-	public void setMoney(float money) {
-		this.money = money;
 	}
 
 	public User getUser() {

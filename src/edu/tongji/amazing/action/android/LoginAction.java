@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionSupport;
 
 import edu.tongji.amazing.model.CarOwner;
+import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.service.impl.CarOwnerService;
 import edu.tongji.amazing.tool.Defined;
 import sun.print.resources.serviceui;
@@ -19,7 +20,7 @@ public class LoginAction extends ActionSupport {
 
 	private Map<String, Object> data;
 	@Resource
-	private CarOwnerService service;
+	private ICarOwnerService service;
 	
 	private String phone;
 	private String password;

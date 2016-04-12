@@ -25,13 +25,13 @@ public class Bullet implements Serializable {
 	private static final long serialVersionUID = 6870802072864834681L;
 
 	@Column(name = "phone")
-	private String userId;
+	private String phone;
 	
 	@Id
 	@GeneratedValue(generator="system_uuid")
     @GenericGenerator(name="system_uuid",strategy="uuid")
 	@Column(name = "id")
-	private String bulletId;
+	private String id;
 	
 	@Column(name = "time")
 	private String time;
@@ -41,23 +41,29 @@ public class Bullet implements Serializable {
 	
 	@Column(name = "key")
 	private String key;
+	
+	@Column(name = "fcolor")
+	private String color = "#000000";
+	
+	@Column(name = "fsize")
+	private String size = "18";
 
-	public String getUserId() {
-		return userId;
+
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public String getBulletId() {
-		return bulletId;
+	public String getId() {
+		return id;
 	}
 
-	public void setBulletId(String bulletId) {
-		this.bulletId = bulletId;
+	public void setId(String id) {
+		this.id = id;
 	}
-
 
 	public String getTime() {
 		return time;
@@ -82,6 +88,23 @@ public class Bullet implements Serializable {
 	public void setKey(String key) {
 		this.key = key;
 	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+	
 	
 	
 	

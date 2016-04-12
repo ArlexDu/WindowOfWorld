@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
+import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.service.impl.CarOwnerService;
 import edu.tongji.amazing.tool.Defined;
 
@@ -22,7 +23,7 @@ public class InformationAction extends ActionSupport {
 	private String carnumber;
 	private HashMap<String, Object> data;
 	@Resource(name="carownerservice")
-	private CarOwnerService service;
+	private ICarOwnerService service;
 	@Resource(name="user")
 	private User user;
 	@Resource(name="carowner")
@@ -36,8 +37,8 @@ public class InformationAction extends ActionSupport {
         user = carowner.getUser();
         user.setIdentity(identity);
         user.setMail(email);
+        user.setBalace(0.0f);
         carowner.setDrivinglicense(drivinglicense);
-        carowner.setMoney(0.0f);
         data = new HashMap<String,Object>();
         if(service.updateUser(carowner)){
         	 data.put(defined.Error, defined.SUCCESS);
@@ -106,14 +107,6 @@ public class InformationAction extends ActionSupport {
 
 	public void setData(HashMap<String, Object> data) {
 		this.data = data;
-	}
-
-	public CarOwnerService getService() {
-		return service;
-	}
-
-	public void setService(CarOwnerService service) {
-		this.service = service;
 	}
 
 }

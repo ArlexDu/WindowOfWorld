@@ -1,5 +1,7 @@
 package edu.tongji.amazing.action.android;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import edu.tongji.amazing.model.Bullet;
+import edu.tongji.amazing.service.IBulletService;
 import edu.tongji.amazing.service.impl.BulletService;
 import edu.tongji.amazing.tool.Defined;
 
@@ -18,17 +21,18 @@ public class BulletAction extends ActionSupport {
 
 	private Map<String, Object> data;
 	@Resource(name = "bulletservice")
-	private BulletService bulletservice;
+	private IBulletService bulletservice;
 	private String method = null;
 	private String id = null;
 	private String phone = null;
-	private String time = null;
 	private String content = null;
 	@Resource(name="bullet")
 	private Bullet bullet;
 	private List<Bullet> bulletList = null;
 	private String key;
 	private String bulletid;
+	private String color;
+	private String size;
 	
 	@Resource(name ="define")
 	private Defined defined;
@@ -42,10 +46,12 @@ public class BulletAction extends ActionSupport {
 				 data.put(defined.Error, defined.FAIL);
 			 }else{
 				 data.put(defined.Error, defined.SUCCESS);
-				 data.put("bulletId", bullet.getBulletId());
+				 data.put("bulletId", bullet.getId());
 				 data.put("content", bullet.getContent());
 				 data.put("key", bullet.getKey());
 				 data.put("time", bullet.getTime());
+				 data.put("color", bullet.getColor());
+				 data.put("size", bullet.getSize());
 			 }
 			return "success";
 	}
@@ -57,16 +63,20 @@ public class BulletAction extends ActionSupport {
 				 data.put(defined.Error, defined.FAIL);
 			 }else{
 				 data.put(defined.Error, defined.SUCCESS);
-				 data.put("bulletList", bulletList);
+				 data.put("bulletList", bulletList); 
 			 }
 			 return "success";
 	}
 	//处理 android/barrage/addbarrage 请求
 	public String addbarrage() throws Exception{
 		 data = new HashMap<String, Object>();
-		 bullet.setUserId(phone);
+		 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+	     String time = df.format(new Date());// new Date()为获取当前系统时间
+		 bullet.setPhone(phone);
 		 bullet.setTime(time);
 		 bullet.setContent(content);
+		 bullet.setColor(color);
+		 bullet.setSize(size);
 		 if(bulletservice.addBulet(bullet)){
 			 data.put(defined.Error, defined.SUCCESS);
 		 }else{
@@ -78,8 +88,8 @@ public class BulletAction extends ActionSupport {
 	public String shortcut() throws Exception{
 		 data = new HashMap<String, Object>();
 		 if(!bulletservice.clearShortCut(phone, key)){
-			data.put(defined.Error, defined.FAIL);
-			return "result";
+			 data.put(defined.Error, defined.FAIL);
+			 return "result";
 		 }
 		 if(!bulletservice.addShortCut(bulletid, key)){
 			 data.put(defined.Error, defined.FAIL);
@@ -88,20 +98,29 @@ public class BulletAction extends ActionSupport {
 		 data.put(defined.Error, defined.SUCCESS);
 		 return "result";
 	}
+	//android/barrage/getnumber?phone=
+	public String getNumber()throws Exception{
+		data = new HashMap<String, Object>();
+		int number = bulletservice.Getnumbers(phone);
+		if(number == -1){
+			 data.put(defined.Error, defined.FAIL);
+			 return "result";
+		 }
+		bullet = bulletservice.GetLast(phone);
+		data.put(defined.Error, defined.SUCCESS);
+		data.put("number", number);
+		data.put("content", bullet.getContent());
+		data.put("time", bullet.getTime());
+		return "result";
+	}
+	
+	
 	public String getPhone() {
 		return phone;
 	}
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
 	}
 
 	public String getContent() {
@@ -142,6 +161,18 @@ public class BulletAction extends ActionSupport {
 	}
 	public void setBulletid(String bulletid) {
 		this.bulletid = bulletid;
+	}
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public String getSize() {
+		return size;
+	}
+	public void setSize(String size) {
+		this.size = size;
 	}
 	
 	

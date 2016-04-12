@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
+import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.service.impl.CarOwnerService;
 import edu.tongji.amazing.tool.Defined;
 import sun.print.resources.serviceui;
@@ -24,7 +25,7 @@ public class RegisterAction extends ActionSupport {
     @Resource(name = "user")
     private User user;
 	@Resource(name = "carownerservice")
-	private CarOwnerService service;
+	private ICarOwnerService service;
 	@Resource(name = "carowner")
 	private CarOwner carowner;
 	

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component("advertisement")
 @Scope("prototype")
 @Entity
-@Table(name = "ADS")
+@Table(name = "advertisement")
 public class Advertisement implements Serializable {
 
 	/*

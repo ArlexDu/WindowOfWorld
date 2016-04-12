@@ -81,9 +81,14 @@
 			</result>
 		</action>
 		<action name="shortcut" class="bulletAndroid" method="shortcut">
-		<result name="success" type="json">
-			<param name="root">data</param>
-		</result>
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="getnumber" class="bulletAndroid" method="getNumber">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
 		</action>
 	</package>
 
@@ -100,12 +105,33 @@
 	<!-- android端对应的账单 action -->
 	<package name="edu.tongji.amazing.action.android.bill"
 		namespace="/android/bill" extends="struts-default,json-default">
+		<action name="changebill" class="balanceAction" method="Changebill">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		
+		<action name="checkbills" class="balanceAction" method="getBills">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
 
 	</package>
 	<!-- android端对应的积分 action -->
 	<package name="edu.tongji.amazing.action.android.credits"
 		namespace="/android/credit" extends="struts-default,json-default">
-
+		<action name="addcredit" class="creditAction" method="addCredits">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		
+		<action name="getcredits" class="creditAction" method="checkCredits">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
 	</package>
 
 

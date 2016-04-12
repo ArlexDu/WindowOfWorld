@@ -14,4 +14,8 @@ public interface IBulletService {
 	public boolean clearShortCut(String phone,String key);
 	
 	public boolean addShortCut(String id,String key);
+	
+	public int Getnumbers(String phone);
+	
+	public Bullet GetLast(String phone);
 }

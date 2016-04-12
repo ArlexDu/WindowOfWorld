@@ -67,18 +67,18 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 	  System.out.println(bullet.getTime());
 }
   
-  @Test
+//  @Test
   	public void getAllBullet(){
-	  List<Bullet> bulletList = bulletService.getAllBullet("100000001");
+	  List<Bullet> bulletList = bulletService.getAllBullet("100000002");
 	  System.out.println(bulletList.size());
   }
-//  	@Test
+  	@Resource(name="bullet")
+  	private Bullet bullet;
+  	@Test
   	public void addBullet(){
-  		Bullet addbullet=new Bullet();
-		 addbullet.setUserId("100000001");
-		 addbullet.setTime("time");
-		 addbullet.setContent("path");
-		 System.out.println(addbullet.getUserId());
-		 bulletService.addBulet(addbullet);
+  		bullet.setPhone("100000001");
+  		bullet.setTime("2016");
+  		bullet.setContent("动画城");
+		bulletService.addBulet(bullet);
   	}
 }

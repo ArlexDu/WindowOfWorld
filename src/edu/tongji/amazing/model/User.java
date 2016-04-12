@@ -38,6 +38,12 @@ public class User implements Serializable {
 	@Column(name = "mail")
 	private String mail; 
 	
+	@Column(name = "balance")
+	private float balace;
+	
+	@Column(name = "credit")
+	private float credit;
+	
 	public String getUsername() {
 		return username;
 	}
@@ -79,7 +85,20 @@ public class User implements Serializable {
 		this.mail = mail;
 	}
 
+	public float getBalace() {
+		return balace;
+	}
 
+	public void setBalace(float balace) {
+		this.balace = balace;
+	}
 
-	
+	public float getCredit() {
+		return credit;
+	}
+
+	public void setCredit(float credit) {
+		this.credit = credit;
+	}
+
 }

@@ -32,6 +32,7 @@ public class BulletDao extends GeneralDao<Bullet> implements IBulletDao  {
 		Transaction transaction = session.beginTransaction();
 		try{
 			Query query = session.createQuery(hql);
+			query.executeUpdate();
 			return true;
 		}catch(Exception e){
 			return false;
@@ -43,11 +44,12 @@ public class BulletDao extends GeneralDao<Bullet> implements IBulletDao  {
 
 	@Override
 	public boolean clearShortCut(String phone, String key) {
-		String hql = "Update Bullet set key = ' ' where userId = '"+phone+"' and key = '"+key+"'";
+		String hql = "Update Bullet set key = '' where phone = '"+phone+"' and key = '"+key+"'";
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		try{
 			Query query = session.createQuery(hql);
+			query.executeUpdate();
 			return true;
 		}catch(Exception e){
 			return false;

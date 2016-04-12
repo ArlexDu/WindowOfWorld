@@ -121,5 +121,58 @@ public class GeneralDao<T> implements IGeneralDao<T> {
 		session.close();
 		return ob;
 	}
+	@Override
+	public int GetNumbers(String phone) {
+		// TODO Auto-generated method stub
+		String dataname = entityClass.getName();
+		String hql = "select count(*) from "+dataname+" where phone ='"+phone+"'";
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		try{
+			Query query = session.createQuery(hql);
+			Iterator iterator = query.iterate();
+			Number number = 0;
+			if(iterator.hasNext()){
+				number = (Number) iterator.next();			
+			}
+			return number.intValue();
+		}catch(Exception e){
+			e.printStackTrace();
+			return -1;
+		}finally {
+			transaction.commit();
+			session.close();
+		}
+	}
+	@Override
+	public T GetLast(String phone) {
+		// TODO Auto-generated method stub
+		String dataname = entityClass.getName();
+		String hql = "select max(id) from "+dataname+" where phone ='"+phone+"'";
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		String maxid = "";
+		T ob = null;
+		try{
+			Query query = session.createQuery(hql);
+			Iterator iterator = query.iterate();
+			if(iterator.hasNext()){
+				maxid = (String) iterator.next();			
+			}
+			hql = "from "+dataname+" where id ='"+maxid+"'";
+			query = session.createQuery(hql);
+			iterator = query.iterate();
+			if(iterator.hasNext()){
+				ob = (T) iterator.next();			
+			}
+			return ob;
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}finally {
+			transaction.commit();
+			session.close();
+		}
+	}
 
 }

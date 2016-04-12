@@ -8,19 +8,24 @@ import java.util.List;
 public interface IGeneralDao<T> {
 
 	// 显示所有当前类，例如显示当前用户的所有的个性化show
-	List<T> QueryByPhone(String Phone);
+	public List<T> QueryByPhone(String Phone);
 
 	// 通过id获得对象的具体信息
-	T QueryById(String id);
+	public T QueryById(String id);
 
 	// 新添加一项数据
-	boolean Insert(T t);
+	public boolean Insert(T t);
 
 	// 通过id删除数据
-	boolean DeleteViaId(String id);
+	public boolean DeleteViaId(String id);
 
 	//通过identity删除数据
-	boolean DeleteViaPhone(String Phone);
+	public boolean DeleteViaPhone(String Phone);
 	// 更新数据
-	boolean Update(T t);
+	public boolean Update(T t);
+	
+	//得到当前的数量
+	public int GetNumbers(String phone);
+	//得到最近的一条记录
+	public T GetLast(String phone); 
 }

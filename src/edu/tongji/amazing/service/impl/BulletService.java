@@ -53,4 +53,16 @@ public class BulletService implements IBulletService {
 		// TODO Auto-generated method stub
 		return bulletdao.setShortCut(id, key);
 	}
+
+	@Override
+	public int Getnumbers(String phone) {
+		// TODO Auto-generated method stub
+		return bulletdao.GetNumbers(phone);
+	}
+
+	@Override
+	public Bullet GetLast(String phone) {
+		// TODO Auto-generated method stub
+		return bulletdao.GetLast(phone);
+	}
 }
