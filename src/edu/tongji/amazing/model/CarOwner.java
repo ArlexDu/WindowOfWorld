@@ -26,8 +26,8 @@ public class CarOwner {
 	@Column(name = "phone")
 	private String phone;
 	
-	@Column(name = "product_id")
-	private int product_id;
+	@Column(name = "productId")
+	private int productId;
 	
 	@Column(name = "drivinglicense")
 	private String drivinglicense;
@@ -39,7 +39,7 @@ public class CarOwner {
 	private float money;
 	
     @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity=User.class)
-    @JoinColumn(name="identity")
+    @JoinColumn(name="phone")
 	private User user;
 
 
@@ -51,12 +51,12 @@ public class CarOwner {
 		this.phone = phone;
 	}
 
-	public int getProduct_id() {
-		return product_id;
+	public int getProductId() {
+		return productId;
 	}
 
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
+	public void setProduct_id(int productId) {
+		this.productId = productId;
 	}
 
 	public String getDrivinglicense() {
