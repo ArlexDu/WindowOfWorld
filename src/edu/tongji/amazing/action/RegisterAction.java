@@ -45,7 +45,7 @@ public class RegisterAction extends ActionSupport {
 		user.setPassword(password);
 		user.setPhone(phone);
 		owner.setUser(user);
-		owner.setIdentity(identity);
+		owner.setPhone(phone);
 		owner.setDrivinglicense(license);
 		owner.setCarnumber(carnumber);
 		userService.addUser(owner);

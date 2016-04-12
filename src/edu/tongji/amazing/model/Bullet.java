@@ -24,7 +24,7 @@ public class Bullet implements Serializable {
 	 */
 	private static final long serialVersionUID = 6870802072864834681L;
 
-	@Column(name = "identity")
+	@Column(name = "phone")
 	private String userId;
 	
 	@Id

@@ -18,9 +18,9 @@ public class AdService implements IAdService {
 	@Resource(name="addao")
 	private AdDao dao;
 	@Override
-	public List<Advertisement> GetAdsList(String identity) {
+	public List<Advertisement> GetAdsList(String phone) {
 		// TODO Auto-generated method stub
-		return dao.QueryByIdentity(identity);
+		return dao.QueryByPhone(phone);
 	}
 
 	@Override

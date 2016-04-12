@@ -23,8 +23,8 @@ import org.springframework.stereotype.Repository;
 public class CarOwner {
 	
 	@Id
-	@Column(name = "identity")
-	private String Identity;
+	@Column(name = "phone")
+	private String phone;
 	
 	@Column(name = "product_id")
 	private int product_id;
@@ -42,14 +42,14 @@ public class CarOwner {
     @JoinColumn(name="identity")
 	private User user;
 
-	public String getIdentity() {
-		return Identity;
+
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setIdentity(String identity) {
-		Identity = identity;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-
 
 	public int getProduct_id() {
 		return product_id;

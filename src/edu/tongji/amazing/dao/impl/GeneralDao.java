@@ -52,10 +52,10 @@ public class GeneralDao<T> implements IGeneralDao<T> {
     }
     
     @Override
-	public void DeleteViaIdentity(String identity) {
+	public void DeleteViaPhone(String phone) {
 		// TODO Auto-generated method stub
     	String dataname = entityClass.getName();
-    	String hql = "delete from "+dataname+" where identity = '"+identity+"'";
+    	String hql = "delete from "+dataname+" where phone = '"+phone+"'";
     	Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);
@@ -76,10 +76,10 @@ public class GeneralDao<T> implements IGeneralDao<T> {
 
     //获得一个人发的所有的弹幕或者广告或者个性化操作
 	@Override
-	public List<T> QueryByIdentity(String identity) {
+	public List<T> QueryByPhone(String phone) {
 		// TODO Auto-generated method stub
 		String dataname = entityClass.getName();
-    	String hql = "from "+dataname+" where identity = '"+identity+"'";
+    	String hql = "from "+dataname+" where phone = '"+phone+"'";
     	Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);

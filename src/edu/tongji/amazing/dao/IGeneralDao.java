@@ -8,7 +8,7 @@ import java.util.List;
 public interface IGeneralDao<T> {
 
 	// 显示所有当前类，例如显示当前用户的所有的个性化show
-	List<T> QueryByIdentity(String identity);
+	List<T> QueryByPhone(String Phone);
 
 	// 通过id获得对象的具体信息
 	T QueryById(String id);
@@ -20,7 +20,7 @@ public interface IGeneralDao<T> {
 	void DeleteViaId(String id);
 
 	//通过identity删除数据
-	void DeleteViaIdentity(String identity);
+	void DeleteViaPhone(String Phone);
 	// 更新数据
 	void Update(T t);
 }

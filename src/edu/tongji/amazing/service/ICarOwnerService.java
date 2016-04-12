@@ -14,13 +14,13 @@ public interface ICarOwnerService {
 	public void updateUser(CarOwner user);
 
 	// 挂失用户
-	public boolean RvokeAccount(long identity);
+	public boolean RvokeAccount(long phone);
 
 	// 恢复用户身份
-	public boolean ResumeAccount(long identity);
+	public boolean ResumeAccount(long phone);
 
 	// 根据身份证查找用户
-	public CarOwner getUserbyIndentity(String identity);
+	public CarOwner getUserbyPhone(String phone);
 	
 	
 }

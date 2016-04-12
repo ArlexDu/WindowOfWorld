@@ -35,9 +35,6 @@ public class User implements Serializable {
 	@Column(name = "phone")
 	private String phone;
 
-	@Column(name = "balance")
-	private float balance;
-
 	@Column(name = "mail")
 	private String mail; 
 	
@@ -73,13 +70,6 @@ public class User implements Serializable {
 		this.phone = phone;
 	}
 
-	public float getBalance() {
-		return balance;
-	}
-
-	public void setBalance(float balance) {
-		this.balance = balance;
-	}
 
 	public String getMail() {
 		return mail;

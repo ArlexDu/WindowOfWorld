@@ -22,7 +22,7 @@ public class AddAdAction extends ActionSupport implements ModelDriven<Advertisem
 	public String execute(){
 		
 //		userservice.checkUser(user);
-		System.out.println("identity: "+advertisement.getIdentity());
+		System.out.println("identity: "+advertisement.getPhone());
 		System.out.println("begin_time: "+advertisement.getBegin_time());
 		System.out.println("end_time: "+advertisement.getEnd_time());
 		System.out.println("place: "+advertisement.getPlace());

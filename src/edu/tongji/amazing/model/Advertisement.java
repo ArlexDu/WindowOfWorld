@@ -30,8 +30,8 @@ public class Advertisement implements Serializable {
 	@Column(name = "id")
 	private String id;
 	
-	@Column(name = "identity")
-	private String identity;
+	@Column(name = "phone")
+	private String phone;
 	
 	@Column(name = "begin_time")
 	private String begin_time;
@@ -65,12 +65,12 @@ public class Advertisement implements Serializable {
 		this.id = ad_id;
 	}
 
-	public String getIdentity() {
-		return identity;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setIdentity(String identity) {
-		this.identity = identity;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getBegin_time() {

@@ -44,7 +44,7 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 	}
     //@Test
     public void addad(){
-    	ad.setIdentity("123456789");
+    	ad.setPhone("123456789");
     	service.AddNewAd(ad);
     }
     
@@ -67,12 +67,12 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 	  System.out.println(bullet.getTime());
 }
   
-  //@Test
+  @Test
   	public void getAllBullet(){
 	  List<Bullet> bulletList = bulletService.getAllBullet("100000001");
 	  System.out.println(bulletList.size());
   }
-  	@Test
+//  	@Test
   	public void addBullet(){
   		Bullet addbullet=new Bullet();
 		 addbullet.setUserId("100000001");

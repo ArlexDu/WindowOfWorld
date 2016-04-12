@@ -33,7 +33,7 @@ public class BulletService implements IBulletService {
 	//返回一个用户的所有弹幕
 	@Override
 	public List<Bullet> getAllBullet(String userId){
-		return bulletdao.QueryByIdentity(userId);
+		return bulletdao.QueryByPhone(userId);
 	}
 	
 	//增加新的弹幕

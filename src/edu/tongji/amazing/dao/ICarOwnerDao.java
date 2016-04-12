@@ -19,5 +19,5 @@ public interface ICarOwnerDao {
 	
 	public void Disconnect();
 //	根据身份证查找用户
-	public CarOwner getUserbyIndentity(String identity);
+	public CarOwner getUserbyPhone(String phone);
 }

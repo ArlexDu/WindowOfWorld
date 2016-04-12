@@ -30,21 +30,21 @@ public class CarOwnerService implements ICarOwnerService{
 	}
 
 	@Override
-	public boolean RvokeAccount(long identity) {
+	public boolean RvokeAccount(long phone) {
 		// TODO Auto-generated method stub
-		return userdao.RvokeAccount(identity);
+		return userdao.RvokeAccount(phone);
 	}
 
 	@Override
-	public boolean ResumeAccount(long identity) {
+	public boolean ResumeAccount(long phone) {
 		// TODO Auto-generated method stub
-		return userdao.ResumeAccount(identity);
+		return userdao.ResumeAccount(phone);
 	}
 
 	@Override
-	public CarOwner getUserbyIndentity(String identity) {
+	public CarOwner getUserbyPhone(String phone) {
 		// TODO Auto-generated method stub
-		return userdao.getUserbyIndentity(identity);
+		return userdao.getUserbyPhone(phone);
 	}
 
 	@Override
