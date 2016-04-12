@@ -32,8 +32,14 @@ public class RegisterAction extends ActionSupport {
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setPhone(phone);
-		user.setMail("xxxxx@xx.com");
-//		service.addUser(user);
+		carowner.setUser(user);
+		carowner.setPhone(phone);
+		data = new HashMap<String,Object>();
+		if(service.addUser(carowner)){
+			data.put("errCode", 1);
+		}else{
+			data.put("errCode", 0);
+		}
 		return "success";
 	}
 

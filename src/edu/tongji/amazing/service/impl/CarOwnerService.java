@@ -18,15 +18,15 @@ public class CarOwnerService implements ICarOwnerService{
 
 
 	@Override
-	public void addUser(CarOwner user) {
+	public boolean addUser(CarOwner user) {
 		// TODO Auto-generated method stub
-		userdao.Insert(user);
+		return userdao.Insert(user);
 	}
 
 	@Override
-	public void updateUser(CarOwner user) {
+	public boolean updateUser(CarOwner user) {
 		// TODO Auto-generated method stub
-		userdao.Update(user);
+		return userdao.Update(user);
 	}
 
 	@Override
@@ -51,6 +51,12 @@ public class CarOwnerService implements ICarOwnerService{
 	public boolean checkUser(String phone, String password) {
 		// TODO Auto-generated method stub
 		return userdao.checkUser(phone, password);
+	}
+
+	@Override
+	public boolean checkUserExist(String phone) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

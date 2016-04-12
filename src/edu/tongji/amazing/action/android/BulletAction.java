@@ -74,7 +74,7 @@ public class BulletAction extends ActionSupport {
 	}
 
 	//处理 android/bullet/getbullet 请求
-	public String getBullet() throws Exception{
+	public String getbarrage() throws Exception{
 		data = new HashMap<String, Object>();
 			 bullet = bulletservice.getBullet(id);
 			 if(bullet == null){
@@ -86,7 +86,7 @@ public class BulletAction extends ActionSupport {
 			return "success";
 	}
 	//处理 android/bullet/getallbullets 请求
-	public String getAllBullet() throws Exception{
+	public String getAllbarrage() throws Exception{
 		data = new HashMap<String, Object>();
 			 bulletList= bulletservice.getAllBullet(phone);
 			 if(bulletList.size()==0){
@@ -98,7 +98,7 @@ public class BulletAction extends ActionSupport {
 			 return "success";
 	}
 	//处理 android/bullet/addbullet 请求
-	public String addBullet() throws Exception{
+	public String addbarrage() throws Exception{
 		 data = new HashMap<String, Object>();
 		 Bullet addbullet=new Bullet();
 		 addbullet.setUserId(phone);

@@ -7,77 +7,101 @@
 	<constant name="struts.configuration.xml.reload" value="true"></constant>
 	<constant name="struts.objectFactory" value="spring"></constant>
 	<!-- web端对应的action -->
-	<package name="edu.tongji.amazing.action" namespace="/web" extends="struts-default">
-        <!-- 相当于servlet，也就是对应一个name的请求，它的rul为
-        localhost:8080/项目名称/namespace/name.action或者localhost:8080/项目名称/namespace/name.do -->
-            <action name="wlogin" class="login">
-                <!-- 请求处理之后返回的页面 -->
-                <result name="success">/Website/Pages/success.jsp</result>
-                <result name="fail">/Website/Pages/fail.jsp</result>
-            </action>
-            
-            <action name="wregister" class="register">
-                <result name="success">/Website/Pages/success.jsp</result>
-                <!-- 拦截器，运行action之前的动作  -->
-                <!-- 用于封装数据的拦截器 -->
-                <interceptor-ref name="modelDriven"></interceptor-ref>
-                <!-- 系统默认的拦截器都要加入 -->
-                <interceptor-ref name="defaultStack"></interceptor-ref>
-            </action>
-     		
-     		<action name="addAdP" class="addadpost">
-     			<result name="success">/Website/Pages/success.jsp</result>
-                <result name="fail">/Website/Pages/fail.jsp</result>
-     		</action>
-      </package> 
-      
-<!-- android端对应的user action -->
-      <package name="edu.tongji.amazing.action.android.user" namespace="/android/user" extends="struts-default,json-default">
-          <action name="login" class="loginAndroid">
-              <result name="success" type="json">
-                  <param name="root">data</param>
-              </result>
-          </action>
-          <action name="register" class="registerAndroid">
-              <result name="success" type="json">
-                  <param name="root">data</param>
-              </result>
-          </action>
-          <action name="authcode" class="authcode">
-             <result name="success" type="json">
-                  <param name="root">authcode</param>
-              </result>
-          </action>
-      </package>
-      
-      
-<!-- android端对应的bullet action -->
-      <package name="edu.tongji.amazing.action.android.bullet" namespace="/android/bullet" extends="struts-default,json-default">
-          <action name="getbullet" class="bulletAndroid" method="getBullet">
-             <result name="success" type="json">
-                  <param name="root">data</param>
-              </result>
-          </action>
-          <action name="getallbullets" class="bulletAndroid" method="getAllBullet">
-             <result name="success" type="json">
-                  <param name="root">data</param>
-              </result>
-          </action>
-          <action name="addbullet" class="bulletAndroid" method="addBullet">
-             <result name="success" type="json">
-                  <param name="root">data</param>
-              </result>
-          </action>
-      </package>
-      
-<!-- android端对应的advertisement action -->
-      <package name="edu.tongji.amazing.action.android.advertisement" namespace="/android/advertisement" extends="struts-default,json-default">
-      
-      </package>
-<!-- android端对应的个性化 action -->
-      <package name="edu.tongji.amazing.action.android.individuation" namespace="/android/individuation" extends="struts-default,json-default">
-      
-      </package>
-     
-  
+	<package name="edu.tongji.amazing.action" namespace="/web"
+		extends="struts-default">
+		<!-- 相当于servlet，也就是对应一个name的请求，它的rul为 localhost:8080/项目名称/namespace/name.action或者localhost:8080/项目名称/namespace/name.do -->
+		<action name="wlogin" class="login">
+			<!-- 请求处理之后返回的页面 -->
+			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="fail">/Website/Pages/fail.jsp</result>
+		</action>
+
+		<action name="wregister" class="register">
+			<result name="success">/Website/Pages/success.jsp</result>
+			<!-- 拦截器，运行action之前的动作 -->
+			<!-- 用于封装数据的拦截器 -->
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<!-- 系统默认的拦截器都要加入 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="addAdP" class="addadpost">
+			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="fail">/Website/Pages/fail.jsp</result>
+		</action>
+	</package>
+
+	<!-- android端对应的user action -->
+	<package name="edu.tongji.amazing.action.android.user"
+		namespace="/android/user" extends="struts-default,json-default">
+		<action name="login" class="loginAndroid">
+			<result name="success" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="register" class="registerAndroid">
+			<result name="success" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="addmoreinfo" class="infromation" method="addInfromation">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="carownerinfo" class="infromation" method="getInformation">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="authcode" class="authcode">
+			<result name="success" type="json">
+				<param name="root">authcode</param>
+			</result>
+		</action>
+	</package>
+
+
+	<!-- android端对应的bullet action -->
+	<package name="edu.tongji.amazing.action.android.barrage"
+		namespace="/android/barrage" extends="struts-default,json-default">
+		<action name="getbarrage" class="bulletAndroid" method="getbarrage">
+			<result name="success" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="getallbarrages" class="bulletAndroid" method="getAllbarrage">
+			<result name="success" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="addbarrage" class="bulletAndroid" method="addbarrage">
+			<result name="success" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- android端对应的advertisement action -->
+	<package name="edu.tongji.amazing.action.android.advertisement"
+		namespace="/android/advertisement" extends="struts-default,json-default">
+
+	</package>
+	<!-- android端对应的个性化 action -->
+	<package name="edu.tongji.amazing.action.android.individuation"
+		namespace="/android/individuation" extends="struts-default,json-default">
+
+	</package>
+	<!-- android端对应的账单 action -->
+	<package name="edu.tongji.amazing.action.android.bill"
+		namespace="/android/bill" extends="struts-default,json-default">
+
+	</package>
+	<!-- android端对应的积分 action -->
+	<package name="edu.tongji.amazing.action.android.credits"
+		namespace="/android/credit" extends="struts-default,json-default">
+
+	</package>
+
+
 </struts>

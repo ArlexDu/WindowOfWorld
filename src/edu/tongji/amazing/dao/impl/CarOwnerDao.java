@@ -42,7 +42,7 @@ public class CarOwnerDao extends GeneralDao<CarOwner> implements ICarOwnerDao {
 	@Override
 	public CarOwner getUserbyPhone(String phone) {
 		CarOwner owner = null;
-		String hql = "from CarOwner where Identity = '" + phone + "'";
+		String hql = "from CarOwner where phone = '" + phone + "'";
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);

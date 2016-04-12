@@ -18,6 +18,7 @@ public interface ICarOwnerDao {
 
 	
 	public void Disconnect();
-//	根据身份证查找用户
+	
+//	根据手机号查找用户
 	public CarOwner getUserbyPhone(String phone);
 }

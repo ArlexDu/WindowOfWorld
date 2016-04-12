@@ -27,6 +27,11 @@ public class LoginAction extends ActionSupport {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		data = new HashMap<String,Object>();
+		//判断是否有此用户
+		if(service.getUserbyPhone(phone)==null){
+			data.put("errCode", 101);
+			return "success";
+		}
 		if(service.checkUser(phone, password)){
 			data.put("errCode", 1);
 		}else{

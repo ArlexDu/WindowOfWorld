@@ -26,8 +26,6 @@ public class AdDao extends GeneralDao<Advertisement> implements IAdDao{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Resource
-	private SessionFactory factory;
 
 
 }

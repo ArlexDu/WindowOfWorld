@@ -31,16 +31,22 @@ public class GeneralDao<T> implements IGeneralDao<T> {
 
 //插入对象
     @Override
-    public void Insert(T t) {
+    public boolean Insert(T t) {
     	Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
-		session.save(t);
-		transaction.commit();
-		session.close();
+		try{
+			session.save(t);
+			return true;
+		}catch(Exception e){
+			return false;
+		}finally{
+			transaction.commit();
+			session.close();
+		}
     }
 //根据id删除对象
     @Override
-    public void DeleteViaId(String id) {
+    public boolean DeleteViaId(String id) {
     	String dataname = entityClass.getName();
     	String hql = "delete from "+dataname+" where id = '"+id+"'";
     	Session session = sessionFactory.openSession();
@@ -49,10 +55,11 @@ public class GeneralDao<T> implements IGeneralDao<T> {
 		//int num = query.
 		transaction.commit();
 		session.close();
+		return true;
     }
     
     @Override
-	public void DeleteViaPhone(String phone) {
+	public boolean DeleteViaPhone(String phone) {
 		// TODO Auto-generated method stub
     	String dataname = entityClass.getName();
     	String hql = "delete from "+dataname+" where phone = '"+phone+"'";
@@ -62,16 +69,23 @@ public class GeneralDao<T> implements IGeneralDao<T> {
 		//int num = query.
 		transaction.commit();
 		session.close();
+		return true;
 	}
     
 //更新对象
     @Override
-    public void Update(T t) {
+    public boolean Update(T t) {
     	Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
-		session.update(t);
-		transaction.commit();
-		session.close();
+		try{
+		  session.update(t);
+		  return true;
+		}catch(Exception e){
+			return false;
+		}finally{
+		  transaction.commit();
+		  session.close();
+		}
     }
 
     //获得一个人发的所有的弹幕或者广告或者个性化操作

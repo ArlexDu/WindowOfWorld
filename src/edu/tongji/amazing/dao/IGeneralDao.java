@@ -14,13 +14,13 @@ public interface IGeneralDao<T> {
 	T QueryById(String id);
 
 	// 新添加一项数据
-	void Insert(T t);
+	boolean Insert(T t);
 
 	// 通过id删除数据
-	void DeleteViaId(String id);
+	boolean DeleteViaId(String id);
 
 	//通过identity删除数据
-	void DeleteViaPhone(String Phone);
+	boolean DeleteViaPhone(String Phone);
 	// 更新数据
-	void Update(T t);
+	boolean Update(T t);
 }
