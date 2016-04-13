@@ -1,0 +1,17 @@
+body{text-align:center;}
+.page-scroll {font-size: 1.0em;}
+.form-group {margin: 0 auto;}
+.login {margin: 0 auto;}
+.btn-xl{width:180px; height:60px;border-radius:10px; margin-top:20px;}
+.form-control{ border-radius:10px; margin-top:28px;}
+.table{ position:relative; 
+		box-shadow:none; 
+		background-color:#fff; 
+		border:3px solid #c0c0c0; 
+		border-radius:10px; 
+		height: 350px;
+		vertical-align:middle; 
+		text-align:center;
+		color: black;
+		z-index:5;}
+.table-header{font-size:1.5em; font-weight:bolder; text-align:center; background-color:#F5F5F5;}
