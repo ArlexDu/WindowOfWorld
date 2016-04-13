@@ -40,10 +40,23 @@ public class LoginAction extends ActionSupport {
 		if(service.checkUser(phone, password)){
 			data.put(defined.Error, defined.SUCCESS);
 		}else{
-			data.put(defined.Error, defined.FAIL);
+			data.put(defined.Error, defined.WrongPassword);
 		}
 		return "success";
 	}
+	//用于登录时后判断用户是否存在 /android/isuser?phone=
+	public String IsUser() throws Exception {
+		// TODO Auto-generated method stub
+		data = new HashMap<String,Object>();
+		//判断是否有此用户
+		if(service.getUserbyPhone(phone)==null){
+			data.put(defined.Error, defined.NOUSER);
+		}else{
+			data.put(defined.Error, defined.SUCCESS);
+		}
+		return "success";
+	}
+	
 	public Map<String, Object> getData() {
 		return data;
 	}

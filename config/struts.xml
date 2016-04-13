@@ -39,6 +39,11 @@
 				<param name="root">data</param>
 			</result>
 		</action>
+		<action name="isuser" class="loginAndroid" method="IsUser">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
 		<action name="register" class="registerAndroid">
 			<result name="success" type="json">
 				<param name="root">data</param>
@@ -50,6 +55,11 @@
 			</result>
 		</action>
 		<action name="carownerinfo" class="infromation" method="getInformation">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="changepassword" class="infromation" method="changePassword">
 			<result name="result" type="json">
 				<param name="root">data</param>
 			</result>

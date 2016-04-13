@@ -18,6 +18,7 @@ import edu.tongji.amazing.tool.Defined;
 public class InformationAction extends ActionSupport {
 	private String phone;
 	private String identity;
+	private String password;
 	private String email;
 	private String drivinglicense;
 	private String carnumber;
@@ -38,7 +39,9 @@ public class InformationAction extends ActionSupport {
         user.setIdentity(identity);
         user.setMail(email);
         user.setBalace(0.0f);
+        user.setCredit(0.0f);
         carowner.setDrivinglicense(drivinglicense);
+        carowner.setCarnumber(carnumber);
         data = new HashMap<String,Object>();
         if(service.updateUser(carowner)){
         	 data.put(defined.Error, defined.SUCCESS);
@@ -55,11 +58,29 @@ public class InformationAction extends ActionSupport {
 			data.put(defined.Error, defined.SUCCESS);
 			data.put("carowner",carowner);
 		}else{
-			data.put(defined.Error, defined.FAIL);
+			data.put(defined.Error, defined.NOUSER);
 		}
 		return "result";
 	}
 
+	//对应的android/user/changepassword 的执行方法
+		public String changePassword() throws Exception{
+			data = new HashMap<String,Object>();
+			carowner = service.getUserbyPhone(phone);
+			if(carowner == null){
+				data.put(defined.Error, defined.NOUSER);
+				return "result";
+			}
+			user = carowner.getUser();
+			user.setPassword(password);
+			carowner.setUser(user);
+			if(service.updateUser(carowner)){
+	        	 data.put(defined.Error, defined.SUCCESS);
+	        }else{
+	        	 data.put(defined.Error, defined.FAIL);
+	        }
+			return "result";
+		}
 	public String getPhone() {
 		return phone;
 	}
@@ -108,5 +129,13 @@ public class InformationAction extends ActionSupport {
 	public void setData(HashMap<String, Object> data) {
 		this.data = data;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 
 }

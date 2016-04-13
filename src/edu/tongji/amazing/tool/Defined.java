@@ -11,4 +11,6 @@ public class Defined {
 	public final int SUCCESS = 1;
 	public final int FAIL = 0;
 	public final int NOUSER = 101;
+	public final int WrongPassword = 102;
+	public final int RrgisteredUSER = 104;
 }
