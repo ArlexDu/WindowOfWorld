@@ -6,6 +6,7 @@
 <struts>
 	<constant name="struts.configuration.xml.reload" value="true"></constant>
 	<constant name="struts.objectFactory" value="spring"></constant>
+	<constant name="struts.multipart.saveDir" value="/tempfile"></constant>
 	<!-- web端对应的action -->
 	<package name="edu.tongji.amazing.action" namespace="/web"
 		extends="struts-default">
@@ -64,6 +65,11 @@
 				<param name="root">data</param>
 			</result>
 		</action>
+		<action name="changeavatar" class="infromation" method="uploadavtar">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
 		<action name="authcode" class="authcode">
 			<result name="success" type="json">
 				<param name="root">authcode</param>
@@ -105,7 +111,11 @@
 	<!-- android端对应的advertisement action -->
 	<package name="edu.tongji.amazing.action.android.advertisement"
 		namespace="/android/advertisement" extends="struts-default,json-default">
-
+		<action name="uploadfile" class="uploadfileaction">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
 	</package>
 	<!-- android端对应的个性化 action -->
 	<package name="edu.tongji.amazing.action.android.individuation"
@@ -120,7 +130,7 @@
 				<param name="root">data</param>
 			</result>
 		</action>
-		
+
 		<action name="checkbills" class="balanceAction" method="getBills">
 			<result name="result" type="json">
 				<param name="root">data</param>
@@ -136,7 +146,7 @@
 				<param name="root">data</param>
 			</result>
 		</action>
-		
+
 		<action name="getcredits" class="creditAction" method="checkCredits">
 			<result name="result" type="json">
 				<param name="root">data</param>
