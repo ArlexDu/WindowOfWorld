@@ -11,11 +11,12 @@ import org.springframework.stereotype.Component;
 public class UpLoadFile {
 
 	// 存储文件
-	public void SaveFile(File file, String path, String wholetype) throws Exception {
+	public String SaveFile(File file, String path, String wholetype) throws Exception {
 		InputStream is = new FileInputStream(file);
 		OutputStream os = null;
 		String type = wholetype.split("/")[1];
-		os = new FileOutputStream(path + "\\" + System.currentTimeMillis() + "." + type);
+		String filepath = path + "\\" + System.currentTimeMillis() + "." + type;
+		os = new FileOutputStream(filepath);
 		int a = 0;
 		while ((a = is.read()) != -1) {
 			os.write(a);
@@ -23,5 +24,6 @@ public class UpLoadFile {
 		os.flush();
 		os.close();
 		is.close();
+		return filepath;
 	}
 }

@@ -21,4 +21,8 @@ public interface ICarOwnerDao {
 	
 //	根据手机号查找用户
 	public CarOwner getUserbyPhone(String phone);
+	
+	//更改头像
+	public boolean ChangeAvatar(String phone , String path);
+	
 }

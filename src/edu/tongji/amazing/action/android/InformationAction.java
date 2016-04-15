@@ -95,7 +95,8 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 		data = new HashMap<String,Object>();
 		String path = request.getSession().getServletContext().getRealPath("/Webapp/assets/advertisements");
 		try{
-			upload.SaveFile(uploadfile, path, uploadfileContentType);
+			String filepath = upload.SaveFile(uploadfile, path, uploadfileContentType);
+			service.changeavatar(phone, filepath);
 			data.put(defined.Error, defined.SUCCESS);
 		}catch (Exception e){
 			data.put(defined.Error, defined.FAIL);

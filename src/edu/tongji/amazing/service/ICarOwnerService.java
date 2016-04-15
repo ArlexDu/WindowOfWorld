@@ -26,5 +26,6 @@ public interface ICarOwnerService {
 	// 根据身手机号查找用户
 	public CarOwner getUserbyPhone(String phone);
 	
-	
+	//更改头像
+	public boolean changeavatar(String phone , String path);
 }

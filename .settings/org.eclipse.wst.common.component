@@ -3,6 +3,7 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/config"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/baiducore"/>
         <property name="context-root" value="AmazingAd"/>
         <property name="java-output-path" value="/AmazingAd/build/classes"/>
     </wb-module>

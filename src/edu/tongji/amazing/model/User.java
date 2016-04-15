@@ -44,6 +44,9 @@ public class User implements Serializable {
 	@Column(name = "credit")
 	private float credit;
 	
+	@Column(name = "avatar")
+	private float avatar;
+	
 	public String getUsername() {
 		return username;
 	}
@@ -100,5 +103,15 @@ public class User implements Serializable {
 	public void setCredit(float credit) {
 		this.credit = credit;
 	}
+
+	public float getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(float avatar) {
+		this.avatar = avatar;
+	}
+	
+	
 
 }

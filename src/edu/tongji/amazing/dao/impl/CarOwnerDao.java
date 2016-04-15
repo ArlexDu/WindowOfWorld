@@ -78,4 +78,17 @@ public class CarOwnerDao extends GeneralDao<CarOwner> implements ICarOwnerDao {
 		return result;
 	}
 
+	@Override
+	public boolean ChangeAvatar(String phone, String path) {
+		// TODO Auto-generated method stub
+		String hql = "Update User set avatar = '"+path+"' where phone = '" + phone + "'";
+		boolean result = false;
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		query.executeUpdate();
+		transaction.commit();
+		session.close();
+		return result;
+	}
 }

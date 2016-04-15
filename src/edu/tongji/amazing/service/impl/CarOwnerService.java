@@ -59,4 +59,10 @@ public class CarOwnerService implements ICarOwnerService{
 		return false;
 	}
 
+	@Override
+	public boolean changeavatar(String phone, String path) {
+		// TODO Auto-generated method stub
+		return userdao.ChangeAvatar(phone, path);
+	}
+	
 }
