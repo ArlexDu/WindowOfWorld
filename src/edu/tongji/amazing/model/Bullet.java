@@ -48,6 +48,8 @@ public class Bullet implements Serializable {
 	@Column(name = "fsize")
 	private String size = "18";
 
+	@Column(name = "title")
+	private String title;
 
 	public String getPhone() {
 		return phone;
@@ -103,6 +105,14 @@ public class Bullet implements Serializable {
 
 	public void setSize(String size) {
 		this.size = size;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	

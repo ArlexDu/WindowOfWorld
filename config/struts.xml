@@ -7,23 +7,21 @@
 	<constant name="struts.configuration.xml.reload" value="true"></constant>
 	<constant name="struts.objectFactory" value="spring"></constant>
 	<constant name="struts.multipart.saveDir" value="/tempfile"></constant>
-	<!-- web端对应的action -->
-	<package name="edu.tongji.amazing.action" namespace="/web"
+	<!-- web端对应的user的action -->
+	<package name="edu.tongji.amazing.action.administrator" namespace="/web/administator"
 		extends="struts-default">
 		<!-- 相当于servlet，也就是对应一个name的请求，它的rul为 localhost:8080/项目名称/namespace/name.action或者localhost:8080/项目名称/namespace/name.do -->
-		<action name="wlogin" class="login">
+		<action name="login" class="login" method="LoginWeb">
 			<!-- 请求处理之后返回的页面 -->
 			<result name="success">/Website/Pages/success.jsp</result>
 			<result name="fail">/Website/Pages/fail.jsp</result>
+			<result name="pswwrong">/Website/Pages/wrong.jsp</result>
 		</action>
 
-		<action name="wregister" class="register">
+		<action name="register" class="register" method="RegisterAdmin">
 			<result name="success">/Website/Pages/success.jsp</result>
-			<!-- 拦截器，运行action之前的动作 -->
-			<!-- 用于封装数据的拦截器 -->
-			<interceptor-ref name="modelDriven"></interceptor-ref>
-			<!-- 系统默认的拦截器都要加入 -->
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="exist">/Website/Pages/success.jsp</result>
+			<result name="fail">/Website/Pages/success.jsp</result>
 		</action>
 
 		<action name="addAdP" class="addadpost">
@@ -35,17 +33,17 @@
 	<!-- android端对应的user action -->
 	<package name="edu.tongji.amazing.action.android.user"
 		namespace="/android/user" extends="struts-default,json-default">
-		<action name="login" class="loginAndroid">
-			<result name="success" type="json">
+		<action name="login" class="login" method="LoginAndroid">
+			<result name="success" type="json" >
 				<param name="root">data</param>
 			</result>
 		</action>
-		<action name="isuser" class="loginAndroid" method="IsUser">
+		<action name="isuser" class="login" method="IsUser">
 			<result name="result" type="json">
 				<param name="root">data</param>
 			</result>
 		</action>
-		<action name="register" class="registerAndroid">
+		<action name="register" class="register" method="RegisterAndroid">
 			<result name="success" type="json">
 				<param name="root">data</param>
 			</result>
@@ -65,7 +63,7 @@
 				<param name="root">data</param>
 			</result>
 		</action>
-		<action name="changeavatar" class="infromation" method="uploadavtar">
+		<action name="changeavatar" class="infromation" method="uploadavatar">
 			<result name="result" type="json">
 				<param name="root">data</param>
 			</result>
@@ -91,8 +89,13 @@
 				<param name="root">data</param>
 			</result>
 		</action>
-		<action name="addbarrage" class="bulletAndroid" method="addbarrage">
+		<action name="changebarrage" class="bulletAndroid" method="changebarrage">
 			<result name="success" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="checkshortcut" class="bulletAndroid" method="checkbarrage">
+			<result name="result" type="json">
 				<param name="root">data</param>
 			</result>
 		</action>

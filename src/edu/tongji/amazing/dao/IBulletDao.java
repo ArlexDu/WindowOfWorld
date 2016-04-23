@@ -15,5 +15,6 @@ public interface IBulletDao {
 	//清空对应弹幕的key
 	public boolean clearShortCut(String phone,String key);
 	
-
+    //查看当前快捷键是否有了设置
+	public String CheckShortCut(String phone,String key);
 }

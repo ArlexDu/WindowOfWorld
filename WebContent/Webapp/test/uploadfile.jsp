@@ -10,7 +10,7 @@ String path = request.getContextPath();
 <title>Upload File</title>
 </head>
 <body>
-<form method="post" action="<%=path%>/android/advertisement/uploadfile.action" name="upload" enctype="multipart/form-data">
+<form method="post" action="<%=path%>/android/user/changeavatar" name="upload" enctype="multipart/form-data">
 <p>文件名：<input type="file" name = "uploadfile"></p>
 <p><input type = "submit" value ="上传" name = "submit"></p>
 </form>

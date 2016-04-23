@@ -17,12 +17,6 @@ public interface ICarOwnerService {
 	// 更新用户信息
 	public boolean updateUser(CarOwner user);
 
-	// 挂失用户
-	public boolean RvokeAccount(long phone);
-
-	// 恢复用户身份
-	public boolean ResumeAccount(long phone);
-
 	// 根据身手机号查找用户
 	public CarOwner getUserbyPhone(String phone);
 	

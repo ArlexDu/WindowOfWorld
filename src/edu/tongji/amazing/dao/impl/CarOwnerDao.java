@@ -28,18 +28,6 @@ public class CarOwnerDao extends GeneralDao<CarOwner> implements ICarOwnerDao {
 	private SessionFactory factory;
 
 	@Override
-	public boolean RvokeAccount(long identity) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean ResumeAccount(long identity) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public CarOwner getUserbyPhone(String phone) {
 		CarOwner owner = null;
 		String hql = "from CarOwner where phone = '" + phone + "'";
@@ -53,12 +41,6 @@ public class CarOwnerDao extends GeneralDao<CarOwner> implements ICarOwnerDao {
 		transaction.commit();
 		session.close();
 		return owner;
-	}
-
-	@Override
-	public void Disconnect() {
-		// TODO Auto-generated method stub
-		// factory.close();
 	}
 
 	@Override

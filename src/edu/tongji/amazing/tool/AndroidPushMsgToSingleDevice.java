@@ -14,7 +14,7 @@ import com.baidu.yun.push.exception.PushClientException;
 import com.baidu.yun.push.exception.PushServerException;
 import com.baidu.yun.push.model.PushMsgToSingleDeviceRequest;
 import com.baidu.yun.push.model.PushMsgToSingleDeviceResponse;
-@Component("sendmessage")
+@Component("sendadvertisement")
 public class AndroidPushMsgToSingleDevice {
 	
 	@Test

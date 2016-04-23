@@ -1,95 +1,123 @@
 package edu.tongji.amazing.action;
 
+import java.util.HashMap;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 
 import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
+import edu.tongji.amazing.service.IAdministratorService;
 import edu.tongji.amazing.service.ICarOwnerService;
+import edu.tongji.amazing.service.impl.AdministratorService;
+import edu.tongji.amazing.service.impl.CarOwnerService;
+import edu.tongji.amazing.tool.Defined;
+import sun.print.resources.serviceui;
 
 @Controller("register")
 public class RegisterAction extends ActionSupport {
 
-	@Resource
-	private User user;
-	
-	@Resource(name = "carownerservice")
-	private ICarOwnerService userService ;
-    
-	@Resource(name="carowner")
-	private CarOwner owner;
-	
 	private String username;
 	private String password;
-	private String mail;
 	private String phone;
-	private String identity;
-	private String license;
-	private String carnumber;
 	
-	@Override
-	public String execute() throws Exception {
+	private HashMap<String, Object> data;
+	@Resource(name = "user")
+	private User user;
+	@Resource(name = "define")
+	private Defined defined;
+
+
+	//android端的用户注册
+	@Resource(name = "carownerservice")
+	private ICarOwnerService service;
+	@Resource(name = "carowner")
+	private CarOwner carowner;
+	
+	public String RegisterAndroid() throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(username);
-		System.out.println(password);
-		System.out.println(mail);
-		System.out.println(phone);
-		System.out.println(identity);
-		user.setIdentity(identity);
-		user.setMail(mail);
+		data = new HashMap<String, Object>();
+		// 判断是否有此用户
+		if (service.getUserbyPhone(phone) != null) {
+			data.put(defined.Error, defined.RrgisteredUSER);
+			return "success";
+		}
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setPhone(phone);
-		owner.setUser(user);
-		owner.setPhone(phone);
-		owner.setDrivinglicense(license);
-		owner.setCarnumber(carnumber);
-		userService.addUser(owner);
+		carowner.setUser(user);
+		carowner.setPhone(phone);
+		if (service.addUser(carowner)) {
+			data.put(defined.Error, defined.SUCCESS);
+		} else {
+			data.put(defined.Error, defined.FAIL);
+		}
 		return "success";
 	}
 	
+//	网页端的管理员注册
+	private String realname;
+	private String identity;
+	@Resource(name="administratorservice")
+	private IAdministratorService administratorService;
 	
+	public String RegisterAdmin() throws Exception {
+		// TODO Auto-generated method stub
+		// 判断是否有此用户
+		if (service.getUserbyPhone(phone) != null) {
+			return "exist";
+		}
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setPhone(phone);
+		user.setIdentity(identity);
+		user.setRealname(realname);
+		if (administratorService.addAdministrator(user)) {
+			return "success";
+		} else {
+			return "fail";
+		}
+	}
+
 	public String getUsername() {
 		return username;
 	}
-
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-
 	public String getPassword() {
 		return password;
 	}
-
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
-	public String getMail() {
-		return mail;
-	}
-
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-
 	public String getPhone() {
 		return phone;
 	}
 
-
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public HashMap<String, Object> getData() {
+		return data;
+	}
+
+
+	public String getRealname() {
+		return realname;
+	}
+
+
+	public void setRealname(String realname) {
+		this.realname = realname;
 	}
 
 
@@ -102,25 +130,5 @@ public class RegisterAction extends ActionSupport {
 		this.identity = identity;
 	}
 
-
-	public String getLicense() {
-		return license;
-	}
-
-
-	public void setLicense(String license) {
-		this.license = license;
-	}
-
-
-	public String getCarnumber() {
-		return carnumber;
-	}
-
-
-	public void setCarnumber(String carnumber) {
-		this.carnumber = carnumber;
-	}
-
-
+	
 }

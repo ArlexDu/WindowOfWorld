@@ -103,7 +103,7 @@ public class GeneralDao<T> implements IGeneralDao<T> {
 		return list;
 	}
 
-
+//	根据id获得弹幕或者广告或者个性化操作
 	@Override
 	public T QueryById(String id) {
 		// TODO Auto-generated method stub

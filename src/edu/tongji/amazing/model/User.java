@@ -45,7 +45,10 @@ public class User implements Serializable {
 	private float credit;
 	
 	@Column(name = "avatar")
-	private float avatar;
+	private String avatar;
+	
+	@Column(name ="realname")
+	private String realname;
 	
 	public String getUsername() {
 		return username;
@@ -104,13 +107,22 @@ public class User implements Serializable {
 		this.credit = credit;
 	}
 
-	public float getAvatar() {
+	public String getRealname() {
+		return realname;
+	}
+
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
+
+	public String getAvatar() {
 		return avatar;
 	}
 
-	public void setAvatar(float avatar) {
+	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
+	
 	
 	
 

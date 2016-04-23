@@ -9,7 +9,9 @@ public interface IBulletService {
 	
 	public List<Bullet> getAllBullet(String userId);
 	
-	public boolean addBulet(Bullet bullet);
+	public boolean addBullet(Bullet bullet);
+	
+	public boolean updateBullet(Bullet bullet);
 	
 	public boolean clearShortCut(String phone,String key);
 	
@@ -18,4 +20,6 @@ public interface IBulletService {
 	public int Getnumbers(String phone);
 	
 	public Bullet GetLast(String phone);
+	
+	public String CheckShortCut(String phone,String key);
 }

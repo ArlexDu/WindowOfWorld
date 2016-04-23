@@ -10,7 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
 
-import edu.tongji.amazing.dao.impl.AdDao;
+import edu.tongji.amazing.dao.impl.AdvertisementDao;
 import edu.tongji.amazing.dao.impl.BulletDao;
 import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.Bullet;
@@ -38,7 +38,7 @@ public class BulletService implements IBulletService {
 	
 	//增加新的弹幕
 	@Override
-	public boolean addBulet(Bullet bullet){
+	public boolean addBullet(Bullet bullet){
 		return bulletdao.Insert(bullet);
 	}
 
@@ -64,5 +64,17 @@ public class BulletService implements IBulletService {
 	public Bullet GetLast(String phone) {
 		// TODO Auto-generated method stub
 		return bulletdao.GetLast(phone);
+	}
+
+	@Override
+	public String CheckShortCut(String phone, String key) {
+		// TODO Auto-generated method stub
+		return bulletdao.CheckShortCut(phone, key);
+	}
+
+	@Override
+	public boolean updateBullet(Bullet bullet) {
+		// TODO Auto-generated method stub
+		return bulletdao.Update(bullet);
 	}
 }

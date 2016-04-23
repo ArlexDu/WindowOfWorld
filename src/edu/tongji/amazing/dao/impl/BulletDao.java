@@ -1,6 +1,7 @@
 package edu.tongji.amazing.dao.impl;
 
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -53,6 +54,27 @@ public class BulletDao extends GeneralDao<Bullet> implements IBulletDao  {
 			return true;
 		}catch(Exception e){
 			return false;
+		}finally{
+			transaction.commit();
+			session.close();
+		}
+	}
+
+	@Override
+	public String CheckShortCut(String phone, String key) {
+		// TODO Auto-generated method stub
+		String hql = "from Bullet where phone = '"+phone+"' and key = '"+key+"'";
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		try{
+			Query query = session.createQuery(hql);
+			Iterator iterator = query.iterate();
+			if(iterator.hasNext()){
+				return "1";
+			}
+			return "2";
+		}catch(Exception e){
+			return "3";
 		}finally{
 			transaction.commit();
 			session.close();

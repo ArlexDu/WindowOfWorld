@@ -17,7 +17,7 @@ import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.Bullet;
 import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
-import edu.tongji.amazing.service.impl.AdService;
+import edu.tongji.amazing.service.impl.AdvertisementService;
 import edu.tongji.amazing.service.impl.BulletService;
 import edu.tongji.amazing.service.impl.CarOwnerService;
 
@@ -33,8 +33,8 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 	@Resource(name="advertisement")
 	private Advertisement ad;
 	
-	@Resource(name="adservice")
-	private AdService service;
+	@Resource(name="advertisementservice")
+	private AdvertisementService service;
 	
 //	@Test
 	public void testName() throws Exception {
@@ -77,8 +77,9 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
   	@Test
   	public void addBullet(){
   		bullet.setPhone("100000001");
-  		bullet.setTime("2016");
+  		bullet.setTime("2016-04-23");
   		bullet.setContent("动画城");
-		bulletService.addBulet(bullet);
+  		bullet.setTitle("wobufu");
+		bulletService.addBullet(bullet);
   	}
 }
