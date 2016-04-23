@@ -38,8 +38,8 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 	private Defined defined;
 	@Resource(name="uploadfile")
 	private UpLoadFile upload;
-	private File uploadfile;
-	private String uploadfileContentType;
+	private File image;
+	private String imageContentType;
 	private HttpServletRequest request;
 	// 对应的android/user/addinformation 的执行方法
 	public String addInfromation() throws Exception {
@@ -96,10 +96,17 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 	public String uploadavatar()throws Exception{
 		data = new HashMap<String,Object>();
 		String path = request.getSession().getServletContext().getRealPath("/Webapp/assets/advertisements");
+//		if(image == null){
+//			System.out.println("null");
+//		}
+//		System.out.println("type is "+imageContentType);
 		try{
-			String filepath = upload.SaveFile(uploadfile, path, uploadfileContentType);
-			service.changeavatar(phone, filepath);
+			String filepath = upload.SaveFile(image, path, imageContentType);
+			String urlpath = "http://10.60.42.70:8080/AmazingAd"+filepath.split("AmazingAd")[1].replace('\\', '/');
+			System.out.println(urlpath);
+			service.changeavatar(phone, urlpath);
 			data.put(defined.Error, defined.SUCCESS);
+			data.put("url", urlpath);
 		}catch (Exception e){
 			data.put(defined.Error, defined.FAIL);
 			e.printStackTrace();
@@ -162,20 +169,14 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 		this.password = password;
 	}
 
-	public File getUploadfile() {
-		return uploadfile;
+	
+
+	public String getImageContentType() {
+		return imageContentType;
 	}
 
-	public void setUploadfile(File uploadfile) {
-		this.uploadfile = uploadfile;
-	}
-
-	public String getUploadfileContentType() {
-		return uploadfileContentType;
-	}
-
-	public void setUploadfileContentType(String uploadfileContentType) {
-		this.uploadfileContentType = uploadfileContentType;
+	public void setImageContentType(String imageContentType) {
+		this.imageContentType = imageContentType;
 	}
 
 	@Override
@@ -190,6 +191,14 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 
 	public void setRealname(String realname) {
 		this.realname = realname;
+	}
+
+	public File getImage() {
+		return image;
+	}
+
+	public void setImage(File image) {
+		this.image = image;
 	}
 	
 	

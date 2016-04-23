@@ -47,8 +47,14 @@ public class User implements Serializable {
 	@Column(name = "avatar")
 	private String avatar;
 	
-	@Column(name ="realname")
+	@Column(name = "realname")
 	private String realname;
+	
+	@Column(name = "status")
+	private String status;
+	
+	@Column(name = "class")
+	private String userclass;
 	
 	public String getUsername() {
 		return username;
@@ -122,6 +128,23 @@ public class User implements Serializable {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getUserclass() {
+		return userclass;
+	}
+
+	public void setUserclass(String userclass) {
+		this.userclass = userclass;
+	}
+	
 	
 	
 	

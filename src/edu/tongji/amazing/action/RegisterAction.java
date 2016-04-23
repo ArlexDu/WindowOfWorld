@@ -48,6 +48,8 @@ public class RegisterAction extends ActionSupport {
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setPhone(phone);
+		user.setUserclass("3");
+		user.setStatus("0");
 		carowner.setUser(user);
 		carowner.setPhone(phone);
 		if (service.addUser(carowner)) {
@@ -75,6 +77,7 @@ public class RegisterAction extends ActionSupport {
 		user.setPhone(phone);
 		user.setIdentity(identity);
 		user.setRealname(realname);
+		user.setUserclass("1");
 		if (administratorService.addAdministrator(user)) {
 			return "success";
 		} else {
