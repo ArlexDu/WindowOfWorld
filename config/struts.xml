@@ -116,18 +116,22 @@
 		</action>
 	</package>
 
-	<!-- android端对应的advertisement action -->
+	<!-- advertisement action -->
 	<package name="edu.tongji.amazing.action.android.advertisement"
-		namespace="/android/advertisement" extends="struts-default,json-default">
+		namespace="/advertisement" extends="struts-default,json-default">
 		<action name="uploadfile" class="uploadfileaction">
 			<result name="result" type="json">
 				<param name="root">data</param>
 			</result>
 		</action>
+		<action name="add" class="advertiserAction" method="AddnewAdvertiser">
+			<result name="success" ></result>
+			<result name="fail" ></result>
+		</action>
 	</package>
 	<!-- android端对应的个性化 action -->
 	<package name="edu.tongji.amazing.action.android.individuation"
-		namespace="android/individuation" extends="struts-default,json-default">
+		namespace="/android/individuation" extends="struts-default,json-default">
 		<action name="add" class="individuationAction" method="addindividuation">
 			<result name="result" type="json">
 				<param name="root">data</param>

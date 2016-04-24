@@ -49,8 +49,8 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 		String path = request.getSession().getServletContext().getRealPath("/individuation");
 		try {
 			String filepath = upload.SaveFile(image, path, imageContentType);
-			String urlpath = "http://10.60.42.70:8080/AmazingAd" + filepath.split("AmazingAd")[1].replace('\\', '/');
-			// System.out.println(urlpath);
+			String urlpath = "http://10.60.42.70:8888/AmazingAd" + filepath.split("AmazingAd")[1].replace('\\', '/');
+			System.out.println(urlpath);
 			individuation.setPhone(phone);
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
 			String time = df.format(new Date());// new Date()为获取当前系统时间
@@ -116,34 +116,36 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 		}
 		return "success";
 	}
-	
-	//处理android/individuation/status 改变当前的个性化图片的状态
+
+	// 处理android/individuation/status 改变当前的个性化图片的状态
 	private String status;
+
 	public String ChangStatus() throws Exception {
 		data = new HashMap<String, Object>();
-		if(service.ChangeStatus(id, status)){
+		if (service.ChangeStatus(id, status)) {
 			data.put(defined.Error, defined.SUCCESS);
-		}else{
+		} else {
 			data.put(defined.Error, defined.FAIL);
 		}
 		return "success";
 	}
-	
-	//android/individuation/getnumber?phone= 获得用户发布弹幕的数量
-		public String getNumber()throws Exception{
-			data = new HashMap<String, Object>();
-			int number = service.GetNumbers(phone);
-			if(number == -1){
-				 data.put(defined.Error, defined.FAIL);
-				 return "result";
-			 }
-			individuation = service.GetLast(phone);
-			data.put(defined.Error, defined.SUCCESS);
-			data.put("number", number);
-			data.put("title", individuation.getTitle());
-			data.put("time", individuation.getTime());
+
+	// android/individuation/getnumber?phone= 获得用户发布弹幕的数量
+	public String getNumber() throws Exception {
+		data = new HashMap<String, Object>();
+		int number = service.GetNumbers(phone);
+		if (number == -1) {
+			data.put(defined.Error, defined.FAIL);
 			return "result";
 		}
+		individuation = service.GetLast(phone);
+		data.put(defined.Error, defined.SUCCESS);
+		data.put("number", number);
+		data.put("title", individuation.getTitle());
+		data.put("time", individuation.getTime());
+		return "result";
+	}
+
 
 	public HashMap<String, Object> getData() {
 		return data;

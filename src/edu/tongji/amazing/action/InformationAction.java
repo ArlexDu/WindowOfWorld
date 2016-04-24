@@ -95,10 +95,6 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 	public String uploadavatar()throws Exception{
 		data = new HashMap<String,Object>();
 		String path = request.getSession().getServletContext().getRealPath("/Avatar");
-//		if(image == null){
-//			System.out.println("null");
-//		}
-//		System.out.println("type is "+imageContentType);
 		try{
 			String filepath = upload.SaveFile(image, path, imageContentType);
 			String urlpath = "http://10.60.42.70:8080/AmazingAd"+filepath.split("AmazingAd")[1].replace('\\', '/');
