@@ -49,7 +49,7 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 		String path = request.getSession().getServletContext().getRealPath("/individuation");
 		try {
 			String filepath = upload.SaveFile(image, path, imageContentType);
-			String urlpath = "http://10.60.42.70:8888/AmazingAd" + filepath.split("AmazingAd")[1].replace('\\', '/');
+			String urlpath = "http://10.60.42.70:8080/AmazingAd" + filepath.split("AmazingAd")[1].replace('\\', '/');
 			System.out.println(urlpath);
 			individuation.setPhone(phone);
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
