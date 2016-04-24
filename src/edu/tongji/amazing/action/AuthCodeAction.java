@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.javafx.collections.MappingChange.Map;
 
 import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.tool.SendMessage;

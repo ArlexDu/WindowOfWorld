@@ -12,10 +12,7 @@ import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdministratorService;
 import edu.tongji.amazing.service.ICarOwnerService;
-import edu.tongji.amazing.service.impl.AdministratorService;
-import edu.tongji.amazing.service.impl.CarOwnerService;
 import edu.tongji.amazing.tool.Defined;
-import sun.print.resources.serviceui;
 
 @Controller("register")
 public class RegisterAction extends ActionSupport {

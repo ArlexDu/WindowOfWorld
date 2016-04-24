@@ -22,4 +22,6 @@ public interface IBulletService {
 	public Bullet GetLast(String phone);
 	
 	public String CheckShortCut(String phone,String key);
+	
+	public boolean DeleteBullet(String id);
 }

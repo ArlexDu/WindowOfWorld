@@ -11,7 +11,7 @@ String path = request.getContextPath();
 </head>
 <body>
 <form method="post" action="<%=path%>/android/user/changeavatar" name="upload" enctype="multipart/form-data">
-<p>文件名：<input type="file" name = "uploadfile"></p>
+<p>文件名：<input type="file" name = "image"></p>
 <p><input type = "submit" value ="上传" name = "submit"></p>
 </form>
 

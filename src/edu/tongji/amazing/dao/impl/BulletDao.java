@@ -28,7 +28,7 @@ public class BulletDao extends GeneralDao<Bullet> implements IBulletDao  {
 	@Override
 	public boolean setShortCut(String id,String key) {
 		// TODO Auto-generated method stub
-		String hql = "Update Bullet set key = '"+key+"' where bulletId = '"+id+"'";
+		String hql = "Update Bullet set key = '"+key+"' where id = '"+id+"'";
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		try{
@@ -80,6 +80,5 @@ public class BulletDao extends GeneralDao<Bullet> implements IBulletDao  {
 			session.close();
 		}
 	}
-
 }
 

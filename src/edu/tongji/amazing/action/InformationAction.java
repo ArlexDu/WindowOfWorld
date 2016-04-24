@@ -14,7 +14,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.ICarOwnerService;
-import edu.tongji.amazing.service.impl.CarOwnerService;
 import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.tool.UpLoadFile;
 
@@ -95,7 +94,7 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 	// 对应的android/user/changeavatar 的执行方法
 	public String uploadavatar()throws Exception{
 		data = new HashMap<String,Object>();
-		String path = request.getSession().getServletContext().getRealPath("/Webapp/assets/advertisements");
+		String path = request.getSession().getServletContext().getRealPath("/Avatar");
 //		if(image == null){
 //			System.out.println("null");
 //		}
@@ -103,7 +102,7 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 		try{
 			String filepath = upload.SaveFile(image, path, imageContentType);
 			String urlpath = "http://10.60.42.70:8080/AmazingAd"+filepath.split("AmazingAd")[1].replace('\\', '/');
-			System.out.println(urlpath);
+//			System.out.println(urlpath);
 			service.changeavatar(phone, urlpath);
 			data.put(defined.Error, defined.SUCCESS);
 			data.put("url", urlpath);

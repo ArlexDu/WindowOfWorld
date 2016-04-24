@@ -77,4 +77,10 @@ public class BulletService implements IBulletService {
 		// TODO Auto-generated method stub
 		return bulletdao.Update(bullet);
 	}
+
+	@Override
+	public boolean DeleteBullet(String id) {
+		// TODO Auto-generated method stub
+		return bulletdao.DeleteViaId(id);
+	}
 }

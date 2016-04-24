@@ -13,7 +13,6 @@ import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.service.impl.CarOwnerService;
 import edu.tongji.amazing.tool.Defined;
-import sun.print.resources.serviceui;
 
 @Controller("login")
 public class LoginAction extends ActionSupport {

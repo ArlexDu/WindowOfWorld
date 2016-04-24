@@ -31,7 +31,6 @@ public class BulletAction extends ActionSupport {
 	private Bullet bullet;
 	private List<Bullet> bulletList = null;
 	private String key;
-	private String bulletid;
 	private String color;
 	private String size;
 	
@@ -47,7 +46,7 @@ public class BulletAction extends ActionSupport {
 				 data.put(defined.Error, defined.FAIL);
 			 }else{
 				 data.put(defined.Error, defined.SUCCESS);
-				 data.put("bulletId", bullet.getId());
+				 data.put("id", bullet.getId());
 				 data.put("content", bullet.getContent());
 				 data.put("key", bullet.getKey());
 				 data.put("time", bullet.getTime());
@@ -120,7 +119,7 @@ public class BulletAction extends ActionSupport {
 			 data.put(defined.Error, defined.FAIL);
 			 return "result";
 		 }
-		 if(!bulletservice.addShortCut(bulletid, key)){
+		 if(!bulletservice.addShortCut(id, key)){
 			 data.put(defined.Error, defined.FAIL);
 			 return "result";
 		 }
@@ -143,6 +142,16 @@ public class BulletAction extends ActionSupport {
 		return "result";
 	}
 	
+	//根据id删除弹幕 android/individuation/delete
+	public String delete() throws Exception{
+		data = new HashMap<String,Object>();
+		if(bulletservice.DeleteBullet(id)){
+			data.put(defined.Error, defined.SUCCESS);
+		}else{
+			data.put(defined.Error, defined.FAIL);
+		}
+		return "result";
+	}
 	
 	public String getPhone() {
 		return phone;
@@ -184,12 +193,6 @@ public class BulletAction extends ActionSupport {
 	}
 	public void setKey(String key) {
 		this.key = key;
-	}
-	public String getBulletid() {
-		return bulletid;
-	}
-	public void setBulletid(String bulletid) {
-		this.bulletid = bulletid;
 	}
 	public String getColor() {
 		return color;

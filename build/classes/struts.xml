@@ -8,8 +8,8 @@
 	<constant name="struts.objectFactory" value="spring"></constant>
 	<constant name="struts.multipart.saveDir" value="/tempfile"></constant>
 	<!-- web端对应的user的action -->
-	<package name="edu.tongji.amazing.action.administrator" namespace="/web/administator"
-		extends="struts-default">
+	<package name="edu.tongji.amazing.action.administrator"
+		namespace="/web/administator" extends="struts-default">
 		<!-- 相当于servlet，也就是对应一个name的请求，它的rul为 localhost:8080/项目名称/namespace/name.action或者localhost:8080/项目名称/namespace/name.do -->
 		<action name="login" class="login" method="LoginWeb">
 			<!-- 请求处理之后返回的页面 -->
@@ -34,7 +34,7 @@
 	<package name="edu.tongji.amazing.action.android.user"
 		namespace="/android/user" extends="struts-default,json-default">
 		<action name="login" class="login" method="LoginAndroid">
-			<result name="success" type="json" >
+			<result name="success" type="json">
 				<param name="root">data</param>
 			</result>
 		</action>
@@ -104,7 +104,12 @@
 				<param name="root">data</param>
 			</result>
 		</action>
-		<action name="getnumber" class="bulletAndroid" method="getNumber">
+		<action name="number" class="bulletAndroid" method="getNumber">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="delete" class="bulletAndroid" method="delete">
 			<result name="result" type="json">
 				<param name="root">data</param>
 			</result>
@@ -122,8 +127,37 @@
 	</package>
 	<!-- android端对应的个性化 action -->
 	<package name="edu.tongji.amazing.action.android.individuation"
-		namespace="/android/individuation" extends="struts-default,json-default">
-
+		namespace="android/individuation" extends="struts-default,json-default">
+		<action name="add" class="individuationAction" method="addindividuation">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="delete" class="individuationAction" method="delete">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="get" class="individuationAction" method="getindividuation">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="getall" class="individuationAction" method="getAllindividuations">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="status" class="individuationAction" method="ChangStatus">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="number" class="individuationAction" method="getNumber">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
 	</package>
 	<!-- android端对应的账单 action -->
 	<package name="edu.tongji.amazing.action.android.bill"
