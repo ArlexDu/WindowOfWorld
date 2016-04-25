@@ -73,6 +73,11 @@
 				<param name="root">authcode</param>
 			</result>
 		</action>
+		<action name="productid" class="padaction" method="SetProductId">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
 	</package>
 
 
@@ -114,6 +119,11 @@
 				<param name="root">data</param>
 			</result>
 		</action>
+		<action name="sendbarrage" class="padaction" method="SendBarrage">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
 	</package>
 
 	<!-- advertisement action -->
@@ -124,7 +134,19 @@
 				<param name="root">data</param>
 			</result>
 		</action>
-		<action name="add" class="advertiserAction" method="AddnewAdvertiser">
+		<action name="add" class="advertiserAction" method="newAdvertisement">
+			<result name="success" ></result>
+			<result name="fail" ></result>
+		</action>
+		<action name="update" class="advertiserAction" method="updateAdvertisement">
+			<result name="success" ></result>
+			<result name="fail" ></result>
+		</action>
+		<action name="delete" class="advertiserAction" method="deleteAdvertisement">
+			<result name="success" ></result>
+			<result name="fail" ></result>
+		</action>
+		<action name="getall" class="advertiserAction" method="GetAdvertisements">
 			<result name="success" ></result>
 			<result name="fail" ></result>
 		</action>

@@ -17,4 +17,7 @@ public interface IBulletDao {
 	
     //查看当前快捷键是否有了设置
 	public String CheckShortCut(String phone,String key);
+	
+	//通过快捷键查找弹幕
+	public Bullet GetBarrageByKey(String phone,String key);
 }

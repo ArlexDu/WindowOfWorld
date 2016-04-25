@@ -61,14 +61,41 @@ public class CarOwnerDao extends GeneralDao<CarOwner> implements ICarOwnerDao {
 	}
 
 	@Override
-	public boolean ChangeAvatar(String phone, String path) {
+	public void ChangeAvatar(String phone, String path) {
 		// TODO Auto-generated method stub
 		String hql = "Update User set avatar = '"+path+"' where phone = '" + phone + "'";
-		boolean result = false;
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);
 		query.executeUpdate();
+		transaction.commit();
+		session.close();
+	}
+
+	@Override
+	public void setproductId(String phone, String channelid) {
+		// TODO Auto-generated method stub
+		String hql = "Update CarOwner set productId = '"+channelid+"' where phone = '" + phone + "'";
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		query.executeUpdate();
+		transaction.commit();
+		session.close();
+	}
+
+	@Override
+	public String getProduct(String phone) {
+		// TODO Auto-generated method stub
+		String hql = "select productId from CarOwner where phone = '" + phone + "'";
+		String result="";
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		Iterator iterator = query.iterate();
+		if (iterator.hasNext()) {
+			result = (String)iterator.next();
+		}
 		transaction.commit();
 		session.close();
 		return result;

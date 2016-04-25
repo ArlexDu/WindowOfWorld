@@ -14,6 +14,11 @@ public interface ICarOwnerDao {
 	public CarOwner getUserbyPhone(String phone);
 	
 	//更改头像
-	public boolean ChangeAvatar(String phone , String path);
+	public void ChangeAvatar(String phone , String path);
 	
+	//设备号和用户对应
+	public void setproductId(String phone , String channelid);
+	
+	//通过用户手机获得设备号
+	public String getProduct(String phone);
 }

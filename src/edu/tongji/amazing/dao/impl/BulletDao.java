@@ -80,5 +80,19 @@ public class BulletDao extends GeneralDao<Bullet> implements IBulletDao  {
 			session.close();
 		}
 	}
+
+	@Override
+	public Bullet GetBarrageByKey(String phone, String key) {
+		String hql = "from Bullet where phone = '"+phone+"' and key = '"+key+"'";
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Bullet bullet = null;
+		Query query = session.createQuery(hql);
+		Iterator iterator = query.iterate();
+		if(iterator.hasNext()){
+			bullet = (Bullet)iterator.next();
+		}
+		return bullet;
+	}
 }
 

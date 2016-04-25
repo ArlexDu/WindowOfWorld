@@ -11,15 +11,11 @@ import com.opensymphony.xwork2.ActionSupport;
 import edu.tongji.amazing.model.Advertiser;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdvertiserService;
-import edu.tongji.amazing.tool.Defined;
-@Controller("advertiserAction")
 public class AdvertiserAction extends ActionSupport{
 
 	@Resource(name = "advertiserservice")
 	private IAdvertiserService service;
 	
-	@Resource(name = "define")
-	private Defined defined;
 	
 	private HashMap<String, Object> data;
 	
@@ -36,9 +32,8 @@ public class AdvertiserAction extends ActionSupport{
 	@Resource(name="user")
 	private User user;
 	
+	//添加新的广告商
 	public String AddnewAdvertiser() throws Exception{
-		
-		data = new HashMap<String,Object>();
 		
 		user.setBalace(0.0f);
 		user.setCredit(0.0f);
@@ -48,7 +43,7 @@ public class AdvertiserAction extends ActionSupport{
 		user.setRealname(realname);
 		user.setUsername(username);
 		user.setUserclass("2");
-		user.setStatus("0");
+		user.setStatus("0");//未审核
 		advertiser.setLicence(licence);
 		advertiser.setPhone(phone);
 		advertiser.setUser(user);
@@ -57,6 +52,31 @@ public class AdvertiserAction extends ActionSupport{
 		}
 		return "fail";
 	}
+	
+	/*更新广告商信息 
+	 * 参数： 昵称，营业执照，验证码，
+	 *  
+	 */
+		public String updateAdvertiser() throws Exception{
+			
+			user.setBalace(0.0f);
+			user.setCredit(0.0f);
+			user.setIdentity(identity);
+			user.setPassword(password);
+			user.setPhone(phone);
+			user.setRealname(realname);
+			user.setUsername(username);
+			user.setUserclass("2");
+			user.setStatus("0");//未审核
+			advertiser.setLicence(licence);
+			advertiser.setPhone(phone);
+			advertiser.setUser(user);
+			if(service.addAdvertise(advertiser)){
+				return "success";
+			}
+			return "fail";
+		}
+	
 
 	public String getPhone() {
 		return phone;

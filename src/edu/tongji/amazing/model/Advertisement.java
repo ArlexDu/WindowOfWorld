@@ -57,6 +57,12 @@ public class Advertisement implements Serializable {
 	@Column(name = "content")
 	private String content;
 
+	@Column(name = "class")
+	private String advertisementclass;
+	
+	@Column(name = "picturepath")
+	private String picturepath;
+	
 	public String getAd_id() {
 		return id;
 	}
@@ -141,5 +147,22 @@ public class Advertisement implements Serializable {
 		return serialVersionUID;
 	}
 
+	public String getAdvertisementclass() {
+		return advertisementclass;
+	}
+
+	public void setAdvertisementclass(String advertisementclass) {
+		this.advertisementclass = advertisementclass;
+	}
+
+	public String getPicturepath() {
+		return picturepath;
+	}
+
+	public void setPicturepath(String picturepath) {
+		this.picturepath = picturepath;
+	}
+    
+	
 	
 }

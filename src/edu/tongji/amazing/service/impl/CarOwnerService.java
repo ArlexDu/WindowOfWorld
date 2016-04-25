@@ -48,9 +48,21 @@ public class CarOwnerService implements ICarOwnerService{
 	}
 
 	@Override
-	public boolean changeavatar(String phone, String path) {
+	public void changeavatar(String phone, String path) {
 		// TODO Auto-generated method stub
-		return userdao.ChangeAvatar(phone, path);
+		userdao.ChangeAvatar(phone, path);
+	}
+
+	@Override
+	public void setProductId(String phone, String channelid) {
+		// TODO Auto-generated method stub
+		userdao.setproductId(phone, channelid);
+	}
+
+	@Override
+	public String getProduct(String phone) {
+		// TODO Auto-generated method stub
+		return userdao.getProduct(phone);
 	}
 	
 }

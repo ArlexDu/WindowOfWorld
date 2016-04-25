@@ -83,4 +83,10 @@ public class BulletService implements IBulletService {
 		// TODO Auto-generated method stub
 		return bulletdao.DeleteViaId(id);
 	}
+
+	@Override
+	public Bullet GetBarrageByKey(String phone, String key) {
+		// TODO Auto-generated method stub
+		return bulletdao.GetBarrageByKey(phone, key);
+	}
 }

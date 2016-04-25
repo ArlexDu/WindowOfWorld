@@ -24,4 +24,6 @@ public interface IBulletService {
 	public String CheckShortCut(String phone,String key);
 	
 	public boolean DeleteBullet(String id);
+	
+	public Bullet GetBarrageByKey(String phone,String key);
 }
