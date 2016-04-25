@@ -79,7 +79,8 @@ public class BulletAction extends ActionSupport {
 		 bullet.setContent(content);
 		 bullet.setColor(color);
 		 bullet.setSize(size);
-		 bullet.setTitle(time);
+		 bullet.setTitle(title);
+		 bullet.setKey(key);
 		 if(!bulletservice.clearShortCut(phone, key)){
 			 data.put(defined.Error, defined.FAIL);
 		 }
