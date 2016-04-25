@@ -18,7 +18,7 @@ public class AdvertiserAction extends ActionSupport{
 	@Resource(name = "advertiserservice")
 	private IAdvertiserService service;
 	
-	@Resource(name = "defined")
+	@Resource(name = "define")
 	private Defined defined;
 	
 	private HashMap<String, Object> data;
