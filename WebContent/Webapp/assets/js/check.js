@@ -43,7 +43,6 @@ function check_reg(){                        //注册验证
 		$('#myModal5').modal('show');
 		return false;
 	}else{
-		alert("xxx");
 		$.ajax({
             type: "POST",
             url : "/AmazingAd/web/adowner/register",
