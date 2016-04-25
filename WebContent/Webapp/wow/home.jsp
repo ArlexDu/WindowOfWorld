@@ -3,7 +3,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,41 +11,27 @@
 
     <title>The World Window</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="../assets/css/agency.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-	<link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="../assets/wow-font/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    
+       
     <!-- New -->
     <link href="../assets/css/new.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top" class="index">
 
-    <!-- Navigation -->
+    <!-- 标题栏 -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand page-scroll" href="#">世界之窗</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
@@ -69,9 +54,7 @@
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
     </nav>
 
     <!-- Header -->
@@ -85,7 +68,7 @@
         </div>
     </header>
 
-    <!-- Services Section -->
+    <!-- 产品介绍 -->
     <section id="services">
         <div class="container">
             <div class="row">
@@ -124,7 +107,7 @@
         </div>
     </section>
 
-    <!-- 活动 -->
+    <!-- 活动介绍 ，包含6个-->
     <section id="portfolio" class="bg-light-gray">
         <div class="container">
             <div class="row">
@@ -145,7 +128,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <h4>活动标题</h4>
-                        <p class="text-muted">Graphic Design</p>
+                        <p class="text-muted">Web Design</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 portfolio-item">
@@ -159,7 +142,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <h4>活动标题</h4>
-                        <p class="text-muted">Website Design</p>
+                        <p class="text-muted">Web Design</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 portfolio-item">
@@ -173,7 +156,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <h4>活动标题</h4>
-                        <p class="text-muted">Website Design</p>
+                        <p class="text-muted">Web Design</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 portfolio-item">
@@ -187,7 +170,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <h4>活动标题</h4>
-                        <p class="text-muted">Website Design</p>
+                        <p class="text-muted">Web Design</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 portfolio-item">
@@ -201,7 +184,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <h4>活动标题</h4>
-                        <p class="text-muted">Website Design</p>
+                        <p class="text-muted">Web Design</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 portfolio-item">
@@ -215,7 +198,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <h4>活动标题</h4>
-                        <p class="text-muted">Website Design</p>
+                        <p class="text-muted">Web Design</p>
                     </div>
                 </div>
             </div>
@@ -292,9 +275,7 @@
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <h4>Be Part
-                                    <br>Of Our
-                                    <br>Story!</h4>
+                                <h4>更多广告<br>敬请期待!</h4>
                             </div>
                         </li>
                     </ul>
@@ -325,14 +306,14 @@
                     <div class="team-member">
                         <img src="../assets/images/team/2.jpg" class="img-responsive img-circle" alt="">
                         <h4>杜盛瑀</h4>
-                        <p class="text-muted">Web组长</p>
+                        <p class="text-muted">Web组组长</p>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="../assets/images/team/3.jpg" class="img-responsive img-circle" alt="">
-                        <h4>潘嵩</h4>
-                        <p class="text-muted">XXXXXXXXX</p>
+                        <h4>李冠华</h4>
+                        <p class="text-muted">大机一霸</p>
                     </div>
                 </div>
             </div>
@@ -348,7 +329,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="copyright">Our Website 2016</span>
+                    <span class="copyright">Our Web 2016</span>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline social-buttons">
@@ -371,9 +352,7 @@
     </footer>
 
     <!-- 活动部分详情 -->
-    <!-- Use the modals below to showcase details about your portfolio projects! -->
-
-    <!-- Portfolio Modal 1 -->
+    <!-- 活动 1 -->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -407,7 +386,7 @@
         </div>
     </div>
 
-    <!-- Portfolio Modal 2 -->
+    <!-- 活动 2 -->
     <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -433,7 +412,7 @@
         </div>
     </div>
 
-    <!-- Portfolio Modal 3 -->
+    <!-- 活动 3 -->
     <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -460,7 +439,7 @@
         </div>
     </div>
 
-    <!-- Portfolio Modal 4 -->
+    <!-- 活动 4 -->
     <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -487,7 +466,7 @@
         </div>
     </div>
 
-    <!-- Portfolio Modal 5 -->
+    <!-- 活动 5 -->
     <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -514,7 +493,7 @@
         </div>
     </div>
 
-    <!-- Portfolio Modal 6 -->
+    <!-- 活动 6 -->
     <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -540,7 +519,7 @@
             </div>
         </div>
     </div>
-
+	
  	 <!-- jQuery -->
     <script src="../assets/js/jquery.js"></script>
 
