@@ -18,7 +18,7 @@
     <link href="../assets/css/agency.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-	<link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="../assets/wow-font/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -28,22 +28,14 @@
     <link href="../assets/css/new.css" rel="stylesheet">
 
 </head>
+
 <body id="page-top" class="index">
 	<!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand page-scroll" href="home.jsp">世界之窗</a>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
@@ -57,12 +49,10 @@
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
     </nav>
 	
-	<!-- Contact Section -->
+	<!-- 登录部分 -->
     <section id="contact">
         <div class="container">
             <div class="row">
@@ -72,7 +62,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form name="login" id="contactForm" novalidate>
+                    <form name="login" id="login" method="post" onsubmit="return check_login()" action="">
                         <div class="row">
                         <div class="col-lg-3"></div>
                         <div class="col-lg-6">
@@ -90,7 +80,7 @@
                            <div class="col-lg-12">
                                <div class="col-lg-3"></div>
 	                               <div class="col-lg-3">
-	                               	  <button type="submit" class="btn btn-xl">登录</button>
+	                               	  <input type="submit" class="btn btn-xl" value="登录">
 	                               </div>
 	                               <div class="col-lg-3">
 	                               	  <a class="btn btn-xl" href="register.jsp">注册</a>
@@ -108,7 +98,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="copyright">Our Website 2016</span>
+                    <span class="copyright">Our Web 2016</span>
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
@@ -120,6 +110,26 @@
             </div>
         </div>
     </footer>
+    
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/check.js"></script>
+    
+    <!-- 登录出错弹出 -->
+	<div class="modal fade" id="login_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title" id="myModalLabel">登录提示</h4>
+	      </div>
+	      <div class="modal-body">账号密码出错</div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+    
 
 </body>
 </html>

@@ -29,7 +29,14 @@
 			<result name="fail">/Website/Pages/fail.jsp</result>
 		</action>
 	</package>
-
+	
+	<!-- web广告商action -->
+	<package name="adownerregister"
+		namespace="/web/adowner" extends="struts-default,json-default">
+		<action name="register" class="adownerregister" method="register">
+		</action>
+	</package>
+	
 	<!-- android端对应的user action -->
 	<package name="edu.tongji.amazing.action.android.user"
 		namespace="/android/user" extends="struts-default,json-default">
@@ -216,6 +223,8 @@
 			</result>
 		</action>
 	</package>
+	
+	
 
 
 </struts>
