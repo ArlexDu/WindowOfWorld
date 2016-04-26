@@ -69,7 +69,7 @@
                         <div class="col-lg-3"></div>
                         <div class="col-lg-6">
                            <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="企业名称" name="username" required>
+                              	<input type="text" class="form-control" placeholder="用户昵称" name="username" required>
                                <p class="help-block text-danger"></p>
                            </div>
                            <div class="form-group">

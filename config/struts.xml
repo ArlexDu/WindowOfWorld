@@ -31,9 +31,9 @@
 	</package>
 	
 	<!-- web广告商action -->
-	<package name="adownerregister"
-		namespace="/web/adowner" extends="struts-default,json-default">
-		<action name="register" class="adownerregister" method="register">
+	<package name="edu.tongji.amazing.action.web.advertiser"
+		namespace="/web/advertiser" extends="struts-default,json-default">
+		<action name="register" class="advertiserAction" method="register">
 		</action>
 	</package>
 	

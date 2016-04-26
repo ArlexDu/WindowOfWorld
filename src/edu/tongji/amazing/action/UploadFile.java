@@ -28,9 +28,8 @@ public class UploadFile extends ActionSupport implements ServletRequestAware{
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		data = new HashMap<String,Object>();
-		String path = request.getSession().getServletContext().getRealPath("/Webapp/assets/advertisements");
+		String path = request.getSession().getServletContext().getRealPath("/Avatar");
 		try{
-			upload.SaveFile(uploadfile, path, uploadfileContentType);
 			data.put(define.Error, define.SUCCESS);
 		}catch (Exception e){
 			data.put(define.Error, define.FAIL);

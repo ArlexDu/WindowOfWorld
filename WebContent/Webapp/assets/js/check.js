@@ -15,7 +15,7 @@ function check_login(){
 function check_reg(){                        //注册验证
 	var username=document.register.username.value;
 	var realname=document.register.realname.value;
-	var liscense=document.register.liscense.value;
+	var licence=document.register.liscense.value;
 	var id=document.register.identity.value;
 	var mail=document.register.mail.value;
 	var phone=document.register.phone.value;
@@ -45,10 +45,10 @@ function check_reg(){                        //注册验证
 	}else{
 		$.ajax({
             type: "POST",
-            url : "/AmazingAd/web/adowner/register",
+            url : "/AmazingAd/web/advertiser/register",
             data : {username:username,
 	            	realname:realname,
-	            	liscense:liscense,
+	            	licence:licence,
 	            	identity:id,
 	            	phone:phone,
 	            	mail:mail,

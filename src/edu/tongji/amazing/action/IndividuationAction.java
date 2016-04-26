@@ -99,7 +99,7 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 			data.put("title", individuation.getTitle());
 			data.put("status", individuation.getStatus());
 		}
-		return "success";
+		return "result";
 	}
 
 	// 处理 android/individuation/getall 请求
@@ -114,7 +114,7 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 			data.put(defined.Error, defined.SUCCESS);
 			data.put("individuations", lists);
 		}
-		return "success";
+		return "result";
 	}
 
 	// 处理android/individuation/status 改变当前的个性化图片的状态
@@ -127,7 +127,7 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 		} else {
 			data.put(defined.Error, defined.FAIL);
 		}
-		return "success";
+		return "result";
 	}
 
 	// android/individuation/getnumber?phone= 获得用户发布弹幕的数量
