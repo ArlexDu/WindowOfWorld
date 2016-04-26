@@ -84,7 +84,7 @@ public class BulletAction extends ActionSupport {
 		 if(!bulletservice.clearShortCut(phone, key)){
 			 data.put(defined.Error, defined.FAIL);
 		 }
-		 if(bulletservice.getBullet(id)!=null){//更新操作
+		 if(id !=null){//更新操作
 			 if(bulletservice.updateBullet(bullet)){
 				 data.put(defined.Error, defined.SUCCESS);
 			 }else{

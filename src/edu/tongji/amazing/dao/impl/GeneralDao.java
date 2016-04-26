@@ -81,7 +81,7 @@ public class GeneralDao<T> implements IGeneralDao<T> {
 		  session.update(t);
 		  return true;
 		}catch(Exception e){
-			return false;
+		  return false;
 		}finally{
 		  transaction.commit();
 		  session.close();
