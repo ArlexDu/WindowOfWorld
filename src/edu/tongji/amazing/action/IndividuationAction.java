@@ -145,7 +145,7 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 		data.put(defined.Error, defined.SUCCESS);
 		data.put("number", number);
 		data.put("title", individuation.getTitle());
-		data.put("description", individuation.getDescription());
+		data.put("content", individuation.getDescription());
 		data.put("time", individuation.getTime());
 		return "result";
 	}
