@@ -37,6 +37,9 @@ public class Individuation {
 	
 	@Column(name = "status")
 	private String status;
+	
+	@Column(name = "description")
+	private String description;
 
 	public String getId() {
 		return id;
@@ -86,10 +89,14 @@ public class Individuation {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	
-	
-	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	
 
 }

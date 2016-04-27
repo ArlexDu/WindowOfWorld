@@ -42,6 +42,7 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 	private String phone;
 	private String title;
 	private File image;
+	private String description;
 	private String imageContentType;
 
 	public String addindividuation() throws Exception {
@@ -56,6 +57,7 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 			String time = df.format(new Date());// new Date()为获取当前系统时间
 			individuation.setTime(time);
 			individuation.setTitle(title);
+			individuation.setDescription(description);
 			individuation.setContent(urlpath);
 			individuation.setStatus("-1");
 			if (!service.AddIndividuation(individuation)) {
@@ -95,6 +97,7 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 			data.put(defined.Error, defined.SUCCESS);
 			data.put("id", individuation.getId());
 			data.put("content", individuation.getContent());
+			data.put("description", individuation.getDescription());
 			data.put("time", individuation.getTime());
 			data.put("title", individuation.getTitle());
 			data.put("status", individuation.getStatus());
@@ -142,6 +145,7 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 		data.put(defined.Error, defined.SUCCESS);
 		data.put("number", number);
 		data.put("title", individuation.getTitle());
+		data.put("description", individuation.getDescription());
 		data.put("time", individuation.getTime());
 		return "result";
 	}
@@ -208,5 +212,15 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
 
 }

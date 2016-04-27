@@ -138,6 +138,7 @@ public class BulletAction extends ActionSupport {
 		bullet = bulletservice.GetLast(phone);
 		data.put(defined.Error, defined.SUCCESS);
 		data.put("number", number);
+		data.put("title", bullet.getTitle());
 		data.put("content", bullet.getContent());
 		data.put("time", bullet.getTime());
 		return "result";
