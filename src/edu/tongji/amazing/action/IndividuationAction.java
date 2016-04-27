@@ -136,18 +136,23 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 	// android/individuation/getnumber?phone= 获得用户发布弹幕的数量
 	public String getNumber() throws Exception {
 		data = new HashMap<String, Object>();
-		int number = service.GetNumbers(phone);
-		if (number == -1) {
+		try{
+			int number = service.GetNumbers(phone);
+			if (number == -1) {
+				data.put(defined.Error, defined.FAIL);
+				return "result";
+			}
+			individuation = service.GetLast(phone);
+			data.put(defined.Error, defined.SUCCESS);
+			data.put("number", number);
+			data.put("title", individuation.getTitle());
+			data.put("content", individuation.getDescription());
+			data.put("time", individuation.getTime());
+			return "result";
+		}catch(Exception e){
 			data.put(defined.Error, defined.FAIL);
 			return "result";
 		}
-		individuation = service.GetLast(phone);
-		data.put(defined.Error, defined.SUCCESS);
-		data.put("number", number);
-		data.put("title", individuation.getTitle());
-		data.put("content", individuation.getDescription());
-		data.put("time", individuation.getTime());
-		return "result";
 	}
 
 

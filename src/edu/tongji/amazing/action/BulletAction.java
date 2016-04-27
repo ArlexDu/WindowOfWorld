@@ -130,18 +130,23 @@ public class BulletAction extends ActionSupport {
 	//android/barrage/getnumber?phone=
 	public String getNumber()throws Exception{
 		data = new HashMap<String, Object>();
-		int number = bulletservice.Getnumbers(phone);
-		if(number == -1){
-			 data.put(defined.Error, defined.FAIL);
-			 return "result";
-		 }
-		bullet = bulletservice.GetLast(phone);
-		data.put(defined.Error, defined.SUCCESS);
-		data.put("number", number);
-		data.put("title", bullet.getTitle());
-		data.put("content", bullet.getContent());
-		data.put("time", bullet.getTime());
-		return "result";
+		try{
+			int number = bulletservice.Getnumbers(phone);
+			if(number == -1){
+				 data.put(defined.Error, defined.FAIL);
+				 return "result";
+			 }
+			bullet = bulletservice.GetLast(phone);
+			data.put(defined.Error, defined.SUCCESS);
+			data.put("number", number);
+			data.put("title", bullet.getTitle());
+			data.put("content", bullet.getContent());
+			data.put("time", bullet.getTime());
+			return "result";
+		}catch(Exception  e){
+			data.put(defined.Error, defined.FAIL);
+			return "result";
+		}
 	}
 	
 	//根据id删除弹幕 android/individuation/delete
