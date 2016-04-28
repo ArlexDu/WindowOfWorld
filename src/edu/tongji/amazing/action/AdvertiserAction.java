@@ -108,7 +108,12 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 	 * 邮箱激活  /
 	 */
 	public String ActiveAccount() throws Exception{
-		System.out.println("active account :"+phone);
+		try{
+			service.activeAccount(phone);
+			System.out.println("active account :"+phone);
+		}catch(Exception e){
+			return "fail";
+		}
 		return "success";
 	}
 	

@@ -36,6 +36,8 @@
 		<action name="register" class="advertiserAction" method="register">
 		</action>
 		<action name="active" class="advertiserAction" method="ActiveAccount">
+		    <result name="success">/Website/Pages/success.jsp</result>
+		    <result name="fail">/Website/Pages/success.jsp</result>
 		</action>
 	</package>
 	

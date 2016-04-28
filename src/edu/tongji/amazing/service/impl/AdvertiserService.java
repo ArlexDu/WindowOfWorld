@@ -19,6 +19,11 @@ public class AdvertiserService implements IAdvertiserService{
 		// TODO Auto-generated method stub
 		return dao.Insert(advertiser);
 	}
+	@Override
+	public void activeAccount(String phone) {
+		// TODO Auto-generated method stub
+		dao.activeAccount(phone);
+	}
 
 
 }
