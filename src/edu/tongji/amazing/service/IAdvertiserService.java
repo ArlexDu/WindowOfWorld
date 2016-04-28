@@ -7,5 +7,7 @@ public interface IAdvertiserService {
 	public boolean addAdvertise(Advertiser advertiser);
 	
 	public void activeAccount(String phone);
+	
+	public Advertiser getAdvertisementinfo(String phone) throws Exception;
 
 }

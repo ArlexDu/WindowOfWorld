@@ -7,25 +7,36 @@
 	<constant name="struts.configuration.xml.reload" value="true"></constant>
 	<constant name="struts.objectFactory" value="spring"></constant>
 	<constant name="struts.multipart.saveDir" value="/tempfile"></constant>
-	<!-- web端对应的user的action -->
+	<!-- web端对应的管理员的action -->
 	<package name="edu.tongji.amazing.action.administrator"
 		namespace="/web/administator" extends="struts-default">
 		<!-- 相当于servlet，也就是对应一个name的请求，它的rul为 localhost:8080/项目名称/namespace/name.action或者localhost:8080/项目名称/namespace/name.do -->
 		<action name="login" class="administratorAction" method="Login">
 			<!-- 请求处理之后返回的页面 -->
 			<result name="success">/Webapp/admin/home.jsp</result>
-			<result name="fail">/Website/Pages/fail.jsp</result>
+			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 
-		<action name="register" class="register" method="RegisterAdmin">
+		<action name="register" class="administratorAction" method="register">
 			<result name="success">/Website/Pages/success.jsp</result>
-			<result name="exist">/Website/Pages/success.jsp</result>
-			<result name="fail">/Website/Pages/success.jsp</result>
+			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 
-		<action name="addAdP" class="addadpost">
+		<action name="advertisement" class="administratorAction" method="advertisementdata">
 			<result name="success">/Website/Pages/success.jsp</result>
-			<result name="fail">/Website/Pages/fail.jsp</result>
+			<result name="fail">/Webapp/admin/404.html</result>
+		</action>
+		<action name="user" class="administratorAction" method="userdata">
+			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="fail">/Webapp/admin/404.html</result>
+		</action>
+		<action name="examineadvertisement" class="administratorAction" method="examineAdvertisement">
+			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="fail">/Webapp/admin/404.html</result>
+		</action>
+		<action name="examineuser" class="administratorAction" method="examineUser">
+			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 	</package>
 	

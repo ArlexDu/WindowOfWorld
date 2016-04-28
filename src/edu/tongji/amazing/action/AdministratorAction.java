@@ -15,10 +15,15 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionSupport;
 
 import edu.tongji.amazing.model.Advertisement;
+import edu.tongji.amazing.model.Advertiser;
 import edu.tongji.amazing.model.Balance;
+import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdministratorService;
+import edu.tongji.amazing.service.IAdvertisementService;
+import edu.tongji.amazing.service.IAdvertiserService;
 import edu.tongji.amazing.service.ICarOwnerService;
+import edu.tongji.amazing.tool.SendMessage;
 import edu.tongji.amazing.tool.UpLoadFile;
 @Controller("administratorAction")
 public class AdministratorAction extends ActionSupport implements ServletRequestAware{
@@ -109,7 +114,7 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	
 	private void getHomeData(){
 		try {
-			data = new HashMap<String,Object>();
+//			data = new HashMap<String,Object>();
 		    users = service.getShowUsers();
 			advertisements = service.getShowAdvertisements();
 			balances = service.getShowBalance();
@@ -117,13 +122,13 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 			int alladvertisement_number = service.getalladvertisements();
 			int examineuer = service.unexamineUsers();
 			int examineadvertisement = service.unexamineAdvertisements();
-			data.put("users", users);
-			data.put("advertisements", advertisements);
-			data.put("balances", balances);
-			data.put("alluser_number", alluser_number);
-			data.put("alladvertisement_number", alladvertisement_number);
-			data.put("examineuer", examineuer);
-			data.put("examineadvertisement", examineadvertisement);
+//			data.put("users", users);
+//			data.put("advertisements", advertisements);
+//			data.put("balances", balances);
+//			data.put("alluser_number", alluser_number);
+//			data.put("alladvertisement_number", alladvertisement_number);
+//			data.put("examineuer", examineuer);
+//			data.put("examineadvertisement", examineadvertisement);
 			ServletActionContext.getRequest().setAttribute("all_user_number", alluser_number);
 			ServletActionContext.getRequest().setAttribute("examine_user_number", examineuer);
 			ServletActionContext.getRequest().setAttribute("all_advertisement_number", alladvertisement_number);
@@ -136,6 +141,101 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 			e.printStackTrace();
 		}
 	}
+	
+	/*
+	 *  广告的审核信息
+	 *  参数：
+	 *   @id
+	 */
+	@Resource(name = "advertisementservice")
+	private IAdvertisementService advertisementservice;
+	private String id;
+	public String advertisementdata(){
+		try{
+			Advertisement advertisement = advertisementservice.GetAd(id);
+			ServletActionContext.getRequest().setAttribute("advertisement",advertisement);
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
+	
+	/*
+	 * 广告审核结果
+	 * 参数：
+	 *   @id
+	 *   @phone
+	 *   @result //审核结果   1：通过  -1：不通过
+	 *   @title //广告的主题
+	 */
+	@Resource(name = "sendmessage")
+	private SendMessage sendmessage;
+	private String result;
+	private String title;//广告的主题
+	public String examineAdvertisement() throws Exception{
+		try{
+			service.changeAdvertisementStatus(id, result);
+//			短信通知
+	        sendmessage.SendAdvertisementExamineResult(phone, result, title);
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
+	
+	/*
+	 *  用户的审核信息
+	 *  参数：
+	 *   @phone
+	 */
+	
+	@Resource(name = "carownerservice")
+	private ICarOwnerService carownerservice;
+	
+	@Resource(name = "advertiserservice")
+	private IAdvertiserService advertiserservice;
+	
+	private String userclass;
+	
+	public String userdata(){
+		try{
+			if(userclass.equals("1")){//管理员
+				User user =service.getAdministratorinfo(phone);
+				ServletActionContext.getRequest().setAttribute("userinfo",user);
+			}else if(userclass.equals("2")) {//广告商
+				Advertiser advertiser = advertiserservice.getAdvertisementinfo(phone);
+				ServletActionContext.getRequest().setAttribute("userinfo",advertiser);
+			}else{//车主
+				CarOwner carowner = carownerservice.getUserbyPhone(phone);
+				ServletActionContext.getRequest().setAttribute("userinfo",carowner);
+			}
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
+	
+	/*
+	 *  用户的审核结果
+	 *  参数：
+	 *   @phone
+	 *   @result //审核结果   1：通过  -1：不通过
+	 *   @userclass //用户的类别
+	 *
+	 */
+	public String examineUser() throws Exception{
+		try{
+			service.changeUserStatus(phone, result);
+//			短信通知
+	        sendmessage.SendUserExamineResult(phone, result, userclass);
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
+	
+	
+	
 	public String getPhone() {
 		return phone;
 	}
@@ -161,6 +261,70 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 
 	public void setData(HashMap<String, Object> data) {
 		this.data = data;
+	}
+
+	public String getIdentity() {
+		return identity;
+	}
+
+	public void setIdentity(String identity) {
+		this.identity = identity;
+	}
+
+	public String getRealname() {
+		return realname;
+	}
+
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
+
+	public File getIdentityCard() {
+		return identityCard;
+	}
+
+	public void setIdentityCard(File identityCard) {
+		this.identityCard = identityCard;
+	}
+
+	public String getIdentityCardContentType() {
+		return identityCardContentType;
+	}
+
+	public void setIdentityCardContentType(String identityCardContentType) {
+		this.identityCardContentType = identityCardContentType;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getUserclass() {
+		return userclass;
+	}
+
+	public void setUserclass(String userclass) {
+		this.userclass = userclass;
 	}
 	
 	

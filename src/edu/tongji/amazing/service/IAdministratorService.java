@@ -11,6 +11,8 @@ public interface IAdministratorService {
 	//添加新的用户
 	public boolean addAdministrator(User user) throws Exception;
 	
+	public User getAdministratorinfo(String phone) throws Exception;
+	
 	//管理员的登录
 	public boolean login(String phone,String password) throws Exception;
 	//得到所有的广告
@@ -34,5 +36,10 @@ public interface IAdministratorService {
 	//得到展示的四个最新的账目变化
 	public List<Balance> getShowBalance() throws Exception;
 	
+	//审核广告结果
+	public void changeAdvertisementStatus(String id ,String status) throws Exception;
+	
+	//审核用户结果
+	public void changeUserStatus(String phone,String status) throws Exception;
 	
 }

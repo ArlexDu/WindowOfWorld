@@ -15,6 +15,7 @@ import com.opensymphony.xwork2.inject.Factory;
 
 import edu.tongji.amazing.dao.IAdministratorDao;
 import edu.tongji.amazing.model.Advertisement;
+import edu.tongji.amazing.model.Advertiser;
 import edu.tongji.amazing.model.Balance;
 import edu.tongji.amazing.model.User;
 @Repository("administratordao")
@@ -148,6 +149,46 @@ public class AdministratorDao extends GeneralDao<User> implements IAdministrator
 		transaction.commit();
 		session.close();
 		return result;
+	}
+
+	@Override
+	public User getUserbyPhone(String phone) throws Exception {
+		User administrator = null;
+		String hql = "from User where phone = '" + phone + "'";
+		Session session = Factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		Iterator iterator = query.iterate();
+		if (iterator.hasNext()) {
+			administrator = (User) iterator.next();
+		}
+		transaction.commit();
+		session.close();
+		return administrator;
+	}
+
+	@Override
+	public void changeAdvertisementStatus(String id, String status) throws Exception {
+		// TODO Auto-generated method stub
+		String hql = "Update Advertisement set status = '"+status+"' where id = '"+id+"'";
+		Session session = Factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		query.executeUpdate();
+		transaction.commit();
+		session.close();
+	}
+
+	@Override
+	public void changeUserStatus(String phone, String status) throws Exception {
+		// TODO Auto-generated method stub
+		String hql = "Update User set status = '"+status+"' where id = '"+phone+"'";
+		Session session = Factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		query.executeUpdate();
+		transaction.commit();
+		session.close();
 	}
 
 	

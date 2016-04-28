@@ -28,4 +28,5 @@ public interface IGeneralDao<T> {
 	public int GetNumbers(String phone);
 	//得到最近的一条记录
 	public T GetLast(String phone); 
+	
 }

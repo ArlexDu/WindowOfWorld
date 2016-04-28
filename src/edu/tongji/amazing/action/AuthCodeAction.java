@@ -47,8 +47,7 @@ public class AuthCodeAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		send.setPhonenumber(phone);
-		send.Send();
+		send.SendAuthCode(phone);
 		int code = send.getCode();
 		authcode = new HashMap<String, Object>();
 		authcode.put(defined.Error, defined.SUCCESS);

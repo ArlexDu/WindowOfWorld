@@ -36,27 +36,22 @@ public class SendMessage {
     //编码格式。发送编码格式统一用UTF-8
     private static String ENCODING = "UTF-8";
     
-    private String phonenumber;
     private int code;
     
     @Resource(name = "define")
     private Defined define;
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
-	}
-    
 
 	public int getCode() {
 		return code;
 	}
 
 
-//	@Test
-    public void Send() throws IOException, URISyntaxException{
+//	发送验证码
+    public void SendAuthCode(String phone) throws IOException, URISyntaxException{
 
 
         //修改为您要发送的手机号
-        String mobile = phonenumber;
+        String mobile = phone;
         /**************** 使用智能匹配模版接口发短信(推荐) *****************/
         //设置您要发送的内容(内容必须和某个模板匹配。以下例子匹配的是系统提供的1号模板）
         Random random = new Random();
@@ -67,7 +62,42 @@ public class SendMessage {
         sendSms(define.apikey, text, mobile);
     }
 
+    //发送审核结果
+    public void SendAdvertisementExamineResult(String phone,String status,String title) throws IOException, URISyntaxException{
 
+
+        //修改为您要发送的手机号
+        String mobile = phone;
+        String text = "";
+        if(status.equals("1")){//通过
+			text = "恭喜您！您的"+title+"[广告]已经通过审核！";
+		}else{//不通过
+			text = "很抱歉！您的"+title+"[广告]因为含有不合法的内容所以未通过审核，我们建议您改正之后再发布！";
+		}
+        //发短信调用示例
+        sendSms(define.apikey, text, mobile);
+    }
+
+    //发送审核结果
+    public void SendUserExamineResult(String phone,String status,String userclass) throws IOException, URISyntaxException{
+
+
+        //修改为您要发送的手机号
+        String mobile = phone;
+        String text = "";
+        if(status.equals("1")){//通过
+        	if(userclass.equals("1")){
+        		text = "恭喜您！您的账户已经通过审核！欢迎加入我们世界之窗管理大家庭~";
+        	}else if(userclass.equals("2")){
+        		text = "恭喜您！您的账户已经通过审核！您现在可以发布广告啦！";
+        	}else{
+        		text = "恭喜您！您的账户已经通过审核！我们的服务人员会尽快与你联系并免费安装我们的产品！";
+        	}
+		}else{//不通过
+			text = "很抱歉！您的账户未通过审核！请仔细填写您的认证信息后再次提交~";
+		}
+        sendSms(define.apikey, text, mobile);
+    }
     /**
      * 智能匹配模版接口发短信
      *

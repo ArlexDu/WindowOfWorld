@@ -61,5 +61,20 @@ public class AdministratorService implements IAdministratorService{
 		// TODO Auto-generated method stub
 		return dao.login(phone, password);
 	}
+	@Override
+	public User getAdministratorinfo(String phone) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.getUserbyPhone(phone);
+	}
+	@Override
+	public void changeAdvertisementStatus(String id, String status) throws Exception {
+		// TODO Auto-generated method stub
+		dao.changeAdvertisementStatus(id, status);
+	}
+	@Override
+	public void changeUserStatus(String phone, String status) throws Exception {
+		// TODO Auto-generated method stub
+		dao.changeUserStatus(phone, status);
+	}
 
 }

@@ -1,6 +1,5 @@
 package edu.tongji.amazing.service.impl;
 
-import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -14,6 +13,8 @@ public class AdvertiserService implements IAdvertiserService{
 
 	@Resource(name="advertiserdao")
 	private AdvertiserDao dao;
+	
+	
 	@Override
 	public boolean addAdvertise(Advertiser advertiser) {
 		// TODO Auto-generated method stub
@@ -23,6 +24,11 @@ public class AdvertiserService implements IAdvertiserService{
 	public void activeAccount(String phone) {
 		// TODO Auto-generated method stub
 		dao.activeAccount(phone);
+	}
+	@Override
+	public Advertiser getAdvertisementinfo(String phone) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.getUserbyPhone(phone);
 	}
 
 
