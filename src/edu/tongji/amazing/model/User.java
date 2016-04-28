@@ -56,6 +56,9 @@ public class User implements Serializable {
 	@Column(name = "identitycard")
 	private String identityCard;
 	
+	@Column(name = "time")
+	private String time;
+	
 	public String getUsername() {
 		return username;
 	}
@@ -143,9 +146,14 @@ public class User implements Serializable {
 	public void setIdentityCard(String identityCard) {
 		this.identityCard = identityCard;
 	}
-	
-	
-	
-	
 
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	
 }

@@ -11,11 +11,10 @@
 	<package name="edu.tongji.amazing.action.administrator"
 		namespace="/web/administator" extends="struts-default">
 		<!-- 相当于servlet，也就是对应一个name的请求，它的rul为 localhost:8080/项目名称/namespace/name.action或者localhost:8080/项目名称/namespace/name.do -->
-		<action name="login" class="login" method="LoginWeb">
+		<action name="login" class="administratorAction" method="Login">
 			<!-- 请求处理之后返回的页面 -->
-			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="success">/Webapp/admin/home.jsp</result>
 			<result name="fail">/Website/Pages/fail.jsp</result>
-			<result name="pswwrong">/Website/Pages/wrong.jsp</result>
 		</action>
 
 		<action name="register" class="register" method="RegisterAdmin">
@@ -38,6 +37,11 @@
 		<action name="active" class="advertiserAction" method="ActiveAccount">
 		    <result name="success">/Website/Pages/success.jsp</result>
 		    <result name="fail">/Website/Pages/success.jsp</result>
+		</action>
+		<action name="test" class="administratorAction" method="test">
+		    <result name="success" type="json">
+		        <param name="root">data</param>
+		    </result>
 		</action>
 	</package>
 	

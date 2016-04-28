@@ -92,6 +92,8 @@ public class BulletDao extends GeneralDao<Bullet> implements IBulletDao  {
 		if(iterator.hasNext()){
 			bullet = (Bullet)iterator.next();
 		}
+		transaction.commit();
+		session.close();
 		return bullet;
 	}
 }

@@ -25,7 +25,7 @@ public class AdvertiserDao extends GeneralDao<Advertiser> implements IAdvertiser
 	@Override
 	public void activeAccount(String phone) {
 		// TODO Auto-generated method stub
-		String hql = "Update User set status = '2' where phone = '" + phone + "'";
+		String hql = "Update User set status = '0' where phone = '" + phone + "'";
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);

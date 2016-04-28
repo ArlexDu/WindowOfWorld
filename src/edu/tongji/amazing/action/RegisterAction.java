@@ -1,5 +1,6 @@
 package edu.tongji.amazing.action;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
@@ -42,6 +43,8 @@ public class RegisterAction extends ActionSupport {
 			data.put(defined.Error, defined.RrgisteredUSER);
 			return "success";
 		}
+		String time = String.valueOf(new Date().getTime());
+		user.setTime(time);
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setPhone(phone);
@@ -75,6 +78,8 @@ public class RegisterAction extends ActionSupport {
 		user.setIdentity(identity);
 		user.setRealname(realname);
 		user.setUserclass("1");
+		String time = String.valueOf(new Date().getTime());
+		user.setTime(time);
 		if (administratorService.addAdministrator(user)) {
 			return "success";
 		} else {

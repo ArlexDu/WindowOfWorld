@@ -50,13 +50,13 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 		user = carowner.getUser();
 		if(identitycard != null){
 			String path = request.getSession().getServletContext().getRealPath("/IdentityCard");
-			upload.SaveFile(identitycard, path, identitycardContentType);
+			path = upload.SaveFile(identitycard, path, identitycardContentType);
 			String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 			user.setIdentityCard(urlpath);;
 		}
 		if(drivinglicensecard != null){
 			String path = request.getSession().getServletContext().getRealPath("/DrivingLicense");
-			upload.SaveFile(drivinglicensecard, path, drivinglicensecardContentType);
+			path = upload.SaveFile(drivinglicensecard, path, drivinglicensecardContentType);
 			String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 			carowner.setDrivinglicenseCard(urlpath);
 		}

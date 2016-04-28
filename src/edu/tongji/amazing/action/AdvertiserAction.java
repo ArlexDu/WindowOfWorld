@@ -3,6 +3,7 @@ package edu.tongji.amazing.action;
 import java.io.File;
 
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
@@ -43,7 +44,18 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 	@Resource(name="user")
 	private User user;
 	
-	//添加新的广告商
+	/*  添加新的广告商
+	 *  参数：
+	 *    @avatar
+	 *    @licensecard
+	 *    @identity
+	 *    @phone
+	 *    @password
+	 *    @mail
+	 *    @identityCard
+	 *    @license
+	 *     
+	 */
 	private File avatar;
 	private File licensecard;
 	private String avatarContentType;
@@ -64,20 +76,20 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 		try{
 			if(avatar != null){
 				String path = request.getSession().getServletContext().getRealPath("/Avatar");
-				upload.SaveFile(avatar, path, avatarContentType);
+				path = upload.SaveFile(avatar, path, avatarContentType);
 				String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				user.setAvatar(urlpath);
 			}
 			if(licensecard != null){
 				String path = request.getSession().getServletContext().getRealPath("/Businesslicense");
-				upload.SaveFile(licensecard, path, licensecardContentType);
+				path = upload.SaveFile(licensecard, path, licensecardContentType);
 				String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				advertiser.setLicensecard(urlpath);
 			}
 			if(identitycard != null){
-				String avatarpath = request.getSession().getServletContext().getRealPath("/IdentityCard");
-				upload.SaveFile(identitycard, avatarpath, identitycardContentType);
-				String urlpath = "http://10.60.42.70:8080/AmazingAd" + avatarpath.split("AmazingAd")[1].replace('\\', '/');
+				String path = request.getSession().getServletContext().getRealPath("/IdentityCard");
+				path = upload.SaveFile(identitycard, path, identitycardContentType);
+				String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				user.setIdentityCard(urlpath);
 			}
 			user.setBalace(0.0f);
@@ -89,6 +101,8 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 			user.setUsername(username);
 			user.setUserclass("2");//广告商
 			user.setStatus("-2");//未激活
+			String time = String.valueOf(new Date().getTime());//存储时间戳
+			user.setTime(time);
 			advertiser.setLicense(licence);
 			advertiser.setPhone(phone);
 			advertiser.setMail(mail);
@@ -105,7 +119,9 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 	
 	
 	/*
-	 * 邮箱激活  /
+	 * 邮箱激活  
+	 *  参数：
+	 *  @phone
 	 */
 	public String ActiveAccount() throws Exception{
 		try{
@@ -117,8 +133,13 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 		return "success";
 	}
 	
-	/*更新广告商信息 
-	 * 参数： 昵称，营业执照，验证码，
+	/* 更新广告商信息 (待定)
+	 * 只允许更换手机号，邮箱，昵称，密码（我觉得这些的更改需要一个个来改而不是一起改的）
+	 * 参数：
+	 *    @phone
+	 *    @authcode
+	 *    @password
+	 *    @mail
 	 *  
 	 */
 		public String updateAdvertiser() throws Exception{

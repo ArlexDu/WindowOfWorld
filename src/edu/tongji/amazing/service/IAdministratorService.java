@@ -1,8 +1,38 @@
 package edu.tongji.amazing.service;
 
+import java.util.List;
+
+import edu.tongji.amazing.model.Advertisement;
+import edu.tongji.amazing.model.Balance;
 import edu.tongji.amazing.model.User;
 
 public interface IAdministratorService {
 
-	public boolean addAdministrator(User user);
+	//添加新的用户
+	public boolean addAdministrator(User user) throws Exception;
+	
+	//管理员的登录
+	public boolean login(String phone,String password) throws Exception;
+	//得到所有的广告
+	public int getalladvertisements() throws Exception;
+	
+	//得到所有的用户数量
+	public int getallusers() throws Exception;
+	
+	//未审核的用户数量
+	public int unexamineUsers() throws Exception;
+	
+	//未审核的广告数量
+	public int unexamineAdvertisements() throws Exception;
+	
+	//得到主页展示的六个最新的用户
+	public List<User> getShowUsers() throws Exception;
+	
+	//得到主页展示的六个最新的广告
+	public List<Advertisement> getShowAdvertisements() throws Exception;
+	
+	//得到展示的四个最新的账目变化
+	public List<Balance> getShowBalance() throws Exception;
+	
+	
 }

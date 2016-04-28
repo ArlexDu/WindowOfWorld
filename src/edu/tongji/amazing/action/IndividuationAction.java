@@ -51,7 +51,7 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 		try {
 			String filepath = upload.SaveFile(image, path, imageContentType);
 			String urlpath = "http://10.60.42.70:8080/AmazingAd" + filepath.split("AmazingAd")[1].replace('\\', '/');
-			System.out.println(urlpath);
+//			System.out.println(urlpath);
 			individuation.setPhone(phone);
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
 			String time = df.format(new Date());// new Date()为获取当前系统时间

@@ -33,6 +33,8 @@ public class Balance {
 	
 	@Column(name = "time")
 	private String time;
+	
+	private String username;
 
 	public String getId() {
 		return id;
@@ -72,6 +74,14 @@ public class Balance {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	
