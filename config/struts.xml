@@ -154,7 +154,7 @@
 
 	<!-- advertisement action -->
 	<package name="edu.tongji.amazing.action.android.advertisement"
-		namespace="/advertisement" extends="struts-default,json-default">
+		namespace="/web/advertisement" extends="struts-default,json-default">
 		<action name="uploadfile" class="uploadfileaction">
 			<result name="result" type="json">
 				<param name="root">data</param>

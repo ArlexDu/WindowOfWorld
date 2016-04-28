@@ -47,6 +47,7 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 	/*  添加新的广告商
 	 *  参数：
 	 *    @avatar
+	 *    @licence
 	 *    @licensecard
 	 *    @identity
 	 *    @phone

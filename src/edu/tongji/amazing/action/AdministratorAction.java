@@ -45,6 +45,9 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	
 	/*
 	 * 管理员登录的接口 /web/administrator/login
+	 * 参数：
+	 *   @phone
+	 *   @password
 	 */
 	
 	private String phone;
@@ -62,7 +65,7 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	}
 	
 	/*
-	 * 管理员的注册 
+	 * 管理员的注册   /web/administrator/register
 	 * 参数：
 	 *    @手机号
 	 *    @密码
@@ -143,7 +146,7 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	}
 	
 	/*
-	 *  广告的审核信息
+	 *  广告的审核信息   /web/administrator/advertisement
 	 *  参数：
 	 *   @id
 	 */
@@ -161,7 +164,7 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	}
 	
 	/*
-	 * 广告审核结果
+	 * 广告审核结果 /web/administrator/examineadvertisement
 	 * 参数：
 	 *   @id
 	 *   @phone
@@ -184,9 +187,10 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	}
 	
 	/*
-	 *  用户的审核信息
+	 *  用户的审核信息  /web/administrator/user
 	 *  参数：
 	 *   @phone
+	 *   @userclass 
 	 */
 	
 	@Resource(name = "carownerservice")
@@ -215,8 +219,8 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 		}
 	}
 	
-	/*
-	 *  用户的审核结果
+	/* 
+	 *  用户的审核结果 /web/administrator/examineuser
 	 *  参数：
 	 *   @phone
 	 *   @result //审核结果   1：通过  -1：不通过
