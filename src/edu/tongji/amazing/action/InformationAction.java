@@ -39,13 +39,28 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 	private UpLoadFile upload;
 	private File image;
 	private String imageContentType;
+	private File identitycard;
+	private String identitycardContentType;
+	private File drivinglicensecard;
+	private String drivinglicensecardContentType;
 	private HttpServletRequest request;
 	// 对应的android/user/addinformation 的执行方法
 	public String addInfromation() throws Exception {
 		carowner = service.getUserbyPhone(phone);
 		user = carowner.getUser();
+		if(identitycard != null){
+			String path = request.getSession().getServletContext().getRealPath("/IdentityCard");
+			upload.SaveFile(identitycard, path, identitycardContentType);
+			String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
+			user.setIdentityCard(urlpath);;
+		}
+		if(drivinglicensecard != null){
+			String path = request.getSession().getServletContext().getRealPath("/DrivingLicense");
+			upload.SaveFile(drivinglicensecard, path, drivinglicensecardContentType);
+			String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
+			carowner.setDrivinglicenseCard(urlpath);
+		}
 		user.setIdentity(identity);
-		user.setMail(email);
 		user.setBalace(0.0f);
 		user.setCredit(0.0f);
 		user.setRealname(realname);
@@ -195,7 +210,39 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 	public void setImage(File image) {
 		this.image = image;
 	}
-	
+
+	public File getIdentitycard() {
+		return identitycard;
+	}
+
+	public void setIdentitycard(File identitycard) {
+		this.identitycard = identitycard;
+	}
+
+	public String getIdentitycardContentType() {
+		return identitycardContentType;
+	}
+
+	public void setIdentitycardContentType(String identitycardContentType) {
+		this.identitycardContentType = identitycardContentType;
+	}
+
+	public File getDrivinglicensecard() {
+		return drivinglicensecard;
+	}
+
+	public void setDrivinglicensecard(File drivinglicensecard) {
+		this.drivinglicensecard = drivinglicensecard;
+	}
+
+	public String getDrivinglicensecardContentType() {
+		return drivinglicensecardContentType;
+	}
+
+	public void setDrivinglicensecardContentType(String drivinglicensecardContentType) {
+		this.drivinglicensecardContentType = drivinglicensecardContentType;
+	}
+
 	
 
 }

@@ -6,6 +6,7 @@ package edu.tongji.amazing.test;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +21,7 @@ import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.impl.AdvertisementService;
 import edu.tongji.amazing.service.impl.BulletService;
 import edu.tongji.amazing.service.impl.CarOwnerService;
+import edu.tongji.amazing.tool.SendEmail;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath*:applicationContext.xml"})
@@ -74,12 +76,23 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
   }
   	@Resource(name="bullet")
   	private Bullet bullet;
-  	@Test
+//  	@Test
   	public void addBullet(){
   		bullet.setPhone("100000001");
   		bullet.setTime("2016-04-23");
   		bullet.setContent("动画城");
   		bullet.setTitle("wobufu");
 		bulletService.addBullet(bullet);
+  	}
+  	@Resource(name="sendemail")
+  	private SendEmail email;
+  	@Test
+  	public void send(){
+  		try {
+			email.send("shengyudu@gmail.com","15021799675");
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
   	}
 }

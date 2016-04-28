@@ -18,6 +18,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import edu.tongji.amazing.model.Advertiser;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdvertiserService;
+import edu.tongji.amazing.tool.SendEmail;
 import edu.tongji.amazing.tool.UpLoadFile;
 @Controller("advertiserAction")
 public class AdvertiserAction extends ActionSupport implements ServletRequestAware{
@@ -38,15 +39,23 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 	private String identity;
 	private String password;
 	private String licence;
+	private String mail;
 	@Resource(name="user")
 	private User user;
 	
 	//添加新的广告商
 	private File avatar;
+	private File licensecard;
 	private String avatarContentType;
+	private String licensecardContentType;
+	private File identitycard;
+	private String identitycardContentType;
 	private HttpServletRequest request;
 	@Resource(name="uploadfile")
 	private UpLoadFile upload;
+	
+	@Resource(name = "sendemail")
+	private SendEmail sendemail;
 	
 	public void register() throws Exception{
 		HttpServletResponse response = ServletActionContext.getResponse();
@@ -54,10 +63,22 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 		PrintWriter out= response.getWriter();
 		try{
 			if(avatar != null){
-				String avatarpath = request.getSession().getServletContext().getRealPath("/Avatar");
-				upload.SaveFile(avatar, avatarpath, avatarContentType);
-				String urlpath = "http://10.60.42.70:8080/AmazingAd" + avatarpath.split("AmazingAd")[1].replace('\\', '/');
+				String path = request.getSession().getServletContext().getRealPath("/Avatar");
+				upload.SaveFile(avatar, path, avatarContentType);
+				String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				user.setAvatar(urlpath);
+			}
+			if(licensecard != null){
+				String path = request.getSession().getServletContext().getRealPath("/Businesslicense");
+				upload.SaveFile(licensecard, path, licensecardContentType);
+				String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
+				advertiser.setLicensecard(urlpath);
+			}
+			if(identitycard != null){
+				String avatarpath = request.getSession().getServletContext().getRealPath("/IdentityCard");
+				upload.SaveFile(identitycard, avatarpath, identitycardContentType);
+				String urlpath = "http://10.60.42.70:8080/AmazingAd" + avatarpath.split("AmazingAd")[1].replace('\\', '/');
+				user.setIdentityCard(urlpath);
 			}
 			user.setBalace(0.0f);
 			user.setCredit(0.0f);
@@ -67,17 +88,28 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 			user.setRealname(realname);
 			user.setUsername(username);
 			user.setUserclass("2");//广告商
-			user.setStatus("0");//未审核
-			advertiser.setLicence(licence);
+			user.setStatus("-2");//未激活
+			advertiser.setLicense(licence);
 			advertiser.setPhone(phone);
+			advertiser.setMail(mail);
 			advertiser.setUser(user);
 			service.addAdvertise(advertiser);
 			out.print("true");
 			out.flush();
+			sendemail.send(mail,phone);
 		}catch(Exception e){
 			out.print("false");
 			out.flush();
 		}
+	}
+	
+	
+	/*
+	 * 邮箱激活  /
+	 */
+	public String ActiveAccount() throws Exception{
+		System.out.println("active account :"+phone);
+		return "success";
 	}
 	
 	/*更新广告商信息 
@@ -85,24 +117,22 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 	 *  
 	 */
 		public String updateAdvertiser() throws Exception{
-			
-			user.setBalace(0.0f);
-			user.setCredit(0.0f);
+
 			user.setIdentity(identity);
 			user.setPassword(password);
 			user.setPhone(phone);
 			user.setRealname(realname);
 			user.setUsername(username);
-			user.setUserclass("2");
 			user.setStatus("0");//未审核
-			advertiser.setLicence(licence);
 			advertiser.setPhone(phone);
 			advertiser.setUser(user);
-			if(service.addAdvertise(advertiser)){
-				return "success";
-			}
+//			if(service.Advertise(advertiser)){
+//				return "success";
+//			}
 			return "fail";
 		}
+	
+		
 	
 
 	public String getPhone() {
@@ -166,13 +196,62 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 		// TODO Auto-generated method stub
 		this.request = arg0;
 	}
-	
-	
-	
-	
-	
-	
-	
+
+	public File getLicensecard() {
+		return licensecard;
+	}
+
+	public void setLicensecard(File licensecard) {
+		this.licensecard = licensecard;
+	}
+
+	public String getLicensecardContentType() {
+		return licensecardContentType;
+	}
+
+	public void setLicensecardContentType(String licensecardContentType) {
+		this.licensecardContentType = licensecardContentType;
+	}
+
+	public File getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(File avatar) {
+		this.avatar = avatar;
+	}
+
+	public String getAvatarContentType() {
+		return avatarContentType;
+	}
+
+	public void setAvatarContentType(String avatarContentType) {
+		this.avatarContentType = avatarContentType;
+	}
+
+	public File getIdentitycard() {
+		return identitycard;
+	}
+
+	public void setIdentitycard(File identitycard) {
+		this.identitycard = identitycard;
+	}
+
+	public String getIdentitycardContentType() {
+		return identitycardContentType;
+	}
+
+	public void setIdentitycardContentType(String identitycardContentType) {
+		this.identitycardContentType = identitycardContentType;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
 	
 	
 }

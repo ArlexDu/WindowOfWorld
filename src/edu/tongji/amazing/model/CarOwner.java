@@ -35,6 +35,9 @@ public class CarOwner {
 	@Column(name = "carnumber")
 	private String carnumber;
 	
+	@Column(name = "drivinglicensecard")
+	private String drivinglicenseCard;
+	
     @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity=User.class)
     @JoinColumn(name="phone")
 	private User user;
@@ -79,6 +82,15 @@ public class CarOwner {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public String getDrivinglicenseCard() {
+		return drivinglicenseCard;
+	}
+
+	public void setDrivinglicenseCard(String drivinglicenseCard) {
+		this.drivinglicenseCard = drivinglicenseCard;
+	}
     
+	
     
 }

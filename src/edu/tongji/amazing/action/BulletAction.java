@@ -11,13 +11,15 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+
 import edu.tongji.amazing.model.Bullet;
 import edu.tongji.amazing.service.IBulletService;
 import edu.tongji.amazing.service.impl.BulletService;
 import edu.tongji.amazing.tool.Defined;
 
 @Controller("bulletAndroid")
-public class BulletAction extends ActionSupport {
+public class BulletAction extends ActionSupport{
 
 	private Map<String, Object> data;
 	@Resource(name = "bulletservice")
@@ -37,6 +39,7 @@ public class BulletAction extends ActionSupport {
 	@Resource(name ="define")
 	private Defined defined;
 
+	
 
 	//处理 android/barrage/getbarrage 请求
 	public String getbarrage() throws Exception{

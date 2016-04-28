@@ -34,9 +34,6 @@ public class User implements Serializable {
 	@Id
 	@Column(name = "phone")
 	private String phone;
-
-	@Column(name = "mail")
-	private String mail; 
 	
 	@Column(name = "balance")
 	private float balace;
@@ -55,6 +52,9 @@ public class User implements Serializable {
 	
 	@Column(name = "class")
 	private String userclass;
+	
+	@Column(name = "identitycard")
+	private String identityCard;
 	
 	public String getUsername() {
 		return username;
@@ -86,15 +86,6 @@ public class User implements Serializable {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
 	}
 
 	public float getBalace() {
@@ -143,6 +134,14 @@ public class User implements Serializable {
 
 	public void setUserclass(String userclass) {
 		this.userclass = userclass;
+	}
+
+	public String getIdentityCard() {
+		return identityCard;
+	}
+
+	public void setIdentityCard(String identityCard) {
+		this.identityCard = identityCard;
 	}
 	
 	

@@ -21,9 +21,15 @@ public class Advertiser {
 	@Id
 	@Column(name = "phone")
 	public String phone;
+	
+	@Column(name = "mail")
+	public String mail;
 
-	@Column(name = "licence")
-	public String Licence;
+	@Column(name = "license")
+	public String license;
+	
+	@Column(name ="licensecard")
+	public String licensecard;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = User.class)
 	@JoinColumn(name = "phone")
@@ -37,12 +43,12 @@ public class Advertiser {
 		this.phone = phone;
 	}
 
-	public String getLicence() {
-		return Licence;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setLicence(String licence) {
-		Licence = licence;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	public User getUser() {
@@ -51,6 +57,22 @@ public class Advertiser {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getLicense() {
+		return license;
+	}
+
+	public void setLicense(String license) {
+		this.license = license;
+	}
+
+	public String getLicensecard() {
+		return licensecard;
+	}
+
+	public void setLicensecard(String licensecard) {
+		this.licensecard = licensecard;
 	}
 	
 	

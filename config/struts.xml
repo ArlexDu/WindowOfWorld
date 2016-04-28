@@ -35,6 +35,8 @@
 		namespace="/web/advertiser" extends="struts-default,json-default">
 		<action name="register" class="advertiserAction" method="register">
 		</action>
+		<action name="active" class="advertiserAction" method="ActiveAccount">
+		</action>
 	</package>
 	
 	<!-- android端对应的user action -->
