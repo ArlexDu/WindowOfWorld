@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -12,13 +11,9 @@
 
     <title>The World Window</title>
 
-     <!-- Bootstrap Core CSS -->
     <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
+    <link href="../assets/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <link href="../assets/css/agency.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
 	<link href="../assets/wow-font/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
@@ -27,28 +22,17 @@
     
     <!-- New -->
     <link href="../assets/css/new.css" rel="stylesheet">
-    
-    <link rel="stylesheet" type="text/css" href="../assets/css/lq.datetimepick.css"/>
-
 </head>
 
 <body id="page-top" class="index">
 
-    <!-- Navigation -->
+    <!--标题栏-->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="account.jsp">个人主页</a>
+                <a class="navbar-brand page-scroll" href="#">上传广告</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
@@ -56,9 +40,6 @@
                     </li>
                     <li>
                         <a class="page-scroll" href="account.jsp">返回</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="history.jsp">查看历史</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="owner.jsp">个人信息</a>
@@ -71,67 +52,96 @@
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
     </nav>
   
-    <!-- Contact Section -->
+    <!-- 上传部分 -->
     <section id="contact">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">上传广告</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form name="upload" id="contactForm" novalidate>
-                        <div class="row">
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-6">
-                           <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="账号--手机号/身份证" id="account" required>
-                                <p class="help-block text-danger"></p>
-                           </div>
-                           <div class="form-group">
-                                <textarea class="form-control" placeholder="广告内容" id="context" required></textarea>
-                                <p class="help-block text-danger"></p>
-                           </div>
-                           <div class="form-group">
-							    <input type="file" id="exampleInputFile"  class="form-control" placeholder="上传图片">
-							    <p class="help-block text-danger"></p>
-						   </div>
-						   <div class="form-group">
-							    <input type="text" class="form-control" placeholder="发布日期" id="begin-date" required>
-                                <p class="help-block text-danger"></p>
-						   </div>
-						   <div class="form-group">
-							    <input type="text" class="form-control" placeholder="截止日期" id="end-date" required>
-                                <p class="help-block text-danger"></p>
-						   </div>
-						   <div class="form-group">
-							    <input type="text" class="form-control" placeholder="发布时段" id="time" required>
-                                <p class="help-block text-danger"></p>
-						   </div>
-						   <div class="form-group">
-							    <input type="text" class="form-control" placeholder="发布地段" id="area" required>
-                                <p class="help-block text-danger"></p>
-						   </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="col-lg-3"></div>   
-                           <div class="col-lg-12">
-                               <div class="col-lg-4"></div>
-	                               <div class="col-lg-4">
-	                               	  <a class="btn btn-xl" href="upload.jsp">上传</a>
-	                               </div>
-                               <div class="col-lg-4"></div>
-                           </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+             <form name="upload" id="upload" method="post">
+                 <div class="col-lg-12 reg_font">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+                    	<div class="ad1">
+	                    <div class="form-group">
+	                    	<label>上传内容类型选择：</label>
+	                       	<span class="label label-success adtype" onclick="adtype1();">文字</span>
+	                       	<span class="label label-success adtype" onclick="adtype2();">图片</span>
+	                    </div>
+	                    <div class="adtype1">
+	                    <div class="form-group">
+	                         <textarea class="form-control" placeholder="广告内容" name="context" required></textarea>
+	                    </div>
+	                    </div>
+	                    <div class="adtype2">
+                       	     <img id="ad_picture" src="/AmazingAd/Webapp/assets/images/ad_back.jpg">
+                       	     <br>
+                             <label class="ad_picture">本地选取
+                             <input class="avatar" accept="image/gif, image/jpeg, image/x-png" type="file" name="ad_picture" onchange="showPreview_ad(this)" />
+                             </label>
+					 	</div>
+					 	<div class="form-group">&nbsp;</div>
+						<div class="form-group">
+						    <label class="control-label">发布日期</label>
+						    <input id="datetimepicker" class="form-control" type="text" name="begin-date" value="2016-5-1" onclick="date();">
+						</div>
+						<div class="form-group">
+						    <label>结束日期</label>
+						    <input id="datetimepicker1" class="form-control" type="text" name="end-date" value="2016-5-1" onclick="date1();">
+						</div>
+					    </div>
+					    <div class="ad2">
+					    <div class="form-group">
+					   		<label>发布时段</label>
+					    	<select class="form-control" name="time">
+								<option value="6:00~8:00">6:00~8:00</option>
+								<option value="8:00~10:00">8:00~10:00</option>
+								<option value="10:00~12:00">10:00~12:00</option>
+								<option value="12:00~14:00">12:00~14:00</option>
+								<option value="14:00~16:00">14:00~16:00</option>
+								<option value="16:00~18:00">16:00~18:00</option>
+								<option value="18:00~20:00">18:00~20:00</option>
+								<option value="20:00~22:00">20:00~22:00</option>
+								<option value="22:00~6:00">22:00~6:00</option>
+							</select>
+					    </div>
+					    <div class="form-group">
+					   		<label>发布地段</label>
+					    	<select class="form-control" name="area">
+								<option value="嘉定区">嘉定区</option>
+								<option value="杨浦区">杨浦区</option>
+								<option value="浦东新区">浦东新区</option>
+								<option value="宝山">宝山</option>
+								<option value="闵行">闵行</option>
+								<option value="奉贤">奉贤</option>
+								<option value="金山">金山</option>
+								<option value="黄埔">黄埔</option>
+								<option value="静安">静安</option>
+								<option value="长宁">长宁</option>
+								<option value="松江">松江</option>
+								<option value="虹口">虹口</option>
+								<option value="普陀">普陀</option>
+								<option value="徐汇">徐汇</option>
+								<option value="青浦">青浦</option>
+							</select>
+					    </div>
+					    </div>
+                    </div>
+                    <div class="col-lg-3">
+                    	<div class="ad_change">
+	                  	    <span class="glyphicon glyphicon-chevron-up" id="ad_change1" onclick="ad_change1();"></span>
+	                  	    <span class="glyphicon glyphicon-chevron-down" id="ad_change2" onclick="ad_change2();"></span>
+                   	    </div>
+                    </div>   
+                 </div>
+                 <div class="col-lg-12">
+                      <div class="col-lg-4"></div>
+                      <div class="col-lg-4">
+                      	  <input type="submit" class="btn btn-xl" value="上传">
+                      </div>
+                      <div class="col-lg-4"></div>
+                 </div>
+             </form>
         </div>
     </section>
 
@@ -139,7 +149,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="copyright">Our Website 2016</span>
+                    <span class="copyright">Our Web 2016</span>
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
@@ -152,24 +162,11 @@
         </div>
     </footer>
 
-
- 	 <!-- jQuery -->
+ 	<script src="../assets/js/check.js"></script>
     <script src="../assets/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="../assets/js/jquery.easing.min.js"></script>
-    <script src="../assets/js/classie.js"></script>
-    <script src="../assets/js/cbpAnimatedHeader.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="../assets/js/jqBootstrapValidation.js"></script>
-    <script src="../assets/js/contact_me.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../assets/js/agency.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
  
 </body>
 

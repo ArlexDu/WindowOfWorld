@@ -12,14 +12,8 @@
 
     <title>The World Window</title>
 
-   
-    <!-- Bootstrap Core CSS -->
     <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="../assets/css/agency.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
 	<link href="../assets/wow-font/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
@@ -28,26 +22,17 @@
     
     <!-- New -->
     <link href="../assets/css/new.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top" class="index">
 
-    <!-- Navigation -->
+    <!-- 菜单栏 -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand page-scroll" href="#">个人主页</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
@@ -55,9 +40,6 @@
                     </li>
                     <li>
                         <a class="page-scroll" href="account.jsp">返回</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="history.jsp">查看历史</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="upload.jsp">上传广告</a>
@@ -70,9 +52,7 @@
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
     </nav>
 
     <!-- Contact Section -->
@@ -157,20 +137,12 @@
 
  <!-- jQuery -->
     <script src="../assets/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
     <script src="../assets/js/jquery.easing.min.js"></script>
     <script src="../assets/js/classie.js"></script>
     <script src="../assets/js/cbpAnimatedHeader.js"></script>
-
-    <!-- Contact Form JavaScript -->
     <script src="../assets/js/jqBootstrapValidation.js"></script>
     <script src="../assets/js/contact_me.js"></script>
-
-    <!-- Custom Theme JavaScript -->
     <script src="../assets/js/agency.js"></script>
     
     <script>

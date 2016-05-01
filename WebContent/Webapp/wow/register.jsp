@@ -20,10 +20,6 @@
     
     <!-- New -->
     <link href="../assets/css/new.css" rel="stylesheet">
-	
-	<script src="../assets/js/check.js"></script>
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body id="page-top" class="index">
@@ -33,7 +29,7 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <a class="navbar-brand page-scroll" href="home.jsp">世界之窗</a>
+                <a class="navbar-brand page-scroll" href="home.jsp">注册</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -57,67 +53,87 @@
 	<!-- 注册部分 -->
     <section id="contact">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">注册</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form name="register" id="register">
-                        <div class="row">
-                        <div class="col-lg-3"></div>
+                <form name="register" id="register" method="post" onsubmit="return check_reg()" action="">
+                    <div class="col-lg-12 reg_font">
+                        <div class="col-lg-3">
+                        	<div class="ava_all">
+                           	   <img id="portrait" src="/AmazingAd/Webapp/assets/images/avatar.jpg">
+                           	   <br>
+                               <label class="avatar0">本地选取
+                               <input class="avatar" accept="image/gif, image/jpeg, image/x-png" type="file" name="avatar" onchange="showPreview(this)" />
+                               </label>
+                            </div>
+                        </div>
                         <div class="col-lg-6">
+                           <div class="reg_1">	 
                            <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="用户昵称" name="username" required>
-                               <p class="help-block text-danger"></p>
-                           </div>
-                           <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="法人姓名 " name="realname" required>
-                               <p class="help-block text-danger"></p>
+                           		<label>企业名称</label>
+                           		<input type="text" class="form-control" placeholder="不大于30字符" name="username" required>
                            </div>
                            <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="广告商执照 " name="liscense" required>
-                               <p class="help-block text-danger"></p>
+                               <label>法人姓名</label>
+                               <input type="text" class="form-control" placeholder="不大于30字符 " name="realname" required>
                            </div>
                            <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="身份证" name="identity" required>
-                               <p class="help-block text-danger"></p>
+                           		<label>广告商执照</label>
+                              	<input type="text" class="form-control" placeholder="证件编号" name="liscense" required>
                            </div>
                            <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="联系电话" name="phone" required>
-                               <p class="help-block text-danger"></p>
+                           		<label>身份证</label>
+                              	<input type="text" class="form-control" placeholder="二代身份证" name="identity" required>
+                           </div>
+                           </div>
+                           <div class="reg_2">	 
+                           <div class="form-group">
+                          		<label>联系电话</label>
+                              	<input type="text" class="form-control" placeholder="手机号码或固话" name="phone" required>
                            </div>
                            <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="邮箱" name="mail" required>
-                               <p class="help-block text-danger"></p>
+                           		<label>邮箱</label>
+                              	<input type="email" class="form-control" placeholder="常用邮箱" name="mail" required>
                            </div>
                            <div class="form-group">
-                              	<input type="password" class="form-control" placeholder="密码 --8~16位" name="password" required>
-                               <p class="help-block text-danger"></p>
+                           		<label>密码 </label>
+                              	<input type="password" class="form-control" placeholder="8~16位" name="password" required>
                            </div>
                            <div class="form-group">
-                              	<input type="password" class="form-control" placeholder="重复密码" name="password1" required>
-                               <p class="help-block text-danger"></p>
+                           		<label>重复密码</label>
+                              	<input type="password" class="form-control" placeholder="请于上一致" name="password1" required>
                            </div>
-                           <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="用户头像" name="avatar" required>
-                               <p class="help-block text-danger"></p>
                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="col-lg-3"></div>   
-                           <div class="col-lg-12">
-                               <div class="col-lg-4"></div>
-	                               <div class="col-lg-4">
-	                               	  <input type="button" class="btn btn-xl" value="注册" onclick="return check_reg()">
-	                               </div>
-                               <div class="col-lg-4"></div>
+                           <div class="reg_3">
+                           <div class="picture">
+                           		<label class="liscense1">广告商执照认证</label>
+                           		<img id="liscense_p" src="/AmazingAd/Webapp/assets/images/jiazhao_m.jpg">
+                           		<label class="liscense0">本地选取
+                              	<input class="liscense" accept="image/gif, image/jpeg, image/x-png" type="file" name="liscense_p" onchange="showPreview1(this)" />
+                           		</label>
                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+                           <div class="picture">
+                           		<label class="identity1">身份证照片认证</label>
+                           		<img id="identity_p" src="/AmazingAd/Webapp/assets/images/id.jpg">
+                           		<label class="identity0">本地选取
+                              	<input class="identity" accept="image/gif, image/jpeg, image/x-png" type="file" name="identity_p" onchange="showPreview2(this)" />
+                           		</label>
+                           </div>
+                           </div>	
+                       </div>
+					   <div class="col-lg-3">
+					   	   <div class="reg_change">
+                       	   <span class="glyphicon glyphicon-chevron-up" id="reg_change1" onclick="reg_change1();"></span><br>
+                       	   <span class="glyphicon glyphicon-minus" id="reg_change2" onclick="reg_change2();"></span><br>
+                       	   <span class="glyphicon glyphicon-chevron-down" id="reg_change3" onclick="reg_change3();"></span><br>
+                       	   </div>
+                       </div> 
+                    </div>
+                       <div class="col-lg-12">
+                           <div class="col-lg-4"></div>
+                           <div class="col-lg-4">
+                           	  <input type="submit" class="btn btn-xl" value="注册">
+                           </div>
+                           <div class="col-lg-4"></div>
+                       </div>
+                </form>
         </div>
     </section>
     
@@ -137,7 +153,12 @@
             </div>
         </div>
     </footer>
-   
+    
+	
+	<script src="../assets/js/check.js"></script>
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    
 
 	<!-- 注册弹出框 -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -148,7 +169,7 @@
 	      </div>
 	      <div class="modal-body">注册成功</div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='/AmazingAd/Webapp/wow/account.jsp'">确定</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	      </div>
 	    </div>
 	  </div>
@@ -162,7 +183,7 @@
 	      </div>
 	      <div class="modal-body">企业名称超过30位</div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	      </div>
 	    </div>
 	  </div>
@@ -176,7 +197,7 @@
 	      </div>
 	      <div class="modal-body">法人名称超过30位</div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	      </div>
 	    </div>
 	  </div>
@@ -190,7 +211,7 @@
 	      </div>
 	      <div class="modal-body">身份证长度不正确</div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	      </div>
 	    </div>
 	  </div>
@@ -204,7 +225,7 @@
 	      </div>
 	      <div class="modal-body">密码长度不符合要求</div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	      </div>
 	    </div>
 	  </div>
@@ -218,13 +239,11 @@
 	      </div>
 	      <div class="modal-body">两次输入密码不一致</div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	      </div>
 	    </div>
 	  </div>
 	</div>
-	
-	
 	
 </body>
 </html>
