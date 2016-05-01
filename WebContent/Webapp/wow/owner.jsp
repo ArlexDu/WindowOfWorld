@@ -30,7 +30,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header page-scroll">
-                <a class="navbar-brand page-scroll" href="#">个人主页</a>
+                <a class="navbar-brand page-scroll" href="#">个人信息</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,68 +48,80 @@
                         <a class="page-scroll" href="home.jsp">退出</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#">App</a>
+                        <a class="page-scroll" href="#AppModal" data-toggle="modal">App</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Contact Section -->
+    <!--信息部分 -->
     <section id="contact">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">个人信息</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form name="register1" id="register1" onSubmit=" return closebut()" novalidate>
+                <div class="col-lg-12 reg_font">
+                    <form name="register1" id="register1" onSubmit=" return closebut()">
                         <div class="row">
-                        <div class="col-lg-3"></div>
+                        <div class="col-lg-3">
+	                        <div class="form-group">
+	                           <label>
+	                           <input class="avatar" accept="image/gif, image/jpeg, image/x-png" type="file" name="avatar" onchange="showPreview(this)" />
+	                       	   <img id="portrait" src="/AmazingAd/Webapp/assets/images/avatar.jpg">
+	                       	   </label>
+	                        </div>
+                        	<div class="form-group">
+	                        <label>商业执照</label>
+	                        <img id="lis_pic" src="/AmazingAd/Webapp/assets/images/jiazhao_m.jpg"><br/>
+	                        </div>
+	                        <div class="form-group">
+	                        <label>身份证照片</label>
+	                        <img id="id_pic" src="/AmazingAd/Webapp/assets/images/id.jpg"><br/>
+	                        </div>
+                        </div>
+                        <div class="col-lg-1"></div>
                         <div class="col-lg-6">
                            <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="账号--手机号/身份证" id="account" required readonly>
-                               <p class="help-block text-danger"></p>
+                           		<label>企业名称</label>
+                           		<input type="text" class="form-control" placeholder="不大于30字符" name="username" readonly>
                            </div>
                            <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="姓名 " id="name" required readonly>
-                               <p class="help-block text-danger"></p>
+                               <label>法人姓名</label>
+                               <input type="text" class="form-control" placeholder="不大于30字符 " name="realname" readonly>
                            </div>
                            <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="昵称 " id="nickname" required readonly>
-                               <p class="help-block text-danger"></p>
+                          		<label>联系电话</label>
+                              	<input type="text" class="form-control" placeholder="手机号码或固话" name="phone" readonly>
                            </div>
                            <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="身份证" id="identity" required readonly>
-                               <p class="help-block text-danger"></p>
+                           		<label>邮箱</label>
+                              	<input type="email" class="form-control" placeholder="常用邮箱" name="mail" readonly>
                            </div>
                            <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="联系电话" id="telephone" required readonly>
-                               <p class="help-block text-danger"></p>
+                           		<span class="label label-success pw" onclick="pw_change();">更改密码</span>
+                           		<span id="pw_close" class="label label-success" onclick="pw_close();">收起</span>
+                           </div>
+                           <div class="pw_change">
+                           <div class="form-group">
+                           		<label>密码 </label>
+                              	<input type="password" class="form-control" placeholder="8~16位" name="password" readonly>
                            </div>
                            <div class="form-group">
-                              	<input type="password" class="form-control" placeholder="密码 --8~16位" id="password" required readonly>
-                               <p class="help-block text-danger"></p>
+                           		<label>重复密码</label>
+                              	<input type="password" class="form-control" placeholder="请于上一致" name="password1" readonly>
                            </div>
-                           <div class="form-group">
-                              	<input type="password" class="form-control" placeholder="重复密码" id="password" required readonly>
-                               <p class="help-block text-danger"></p>
                            </div>
+                        </div> 
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-12">
+                            <div class="col-lg-4"></div>
+                             <div class="col-lg-3">
+                             	  <input class="btn btn-xl" type="button" value="修改"  onclick="doclick1();" />
+                             </div>
+                             <div class="col-lg-3">
+                                <input class="btn btn-xl" type="button" value="保存"  onclick="doclick2();" />
+                             </div>
+                            <div class="col-lg-2"></div>
                         </div>
-                        <div class="clearfix"></div>
-                        <div class="col-lg-3"></div>   
-                           <div class="col-lg-12">
-                               <div class="col-lg-3"></div>
-	                               <div class="col-lg-3">
-	                               	  <input class="btn btn-xl" type="button" value="修改"  onclick="doclick1();" />
-	                               </div>
-	                               <div class="col-lg-3">
-	                                  <input class="btn btn-xl" type="button" value="保存"  onclick="doclick2();" />
-	                               </div>
-                               <div class="col-lg-3"></div>
-                           </div>
                         </div>
                     </form>
                 </div>
@@ -134,8 +146,21 @@
             </div>
         </div>
     </footer>
-
- <!-- jQuery -->
+    
+    <!--APP二维码-->
+    <div class="portfolio-modal modal fade" id="AppModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <h2>扫二维码下载APP</h2>
+                        <img class="img-responsive img-centered" src="../assets/images/portfolio/dreams-preview.png" alt="">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+ 
+	<script src="../assets/js/check.js"></script>
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/jquery.easing.min.js"></script>

@@ -77,21 +77,56 @@ function check_reg(){                        //注册验证
 	var rname_lg=realname.length;			 //法人姓名长度是否符合要求
 	var id_lg=id.length;			 		 //法人身份证长度是否符合要求	
 	var phone_lg=phone.length;			 	 //联系电话长度是否符合要求
-	var pw_lg=pw.length;                 
+	var pw_lg=pw.length;          
+	if(username==""){
+		$('#myModal0').modal('show');
+		$("#reg_context").html("企业名称不能为空");
+		return false;
+	}
+	if(realname==""){
+		$('#myModal0').modal('show');
+		$("#reg_context").html("法人姓名不能为空");
+		return false;
+	}
+	if(liscense==""){
+		$('#myModal0').modal('show');
+		$("#reg_context").html("广告商执照不能为空");
+		return false;
+	}
+	if(id==""){
+		$('#myModal0').modal('show');
+		$("#reg_context").html("身份证不能为空");
+		return false;
+	}
+	if(mail==""){
+		$('#myModal0').modal('show');
+		$("#reg_context").html("邮箱不能为空");
+		return false;
+	}
+	if(phone==""){
+		$('#myModal0').modal('show');
+		$("#reg_context").html("联系电话不能为空");
+		return false;
+	}
 	if(uname_lg>30){
-		$('#myModal1').modal('show');
+		$('#myModal0').modal('show');
+		$("#reg_context").html("企业名称长度不能大于30位");
 		return false;                         
 	}else if(rname_lg>30){
-		$('#myModal2').modal('show');
+		$('#myModal0').modal('show');
+		$("#reg_context").html("法人姓名长度不能大于30位");
 		return false;
 	}else if(id_lg!=15&&id_lg!=18){
-		$('#myModal3').modal('show');
+		$('#myModal0').modal('show');
+		$("#reg_context").html("身份证长度不符合要求");
 		return false;
 	}else if(pw_lg<8||pw_lg>16){			//判断密码长度是否符合要求
-		$('#myModal4').modal('show');
+		$('#myModal0').modal('show');
+		$("#reg_context").html("密码长度要在8到16位之间");
 		return false;
 	}else if(pw!=pw1){              //判断密码两次是否输入一致
-		$('#myModal5').modal('show');
+		$('#myModal0').modal('show');
+		$("#reg_context").html("两次密码输入不一致");
 		return false;
 	}else{
 		$('#myModal').modal('show');
@@ -161,3 +196,48 @@ function date1() {
     });
 }
 
+function ad_more(id){//广告信息
+	$('#adModal').modal('show');
+	$("#ad_num").html(id);
+	$("#ad_co").text("广告内容");
+	$("#ad_begin").val("2016-05-01");
+	$("#ad_end").val("2016-05-01");
+	$("#ad_time").text(id);
+	$("#ad_diduan").text(id);
+}
+
+function ad_date() {
+    $("#ad_begin").datetimepicker({
+    	format: "yyyy-mm-dd",
+        autoclose: true,
+        todayBtn: true,
+        todayHighlight: true,
+        showMeridian: true,
+        pickerPosition: "bottom-left",
+        language: 'zh-CN',
+        startView: 2,//月视图
+        minView: 2//日期时间选择器所能够提供的最精确的时间选择视图
+    });
+}
+function ad_date1() {
+    $("#ad_end").datetimepicker({
+    	format: "yyyy-mm-dd",
+        autoclose: true,
+        todayBtn: true,
+        todayHighlight: true,
+        showMeridian: true,
+        pickerPosition: "bottom-left",
+        language: 'zh-CN',
+        startView: 2,//月视图
+        minView: 2//日期时间选择器所能够提供的最精确的时间选择视图
+    });
+}
+
+function pw_change(){
+	$(".pw_change").fadeIn("slow");
+	$("#pw_close").fadeIn("slow");
+}
+function pw_close(){
+	$(".pw_change").fadeOut("slow");
+	$("#pw_close").fadeOut("slow");
+}

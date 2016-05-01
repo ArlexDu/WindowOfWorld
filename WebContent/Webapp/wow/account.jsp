@@ -12,6 +12,7 @@
     <title>The World Window</title>
 
     <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <link href="../assets/css/agency.css" rel="stylesheet">
     <link href="../assets/wow-font/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -44,7 +45,7 @@
                         <a class="page-scroll" href="home.jsp">退出</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#">App</a>
+                        <a class="page-scroll" href="#AppModal" data-toggle="modal">App</a>
                     </li>
                 </ul>
             </div>
@@ -118,15 +119,12 @@
                 <div class="col-lg-12">
                     <ul class="timeline ad_time">
                         <li>
-                            <div class="timeline-image">
-                            <a href="#adtimeModal1" data-toggle="modal">
+                            <div class="timeline-image" onclick="ad_more(1);">
 		                        <img class="img-circle img-responsive" src="../assets/images/about/1.jpg" alt="">
-                    		</a>
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>2016-3-1到2016-3-2</h4>
-                                    <h4 class="subheading">广告标题</h4>
+                                    <h4>时间：2016-3-1到2016-3-2</h4>
                                 </div>
                                 <div class="timeline-body">
                                     <p class="text-muted">广告内容！</p>
@@ -134,13 +132,12 @@
                             </div>
                         </li>
                         <li class="timeline-inverted">
-                            <div class="timeline-image">
+                            <div class="timeline-image" onclick="ad_more(2);">
                                 <img class="img-circle img-responsive" src="../assets/images/about/2.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>2016-3</h4>
-                                    <h4 class="subheading">广告标题</h4>
+                                    <h4>时间：2016-3-1到2016-3-2</h4>
                                 </div>
                                 <div class="timeline-body">
                                     <p class="text-muted">广告内容！</p>
@@ -148,13 +145,12 @@
                             </div>
                         </li>
                         <li>
-                            <div class="timeline-image">
+                            <div class="timeline-image" onclick="ad_more(3);">
                                 <img class="img-circle img-responsive" src="../assets/images/about/3.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>2016-4</h4>
-                                    <h4 class="subheading">广告标题</h4>
+                                    <h4>时间：2016-3-1到2016-3-2</h4>
                                 </div>
                                 <div class="timeline-body">
                                     <p class="text-muted">广告内容！</p>
@@ -162,13 +158,12 @@
                             </div>
                         </li>
                         <li class="timeline-inverted">
-                            <div class="timeline-image">
+                            <div class="timeline-image" onclick="ad_more(4);">
                                 <img class="img-circle img-responsive" src="../assets/images/about/4.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>2016-4</h4>
-                                    <h4 class="subheading">广告标题</h4>
+                                    <h4>时间：2016-3-1到2016-3-2</h4>
                                 </div>
                                 <div class="timeline-body">
                                     <p class="text-muted">广告内容！</p>
@@ -232,60 +227,6 @@
 				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
 			</tr>
-			<tr>
-				<td>4</td>
-				<td>专业综合</td>
-				<td>2016.3.1</td>
-				<td>2016.4.1</td>
-				<td>5</td>
-				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
-				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>专业综合</td>
-				<td>2016.3.1</td>
-				<td>2016.4.1</td>
-				<td>5</td>
-				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
-				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
-			</tr>
-			<tr>
-				<td>6</td>
-				<td>专业综合</td>
-				<td>2016.3.1</td>
-				<td>2016.4.1</td>
-				<td>5</td>
-				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
-				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
-			</tr>
-			<tr>
-				<td>7</td>
-				<td>专业综合</td>
-				<td>2016.3.1</td>
-				<td>2016.4.1</td>
-				<td>5</td>
-				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
-				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
-			</tr>
-			<tr>
-				<td>8</td>
-				<td>专业综合</td>
-				<td>2016.3.1</td>
-				<td>2016.4.1</td>
-				<td>5</td>
-				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
-				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
-			</tr>
-			<tr>
-				<td>9</td>
-				<td>专业综合</td>
-				<td>2016.3.1</td>
-				<td>2016.4.1</td>
-				<td>5</td>
-				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
-				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
-			</tr>
 			</table>
 			</div>
         </div>
@@ -325,12 +266,11 @@
         	<div class="row">
                  <div class="col-lg-8 col-lg-offset-2">
                      <div class="modal-body">
-                         <!-- Project Details Go Here -->
-                         <h2>Project Name</h2>
-                         <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                         <h2>活动标题</h2>
+                         <p class="item-intro text-muted">副标题.</p>
                          <img class="img-responsive img-centered" src="../assets/images/portfolio/roundicons-free.png" alt="">
-                         <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                         <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                         <p>活动内容</p>
+                         <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
                      </div>
                  </div>
             </div>
@@ -340,58 +280,88 @@
     <!-- 活动 2 -->
     <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
-          <div class="row">
-              <div class="col-lg-8 col-lg-offset-2">
-                  <div class="modal-body">
-                      <h2>Project Heading</h2>
-                      <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                      <img class="img-responsive img-centered" src="../assets/images/portfolio/startup-framework-preview.png" alt="">
-                      <p><a href="http://designmodo.com/startup/?u=787">Startup Framework</a> is a website builder for professionals. Startup Framework contains components and complex blocks (PSD+HTML Bootstrap themes and templates) which can easily be integrated into almost any design. All of these components are made in the same style, and can easily be integrated into projects, allowing you to create hundreds of solutions for your future projects.</p>
-                      <p>You can preview Startup Framework <a href="http://designmodo.com/startup/?u=787">here</a>.</p>
-                      <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-                  </div>
-              </div>
-          </div>
+        	<div class="row">
+                 <div class="col-lg-8 col-lg-offset-2">
+                     <div class="modal-body">
+                         <h2>活动标题</h2>
+                         <p class="item-intro text-muted">副标题.</p>
+                         <img class="img-responsive img-centered" src="../assets/images/portfolio/startup-framework-preview.png" alt="">
+                         <p>活动内容</p>
+                         <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
+                     </div>
+                 </div>
+            </div>
         </div>
     </div>
 
     <!-- 活动 3 -->
     <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
-             <div class="row">
+        	<div class="row">
                  <div class="col-lg-8 col-lg-offset-2">
                      <div class="modal-body">
-                         <!-- Project Details Go Here -->
-                         <h2>Project Name</h2>
-                         <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                         <h2>活动标题</h2>
+                         <p class="item-intro text-muted">副标题.</p>
                          <img class="img-responsive img-centered" src="../assets/images/portfolio/treehouse-preview.png" alt="">
-                         <p>Treehouse is a free PSD web template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. This is bright and spacious design perfect for people or startup companies looking to showcase their apps or other projects.</p>
-                         <p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/treehouse-free-psd-web-template/">FreebiesXpress.com</a>.</p>
-                         <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                         <p>活动内容</p>
+                         <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
                      </div>
                  </div>
-             </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--APP二维码-->
+    <div class="portfolio-modal modal fade" id="AppModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <h2>扫二维码下载APP</h2>
+                        <img class="img-responsive img-centered" src="../assets/images/portfolio/dreams-preview.png" alt="">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
+                    </div>
+            </div>
         </div>
     </div>
     
     <!-- 1 -->
-    <div class="portfolio-modal modal fade" id="adtimeModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="portfolio-modal modal fade" id="adModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
              <div class="row">
                  <div class="col-lg-8 col-lg-offset-2">
                      <div class="modal-body">
-                         <h2>Project Name</h2>
-                         <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                         <img class="img-responsive img-centered" src="../assets/images/portfolio/treehouse-preview.png" alt="">
-                         <p>This is bright and spacious design perfect for people or startup companies looking to showcase their apps or other projects.</p>
-                         <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                         <h2>广告详细信息</h2>
+                         <form>
+                         <table class="table table-hover table-bordered">
+                         <tr><th>广告编号</th><td id="ad_num"></td>
+                         </tr>
+                 	     <tr><th>广告内容</th><td id="ad_co"></td>
+                 	     </tr>
+                         <tr><th>广告发布时间</th>
+                         <td>
+                         <input id="ad_begin" type="text" name="begin-date" onclick="ad_date();">
+						 </td>
+                         </tr>
+                         <tr><th>广告结束时间</th>
+                         <td>
+                         <input id="ad_end" type="text" name="end-date" onclick="ad_date1();">
+                         </td>
+                         </tr>
+                         <tr><th>广告发布时段</th><td id="ad_time"></td>
+                         </tr>
+                         <tr><th>广告发布地段</th><td id="ad_diduan"></td>
+                         </tr>
+                         </table>
+                         <input type="submit" class="btn btn-primary" value="修改"/>
+                         </form>
+                         <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
                      </div>
                  </div>
              </div>
         </div>
     </div>
 
-
+	<script src="../assets/js/check.js"></script>
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/jquery.easing.min.js"></script>
@@ -400,6 +370,8 @@
     <script src="../assets/js/jqBootstrapValidation.js"></script>
     <script src="../assets/js/contact_me.js"></script>
     <script src="../assets/js/agency.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
 
 </body>
 

@@ -2,7 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,8 +18,6 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    
-    <!-- New -->
     <link href="../assets/css/new.css" rel="stylesheet">
 </head>
 
@@ -32,7 +29,6 @@
             <div class="navbar-header page-scroll">
                 <a class="navbar-brand page-scroll" href="#">上传广告</a>
             </div>
-
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
@@ -48,7 +44,7 @@
                         <a class="page-scroll" href="home.jsp">退出</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#">App</a>
+                        <a class="page-scroll" href="#AppModal" data-toggle="modal">App</a>
                     </li>
                 </ul>
             </div>
@@ -161,12 +157,32 @@
             </div>
         </div>
     </footer>
+    
+    <!--APP二维码-->
+    <div class="portfolio-modal modal fade" id="AppModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <h2>扫二维码下载APP</h2>
+                        <img class="img-responsive img-centered" src="../assets/images/portfolio/dreams-preview.png" alt="">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
+                    </div>
+            </div>
+        </div>
+    </div>
 
  	<script src="../assets/js/check.js"></script>
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.easing.min.js"></script>
+    <script src="../assets/js/classie.js"></script>
+    <script src="../assets/js/cbpAnimatedHeader.js"></script>
+    <script src="../assets/js/jqBootstrapValidation.js"></script>
+    <script src="../assets/js/contact_me.js"></script>
+    <script src="../assets/js/agency.js"></script>
  
 </body>
 
