@@ -19,6 +19,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import edu.tongji.amazing.model.Advertiser;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdvertiserService;
+import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.tool.SendEmail;
 import edu.tongji.amazing.tool.UpLoadFile;
 @Controller("advertiserAction")
@@ -70,6 +71,9 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 	@Resource(name = "sendemail")
 	private SendEmail sendemail;
 	
+	@Resource(name = "define")
+	private Defined defined;
+	
 	public void register() throws Exception{
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/plain;charset=utf-8");
@@ -78,19 +82,19 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 			if(avatar != null){
 				String path = request.getSession().getServletContext().getRealPath("/Avatar");
 				path = upload.SaveFile(avatar, path, avatarContentType);
-				String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
+				String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				user.setAvatar(urlpath);
 			}
 			if(licensecard != null){
 				String path = request.getSession().getServletContext().getRealPath("/Businesslicense");
 				path = upload.SaveFile(licensecard, path, licensecardContentType);
-				String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
+				String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				advertiser.setLicensecard(urlpath);
 			}
 			if(identitycard != null){
 				String path = request.getSession().getServletContext().getRealPath("/IdentityCard");
 				path = upload.SaveFile(identitycard, path, identitycardContentType);
-				String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
+				String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				user.setIdentityCard(urlpath);
 			}
 			user.setBalace(0.0f);

@@ -50,8 +50,8 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 		String path = request.getSession().getServletContext().getRealPath("/Individuation");
 		try {
 			String filepath = upload.SaveFile(image, path, imageContentType);
-			String urlpath = "http://10.60.42.70:8080/AmazingAd" + filepath.split("AmazingAd")[1].replace('\\', '/');
-//			System.out.println(urlpath);
+			String urlpath = defined.baseurl+"/AmazingAd" + filepath.split("AmazingAd")[1].replace('\\', '/');
+			System.out.println("individuation phone is "+phone);
 			individuation.setPhone(phone);
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
 			String time = df.format(new Date());// new Date()为获取当前系统时间
@@ -142,12 +142,16 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 				data.put(defined.Error, defined.FAIL);
 				return "result";
 			}
-			individuation = service.GetLast(phone);
+			if(service.GetLast(phone)!=null){
+				individuation = service.GetLast(phone);
+				data.put("number", number);
+				data.put("title", individuation.getTitle());
+				data.put("content", individuation.getDescription());
+				data.put("time", individuation.getTime());
+			}else{
+				data.put("number", number);
+			}
 			data.put(defined.Error, defined.SUCCESS);
-			data.put("number", number);
-			data.put("title", individuation.getTitle());
-			data.put("content", individuation.getDescription());
-			data.put("time", individuation.getTime());
 			return "result";
 		}catch(Exception e){
 			data.put(defined.Error, defined.FAIL);

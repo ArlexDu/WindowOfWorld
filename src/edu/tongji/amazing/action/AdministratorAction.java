@@ -23,6 +23,7 @@ import edu.tongji.amazing.service.IAdministratorService;
 import edu.tongji.amazing.service.IAdvertisementService;
 import edu.tongji.amazing.service.IAdvertiserService;
 import edu.tongji.amazing.service.ICarOwnerService;
+import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.tool.SendMessage;
 import edu.tongji.amazing.tool.UpLoadFile;
 @Controller("administratorAction")
@@ -83,6 +84,9 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	@Resource(name = "user")
 	private User adminstrator;
 	
+	@Resource(name = "define")
+	private Defined defined;
+	
 	public String register() throws Exception{
 		
 		adminstrator.setPhone(phone);
@@ -96,7 +100,7 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 		if(identityCard!=null){
 			String path = request.getSession().getServletContext().getRealPath("/IdentityCard");
 			path = upload.SaveFile(identityCard, path, identityCardContentType);
-			String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
+			String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 			adminstrator.setIdentityCard(urlpath);
 		}
 		service.addAdministrator(adminstrator);

@@ -51,13 +51,13 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 		if(identitycard != null){
 			String path = request.getSession().getServletContext().getRealPath("/IdentityCard");
 			path = upload.SaveFile(identitycard, path, identitycardContentType);
-			String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
+			String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 			user.setIdentityCard(urlpath);;
 		}
 		if(drivinglicensecard != null){
 			String path = request.getSession().getServletContext().getRealPath("/DrivingLicense");
 			path = upload.SaveFile(drivinglicensecard, path, drivinglicensecardContentType);
-			String urlpath = "http://10.60.42.70:8080/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
+			String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 			carowner.setDrivinglicenseCard(urlpath);
 		}
 		user.setIdentity(identity);
@@ -112,7 +112,7 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 		String path = request.getSession().getServletContext().getRealPath("/Avatar");
 		try{
 			String filepath = upload.SaveFile(image, path, imageContentType);
-			String urlpath = "http://10.60.42.70:8080/AmazingAd"+filepath.split("AmazingAd")[1].replace('\\', '/');
+			String urlpath = defined.baseurl+"/AmazingAd"+filepath.split("AmazingAd")[1].replace('\\', '/');
 //			System.out.println(urlpath);
 			service.changeavatar(phone, urlpath);
 			data.put(defined.Error, defined.SUCCESS);

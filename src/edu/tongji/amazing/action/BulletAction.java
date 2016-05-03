@@ -29,8 +29,10 @@ public class BulletAction extends ActionSupport{
 	private String phone = null;
 	private String content = null;
 	private String title;
+	
 	@Resource(name="bullet")
 	private Bullet bullet;
+	
 	private List<Bullet> bulletList = null;
 	private String key;
 	private String color;
@@ -77,6 +79,7 @@ public class BulletAction extends ActionSupport{
 		 data = new HashMap<String, Object>();
 		 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 	     String time = df.format(new Date());// new Date()为获取当前系统时间
+//	     System.out.println("barrage phone is "+phone);
 		 bullet.setPhone(phone);
 		 bullet.setTime(time);
 		 bullet.setContent(content);
@@ -87,7 +90,7 @@ public class BulletAction extends ActionSupport{
 		 if(!bulletservice.clearShortCut(phone, key)){
 			 data.put(defined.Error, defined.FAIL);
 		 }
-		 if(id !=null){//更新操作
+		 if(id != null){//更新操作
 			 if(bulletservice.updateBullet(bullet)){
 				 data.put(defined.Error, defined.SUCCESS);
 			 }else{
@@ -139,12 +142,16 @@ public class BulletAction extends ActionSupport{
 				 data.put(defined.Error, defined.FAIL);
 				 return "result";
 			 }
-			bullet = bulletservice.GetLast(phone);
+			if(bulletservice.GetLast(phone)!=null){
+				bullet = bulletservice.GetLast(phone);
+				data.put("number", number);
+				data.put("title", bullet.getTitle());
+				data.put("content", bullet.getContent());
+				data.put("time", bullet.getTime());
+			}else{
+				data.put("number", number);
+			}
 			data.put(defined.Error, defined.SUCCESS);
-			data.put("number", number);
-			data.put("title", bullet.getTitle());
-			data.put("content", bullet.getContent());
-			data.put("time", bullet.getTime());
 			return "result";
 		}catch(Exception  e){
 			data.put(defined.Error, defined.FAIL);
