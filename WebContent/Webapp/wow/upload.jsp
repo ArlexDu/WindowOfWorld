@@ -103,7 +103,7 @@
 					    </div>
 					    <div class="form-group">
 					   		<label>发布地段</label>
-					    	<select class="form-control" name="area">
+					    	<select class="form-control" name="area" id="area" onchange="show();">
 								<option value="嘉定区">嘉定区</option>
 								<option value="杨浦区">杨浦区</option>
 								<option value="浦东新区">浦东新区</option>
@@ -120,6 +120,9 @@
 								<option value="徐汇">徐汇</option>
 								<option value="青浦">青浦</option>
 							</select>
+					    </div>
+					    <div id="drag">
+					    <div id="map"></div>
 					    </div>
 					    </div>
                     </div>
@@ -183,7 +186,22 @@
     <script src="../assets/js/jqBootstrapValidation.js"></script>
     <script src="../assets/js/contact_me.js"></script>
     <script src="../assets/js/agency.js"></script>
- 
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=826e806b86676d155282de3d37188137"></script>
+    <script type="text/javascript">
+    var marker, oDrag = document.getElementById("drag");    // 百度地图API功能
+	var map = new BMap.Map("map");            				// 创建Map实例
+	map.enableScrollWheelZoom(true);
+	map.addControl(new BMap.ScaleControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT}));    // 右下比例尺
+	map.setDefaultCursor("Crosshair");											  //鼠标样式
+	map.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT}));  //右上角，仅包含平移和缩放按钮
+	map.centerAndZoom("上海", 11);
+	oDrag.style.display = "block";
+	function show(){
+		var area=document.getElementById("area").value;
+		map.centerAndZoom(area,12);                   // 初始化地图,设置城市和地图级别。
+		oDrag.style.display = "block";
+	}
+	</script>
 </body>
 
 </html>

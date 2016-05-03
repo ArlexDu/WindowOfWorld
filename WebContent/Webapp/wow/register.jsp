@@ -72,7 +72,7 @@
                            </div>
                            <div class="form-group">
                            		<label>广告商执照</label>
-                              	<input type="text" class="form-control" placeholder="证件编号" name="liscense">
+                              	<input type="text" class="form-control" placeholder="证件编号" name="licence">
                            </div>
                            <div class="form-group">
                            		<label>身份证</label>
@@ -102,14 +102,14 @@
                            		<label class="liscense1">广告商执照认证</label>
                            		<img id="liscense_p" src="/AmazingAd/Webapp/assets/images/jiazhao_m.jpg">
                            		<label class="liscense0">本地选取
-                              	<input class="liscense" accept="image/gif, image/jpeg, image/x-png" type="file" name="liscense_p" onchange="showPreview1(this)" />
+                              	<input class="liscense" accept="image/gif, image/jpeg, image/x-png" type="file" name="licencecard" onchange="showPreview1(this)" />
                            		</label>
                            </div>
                            <div class="picture">
                            		<label class="identity1">身份证照片认证</label>
                            		<img id="identity_p" src="/AmazingAd/Webapp/assets/images/id.jpg">
                            		<label class="identity0">本地选取
-                              	<input class="identity" accept="image/gif, image/jpeg, image/x-png" type="file" name="identity_p" onchange="showPreview2(this)" />
+                              	<input class="identity" accept="image/gif, image/jpeg, image/x-png" type="file" name="identitycard" onchange="showPreview2(this)" />
                            		</label>
                            </div>
                            </div>	
@@ -153,7 +153,6 @@
 	
 	<script src="../assets/js/check.js"></script>
     <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/jquery.easing.min.js"></script>
     <script src="../assets/js/classie.js"></script>

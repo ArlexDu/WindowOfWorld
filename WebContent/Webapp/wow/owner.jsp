@@ -60,20 +60,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 reg_font">
-                    <form name="register1" id="register1" onSubmit=" return closebut()">
+                    <form name="register1" id="register1" method="post" action="">
                         <div class="row">
                         <div class="col-lg-3">
-	                        <div class="form-group">
-	                           <label>
-	                           <input class="avatar" accept="image/gif, image/jpeg, image/x-png" type="file" name="avatar" onchange="showPreview(this)" />
-	                       	   <img id="portrait" src="/AmazingAd/Webapp/assets/images/avatar.jpg">
-	                       	   </label>
-	                        </div>
+                            <label>
+                            <input class="avatar" accept="image/gif, image/jpeg, image/x-png" type="file" name="avatar" onchange="showPreview(this)" />
+                      	    <img id="portrait" src="/AmazingAd/Webapp/assets/images/avatar.jpg">
+                      	    </label>
                         	<div class="form-group">
 	                        <label>商业执照</label>
 	                        <img id="lis_pic" src="/AmazingAd/Webapp/assets/images/jiazhao_m.jpg"><br/>
-	                        </div>
-	                        <div class="form-group">
 	                        <label>身份证照片</label>
 	                        <img id="id_pic" src="/AmazingAd/Webapp/assets/images/id.jpg"><br/>
 	                        </div>
@@ -97,7 +93,7 @@
                               	<input type="email" class="form-control" placeholder="常用邮箱" name="mail" readonly>
                            </div>
                            <div class="form-group">
-                           		<span class="label label-success pw" onclick="pw_change();">更改密码</span>
+                           		<span id="pw" class="label label-success" onclick="pw_change();">更改密码</span>
                            		<span id="pw_close" class="label label-success" onclick="pw_close();">收起</span>
                            </div>
                            <div class="pw_change">
@@ -118,7 +114,7 @@
                              	  <input class="btn btn-xl" type="button" value="修改"  onclick="doclick1();" />
                              </div>
                              <div class="col-lg-3">
-                                <input class="btn btn-xl" type="button" value="保存"  onclick="doclick2();" />
+                                <input type="submit" class="btn btn-xl" value="保存" onclick="doclick2();" >
                              </div>
                             <div class="col-lg-2"></div>
                         </div>
@@ -134,7 +130,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="copyright">Our Website 2016</span>
+                    <span class="copyright">Our Web 2016</span>
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
@@ -160,6 +156,20 @@
         </div>
     </div>
  
+ 	<div class="modal fade" id="reg1Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title" id="myModalLabel">修改个人信息</h4>
+	      </div>
+	      <div class="modal-body" id="reg1_context"></div>
+	      <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+ 
 	<script src="../assets/js/check.js"></script>
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
@@ -170,31 +180,6 @@
     <script src="../assets/js/contact_me.js"></script>
     <script src="../assets/js/agency.js"></script>
     
-    <script>
-		function closebut(){
-		document.register1.imageField.disabled=true;
-		}
-	</script>
-	
-	<script>
-		function doclick1(){  
-		var txtN =document.getElementById("register1").getElementsByTagName("input");
-		 for(i=0;i<txtN.length;i++){
-		   if(txtN[i].type="text"){
-		    txtN[i].readOnly=false;
-		   }
-		 }
-		} 
-		function doclick2(){  
-			var txtN =document.getElementById("register1").getElementsByTagName("input");
-			 for(i=0;i<txtN.length;i++){
-			   if(txtN[i].type="text"){
-			    txtN[i].readOnly=true;
-			   }
-			 }
-			}
-	</script>
-
 </body>
 
 </html>

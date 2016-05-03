@@ -61,8 +61,8 @@ div.reg_3{display:none; width:555px; height:565px;}
 
 .adtype1{display:none;}
 .adtype2{display:none;margin-top:30px;}
-.adtype{margin-left:80px;width:100px;margin-right:6px;}
-.adtype:hover{background-color:#00FF7F; width:100px; margin-left:80px;margin-right:6px;}
+.adtype{margin-left:85px;width:100px;}
+.adtype:hover{background-color:#00FF7F; width:100px; margin-left:85px;}
 
 .ad1{width:565px;height:640px;}
 .ad2{display:none;width:565px;height:600px;}
@@ -83,5 +83,9 @@ div.reg_3{display:none; width:555px; height:565px;}
 #id_pic{width:250px; height:150px; margin-top:30px;}
 
 .pw_change{display:none;}
-#pw_close{display:none;}
-.pw{width:150px;margin-top:20px;margin-right:300px;}
+#pw_close{display:none;margin-top:50px;}
+#pw_close:hover{display:none;background-color:#00FF7F;margin-top:50px;}
+#pw{width:150px;margin-top:50px;margin-right:300px;}
+#pw:hover{width:150px;margin-top:50px;margin-right:300px;background-color:#00FF7F;}
+
+#map{width:560px; height:400px; overflow: hidden; margin-top:50px;}

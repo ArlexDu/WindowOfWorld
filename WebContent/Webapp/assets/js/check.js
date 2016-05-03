@@ -66,7 +66,7 @@ function showPreview2(source) {  //上传身份证图片预览
 function check_reg(){                        //注册验证
 	var username=document.register.username.value;
 	var realname=document.register.realname.value;
-	var liscense=document.register.liscense.value;
+	var licence=document.register.licence.value;
 	var id=document.register.identity.value;
 	var mail=document.register.mail.value;
 	var phone=document.register.phone.value;
@@ -88,7 +88,7 @@ function check_reg(){                        //注册验证
 		$("#reg_context").html("法人姓名不能为空");
 		return false;
 	}
-	if(liscense==""){
+	if(licence==""){
 		$('#myModal0').modal('show');
 		$("#reg_context").html("广告商执照不能为空");
 		return false;
@@ -98,16 +98,17 @@ function check_reg(){                        //注册验证
 		$("#reg_context").html("身份证不能为空");
 		return false;
 	}
-	if(mail==""){
-		$('#myModal0').modal('show');
-		$("#reg_context").html("邮箱不能为空");
-		return false;
-	}
 	if(phone==""){
 		$('#myModal0').modal('show');
 		$("#reg_context").html("联系电话不能为空");
 		return false;
 	}
+	if(mail==""){
+		$('#myModal0').modal('show');
+		$("#reg_context").html("邮箱不能为空");
+		return false;
+	}
+	
 	if(uname_lg>30){
 		$('#myModal0').modal('show');
 		$("#reg_context").html("企业名称长度不能大于30位");
@@ -137,19 +138,16 @@ function adtype1(){
 	$(".adtype1").slideDown("slow");
 	$(".adtype2").slideUp("slow");
 }
-
 function adtype2(){
 	$(".adtype1").slideUp("slow");
 	$(".adtype2").slideDown("slow");
 }
-
 function ad_change1(){
 	 $(".ad1").slideDown("slow");
 	 $(".ad2").slideUp("slow");
 	 $("#ad_change1").slideUp("slow");
 	 $("#ad_change2").slideDown("slow");
 }
-
 function ad_change2(){
 	 $(".ad1").slideUp("slow");
 	 $(".ad2").slideDown("slow");
@@ -196,7 +194,7 @@ function date1() {
     });
 }
 
-function ad_more(id){//广告信息
+function ad_more(id){		//广告信息
 	$('#adModal').modal('show');
 	$("#ad_num").html(id);
 	$("#ad_co").text("广告内容");
@@ -240,4 +238,73 @@ function pw_change(){
 function pw_close(){
 	$(".pw_change").fadeOut("slow");
 	$("#pw_close").fadeOut("slow");
+}
+
+function doclick1(){  
+	var txtN =document.getElementById("register1").getElementsByTagName("input");
+	for(i=0;i<txtN.length;i++){
+	   if(txtN[i].type="text"){
+		   txtN[i].readOnly=false;
+	   }
+	}
+} 
+
+function doclick2(){  
+	var txtN =document.getElementById("register1").getElementsByTagName("input");
+	var username=document.register1.username.value;
+	var realname=document.register1.realname.value;
+	var mail=document.register1.mail.value;
+	var phone=document.register1.phone.value;
+	var pw=document.register1.password.value;
+	var pw1=document.register1.password1.value;
+	var uname_lg=username.length;			 //企业名称长度是否符合要求
+	var rname_lg=realname.length;			 //法人姓名长度是否符合要求
+	if(username==""){
+		$('#reg1Modal').modal('show');
+		$("#reg1_context").html("企业名称不能为空");
+		return false;
+	}
+	if(realname==""){
+		$('#reg1Modal').modal('show');
+		$("#reg1_context").html("法人姓名不能为空");
+		return false;
+	}
+	if(phone==""){
+		$('#reg1Modal').modal('show');
+		$("#reg1_context").html("联系电话不能为空");
+		return false;
+	}
+	if(mail==""){
+		$('#reg1Modal').modal('show');
+		$("#reg1_context").html("邮箱不能为空");
+		return false;
+	}
+	if(uname_lg>30){
+		$('#reg1Modal').modal('show');
+		$("#reg1_context").html("企业名称长度不能大于30位");
+		return false;                         
+	}else if(rname_lg>30){
+		$('#reg1Modal').modal('show');
+		$("#reg1_context").html("法人姓名长度不能大于30位");
+		return false;
+	}else{
+		for(i=0;i<txtN.length;i++){
+			if(txtN[i].type="text"){
+				txtN[i].readOnly=true;
+			}
+		}
+		$('#reg1Modal').modal('show');
+		$("#reg1_context").html("修改信息成功");
+	}
+	
+	
+//	if(pw_lg<8||pw_lg>16){			//判断密码长度是否符合要求
+//		$('#reg1Modal').modal('show');
+//		$("#reg1_context").html("密码长度要在8到16位之间");
+//		return false;
+//	}else if(pw!=pw1){              //判断密码两次是否输入一致
+//		$('#reg1Modal').modal('show');
+//		$("#reg1_context").html("两次密码输入不一致");
+//		return false;
+//	}
 }

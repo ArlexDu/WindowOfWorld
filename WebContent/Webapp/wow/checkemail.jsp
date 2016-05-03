@@ -58,8 +58,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">确认邮件激活</h2>
-                    <h2 class="section-heading">&nbsp;</h2>
+                    <h2 class="section-heading">尊敬的用户，欢迎加入世界之窗车载广告系统！</h2>
+                    <h2 class="section-heading">请点击以下链接完成邮箱激活账户</h2>
+                    <a href="login.jsp">激活链接</a>
                 </div>
             </div>
             
