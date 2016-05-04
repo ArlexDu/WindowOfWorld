@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -11,13 +12,8 @@
 
     <title>The World Window</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="../assets/css/agency.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
 	<link href="../assets/wow-font/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
@@ -30,19 +26,24 @@
 </head>
 
 <body id="page-top" class="index">
-	<!-- Navigation -->
+
+     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header page-scroll">
-                <a class="navbar-brand page-scroll" href="home.jsp">世界之窗</a>
+                <a class="navbar-brand page-scroll" href="#">邮箱确认激活</a>
             </div>
+
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="home.jsp">返回</a>
+                        <a class="page-scroll" href="account.jsp">返回</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="home.jsp">首页</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#AppModal" data-toggle="modal">App</a>
@@ -51,46 +52,18 @@
             </div>
         </div>
     </nav>
-	
-	<!-- 登录部分 -->
+    
+    <!-- Contact Section -->
     <section id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">登录</h2>
+                    <h2 class="section-heading">尊敬的用户，欢迎加入世界之窗车载广告系统！</h2>
+                    <h2 class="section-heading">请点击以下链接完成邮箱激活账户</h2>
+                    <a href="login.jsp">激活链接</a>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form name="login" id="login" method="post" onsubmit="return check_login()" action="">
-                        <div class="row">
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-6">
-                           <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="手机号/身份证号" id="account" required>
-                               <p class="help-block text-danger"></p>
-                           </div>
-                           <div class="form-group">
-                              	<input type="password" class="form-control" placeholder="密码 " id="password" required>
-                               <p class="help-block text-danger"></p>
-                           </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="col-lg-3"></div>   
-                           <div class="col-lg-12">
-                               <div class="col-lg-3"></div>
-	                               <div class="col-lg-3">
-	                               	  <input type="submit" class="btn btn-xl" value="登录">
-	                               </div>
-	                               <div class="col-lg-3">
-	                               	  <a class="btn btn-xl" href="register.jsp">注册</a>
-	                               </div>
-                               <div class="col-lg-3"></div>
-                           </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            
         </div>
     </section>
     
@@ -110,25 +83,6 @@
             </div>
         </div>
     </footer>
-    
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/js/check.js"></script>
-    
-    <!-- 登录出错弹出 -->
-	<div class="modal fade" id="login_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h4 class="modal-title" id="myModalLabel">登录提示</h4>
-	      </div>
-	      <div class="modal-body">账号密码出错</div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
 
     <!--APP二维码-->
     <div class="portfolio-modal modal fade" id="AppModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -142,7 +96,17 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- jQuery -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.easing.min.js"></script>
+    <script src="../assets/js/classie.js"></script>
+    <script src="../assets/js/cbpAnimatedHeader.js"></script>
+    <script src="../assets/js/jqBootstrapValidation.js"></script>
+    <script src="../assets/js/contact_me.js"></script>
+    <script src="../assets/js/agency.js"></script>
 
 </body>
+
 </html>

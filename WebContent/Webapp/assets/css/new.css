@@ -1,9 +1,11 @@
 body{text-align:center;}
 .page-scroll {font-size: 1.0em;}
-.form-group {margin: 0 auto;}
 .login {margin: 0 auto;}
 .btn-xl{width:180px; height:60px;border-radius:10px; margin-top:20px;}
-.form-control{ border-radius:10px; margin-top:28px;}
+.form-group{display:block;}
+.form-control{float:right; border-radius:10px; margin-top:20px;}
+section#contact .form-group{display:block;margin-top:1px}
+.btn-primary{width:150px;margin-top:10px;}
 .table{ position:relative; 
 		box-shadow:none; 
 		background-color:#fff; 
@@ -15,3 +17,75 @@ body{text-align:center;}
 		color: black;
 		z-index:5;}
 .table-header{font-size:1.5em; font-weight:bolder; text-align:center; background-color:#F5F5F5;}
+
+.reg_font div span{float:left; color:#ffffff;font-size:1.5em;margin-top:20px;}
+.reg_font div label{float:left; color:#ffffff;font-size:1.5em;margin-top:20px;}
+
+.reg_font input{float:right;}
+
+#portrait{ width:120px; height:120px; vertical-align:middle; margin-right:180px;}
+
+div.reg_2{display:none;}
+div.reg_3{display:none; width:555px; height:565px;}
+
+.ava_all{margin-top:50px;}
+.avatar{visibility:hidden;}
+
+#liscense_p{ width:250px; height:150px; margin-top:30px; margin-left:50px;}
+#identity_p{ width:250px; height:150px; margin-top:30px; margin-left:50px;}
+.picture{width:565px; height:270px;}
+
+.liscense1{margin-right:0px;}
+.picture .liscense0{background-color:none;width:250px; height:30px; margin-left:250px;}
+.picture .liscense0:hover{background-color:#808080;width:250px; height:30px; margin-left:250px;}
+.liscense{visibility:hidden;}
+
+.identity1{margin-right:0px;}
+.picture .identity0{background-color:none;width:250px; height:30px; margin-left:250px;}
+.picture .identity0:hover{background-color:#808080;width:250px; height:30px; margin-left:250px;}
+.identity{visibility:hidden;}
+
+#reg_change1{font-size:30px;margin-top:260px;margin-left:2px;} 
+#reg_change2{font-size:30px;} 
+#reg_change3{font-size:30px;margin-left:2px;} 
+#reg_change1:hover{background-color:#393539;font-size:30px;margin-top:260px;margin-left:2px;} 
+#reg_change2:hover{background-color:#393539;font-size:30px;} 
+#reg_change3:hover{background-color:#393539;font-size:30px;margin-left:2px;} 
+.reg_change{background-color:none; width:50px; height:150px;}
+
+.btn-xl{margin-top:30px;}
+
+.ad_time img:hover{opacity:0.5}
+.ava_all img:hover{opacity:0.5}
+#portrait:hover{opacity:0.5}
+
+.adtype1{display:none;}
+.adtype2{display:none;margin-top:30px;}
+.adtype{margin-left:85px;width:100px;}
+.adtype:hover{background-color:#00FF7F; width:100px; margin-left:85px;}
+
+.ad1{width:565px;height:640px;}
+.ad2{display:none;width:565px;height:600px;}
+.ad_change span{display:block;}
+#ad_change1{font-size:30px;margin-top:200px;margin-left:40px;display:none;}
+#ad_change2{font-size:30px;margin-top:200px;margin-left:40px;}
+#ad_change1:hover{background-color:#393539;font-size:30px;margin-top:200px;margin-left:40px;display:none;}
+#ad_change2:hover{background-color:#393539;font-size:30px;margin-top:200px;margin-left:40px;}
+
+#ad_picture{width:400px;height:250px;margin-top:30px;}
+.ad_picture{margin-left:200px;;width:100px;height:30px;margin-right:200px;}
+.ad_picture:hover{background-color:#393539;vertical-align: middle;width:100px;height:30px;}
+
+.ad_one th{width:30%;}
+.ad_one td{font-size:1.5em;}
+
+#lis_pic{width:250px; height:150px; margin-top:30px;}
+#id_pic{width:250px; height:150px; margin-top:30px;}
+
+.pw_change{display:none;}
+#pw_close{display:none;margin-top:50px;}
+#pw_close:hover{display:none;background-color:#00FF7F;margin-top:50px;}
+#pw{width:150px;margin-top:50px;margin-right:300px;}
+#pw:hover{width:150px;margin-top:50px;margin-right:300px;background-color:#00FF7F;}
+
+#map{width:560px; height:400px; overflow: hidden; margin-top:50px;}
