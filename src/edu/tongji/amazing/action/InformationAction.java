@@ -15,7 +15,7 @@ import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.tool.Defined;
-import edu.tongji.amazing.tool.UpLoadFile;
+import edu.tongji.amazing.tool.FileTools;
 
 @Controller("infromation")
 public class InformationAction extends ActionSupport implements ServletRequestAware{
@@ -35,8 +35,8 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 	private CarOwner carowner;
 	@Resource(name = "define")
 	private Defined defined;
-	@Resource(name="uploadfile")
-	private UpLoadFile upload;
+	@Resource(name="filetool")
+	private FileTools upload;
 	private File image;
 	private String imageContentType;
 	private File identitycard;

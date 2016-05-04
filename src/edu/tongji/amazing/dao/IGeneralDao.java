@@ -2,6 +2,8 @@ package edu.tongji.amazing.dao;
 
 import java.util.List;
 
+import edu.tongji.amazing.model.User;
+
 /*
  * 关于一些共同操作的泛型类
  */
@@ -28,5 +30,7 @@ public interface IGeneralDao<T> {
 	public int GetNumbers(String phone);
 	//得到最近的一条记录
 	public T GetLast(String phone); 
+	
+	public User IsUserExist(String phone);
 	
 }

@@ -64,5 +64,11 @@ public class CarOwnerService implements ICarOwnerService{
 		// TODO Auto-generated method stub
 		return userdao.getProduct(phone);
 	}
+
+	@Override
+	public User IsUserExist(String phone) {
+		// TODO Auto-generated method stub
+		return userdao.IsUserExist(phone);
+	}
 	
 }

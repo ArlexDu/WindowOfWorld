@@ -8,6 +8,7 @@ public class Defined {
 	public final String Error = "errCode";
 	public final String apikey = "1d2113d4b2e5178c1d097916c5f691e8";
 	public final String baseurl = "http://10.60.42.70:8080";
+	public final String basepath = "D:\\Eclipse\\apache-tomcat\\wtpwebapps";
 	public final int SUCCESS = 1;//成功
 	public final int FAIL = 0; //失败
 	public final int NOUSER = 101; //不存在用户

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.tongji.amazing.dao.impl.AdvertiserDao;
 import edu.tongji.amazing.model.Advertiser;
+import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdvertiserService;
 @Service("advertiserservice")
 public class AdvertiserService implements IAdvertiserService{
@@ -29,6 +30,11 @@ public class AdvertiserService implements IAdvertiserService{
 	public Advertiser getAdvertisementinfo(String phone) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.getUserbyPhone(phone);
+	}
+	@Override
+	public User IsUserExist(String phone) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.IsUserExist(phone);
 	}
 
 

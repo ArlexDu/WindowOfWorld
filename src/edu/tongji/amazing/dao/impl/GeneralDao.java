@@ -13,6 +13,8 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import edu.tongji.amazing.dao.IGeneralDao;
+import edu.tongji.amazing.model.CarOwner;
+import edu.tongji.amazing.model.User;
 
 /*
  * 大多数模块都需要处理的共同的函数
@@ -52,7 +54,7 @@ public class GeneralDao<T> implements IGeneralDao<T> {
     	Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);
-		//int num = query.
+		query.executeUpdate();
 		transaction.commit();
 		session.close();
 		return true;
@@ -173,6 +175,22 @@ public class GeneralDao<T> implements IGeneralDao<T> {
 			transaction.commit();
 			session.close();
 		}
+	}
+	@Override
+	public User IsUserExist(String phone) {
+		// TODO Auto-generated method stub
+		User user = null;
+		String hql = "from User where phone = '" + phone + "'";
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		Iterator iterator = query.iterate();
+		if (iterator.hasNext()) {
+			user = (User) iterator.next();
+		}
+		transaction.commit();
+		session.close();
+		return user;
 	}
 
 }

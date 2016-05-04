@@ -21,7 +21,7 @@ import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdvertiserService;
 import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.tool.SendEmail;
-import edu.tongji.amazing.tool.UpLoadFile;
+import edu.tongji.amazing.tool.FileTools;
 @Controller("advertiserAction")
 public class AdvertiserAction extends ActionSupport implements ServletRequestAware{
 
@@ -65,8 +65,8 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 	private File identitycard;
 	private String identitycardContentType;
 	private HttpServletRequest request;
-	@Resource(name="uploadfile")
-	private UpLoadFile upload;
+	@Resource(name="filetool")
+	private FileTools upload;
 	
 	@Resource(name = "sendemail")
 	private SendEmail sendemail;

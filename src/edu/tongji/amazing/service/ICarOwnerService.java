@@ -2,6 +2,7 @@ package edu.tongji.amazing.service;
 
 
 import edu.tongji.amazing.model.CarOwner;
+import edu.tongji.amazing.model.User;
 
 public interface ICarOwnerService {
 	
@@ -28,4 +29,8 @@ public interface ICarOwnerService {
 	
 	//通过用户手机获得设备号
 	public String getProduct(String phone);
+	
+	//检查用户是否存在
+	public User IsUserExist(String phone);
+	
 }

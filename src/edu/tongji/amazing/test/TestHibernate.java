@@ -21,6 +21,7 @@ import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.impl.AdvertisementService;
 import edu.tongji.amazing.service.impl.BulletService;
 import edu.tongji.amazing.service.impl.CarOwnerService;
+import edu.tongji.amazing.tool.FileTools;
 import edu.tongji.amazing.tool.SendEmail;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -86,11 +87,22 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
   	}
   	@Resource(name="sendemail")
   	private SendEmail email;
-  	@Test
+//  	@Test
   	public void send(){
   		try {
 			email.send("shengyudu@gmail.com","15021799675");
 		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+  	}
+  	
+  	@Resource(name = "uploadfile")
+  	private FileTools file;
+  	public void deletefile(){
+  		try {
+			file.deleteFile("http://10.60.42.70:8080/AmazingAd/Individuation/1.png");
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

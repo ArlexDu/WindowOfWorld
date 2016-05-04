@@ -27,7 +27,7 @@ public class LoginAction extends ActionSupport {
 	@Resource(name ="define")
 	private Defined defined;
 	
-//	网页登录的接口 web/user/login
+//	网页登录的接口 android/user/login
 	public String LoginWeb() throws Exception {
 		// TODO Auto-generated method stub
 		//判断是否有此用户
@@ -48,7 +48,7 @@ public class LoginAction extends ActionSupport {
 		// TODO Auto-generated method stub
 		data = new HashMap<String,Object>();
 		//判断是否有此用户
-		if(service.getUserbyPhone(phone)==null){
+		if(service.IsUserExist(phone)==null){
 			data.put(defined.Error, defined.NOUSER);
 			return "success";
 		}
@@ -64,7 +64,7 @@ public class LoginAction extends ActionSupport {
 		// TODO Auto-generated method stub
 		data = new HashMap<String,Object>();
 		//判断是否有此用户
-		if(service.getUserbyPhone(phone)==null){
+		if(service.IsUserExist(phone)==null){
 			data.put(defined.Error, defined.NOUSER);
 		}else{
 			data.put(defined.Error, defined.SUCCESS);

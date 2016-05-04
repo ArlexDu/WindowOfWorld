@@ -26,7 +26,7 @@ public class AdvertisementAction extends ActionSupport implements ModelDriven<Ad
 
 		// System.out.println("identity: "+advertisement.getPhone());
 		// System.out.println("begin_time: "+advertisement.getBegin_time());
-		// System.out.println("end_time: "+advertisement.getEnd_time());
+		// System.out.prinln("end_time: "+advertisement.getEnd_time());
 		// System.out.println("place: "+advertisement.getPlace());
 		// System.out.println("price: "+advertisement.getPrice());
 		// System.out.println("time: "+advertisement.getTime());

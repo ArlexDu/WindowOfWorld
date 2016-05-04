@@ -25,7 +25,7 @@ import edu.tongji.amazing.service.IAdvertiserService;
 import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.tool.SendMessage;
-import edu.tongji.amazing.tool.UpLoadFile;
+import edu.tongji.amazing.tool.FileTools;
 @Controller("administratorAction")
 public class AdministratorAction extends ActionSupport implements ServletRequestAware{
 
@@ -78,8 +78,8 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	private String realname;
 	private File identityCard;
 	private String identityCardContentType;
-	@Resource(name = "uploadfile")
-	private UpLoadFile upload;
+	@Resource(name = "filetool")
+	private FileTools upload;
 	
 	@Resource(name = "user")
 	private User adminstrator;

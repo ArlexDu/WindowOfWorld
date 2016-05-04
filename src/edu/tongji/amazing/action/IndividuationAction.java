@@ -17,7 +17,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import edu.tongji.amazing.model.Individuation;
 import edu.tongji.amazing.service.IIndividuationService;
 import edu.tongji.amazing.tool.Defined;
-import edu.tongji.amazing.tool.UpLoadFile;
+import edu.tongji.amazing.tool.FileTools;
 
 @Controller("individuationAction")
 public class IndividuationAction extends ActionSupport implements ServletRequestAware {
@@ -35,8 +35,8 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 
 	private HttpServletRequest request;
 
-	@Resource(name = "uploadfile")
-	private UpLoadFile upload;
+	@Resource(name = "filetool")
+	private FileTools upload;
 
 	// 添加一个新的个性化图片 android/individaution/add 请求
 	private String phone;
