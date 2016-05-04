@@ -2,14 +2,30 @@
  * 
  */
 function check_login(){
-	var account=document.login.account.value;
+	var phone=document.login.account.value;
 	var pw=document.login.password.value;
-	if(pw!=111){
-		$('#login_Modal').modal('show');
-		return false;
-	}else{
-		window.location.href="/AmazingAd/Webapp/wow/account.jsp"; //跳转不了？？？？？
-	}
+//	if(pw!=111){
+//		$('#login_Modal').modal('show');
+//		return false;
+//	}else{
+//		window.location.href="/AmazingAd/Webapp/wow/account.jsp"; //跳转不了？？？？？
+//	}
+	$.ajax({
+        type: "POST",
+        url : "/AmazingAd/web/advertiser/login",
+        data : {
+            	phone:phone,
+            	password:pw
+        		},
+        success: function(response){
+            if(response=="success"){
+            	window.location.href="AmazingAd/Webapp/wow/home.jsp"
+            }else{
+            	alert(response);
+                return false;
+            }
+        }
+    });
 }
 
 function reg_change1(){

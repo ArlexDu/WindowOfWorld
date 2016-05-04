@@ -21,27 +21,28 @@ public class AdvertisementAction extends ActionSupport implements ModelDriven<Ad
 	@Resource(name = "advertisementservice")
 	private IAdvertisementService adservice;
 
-	// 广告的添加 /advertisement/add
+	// 骞垮憡鐨勬坊鍔� /advertisement/add
 	public String newAdvertisement() throws Exception {
 
-		// System.out.println("identity: "+advertisement.getPhone());
-		// System.out.println("begin_time: "+advertisement.getBegin_time());
-		// System.out.println("end_time: "+advertisement.getEnd_time());
-		// System.out.println("place: "+advertisement.getPlace());
-		// System.out.println("price: "+advertisement.getPrice());
-		// System.out.println("time: "+advertisement.getTime());
-		// System.out.println("status: "+advertisement.getStatus());
-		// System.out.println("content: "+advertisement.getContent());
-		try {
-			adservice.AddNewAd(advertisement);
-			return "success";
-		} catch (Exception e) {
-			return "fail";
-		}
+		 System.out.println("identity: "+advertisement.getPhone());
+		 System.out.println("begin_time: "+advertisement.getBegin_time());
+		 System.out.println("end_time: "+advertisement.getEnd_time());
+		 System.out.println("place: "+advertisement.getPlace());
+		 System.out.println("price: "+advertisement.getPrice());
+		 System.out.println("time: "+advertisement.getTime());
+		 System.out.println("status: "+advertisement.getStatus());
+		 System.out.println("content: "+advertisement.getContent());
+		return "fail";
+//		try {
+//			adservice.AddNewAd(advertisement);
+//			return "success";
+//		} catch (Exception e) {
+//			return "fail";
+//		}
 
 	}
 
-	// 广告的更新 /advertisement/update
+	// 骞垮憡鐨勬洿鏂� /advertisement/update
 	public String updateAdvertisement() throws Exception {
 
 		try {
@@ -53,7 +54,7 @@ public class AdvertisementAction extends ActionSupport implements ModelDriven<Ad
 
 	}
 
-	// 广告的删除/advertisement/delete
+	// 骞垮憡鐨勫垹闄�/advertisement/delete
 	private String id;
 
 	public String deleteAdvertisement() throws Exception {
@@ -67,7 +68,7 @@ public class AdvertisementAction extends ActionSupport implements ModelDriven<Ad
 
 	}
 	
-	//获得广告商的所有广告  /advertisement/getall
+	//鑾峰緱骞垮憡鍟嗙殑鎵�鏈夊箍鍛�  /advertisement/getall
 	private String phone;
 	public String GetAdvertisements()throws Exception{
 		

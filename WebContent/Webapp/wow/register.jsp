@@ -50,7 +50,7 @@
 	<!-- 注册部分 -->
     <section id="contact">
         <div class="container">
-                <form name="register" id="register" method="post" onsubmit="return check_reg()" action="">
+                <form name="register" id="register" method="post" onsubmit="return check_reg()" action="/AmazingAd/web/advertiser/register" enctype="multipart/form-data">
                     <div class="col-lg-12 reg_font">
                         <div class="col-lg-3">
                         	<div class="ava_all">
@@ -102,7 +102,7 @@
                            		<label class="liscense1">广告商执照认证</label>
                            		<img id="liscense_p" src="/AmazingAd/Webapp/assets/images/jiazhao_m.jpg">
                            		<label class="liscense0">本地选取
-                              	<input class="liscense" accept="image/gif, image/jpeg, image/x-png" type="file" name="licencecard" onchange="showPreview1(this)" />
+                              	<input class="liscense" accept="image/gif, image/jpeg, image/x-png" type="file" name="licensecard" onchange="showPreview1(this)"/>
                            		</label>
                            </div>
                            <div class="picture">
