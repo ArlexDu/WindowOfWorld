@@ -284,5 +284,4 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 		this.mail = mail;
 	}
 	
-	
 }
