@@ -62,16 +62,16 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form name="login" id="login" method="post" onsubmit="return check_login()" action="">
+                    <form name="login" id="login">
                         <div class="row">
                         <div class="col-lg-3"></div>
                         <div class="col-lg-6">
                            <div class="form-group">
-                              	<input type="text" class="form-control" placeholder="手机号/身份证号" id="account" required>
+                              	<input type="text" class="form-control" placeholder="手机号" id="account" name="phone" required>
                                <p class="help-block text-danger"></p>
                            </div>
                            <div class="form-group">
-                              	<input type="password" class="form-control" placeholder="密码 " id="password" required>
+                              	<input type="password" class="form-control" placeholder="密码 " id="password" name="password" required>
                                <p class="help-block text-danger"></p>
                            </div>
                         </div>
@@ -80,7 +80,7 @@
                            <div class="col-lg-12">
                                <div class="col-lg-3"></div>
 	                               <div class="col-lg-3">
-	                               	  <input type="submit" class="btn btn-xl" value="登录">
+	                               	  <input type="button" class="btn btn-xl" value="登录" onclick="return check_login()">
 	                               </div>
 	                               <div class="col-lg-3">
 	                               	  <a class="btn btn-xl" href="register.jsp">注册</a>

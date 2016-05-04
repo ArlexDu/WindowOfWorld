@@ -54,7 +54,7 @@
     <!-- 上传部分 -->
     <section id="contact">
         <div class="container">
-             <form name="upload" id="upload" method="post">
+             <form name="upload" id="upload" method="post" action="/AmazingAd/web/advertiser/addad">
                  <div class="col-lg-12 reg_font">
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
@@ -79,11 +79,11 @@
 					 	<div class="form-group">&nbsp;</div>
 						<div class="form-group">
 						    <label class="control-label">发布日期</label>
-						    <input id="datetimepicker" class="form-control" type="text" name="begin-date" value="2016-5-1" onclick="date();">
+						    <input id="datetimepicker" class="form-control" type="text" name="begin_time" value="2016-5-1" onclick="date();">
 						</div>
 						<div class="form-group">
 						    <label>结束日期</label>
-						    <input id="datetimepicker1" class="form-control" type="text" name="end-date" value="2016-5-1" onclick="date1();">
+						    <input id="datetimepicker1" class="form-control" type="text" name="end_time" value="2016-5-1" onclick="date1();">
 						</div>
 					    </div>
 					    <div class="ad2">
