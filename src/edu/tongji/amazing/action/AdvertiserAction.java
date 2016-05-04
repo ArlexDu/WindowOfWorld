@@ -96,24 +96,24 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 				String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				user.setAvatar(urlpath);
 				System.out.println("avatar>>");
+				System.out.println("url:"+urlpath);
 			}
-			System.out.println(avatar);
 			if(licensecard != null){
 				String path = request.getSession().getServletContext().getRealPath("/Businesslicense");
 				path = upload.SaveFile(licensecard, path, licensecardContentType);
 				String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				advertiser.setLicensecard(urlpath);
 				System.out.println("licensecard>>");
+				System.out.println("url:"+urlpath);
 			}
-			System.out.println(licensecard);
 			if(identitycard != null){
 				String path = request.getSession().getServletContext().getRealPath("/IdentityCard");
 				path = upload.SaveFile(identitycard, path, identitycardContentType);
 				String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				user.setIdentityCard(urlpath);
 				System.out.println("identitycard>>");
+				System.out.println("url:"+urlpath);
 			}
-			System.out.println(identitycard);
 			user.setBalace(0.0f);
 			user.setCredit(0.0f);
 			user.setIdentity(identity);
@@ -141,10 +141,10 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 			System.out.println(mail);
 			
 			advertiser.setUser(user);
-			//service.addAdvertise(advertiser);
+			service.addAdvertise(advertiser);
 //			out.print("true");
 //			out.flush();
-			//sendemail.send(mail,phone);
+//			sendemail.send(mail,phone);
 			
 			return "success";
 			

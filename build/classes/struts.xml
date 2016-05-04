@@ -44,6 +44,16 @@
 	<package name="edu.tongji.amazing.action.web.advertiser"
 		namespace="/web/advertiser" extends="struts-default,json-default">
 		<action name="register" class="advertiserAction" method="register">
+			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="fail">/Webapp/admin/404.html</result>
+		</action>
+		<action name="login" class="advertiserAction" method="login">
+		</action>
+		<action name="getallads" class="advertiserAction" method="getAllAdByPhone">
+		</action>
+		<action name="addad" class="addadpost" method="newAdvertisement">
+			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="active" class="advertiserAction" method="ActiveAccount">
 		    <result name="success">/Website/Pages/success.jsp</result>
