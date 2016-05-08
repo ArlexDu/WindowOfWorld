@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.tongji.amazing.dao.IAdvertisementDao;
 import edu.tongji.amazing.model.Advertisement;
+import edu.tongji.amazing.model.CarOwner;
 import oracle.net.aso.q;
 /*
  * hql 语言简介：http://blog.csdn.net/yaerfeng/article/details/6969649
@@ -25,7 +26,23 @@ public class AdvertisementDao extends GeneralDao<Advertisement> implements IAdve
 		super(Advertisement.class);
 		// TODO Auto-generated constructor stub
 	}
+	@Resource
+    protected  SessionFactory factory;
 
-
+	@Override
+	public List<Advertisement> SendAdvertise(double lon1, double lon2, double lat1, double lat2 ,int time) throws Exception {
+		// TODO Auto-generated method stub
+		String hql = "from Advertisement where id in (select adid from AdvertisementPlaceAndTime where begin_time <= "+time
+				      +" and end_time >= "+time
+				      + " and longitude between "+lon1+" and "+lon2+" and latitude between "
+				      +lat1+" and "+lat2+")";
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		List<Advertisement> list = query.list();
+		transaction.commit();
+		session.close();
+		return list;
+	}
 
 }

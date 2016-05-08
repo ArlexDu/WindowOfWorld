@@ -17,7 +17,8 @@ import com.baidu.yun.push.model.PushMsgToSingleDeviceResponse;
 @Component("sendinfo")
 public class PushMsgToDevice {
 	
-	public void send(String channelid,Object ob) throws PushClientException,
+	//type 1:barrage 2:individuation 3:advertisements
+	public void send(String channelid,Object ob,String type) throws PushClientException,
 			PushServerException {
 		// 1. get apiKey and secretKey from developer console
 		String apiKey = "buPZFGnRf6EhZaEKHHdQswbMRMSqcGx5";
@@ -42,8 +43,9 @@ public class PushMsgToDevice {
 			//创建 Android的通知
 			JSONObject notification = new JSONObject();
 			JSONObject jsonCustormCont = new JSONObject();
+			jsonCustormCont.put("type", type);
 			jsonCustormCont.put("data", ob); //自定义内容，key-value
-			notification.put("custom_content", jsonCustormCont);
+			notification.put("wow", jsonCustormCont);
 
 			PushMsgToSingleDeviceRequest request = new PushMsgToSingleDeviceRequest()
 					.addChannelId(channelid)//"4262492356657242983"

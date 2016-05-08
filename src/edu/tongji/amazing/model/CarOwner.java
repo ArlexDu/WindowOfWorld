@@ -27,7 +27,7 @@ public class CarOwner {
 	private String phone;
 	
 	@Column(name = "productId")
-	private int productId;
+	private String productId;
 	
 	@Column(name = "drivinglicense")
 	private String drivinglicense;
@@ -51,11 +51,11 @@ public class CarOwner {
 		this.phone = phone;
 	}
 
-	public int getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 
-	public void setProduct_id(int productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 

@@ -20,4 +20,7 @@ public interface IAdvertisementService {
 
 	// 根据广告的id删除广告信息
 	public void DeleteAd(String ad_id);
+	
+	//向pad端发送广告
+	public List<Advertisement> SendAdvertise(String longitude, String latitude)throws Exception;
 }

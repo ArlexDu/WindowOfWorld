@@ -1,5 +1,6 @@
 package edu.tongji.amazing.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -46,5 +47,35 @@ public class AdvertisementService implements IAdvertisementService {
 		// TODO Auto-generated method stub
 		dao.DeleteViaId(ad_id);
 	}
+
+	@Override
+	public List<Advertisement> SendAdvertise(String longitude, String latitude) throws Exception {
+		// TODO Auto-generated method stub
+		double lon = Double.parseDouble(longitude);
+		double lat = Double.parseDouble(latitude);
+		//100米对应的纬度
+		double round_lat = 1.0/111000*100;
+		//100米对应的经度
+		double round_lon = 1.0/111000*Math.cos(lat)*100;
+//		System.out.println("round_lat is "+round_lat);
+//		System.out.println("round_lon is "+round_lon);
+		//查找经度的范围
+		double start_lat = lat - round_lat;
+		double end_lat = lat + round_lat;
+//		System.out.println("start_lat is "+start_lat);
+//		System.out.println("end_lat is "+end_lat);
+		//查找纬度的范围
+		double start_lon = lon - round_lon;
+		double end_lon = lon + round_lon;
+//		System.out.println("start_lon is "+start_lon);
+//		System.out.println("end_lon is "+end_lon);
+		Date date = new Date();
+		int hour = date.getHours();
+//		System.out.println("hour is "+hour);
+		return dao.SendAdvertise(start_lon, end_lon, start_lat, end_lat, hour);
+	}
+
+
+	
 
 }

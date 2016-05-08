@@ -114,6 +114,16 @@
 				<param name="root">data</param>
 			</result>
 		</action>
+		<action name="sendbarrage" class="padaction" method="SendBarrage">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="sendcoordinate" class="padaction" method="SendAdvertisement">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
 	</package>
 
 
@@ -151,11 +161,6 @@
 			</result>
 		</action>
 		<action name="delete" class="bulletAndroid" method="delete">
-			<result name="result" type="json">
-				<param name="root">data</param>
-			</result>
-		</action>
-		<action name="sendbarrage" class="padaction" method="SendBarrage">
 			<result name="result" type="json">
 				<param name="root">data</param>
 			</result>

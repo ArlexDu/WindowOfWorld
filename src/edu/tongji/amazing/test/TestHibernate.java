@@ -15,9 +15,11 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.tongji.amazing.model.Advertisement;
+import edu.tongji.amazing.model.AdvertisementPlaceAndTime;
 import edu.tongji.amazing.model.Bullet;
 import edu.tongji.amazing.model.CarOwner;
 import edu.tongji.amazing.model.User;
+import edu.tongji.amazing.service.IAdvertisementService;
 import edu.tongji.amazing.service.impl.AdvertisementService;
 import edu.tongji.amazing.service.impl.BulletService;
 import edu.tongji.amazing.service.impl.CarOwnerService;
@@ -45,11 +47,6 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 		user.setUsername("happy");
 		System.out.println("username is "+user.getUsername());
 	}
-    //@Test
-    public void addad(){
-    	ad.setPhone("123456789");
-    	service.AddNewAd(ad);
-    }
     
   @Resource(name="bulletservice")
 	private BulletService bulletService;
@@ -97,7 +94,7 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 		}
   	}
   	
-  	@Resource(name = "uploadfile")
+  	@Resource(name = "filetool")
   	private FileTools file;
   	public void deletefile(){
   		try {
@@ -107,4 +104,40 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 			e.printStackTrace();
 		}
   	}
+  	@Resource(name = "advertisement")
+  	private Advertisement advertisement;
+  	@Resource(name = "advertisementservice")
+  	private IAdvertisementService adservice;
+//	@Test
+  	public void addad(){
+  	  advertisement.setPhone("15021799675");
+  	  advertisement.setContent("wocao123333");
+	  AdvertisementPlaceAndTime placeandtime1 = new AdvertisementPlaceAndTime();
+	  placeandtime1.setBegin_time("21");
+	  placeandtime1.setEnd_time("22");
+	  placeandtime1.setLatitude("38");
+	  placeandtime1.setLongtitude("130");
+  	  AdvertisementPlaceAndTime placeandtime2 = new AdvertisementPlaceAndTime();
+	  placeandtime2.setBegin_time("18");
+	  placeandtime2.setEnd_time("19");
+	  placeandtime2.setLatitude("20");
+	  placeandtime2.setLongtitude("130");
+      advertisement.getPlaceandtime().add(placeandtime1);
+      advertisement.getPlaceandtime().add(placeandtime2);
+      adservice.AddNewAd(advertisement);
+	}
+  	
+  	@Test
+    public void sendad(){
+    	try {
+			 List<Advertisement> id = adservice.SendAdvertise("130", "20");
+			 for(int i = 0; i<id.size();i++){
+				 System.out.println("id is "+id.get(i).getContent());
+			 }
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+  	
 }

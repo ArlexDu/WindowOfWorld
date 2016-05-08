@@ -8,4 +8,5 @@ import edu.tongji.amazing.model.Advertisement;
  */
 public interface IAdvertisementDao {
 
+	public List<Advertisement> SendAdvertise(double lon1 , double lon2 ,double lat1 ,double lat2 ,int time)throws Exception;
 }

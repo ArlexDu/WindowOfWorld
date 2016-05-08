@@ -24,20 +24,11 @@ public class AdvertisementAction extends ActionSupport implements ModelDriven<Ad
 	// 骞垮憡鐨勬坊鍔� /advertisement/add
 	public String newAdvertisement() throws Exception {
 		 System.out.println("identity: "+advertisement.getPhone());
-		 System.out.println("begin_time: "+advertisement.getBegin_time());
-		 System.out.println("end_time: "+advertisement.getEnd_time());
-		 System.out.println("place: "+advertisement.getPlace());
 		 System.out.println("price: "+advertisement.getPrice());
 		 System.out.println("time: "+advertisement.getTime());
 		 System.out.println("status: "+advertisement.getStatus());
 		 System.out.println("content: "+advertisement.getContent());
 		 return "fail";
-//		try {
-//			adservice.AddNewAd(advertisement);
-//			return "success";
-//		} catch (Exception e) {
-//			return "fail";
-//		}
 
 	}
 

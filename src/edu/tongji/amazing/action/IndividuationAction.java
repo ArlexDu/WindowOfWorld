@@ -15,9 +15,11 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionSupport;
 
 import edu.tongji.amazing.model.Individuation;
+import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.service.IIndividuationService;
 import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.tool.FileTools;
+import edu.tongji.amazing.tool.PushMsgToDevice;
 
 @Controller("individuationAction")
 public class IndividuationAction extends ActionSupport implements ServletRequestAware {
@@ -122,10 +124,46 @@ public class IndividuationAction extends ActionSupport implements ServletRequest
 
 	// 处理android/individuation/status 改变当前的个性化图片的状态
 	private String status;
-
+    
+	@Resource(name= "carownerservice")
+	private ICarOwnerService carowner;
+	
+	@Resource(name = "sendinfo")
+	private PushMsgToDevice push;
+	
+	public class indiv{
+		private String operate;
+		private String content;
+		public String getOperate() {
+			return operate;
+		}
+		public void setOperate(String operate) {
+			this.operate = operate;
+		}
+		public String getContent() {
+			return content;
+		}
+		public void setContent(String content) {
+			this.content = content;
+		}
+		
+		
+	}
+	
 	public String ChangStatus() throws Exception {
 		data = new HashMap<String, Object>();
 		if (service.ChangeStatus(id, status)) {
+			individuation = service.GetIndividuationById(id);
+			String phone = individuation.getPhone();
+			String p_id = carowner.getProduct(phone);
+			indiv div = new indiv();
+			if(status.equals("-1")){//发送到pad更新个性化图片
+				div.setOperate("-1");//删除
+			}else{
+				div.setOperate("1");//增加
+			}
+			div.setContent(individuation.getContent());
+			push.send(p_id, div,"2");
 			data.put(defined.Error, defined.SUCCESS);
 		} else {
 			data.put(defined.Error, defined.FAIL);
