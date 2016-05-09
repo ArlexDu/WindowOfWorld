@@ -53,6 +53,22 @@ public class PadAction extends ActionSupport {
     	}
     	return "result";
     }
+    /*
+     * get phonemuber by channelid
+     * parameter:
+     *        @channelid
+     */
+    public String GetphoneByChannelid() throws Exception{
+    	data = new HashMap<String,Object>();
+    	try{
+    		String phone = service.GetphonebyChannelid(channelid);
+    		data.put("phone", phone);
+    		data.put(define.Error, define.SUCCESS);
+    	}catch(Exception e){
+    		data.put(define.Error, define.FAIL);
+    	}
+    	return "result";
+    }
 /*    send barrage to pad  
  * /android/user/sendbarrage
  * parameter:

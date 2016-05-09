@@ -100,4 +100,21 @@ public class CarOwnerDao extends GeneralDao<CarOwner> implements ICarOwnerDao {
 		session.close();
 		return result;
 	}
+
+	@Override
+	public String GetphonebyChannelid(String channelid) throws Exception{
+		// TODO Auto-generated method stub
+		String hql = "select phone from CarOwner where productId = '" + channelid + "'";
+		String result="";
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		Iterator iterator = query.iterate();
+		if (iterator.hasNext()) {
+			result = (String)iterator.next();
+		}
+		transaction.commit();
+		session.close();
+		return result;
+	}
 }

@@ -33,4 +33,7 @@ public interface ICarOwnerService {
 	//检查用户是否存在
 	public User IsUserExist(String phone);
 	
+	//根据用户的channelid获得用户的手机
+	public String GetphonebyChannelid(String channelid)throws Exception;
+	
 }

@@ -70,5 +70,11 @@ public class CarOwnerService implements ICarOwnerService{
 		// TODO Auto-generated method stub
 		return userdao.IsUserExist(phone);
 	}
+
+	@Override
+	public String GetphonebyChannelid(String channelid)throws Exception {
+		// TODO Auto-generated method stub
+		return userdao.GetphonebyChannelid(channelid);
+	}
 	
 }

@@ -21,4 +21,7 @@ public interface ICarOwnerDao {
 	
 	//通过用户手机获得设备号
 	public String getProduct(String phone);
+	
+	//根据用户的channelid获得用户的手机
+	public String GetphonebyChannelid(String channelid)throws Exception;
 }

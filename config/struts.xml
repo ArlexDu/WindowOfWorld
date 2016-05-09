@@ -114,6 +114,11 @@
 				<param name="root">data</param>
 			</result>
 		</action>
+		<action name="getphone" class="padaction" method="GetphoneByChannelid">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
 		<action name="sendbarrage" class="padaction" method="SendBarrage">
 			<result name="result" type="json">
 				<param name="root">data</param>
