@@ -75,6 +75,12 @@ public class AdvertisementService implements IAdvertisementService {
 		return dao.SendAdvertise(start_lon, end_lon, start_lat, end_lat, hour);
 	}
 
+	@Override
+	public List<Advertisement> GetShowAdvertisements() throws Exception{
+		// TODO Auto-generated method stub
+		return dao.GetShowAdvertisements();
+	}
+
 
 	
 

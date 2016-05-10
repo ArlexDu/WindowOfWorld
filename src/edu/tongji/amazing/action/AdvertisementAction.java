@@ -1,5 +1,7 @@
 package edu.tongji.amazing.action;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,10 +12,11 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import edu.tongji.amazing.model.Advertisement;
-
+import edu.tongji.amazing.service.IAdministratorService;
 import edu.tongji.amazing.service.IAdvertisementService;
+import edu.tongji.amazing.tool.Defined;
 
-@Controller("addadpost")
+@Controller("advertisementaction")
 public class AdvertisementAction extends ActionSupport implements ModelDriven<Advertisement> {
 	@Resource(name = "advertisement")
 	private Advertisement advertisement;
@@ -69,6 +72,29 @@ public class AdvertisementAction extends ActionSupport implements ModelDriven<Ad
 			return "fail";
 		}
 	}
+	/*
+	 * return 5 advertisements to android device
+	 *  /android/user/getadvertisements
+	 */
+	private HashMap<String, Object> data;
+	@Resource(name = "define")
+	private Defined defined;
+	public String Getadvertisements() throws Exception{
+
+		try{
+			data = new HashMap<String,Object>();
+			List<Advertisement> advertisements = adservice.GetShowAdvertisements();
+			List<String> urls = new ArrayList<String>();
+			for(int i = 0; i< advertisements.size() ; i++ ){
+			   urls.add(advertisements.get(i).getContent());
+			}
+			data.put("urls", urls);
+			data.put(defined.Error,defined.SUCCESS);
+		}catch(Exception e){
+			data.put(defined.Error,defined.FAIL);
+		}
+		return "result";
+	}
 
 	@Override
 	public Advertisement getModel() {
@@ -83,5 +109,15 @@ public class AdvertisementAction extends ActionSupport implements ModelDriven<Ad
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	public HashMap<String, Object> getData() {
+		return data;
+	}
+
+	public void setData(HashMap<String, Object> data) {
+		this.data = data;
+	}
+	
+	
 
 }

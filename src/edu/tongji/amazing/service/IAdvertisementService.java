@@ -23,4 +23,7 @@ public interface IAdvertisementService {
 	
 	//向pad端发送广告
 	public List<Advertisement> SendAdvertise(String longitude, String latitude)throws Exception;
+	
+	//获得android端需要的广告
+	public List<Advertisement> GetShowAdvertisements()throws Exception;
 }

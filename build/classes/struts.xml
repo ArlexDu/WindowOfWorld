@@ -51,7 +51,7 @@
 		</action>
 		<action name="getallads" class="advertiserAction" method="getAllAdByPhone">
 		</action>
-		<action name="addad" class="addadpost" method="newAdvertisement">
+		<action name="addad" class="advertisementaction" method="newAdvertisement">
 			<result name="success">/Website/Pages/success.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
@@ -110,6 +110,11 @@
 			</result>
 		</action>
 		<action name="productid" class="padaction" method="SetProductId">
+			<result name="result" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="getadvertisements" class="advertisementaction" method="Getadvertisements">
 			<result name="result" type="json">
 				<param name="root">data</param>
 			</result>

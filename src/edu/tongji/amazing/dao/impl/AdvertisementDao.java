@@ -45,4 +45,17 @@ public class AdvertisementDao extends GeneralDao<Advertisement> implements IAdve
 		return list;
 	}
 
+	@Override
+	public List<Advertisement> GetShowAdvertisements() throws Exception{
+		// TODO Auto-generated method stub
+		String hql = "from Advertisement where rownum<6 and advertisementclass = 1 order by id desc";
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		List<Advertisement> advertisements = query.list();
+		transaction.commit();
+		session.close();
+		return advertisements;
+	}
+
 }
