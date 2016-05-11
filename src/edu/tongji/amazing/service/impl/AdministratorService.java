@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import edu.tongji.amazing.dao.impl.AdministratorDao;
 import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.Balance;
+import edu.tongji.amazing.model.Finance;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdministratorService;
 @Service("administratorservice")
@@ -75,6 +76,11 @@ public class AdministratorService implements IAdministratorService{
 	public void changeUserStatus(String phone, String status) throws Exception {
 		// TODO Auto-generated method stub
 		dao.changeUserStatus(phone, status);
+	}
+	@Override
+	public List<Finance> wholefinace() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.wholefinace();
 	}
 
 }

@@ -18,6 +18,7 @@ import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.Advertiser;
 import edu.tongji.amazing.model.Balance;
 import edu.tongji.amazing.model.CarOwner;
+import edu.tongji.amazing.model.Finance;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdministratorService;
 import edu.tongji.amazing.service.IAdvertisementService;
@@ -242,7 +243,19 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 		}
 	}
 	
-	
+	public String wholeFinance() throws Exception{
+		try{
+			List<Finance> finaces = service.wholefinace();
+			for(int i = 0; i<finaces.size() ; i++){
+				 System.out.println("date is "+finaces.get(i).getFinance_date());
+				 System.out.println("income is "+finaces.get(i).getIncome());
+	             System.out.println("outgoing is "+finaces.get(i).getOutgoing());
+			}
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
 	
 	public String getPhone() {
 		return phone;

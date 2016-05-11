@@ -1,14 +1,20 @@
 package edu.tongji.amazing.dao.impl;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.id.uuid.StandardRandomStrategy;
+import org.hibernate.type.StandardBasicTypes;
+import org.hibernate.type.Type;
 import org.springframework.stereotype.Repository;
 
 import com.opensymphony.xwork2.inject.Factory;
@@ -17,6 +23,7 @@ import edu.tongji.amazing.dao.IAdministratorDao;
 import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.Advertiser;
 import edu.tongji.amazing.model.Balance;
+import edu.tongji.amazing.model.Finance;
 import edu.tongji.amazing.model.User;
 @Repository("administratordao")
 public class AdministratorDao extends GeneralDao<User> implements IAdministratorDao{
@@ -189,6 +196,31 @@ public class AdministratorDao extends GeneralDao<User> implements IAdministrator
 		query.executeUpdate();
 		transaction.commit();
 		session.close();
+	}
+
+	@Override
+	public List<Finance> wholefinace() throws Exception {
+		// TODO Auto-generated method stub
+		String sql = "select income,outgoing,finance_date from totalfinance";
+		Session session = Factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		List list = session.createSQLQuery(sql)
+				.addScalar("income",StandardBasicTypes.DOUBLE)
+				.addScalar("outgoing",StandardBasicTypes.DOUBLE)
+				.addScalar("finance_date",StandardBasicTypes.STRING).list();
+		List<Finance> finances = new ArrayList<Finance>();
+		for(int i = 0; i< list.size(); i++){
+			Object[] ob =(Object[])list.iterator().next();
+			Finance finance = new Finance();
+			finance.setIncome((double)ob[0]);
+			finance.setOutgoing((double)ob[1]);
+			finance.setFinance_date((String)ob[2]);
+			finances.add(finance);
+			
+		}
+		transaction.commit();
+		session.close();
+		return finances;
 	}
 
 	

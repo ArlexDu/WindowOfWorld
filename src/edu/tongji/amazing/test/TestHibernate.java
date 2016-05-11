@@ -18,7 +18,9 @@ import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.AdvertisementPlaceAndTime;
 import edu.tongji.amazing.model.Bullet;
 import edu.tongji.amazing.model.CarOwner;
+import edu.tongji.amazing.model.Finance;
 import edu.tongji.amazing.model.User;
+import edu.tongji.amazing.service.IAdministratorService;
 import edu.tongji.amazing.service.IAdvertisementService;
 import edu.tongji.amazing.service.impl.AdvertisementService;
 import edu.tongji.amazing.service.impl.BulletService;
@@ -127,7 +129,7 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
       adservice.AddNewAd(advertisement);
 	}
   	
-  	@Test
+//  	@Test
     public void sendad(){
     	try {
 			 List<Advertisement> id = adservice.SendAdvertise("130", "20");
@@ -139,5 +141,20 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 			e.printStackTrace();
 		}
     }
+	@Resource(name="administratorservice")
+	private IAdministratorService adminservice;
+    @Test
+    public void wholeFinance() throws Exception{
+		try{
+			List<Finance> finaces = adminservice.wholefinace();
+			for(int i = 0; i<finaces.size() ; i++){
+				 System.out.println("date is "+finaces.get(i).getFinance_date());
+				 System.out.println("income is "+finaces.get(i).getIncome());
+	             System.out.println("outgoing is "+finaces.get(i).getOutgoing());
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
   	
 }

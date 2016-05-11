@@ -4,6 +4,7 @@ import java.util.List;
 
 import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.Balance;
+import edu.tongji.amazing.model.Finance;
 import edu.tongji.amazing.model.User;
 
 public interface IAdministratorService {
@@ -41,5 +42,8 @@ public interface IAdministratorService {
 	
 	//审核用户结果
 	public void changeUserStatus(String phone,String status) throws Exception;
+	
+	//获得总的支出
+	public List<Finance> wholefinace()throws Exception;
 	
 }
