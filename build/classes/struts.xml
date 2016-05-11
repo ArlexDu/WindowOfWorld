@@ -38,6 +38,10 @@
 			<result name="success">/Website/Pages/success.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
+		<action name="finances" class="administratorAction" method="wholeFinance">
+			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="fail">/Webapp/admin/404.html</result>
+		</action>
 	</package>
 	
 	<!-- web广告商action -->

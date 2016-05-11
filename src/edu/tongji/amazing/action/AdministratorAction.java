@@ -243,14 +243,15 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 		}
 	}
 	
+	/*
+	 *  return finance of the company 
+	 *  
+	 */
+	
 	public String wholeFinance() throws Exception{
 		try{
-			List<Finance> finaces = service.wholefinace();
-			for(int i = 0; i<finaces.size() ; i++){
-				 System.out.println("date is "+finaces.get(i).getFinance_date());
-				 System.out.println("income is "+finaces.get(i).getIncome());
-	             System.out.println("outgoing is "+finaces.get(i).getOutgoing());
-			}
+			List<Finance> finances = service.wholefinace();
+			ServletActionContext.getRequest().setAttribute("finance",finances);
 			return "success";
 		}catch(Exception e){
 			return "fail";

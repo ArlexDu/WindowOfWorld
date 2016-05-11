@@ -34,7 +34,7 @@ public class AdvertisementPlaceAndTime {
 	private String begin_time;
 	
 	@Column(name = "end")
-	private String end_time;
+	private String end_time; 
 	
 	private String adid;
 	
