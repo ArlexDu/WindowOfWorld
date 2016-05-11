@@ -12,4 +12,7 @@ public interface IAdvertisementDao {
 	
 	//获得android端需要的广告
 	public List<Advertisement> GetShowAdvertisements() throws Exception;
+	
+	//获得android端需要的广告(特殊地点)
+	public List<Advertisement> SpecialShowAdvertisements(String place) throws Exception;
 }

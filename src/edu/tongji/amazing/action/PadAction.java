@@ -162,6 +162,39 @@ public class PadAction extends ActionSupport {
     	
     	
     }
+    //特殊地点的枚举
+    public enum Place{
+    	SCHOOL("学校","school"),
+    	HOSPITAL("医院","hospital"),
+    	HOTEL("酒店","hotel");
+    	
+    	private String name;
+    	private String code;
+    	
+    	private Place(String name,String code) {
+			// TODO Auto-generated constructor stub
+    		this.name = name;
+    		this.code = code;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getCode() {
+			return code;
+		}
+
+		public void setCode(String code) {
+			this.code = code;
+		}
+    	
+    	
+    }
     @Resource
     private IAdvertisementService adservice;
     public String SendAdvertisement() throws Exception{
@@ -169,6 +202,13 @@ public class PadAction extends ActionSupport {
     	try{
     		List<Advertisement> rawads = adservice.SendAdvertise(longitude, latitude);
     		List<ad> advertisements = new ArrayList<ad>();
+    		Place[] places = Place.values();
+    		for(Place curplace : places){
+    			//当前坐标周围有这个地点
+    			if(adservice.getfrombaidu(longitude, latitude, curplace.getCode())){
+    				rawads.addAll(adservice.SpecialShowAdvertisements(curplace.getCode()));
+    			}
+    		}
     		for(int i=0;i<rawads.size();i++){
     			ad a = new ad();
     			a.setSort(rawads.get(i).getAdvertisementclass());

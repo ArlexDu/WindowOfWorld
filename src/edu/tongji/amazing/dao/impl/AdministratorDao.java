@@ -223,6 +223,49 @@ public class AdministratorDao extends GeneralDao<User> implements IAdministrator
 		return finances;
 	}
 
+	@Override
+	public List<User> UserTable(int pagenum) throws Exception {
+		// TODO Auto-generated method stub
+		String hql = "from User order by time desc ";
+		Session session = Factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		query.setFirstResult((pagenum-1)*10);
+		query.setMaxResults(10);
+		List<User> users = query.list();
+		return users;
+	}
+
+	@Override
+	public List<Advertisement> AdvertisementTable(int pagenum) throws Exception {
+		// TODO Auto-generated method stub
+		String hql = "from Advertisement order by id desc ";
+		Session session = Factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		query.setFirstResult((pagenum-1)*10);
+		query.setMaxResults(10);
+		List<Advertisement> advertisements = query.list();
+		transaction.commit();
+		session.close();
+		return advertisements;
+	}
+
+	@Override
+	public List<Balance> BalanceTable(int pagenum) throws Exception {
+		// TODO Auto-generated method stub
+		String hql = "from Balance order by id desc ";
+		Session session = Factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		query.setFirstResult((pagenum-1)*10);
+		query.setMaxResults(10);
+		List<Balance> balances = query.list();
+		transaction.commit();
+		session.close();
+		return balances;
+	}
+
 	
 
 }

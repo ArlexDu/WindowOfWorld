@@ -82,5 +82,20 @@ public class AdministratorService implements IAdministratorService{
 		// TODO Auto-generated method stub
 		return dao.wholefinace();
 	}
+	@Override
+	public List<User> UserTable(int pagenum) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.UserTable(pagenum);
+	}
+	@Override
+	public List<Advertisement> AdvertisementTable(int pagenum) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.AdvertisementTable(pagenum);
+	}
+	@Override
+	public List<Balance> BalanceTable(int pagenum) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.BalanceTable(pagenum);
+	}
 
 }

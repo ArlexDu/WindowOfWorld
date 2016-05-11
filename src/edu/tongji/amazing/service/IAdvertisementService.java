@@ -26,4 +26,10 @@ public interface IAdvertisementService {
 	
 	//获得android端需要的广告
 	public List<Advertisement> GetShowAdvertisements()throws Exception;
+	
+	//获得android端需要的广告(特殊地点)
+	public List<Advertisement> SpecialShowAdvertisements(String place) throws Exception;
+	
+	//调用百度地图api获得当前位置的信息
+	public boolean getfrombaidu(String lon, String lat,String place) throws Exception;
 }

@@ -46,4 +46,13 @@ public interface IAdministratorService {
 	//获得总的支出
 	public List<Finance> wholefinace()throws Exception;
 	
+	//根据当前页获得展示用户
+	public List<User> UserTable(int pagenum) throws Exception;
+	
+	//根据当前页获得展示广告
+	public List<Advertisement> AdvertisementTable(int pagenum) throws Exception;
+	
+	//根据当前页获得展示账单
+	public List<Balance> BalanceTable(int pagenum) throws Exception;
+	
 }

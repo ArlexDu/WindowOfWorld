@@ -258,6 +258,56 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 		}
 	}
 	
+	/*
+	 * 分页获得user的列表
+	 *  参数：
+	 *     @pagenum //当前页数
+	 */
+	private String pagenum;
+	
+	public String UserTable() throws Exception{
+		try{
+			int num = Integer.parseInt(pagenum);
+			List<User> users = service.UserTable(num);
+			ServletActionContext.getRequest().setAttribute("users",users);
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
+	
+	/*
+	 * 分页获得广告的列表
+	 *  参数：
+	 *     @pagenum //当前页数
+	 */
+	public String AdvertisementTable() throws Exception{
+		try{
+			int num = Integer.parseInt(pagenum);
+			List<Advertisement> advertisements = service.AdvertisementTable(num);
+			ServletActionContext.getRequest().setAttribute("advertisements",advertisements);
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
+	
+	/*
+	 * 分页获得收支的列表
+	 *  参数：
+	 *     @pagenum //当前页数
+	 */
+	public String BalanceTable() throws Exception{
+		try{
+			int num = Integer.parseInt(pagenum);
+			List<Balance> balances = service.BalanceTable(num);
+			ServletActionContext.getRequest().setAttribute("balances",balances);
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
+	
 	public String getPhone() {
 		return phone;
 	}
@@ -347,6 +397,14 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 
 	public void setUserclass(String userclass) {
 		this.userclass = userclass;
+	}
+
+	public String getPagenum() {
+		return pagenum;
+	}
+
+	public void setPagenum(String pagenum) {
+		this.pagenum = pagenum;
 	}
 	
 	

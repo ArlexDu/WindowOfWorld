@@ -58,4 +58,17 @@ public class AdvertisementDao extends GeneralDao<Advertisement> implements IAdve
 		return advertisements;
 	}
 
+	@Override
+	public List<Advertisement> SpecialShowAdvertisements(String place) throws Exception {
+		// TODO Auto-generated method stub
+		String hql = "from Advertisement where id in (select adid from AdvertisementPlaceAndTime where place = '"+place+"')";
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+		Query query = session.createQuery(hql);
+		List<Advertisement> advertisements = query.list();
+		transaction.commit();
+		session.close();
+		return advertisements;
+	}
+
 }
