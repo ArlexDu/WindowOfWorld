@@ -13,21 +13,30 @@
 		<!-- 相当于servlet，也就是对应一个name的请求，它的rul为 localhost:8080/项目名称/namespace/name.action或者localhost:8080/项目名称/namespace/name.do -->
 		<action name="login" class="administratorAction" method="Login">
 			<!-- 请求处理之后返回的页面 -->
-			<result name="success">/Webapp/admin/home.jsp</result>
-			<result name="fail">/Webapp/admin/404.html</result>
+			<result name="success">/Webapp/admin/index.jsp</result>
+			<result name="fail">/Webapp/admin/404.jsp</result>
+		</action>
+		
+		<action name="gethomedata" class="administratorAction" method="test">
+			<result></result>
 		</action>
 
 		<action name="register" class="administratorAction" method="register">
-			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="success">/Webapp/admin/not-vetted.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 
 		<action name="advertisement" class="administratorAction" method="advertisementdata">
-			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="success">/Webapp/admin/adcheck.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="user" class="administratorAction" method="userdata">
-			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="success3">/Webapp/admin/usercheck.jsp</result>
+			<result name="success2">/Webapp/admin/usercheck1.jsp</result>
+			<result name="success1">/Webapp/admin/usercheck2.jsp</result>
+			<result name="check1">/Webapp/admin/user.jsp</result>
+			<result name="check2">/Webapp/admin/user.jsp</result>
+			<result name="check3">/Webapp/admin/user.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="examineadvertisement" class="administratorAction" method="examineAdvertisement">
@@ -35,7 +44,7 @@
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="examineuser" class="administratorAction" method="examineUser">
-			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="success">/Webapp/admin/users.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="finances" class="administratorAction" method="wholeFinance">

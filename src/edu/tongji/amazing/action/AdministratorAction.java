@@ -222,20 +222,39 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	private IAdvertiserService advertiserservice;
 	
 	private String userclass;
+	private String userstate;
 	
 	public String userdata(){
 		try{
-			if(userclass.equals("1")){//管理员
-				User user =service.getAdministratorinfo(phone);
-				ServletActionContext.getRequest().setAttribute("userinfo",user);
-			}else if(userclass.equals("2")) {//广告商
-				Advertiser advertiser = advertiserservice.getAdvertisementinfo(phone);
-				ServletActionContext.getRequest().setAttribute("userinfo",advertiser);
-			}else{//车主
-				CarOwner carowner = carownerservice.getUserbyPhone(phone);
-				ServletActionContext.getRequest().setAttribute("userinfo",carowner);
+			if(userstate.equals("1")){
+				if(userclass.equals("1")){//管理员
+					User user =service.getAdministratorinfo(phone);
+					ServletActionContext.getRequest().setAttribute("userinfo",user);
+					return "check1";
+				}else if(userclass.equals("2")) {//广告商
+					Advertiser advertiser = advertiserservice.getAdvertisementinfo(phone);
+					ServletActionContext.getRequest().setAttribute("userinfo",advertiser);
+					return "check2";
+				}else{//车主
+					CarOwner carowner = carownerservice.getUserbyPhone(phone);
+					ServletActionContext.getRequest().setAttribute("userinfo",carowner);
+					return "check3";
+				}
+			}else{
+				if(userclass.equals("1")){//管理员
+					User user =service.getAdministratorinfo(phone);
+					ServletActionContext.getRequest().setAttribute("userinfo",user);
+					return "success1";
+				}else if(userclass.equals("2")) {//广告商
+					Advertiser advertiser = advertiserservice.getAdvertisementinfo(phone);
+					ServletActionContext.getRequest().setAttribute("userinfo",advertiser);
+					return "success2";
+				}else{//车主
+					CarOwner carowner = carownerservice.getUserbyPhone(phone);
+					ServletActionContext.getRequest().setAttribute("userinfo",carowner);
+					return "success3";
+				}
 			}
-			return "success";
 		}catch(Exception e){
 			return "fail";
 		}
@@ -443,6 +462,14 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 
 	public void setPagenum(String pagenum) {
 		this.pagenum = pagenum;
+	}
+
+	public String getUserstate() {
+		return userstate;
+	}
+
+	public void setUserstate(String userstate) {
+		this.userstate = userstate;
 	}
 	
 	
