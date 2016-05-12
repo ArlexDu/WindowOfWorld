@@ -1,6 +1,7 @@
 package edu.tongji.amazing.action;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +27,8 @@ import edu.tongji.amazing.service.IAdvertiserService;
 import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.tool.SendMessage;
+import edu.tongji.amazing.tool.ShowAdvertisement;
+import edu.tongji.amazing.tool.ShowBalance;
 import edu.tongji.amazing.tool.FileTools;
 @Controller("administratorAction")
 public class AdministratorAction extends ActionSupport implements ServletRequestAware{
@@ -37,7 +40,7 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	//用于展示的用户
 	private List<User> users;
 	
-	//用于展示的广告
+	//获得的广告
 	private List<Advertisement> advertisements;
 	
 	//用于展示的支出信息
@@ -125,25 +128,39 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 //			data = new HashMap<String,Object>();
 		    users = service.getShowUsers();
 			advertisements = service.getShowAdvertisements();
+			//获得展示的广告
+			List<ShowAdvertisement> showadvertisements = new ArrayList<ShowAdvertisement>();
+			for(int i=0;i<advertisements.size();i++){
+				ShowAdvertisement sa = new ShowAdvertisement();
+				sa.setUsername(service.GetUsernameByPhone(advertisements.get(i).getPhone()));
+				sa.setPhone(advertisements.get(i).getPhone());
+				sa.setPrice(advertisements.get(i).getPrice());
+				sa.setStatus(advertisements.get(i).getStatus());
+				sa.setDate(advertisements.get(i).getTime());
+				showadvertisements.add(sa);
+			}
 			balances = service.getShowBalance();
+			//获得展示的财务
+			List<ShowBalance> showbalances = new ArrayList<ShowBalance>();
+			for(int i=0;i<balances.size();i++){
+				ShowBalance sbal = new ShowBalance();
+				sbal.setUsername(service.GetUsernameByPhone(balances.get(i).getPhone()));
+				sbal.setMoney(balances.get(i).getMoney());
+				sbal.setReason(balances.get(i).getReason());
+				sbal.setDate(balances.get(i).getTime());
+				showbalances.add(sbal);
+			}
 			int alluser_number = service.getallusers();
 			int alladvertisement_number = service.getalladvertisements();
 			int examineuer = service.unexamineUsers();
 			int examineadvertisement = service.unexamineAdvertisements();
-//			data.put("users", users);
-//			data.put("advertisements", advertisements);
-//			data.put("balances", balances);
-//			data.put("alluser_number", alluser_number);
-//			data.put("alladvertisement_number", alladvertisement_number);
-//			data.put("examineuer", examineuer);
-//			data.put("examineadvertisement", examineadvertisement);
 			ServletActionContext.getRequest().setAttribute("all_user_number", alluser_number);
 			ServletActionContext.getRequest().setAttribute("examine_user_number", examineuer);
 			ServletActionContext.getRequest().setAttribute("all_advertisement_number", alladvertisement_number);
 			ServletActionContext.getRequest().setAttribute("examine_advertisement_number", examineadvertisement);
 			ServletActionContext.getRequest().setAttribute("showusers", users);
-			ServletActionContext.getRequest().setAttribute("showadvertisements", advertisements);
-			ServletActionContext.getRequest().setAttribute("showbalance", balances);
+			ServletActionContext.getRequest().setAttribute("showadvertisements", showadvertisements);
+			ServletActionContext.getRequest().setAttribute("showbalance", showbalances);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -285,7 +302,18 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 		try{
 			int num = Integer.parseInt(pagenum);
 			List<Advertisement> advertisements = service.AdvertisementTable(num);
-			ServletActionContext.getRequest().setAttribute("advertisements",advertisements);
+			//获得展示的广告
+			List<ShowAdvertisement> showadvertisements = new ArrayList<ShowAdvertisement>();
+			for(int i=0;i<advertisements.size();i++){
+				ShowAdvertisement sa = new ShowAdvertisement();
+				sa.setUsername(service.GetUsernameByPhone(advertisements.get(i).getPhone()));
+				sa.setPhone(advertisements.get(i).getPhone());
+				sa.setPrice(advertisements.get(i).getPrice());
+				sa.setStatus(advertisements.get(i).getStatus());
+				sa.setDate(advertisements.get(i).getTime());
+				showadvertisements.add(sa);
+			}
+			ServletActionContext.getRequest().setAttribute("advertisements",showadvertisements);
 			return "success";
 		}catch(Exception e){
 			return "fail";
@@ -301,7 +329,17 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 		try{
 			int num = Integer.parseInt(pagenum);
 			List<Balance> balances = service.BalanceTable(num);
-			ServletActionContext.getRequest().setAttribute("balances",balances);
+			//获得展示的财务
+			List<ShowBalance> showbalances = new ArrayList<ShowBalance>();
+			for(int i=0;i<balances.size();i++){
+				ShowBalance sbal = new ShowBalance();
+				sbal.setUsername(service.GetUsernameByPhone(balances.get(i).getPhone()));
+				sbal.setMoney(balances.get(i).getMoney());
+				sbal.setReason(balances.get(i).getReason());
+				sbal.setDate(balances.get(i).getTime());
+				showbalances.add(sbal);
+			}
+			ServletActionContext.getRequest().setAttribute("balances",showbalances);
 			return "success";
 		}catch(Exception e){
 			return "fail";

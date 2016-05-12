@@ -3,6 +3,7 @@ package edu.tongji.amazing.test;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -29,6 +30,7 @@ import edu.tongji.amazing.service.impl.BulletService;
 import edu.tongji.amazing.service.impl.CarOwnerService;
 import edu.tongji.amazing.tool.FileTools;
 import edu.tongji.amazing.tool.SendEmail;
+import edu.tongji.amazing.tool.ShowAdvertisement;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath*:applicationContext.xml"})
@@ -132,7 +134,7 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
   	/*
   	 * 测试定点投放
   	 */
-  	@Test
+//  	@Test
     public void sendad(){
     	try {
 		    List<Advertisement> ads = adservice.SendAdvertise("121.49854302406311", "31.28540017791541");
@@ -169,14 +171,26 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 			e.printStackTrace();
 		}
 	}
-//  	@Test
-    public void UserTable() throws Exception{
+  	@Test
+    public void AdvertisementTable() throws Exception{
 		try{
-			int num = Integer.parseInt("2");
-			List<User> users = adminservice.UserTable(num);
-			for(int i = 0; i<users.size() ; i++){
-				 System.out.println("username is "+users.get(i).getUsername());
+			int num = Integer.parseInt("1");
+			List<Advertisement> advertisements = adminservice.AdvertisementTable(num);
+			List<ShowAdvertisement> showadvertisements = new ArrayList<ShowAdvertisement>();
+			for(int i=0;i<advertisements.size();i++){
+				ShowAdvertisement sa = new ShowAdvertisement();
+				sa.setUsername(adminservice.GetUsernameByPhone(advertisements.get(i).getPhone()));
+				sa.setPhone(advertisements.get(i).getPhone());
+				sa.setPrice(advertisements.get(i).getPrice());
+				sa.setStatus(advertisements.get(i).getStatus());
+				sa.setDate(advertisements.get(i).getTime());
+				showadvertisements.add(sa);
 			}
+			for(int i=0;i<showadvertisements.size();i++){
+				System.out.println("username is "+showadvertisements.get(i).getUsername());
+				System.out.println("username is "+showadvertisements.get(i).getPrice());
+			}
+//			ServletActionContext.getRequest().setAttribute("advertisements",advertisements);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

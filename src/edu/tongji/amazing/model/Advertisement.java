@@ -42,8 +42,8 @@ public class Advertisement implements Serializable {
 	@Column(name = "phone")
 	private String phone;
 	
-	@Column(name = "placetype")
-	private String placetype;
+	@Column(name = "title")
+	private String title;
 	
 	@Column(name = "price")
 	private String price;
@@ -66,7 +66,6 @@ public class Advertisement implements Serializable {
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity=AdvertisementPlaceAndTime.class)
 	@JoinColumns(value={@JoinColumn(name="adid",referencedColumnName="id")})
 	private Set<AdvertisementPlaceAndTime> placeandtime = new HashSet<AdvertisementPlaceAndTime>();
-	
 	
 	public Set<AdvertisementPlaceAndTime> getPlaceandtime() {
 		return placeandtime;
@@ -146,14 +145,12 @@ public class Advertisement implements Serializable {
 		this.advertisementclass = advertisementclass;
 	}
 
-	public String getPlacetype() {
-		return placetype;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setPlacetype(String placetype) {
-		this.placetype = placetype;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-    
-	
-	
+
 }

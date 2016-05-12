@@ -97,5 +97,12 @@ public class AdministratorService implements IAdministratorService{
 		// TODO Auto-generated method stub
 		return dao.BalanceTable(pagenum);
 	}
+	@Override
+	public String GetUsernameByPhone(String phone) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.GetUsernameByPhone(phone);
+	}
+	
+	
 
 }

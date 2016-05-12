@@ -55,4 +55,6 @@ public interface IAdministratorService {
 	//根据当前页获得展示账单
 	public List<Balance> BalanceTable(int pagenum) throws Exception;
 	
+    //根据手机号获得用户名
+	public String GetUsernameByPhone(String phone) throws Exception;
 }
