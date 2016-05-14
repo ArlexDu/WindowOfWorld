@@ -1,6 +1,7 @@
 package edu.tongji.amazing.action;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +19,7 @@ import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.Advertiser;
 import edu.tongji.amazing.model.Balance;
 import edu.tongji.amazing.model.CarOwner;
+import edu.tongji.amazing.model.Finance;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdministratorService;
 import edu.tongji.amazing.service.IAdvertisementService;
@@ -25,6 +27,8 @@ import edu.tongji.amazing.service.IAdvertiserService;
 import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.tool.SendMessage;
+import edu.tongji.amazing.tool.ShowAdvertisement;
+import edu.tongji.amazing.tool.ShowBalance;
 import edu.tongji.amazing.tool.FileTools;
 @Controller("administratorAction")
 public class AdministratorAction extends ActionSupport implements ServletRequestAware{
@@ -36,7 +40,7 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	//用于展示的用户
 	private List<User> users;
 	
-	//用于展示的广告
+	//获得的广告
 	private List<Advertisement> advertisements;
 	
 	//用于展示的支出信息
@@ -124,25 +128,39 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 //			data = new HashMap<String,Object>();
 		    users = service.getShowUsers();
 			advertisements = service.getShowAdvertisements();
+			//获得展示的广告
+			List<ShowAdvertisement> showadvertisements = new ArrayList<ShowAdvertisement>();
+			for(int i=0;i<advertisements.size();i++){
+				ShowAdvertisement sa = new ShowAdvertisement();
+				sa.setUsername(service.GetUsernameByPhone(advertisements.get(i).getPhone()));
+				sa.setPhone(advertisements.get(i).getPhone());
+				sa.setPrice(advertisements.get(i).getPrice());
+				sa.setStatus(advertisements.get(i).getStatus());
+				sa.setDate(advertisements.get(i).getTime());
+				showadvertisements.add(sa);
+			}
 			balances = service.getShowBalance();
+			//获得展示的财务
+			List<ShowBalance> showbalances = new ArrayList<ShowBalance>();
+			for(int i=0;i<balances.size();i++){
+				ShowBalance sbal = new ShowBalance();
+				sbal.setUsername(service.GetUsernameByPhone(balances.get(i).getPhone()));
+				sbal.setMoney(balances.get(i).getMoney());
+				sbal.setReason(balances.get(i).getReason());
+				sbal.setDate(balances.get(i).getTime());
+				showbalances.add(sbal);
+			}
 			int alluser_number = service.getallusers();
 			int alladvertisement_number = service.getalladvertisements();
 			int examineuer = service.unexamineUsers();
 			int examineadvertisement = service.unexamineAdvertisements();
-//			data.put("users", users);
-//			data.put("advertisements", advertisements);
-//			data.put("balances", balances);
-//			data.put("alluser_number", alluser_number);
-//			data.put("alladvertisement_number", alladvertisement_number);
-//			data.put("examineuer", examineuer);
-//			data.put("examineadvertisement", examineadvertisement);
 			ServletActionContext.getRequest().setAttribute("all_user_number", alluser_number);
 			ServletActionContext.getRequest().setAttribute("examine_user_number", examineuer);
 			ServletActionContext.getRequest().setAttribute("all_advertisement_number", alladvertisement_number);
 			ServletActionContext.getRequest().setAttribute("examine_advertisement_number", examineadvertisement);
 			ServletActionContext.getRequest().setAttribute("showusers", users);
-			ServletActionContext.getRequest().setAttribute("showadvertisements", advertisements);
-			ServletActionContext.getRequest().setAttribute("showbalance", balances);
+			ServletActionContext.getRequest().setAttribute("showadvertisements", showadvertisements);
+			ServletActionContext.getRequest().setAttribute("showbalance", showbalances);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -204,20 +222,39 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	private IAdvertiserService advertiserservice;
 	
 	private String userclass;
+	private String userstate;
 	
 	public String userdata(){
 		try{
-			if(userclass.equals("1")){//管理员
-				User user =service.getAdministratorinfo(phone);
-				ServletActionContext.getRequest().setAttribute("userinfo",user);
-			}else if(userclass.equals("2")) {//广告商
-				Advertiser advertiser = advertiserservice.getAdvertisementinfo(phone);
-				ServletActionContext.getRequest().setAttribute("userinfo",advertiser);
-			}else{//车主
-				CarOwner carowner = carownerservice.getUserbyPhone(phone);
-				ServletActionContext.getRequest().setAttribute("userinfo",carowner);
+			if(userstate.equals("1")){
+				if(userclass.equals("1")){//管理员
+					User user =service.getAdministratorinfo(phone);
+					ServletActionContext.getRequest().setAttribute("userinfo",user);
+					return "check1";
+				}else if(userclass.equals("2")) {//广告商
+					Advertiser advertiser = advertiserservice.getAdvertisementinfo(phone);
+					ServletActionContext.getRequest().setAttribute("userinfo",advertiser);
+					return "check2";
+				}else{//车主
+					CarOwner carowner = carownerservice.getUserbyPhone(phone);
+					ServletActionContext.getRequest().setAttribute("userinfo",carowner);
+					return "check3";
+				}
+			}else{
+				if(userclass.equals("1")){//管理员
+					User user =service.getAdministratorinfo(phone);
+					ServletActionContext.getRequest().setAttribute("userinfo",user);
+					return "success1";
+				}else if(userclass.equals("2")) {//广告商
+					Advertiser advertiser = advertiserservice.getAdvertisementinfo(phone);
+					ServletActionContext.getRequest().setAttribute("userinfo",advertiser);
+					return "success2";
+				}else{//车主
+					CarOwner carowner = carownerservice.getUserbyPhone(phone);
+					ServletActionContext.getRequest().setAttribute("userinfo",carowner);
+					return "success3";
+				}
 			}
-			return "success";
 		}catch(Exception e){
 			return "fail";
 		}
@@ -242,7 +279,91 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 		}
 	}
 	
+	/*
+	 *  return finance of the company 
+	 *  
+	 */
 	
+	public String wholeFinance() throws Exception{
+		try{
+			List<Finance> finances = service.wholefinace();
+			ServletActionContext.getRequest().setAttribute("finance",finances);
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
+	
+	/*
+	 * 分页获得user的列表
+	 *  参数：
+	 *     @pagenum //当前页数
+	 */
+	private String pagenum;
+	
+	public String UserTable() throws Exception{
+		try{
+			int num = Integer.parseInt(pagenum);
+			List<User> users = service.UserTable(num);
+			ServletActionContext.getRequest().setAttribute("users",users);
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
+	
+	/*
+	 * 分页获得广告的列表
+	 *  参数：
+	 *     @pagenum //当前页数
+	 */
+	public String AdvertisementTable() throws Exception{
+		try{
+			int num = Integer.parseInt(pagenum);
+			List<Advertisement> advertisements = service.AdvertisementTable(num);
+			//获得展示的广告
+			List<ShowAdvertisement> showadvertisements = new ArrayList<ShowAdvertisement>();
+			for(int i=0;i<advertisements.size();i++){
+				ShowAdvertisement sa = new ShowAdvertisement();
+				sa.setUsername(service.GetUsernameByPhone(advertisements.get(i).getPhone()));
+				sa.setPhone(advertisements.get(i).getPhone());
+				sa.setPrice(advertisements.get(i).getPrice());
+				sa.setStatus(advertisements.get(i).getStatus());
+				sa.setDate(advertisements.get(i).getTime());
+				showadvertisements.add(sa);
+			}
+			ServletActionContext.getRequest().setAttribute("advertisements",showadvertisements);
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
+	
+	/*
+	 * 分页获得收支的列表
+	 *  参数：
+	 *     @pagenum //当前页数
+	 */
+	public String BalanceTable() throws Exception{
+		try{
+			int num = Integer.parseInt(pagenum);
+			List<Balance> balances = service.BalanceTable(num);
+			//获得展示的财务
+			List<ShowBalance> showbalances = new ArrayList<ShowBalance>();
+			for(int i=0;i<balances.size();i++){
+				ShowBalance sbal = new ShowBalance();
+				sbal.setUsername(service.GetUsernameByPhone(balances.get(i).getPhone()));
+				sbal.setMoney(balances.get(i).getMoney());
+				sbal.setReason(balances.get(i).getReason());
+				sbal.setDate(balances.get(i).getTime());
+				showbalances.add(sbal);
+			}
+			ServletActionContext.getRequest().setAttribute("balances",showbalances);
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
 	
 	public String getPhone() {
 		return phone;
@@ -333,6 +454,22 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 
 	public void setUserclass(String userclass) {
 		this.userclass = userclass;
+	}
+
+	public String getPagenum() {
+		return pagenum;
+	}
+
+	public void setPagenum(String pagenum) {
+		this.pagenum = pagenum;
+	}
+
+	public String getUserstate() {
+		return userstate;
+	}
+
+	public void setUserstate(String userstate) {
+		this.userstate = userstate;
 	}
 	
 	

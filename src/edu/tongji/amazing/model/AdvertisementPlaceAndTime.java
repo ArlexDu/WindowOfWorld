@@ -34,7 +34,10 @@ public class AdvertisementPlaceAndTime {
 	private String begin_time;
 	
 	@Column(name = "end")
-	private String end_time;
+	private String end_time; 
+	
+	@Column(name = "place")
+	private String place;
 	
 	private String adid;
 	
@@ -97,6 +100,15 @@ public class AdvertisementPlaceAndTime {
 		this.adid = adid;
 	}
 
+	public String getPlace() {
+		return place;
+	}
+
+	public void setPlace(String place) {
+		this.place = place;
+	}
+
+	
 	
 	
 }

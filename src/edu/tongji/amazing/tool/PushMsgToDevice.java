@@ -21,7 +21,7 @@ public class PushMsgToDevice {
 	public void send(String channelid,Object ob,String type) throws PushClientException,
 			PushServerException {
 		// 1. get apiKey and secretKey from developer console
-		String apiKey = "buPZFGnRf6EhZaEKHHdQswbMRMSqcGx5";
+		String apiKey = Defined.Baiduapk;
 		String secretKey = "UPMlWj1SDcEHFsO6SdgPzmyzBKxFdgwe";
 		PushKeyPair pair = new PushKeyPair(apiKey, secretKey);
 
