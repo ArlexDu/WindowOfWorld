@@ -38,9 +38,6 @@
                         <a class="page-scroll" href="account.jsp">返回</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="owner.jsp">个人信息</a>
-                    </li>
-                    <li>
                         <a class="page-scroll" href="home.jsp">退出</a>
                     </li>
                     <li>
@@ -54,11 +51,15 @@
     <!-- 上传部分 -->
     <section id="contact">
         <div class="container">
-             <form name="upload" id="upload" method="post" action="/AmazingAd/web/advertiser/addad">
+             <form name="upload" id="upload" method="post" onsubmit="return check_upload()" action="/AmazingAd/web/advertiser/addad">
                  <div class="col-lg-12 reg_font">
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
                     	<div class="ad1">
+                    	<div class="form-group">
+						    <label class="control-label">广告标题</label>
+						    <input class="form-control" type="text" name="title">
+						</div>
 	                    <div class="form-group">
 	                    	<label>上传内容类型选择：</label>
 	                       	<span class="label label-success adtype" onclick="adtype1();">文字</span>
@@ -73,7 +74,7 @@
                        	     <img id="ad_picture" src="/AmazingAd/Webapp/assets/images/ad_back.jpg">
                        	     <br>
                              <label class="ad_picture">本地选取
-                             <input class="avatar" accept="image/gif, image/jpeg, image/x-png" type="file" name="ad_picture" onchange="showPreview_ad(this)" />
+                             <input class="avatar" accept="image/gif, image/jpeg, image/x-png" type="file" id="ad_card" name="ad_picture" onchange="showPreview_ad(this)" />
                              </label>
 					 	</div>
 					 	<div class="form-group">&nbsp;</div>
@@ -99,11 +100,30 @@
 								<option value="18:00~20:00">18:00~20:00</option>
 								<option value="20:00~22:00">20:00~22:00</option>
 								<option value="22:00~6:00">22:00~6:00</option>
+								<option value="全天">全天</option>
 							</select>
+							<span class="glyphicon glyphicon-plus plus" onclick="time_more();"></span>
+					    </div>
+					    <div class="form-group">
+					    	<div id="time_more">
+						    	<select class="form-control" name="time">
+									<option value="6:00~8:00">6:00~8:00</option>
+									<option value="8:00~10:00">8:00~10:00</option>
+									<option value="10:00~12:00">10:00~12:00</option>
+									<option value="12:00~14:00">12:00~14:00</option>
+									<option value="14:00~16:00">14:00~16:00</option>
+									<option value="16:00~18:00">16:00~18:00</option>
+									<option value="18:00~20:00">18:00~20:00</option>
+									<option value="20:00~22:00">20:00~22:00</option>
+									<option value="22:00~6:00">22:00~6:00</option>
+									<option value="全天">全天</option>
+								</select>
+								<span id="minus" class="glyphicon glyphicon-minus" onclick="time_less();"></span>
+					    	</div>
 					    </div>
 					    <div class="form-group">
 					   		<label>发布地段</label>
-					    	<select class="form-control" name="area" id="area" onchange="show();">
+					    	<select id="area1" class="form-control" onchange="show();">
 								<option value="嘉定区">嘉定区</option>
 								<option value="杨浦区">杨浦区</option>
 								<option value="浦东新区">浦东新区</option>
@@ -120,6 +140,7 @@
 								<option value="徐汇">徐汇</option>
 								<option value="青浦">青浦</option>
 							</select>
+							<input type="text" name="area" id="area" id="area">
 					    </div>
 					    <div id="drag">
 					    <div id="map"></div>
@@ -197,11 +218,50 @@
 	map.centerAndZoom("上海", 11);
 	oDrag.style.display = "block";
 	function show(){
-		var area=document.getElementById("area").value;
+		var area=document.getElementById("area1").value;
 		map.centerAndZoom(area,12);                   // 初始化地图,设置城市和地图级别。
 		oDrag.style.display = "block";
 	}
+	map.addEventListener("click", showInfo);
+	function showInfo(e){
+		map.clearOverlays();
+		marker = new BMap.Marker(new BMap.Point(e.point.lng, e.point.lat));  // 创建标注
+		map.addOverlay(marker);   //获取经纬度
+		$('#areaModal').modal('show');
+		$("#lng").html(e.point.lng);
+		$("#lat").html(e.point.lat);
+	}
 	</script>
+	
+	<!-- 上传弹出框 -->
+	<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title" id="myModalLabel">上传信息</h4>
+	      </div>
+	      <div class="modal-body" id="upload_context"></div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- 上传弹出框 -->
+	<div class="modal fade" id="areaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title" id="myModalLabel">选择地段</h4>
+	      </div>
+	      <div class="modal-body">选择以经度：<p id="lng"></p>&nbsp;纬度：<p id="lat"></p>为中心的地段发布！</div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </body>
 
 </html>

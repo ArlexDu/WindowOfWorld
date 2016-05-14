@@ -27,27 +27,27 @@ public class LoginAction extends ActionSupport {
 	@Resource(name ="define")
 	private Defined defined;
 	
-//	网页登录的接口 android/user/login
-	public String LoginWeb() throws Exception {
-		// TODO Auto-generated method stub
-		//判断是否有此用户
-		if(service.getUserbyPhone(phone)==null){
-			data.put(defined.Error, defined.NOUSER);
-			return "fail";
-		}
-		if(service.checkUser(phone, password)){
-			data.put(defined.Error, defined.SUCCESS);
-			return "success";
-		}else{
-			data.put(defined.Error, defined.WrongPassword);
-			return "pswwrong";
-		}
-	}
-//	客户端登录的接口 android/user/login
+//	缃戦〉鐧诲綍鐨勬帴鍙� android/user/login
+//	public String LoginWeb() throws Exception {
+//		// TODO Auto-generated method stub
+//		//鍒ゆ柇鏄惁鏈夋鐢ㄦ埛
+//		if(service.getUserbyPhone(phone)==null){
+//			data.put(defined.Error, defined.NOUSER);
+//			return "fail";
+//		}
+//		if(service.checkUser(phone, password)){
+//			data.put(defined.Error, defined.SUCCESS);
+//			return "success";
+//		}else{
+//			data.put(defined.Error, defined.WrongPassword);
+//			return "pswwrong";
+//		}
+//	}
+//	瀹㈡埛绔櫥褰曠殑鎺ュ彛 android/user/login
 	public String LoginAndroid() throws Exception {
 		// TODO Auto-generated method stub
 		data = new HashMap<String,Object>();
-		//判断是否有此用户
+		//鍒ゆ柇鏄惁鏈夋鐢ㄦ埛
 		if(service.IsUserExist(phone)==null){
 			data.put(defined.Error, defined.NOUSER);
 			return "success";
@@ -59,11 +59,11 @@ public class LoginAction extends ActionSupport {
 		}
 		return "success";
 	}
-	//用于登录时后判断用户是否存在 /android/isuser?phone=
+	//鐢ㄤ簬鐧诲綍鏃跺悗鍒ゆ柇鐢ㄦ埛鏄惁瀛樺湪 /android/isuser?phone=
 	public String IsUser() throws Exception {
 		// TODO Auto-generated method stub
 		data = new HashMap<String,Object>();
-		//判断是否有此用户
+		//鍒ゆ柇鏄惁鏈夋鐢ㄦ埛
 		if(service.IsUserExist(phone)==null){
 			data.put(defined.Error, defined.NOUSER);
 		}else{

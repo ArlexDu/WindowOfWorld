@@ -39,10 +39,7 @@
                         <a class="page-scroll" href="upload.jsp">上传广告</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="owner.jsp">个人信息</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="home.jsp">退出</a>
+                        <a class="page-scroll" href="home.jsp" id="logoff">退出</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#AppModal" data-toggle="modal">App</a>
@@ -62,45 +59,30 @@
         </div>
     </header>
 
-    <!-- 活动 -->
+    <!-- 个人信息 -->
     <section id="portfolio" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">近期活动</h2>
+                    <h2 class="section-heading">个人信息</h2>
                     <h3 class="section-subheading text-muted"></h3>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover"></div>
-                        <img src="../assets/images/portfolio/roundicons.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>活动标题</h4>
-                        <p class="text-muted">Web Design</p>
-                    </div>
+                <div class="col-lg-3">
+                	<label>
+<!--                 	/AmazingAd/Webapp/assets/images/avatar.jpg -->
+              	    <img id="portrait" src="">
+              	    </label>	
                 </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover"></div>
-                        <img src="../assets/images/portfolio/startup-framework.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>活动标题</h4>
-                        <p class="text-muted">Web Design</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover"></div>
-                        <img src="../assets/images/portfolio/treehouse.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>活动标题</h4>
-                        <p class="text-muted">Web Design</p>
-                    </div>
+                <div class="col-lg-9">
+                	<table class="table table-hover account">
+                    <tr><td style="width:40%;">公司名称</td><td id="username" style="width:60%;"></td></tr>
+                    <tr><td>法人姓名</td><td id="realname"></td></tr>
+                    <tr><td>账户余额</td><td id="money"></td></tr>
+                    <tr><td>联系电话</td><td id="phone"></td></tr>
+                    <tr><td>联系邮箱</td><td id="email"></td></tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -124,10 +106,10 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>时间：2016-3-1到2016-3-2</h4>
+                                    <h4 id="title1">广告标题</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">广告内容！</p>
+                                    <p class="text-muted" id="context1">广告内容！</p>
                                 </div>
                             </div>
                         </li>
@@ -137,7 +119,7 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>时间：2016-3-1到2016-3-2</h4>
+                                    <h4>标题</h4>
                                 </div>
                                 <div class="timeline-body">
                                     <p class="text-muted">广告内容！</p>
@@ -150,7 +132,7 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>时间：2016-3-1到2016-3-2</h4>
+                                    <h4>标题</h4>
                                 </div>
                                 <div class="timeline-body">
                                     <p class="text-muted">广告内容！</p>
@@ -163,7 +145,7 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>时间：2016-3-1到2016-3-2</h4>
+                                    <h4>标题</h4>
                                 </div>
                                 <div class="timeline-body">
                                     <p class="text-muted">广告内容！</p>
@@ -172,7 +154,7 @@
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <h4>更多广告<br>敬请期待!</h4>
+                                <h4>more</h4>
                             </div>
                         </li>
                     </ul>
@@ -193,12 +175,12 @@
             <div class="row">
 	        <table class="table table-hover table-bordered">
 			<tr class="table-header">
-				<td style="width:10%;">广告编号</td>
-				<td style="width:50%;">广告内容</td>
-				<td style="width:10%;">发布日期</td>
-				<td style="width:10%;">截止日期</td>
-				<td style="width:10%;">金额</td>
-				<td style="width:10%;" colspan="2">操作</td>
+				<td style="width:15%;">广告编号</td>
+				<td style="width:25%;">广告标题</td>
+				<td style="width:15%;">发布日期</td>
+				<td style="width:15%;">截止日期</td>
+				<td style="width:15%;">金额</td>
+				<td style="width:15%;">操作</td>
 			</tr>
 			<tr>
 				<td>1</td>
@@ -206,7 +188,6 @@
 				<td>2016.3.1</td>
 				<td>2016.4.1</td>
 				<td>5</td>
-				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
 			</tr>
 			<tr>
@@ -215,7 +196,6 @@
 				<td>2016.3.1</td>
 				<td>2016.4.1</td>
 				<td>5</td>
-				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
 			</tr>
 			<tr>
@@ -224,15 +204,13 @@
 				<td>2016.3.1</td>
 				<td>2016.4.1</td>
 				<td>5</td>
-				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
 			</tr>
 			</table>
 			</div>
         </div>
     </section>
-   
-
+    
     <footer>
         <div class="container">
             <div class="row">
@@ -259,58 +237,6 @@
         </div>
     </footer>
 
-	<!-- 活动部分详情 -->
-    <!-- 活动1 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-        	<div class="row">
-                 <div class="col-lg-8 col-lg-offset-2">
-                     <div class="modal-body">
-                         <h2>活动标题</h2>
-                         <p class="item-intro text-muted">副标题.</p>
-                         <img class="img-responsive img-centered" src="../assets/images/portfolio/roundicons-free.png" alt="">
-                         <p>活动内容</p>
-                         <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
-                     </div>
-                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 活动 2 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-        	<div class="row">
-                 <div class="col-lg-8 col-lg-offset-2">
-                     <div class="modal-body">
-                         <h2>活动标题</h2>
-                         <p class="item-intro text-muted">副标题.</p>
-                         <img class="img-responsive img-centered" src="../assets/images/portfolio/startup-framework-preview.png" alt="">
-                         <p>活动内容</p>
-                         <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
-                     </div>
-                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 活动 3 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-        	<div class="row">
-                 <div class="col-lg-8 col-lg-offset-2">
-                     <div class="modal-body">
-                         <h2>活动标题</h2>
-                         <p class="item-intro text-muted">副标题.</p>
-                         <img class="img-responsive img-centered" src="../assets/images/portfolio/treehouse-preview.png" alt="">
-                         <p>活动内容</p>
-                         <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
-                     </div>
-                 </div>
-            </div>
-        </div>
-    </div>
-    
     <!--APP二维码-->
     <div class="portfolio-modal modal fade" id="AppModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
@@ -372,7 +298,82 @@
     <script src="../assets/js/agency.js"></script>
     <script src="../assets/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--     <script src="../assets/js/cookieservice.js"></script> -->
+<script>
 
+function logoff() {
+    eraseCookie("userphone");
+}
+function eraseCookie(name) {
+    createCookie(name,"",-1);
+}
+function createCookie(name,value,hours) {
+    if (hours) {
+        var date = new Date();
+        date.setTime(date.getTime()+(hours*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/AmazingAd/Webapp/wow";
+}
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+window.onload = function () {
+ var phone=readCookie('userphone'); 
+
+    console.log("phone",phone);
+    if(phone!=null){
+    	$("div.intro-lead-in").text("Hello "+phone);
+    	$.ajax({
+            type: "POST",
+            url : "/AmazingAd/web/advertiser/getuserinfo",
+            data : {
+	            	phone:phone,
+            		},
+            success: function(response){
+             	var result = JSON.stringify(response, null, 3);    
+            	data =(new Function("","return "+result))();
+            	console.log(data);
+            	if(data.errCode==1){
+            		console.log("userinfo",data.userinfo);
+            		document.getElementById("portrait").src=data.userinfo.user.avatar;
+					console.log("avatar",data.userinfo.user.avatar);
+            		document.getElementById("username").innerHTML=data.userinfo.user.username;
+            		document.getElementById("realname").innerHTML=data.userinfo.user.realname;
+            		document.getElementById("money").innerHTML=data.userinfo.user.balace;
+            		document.getElementById("phone").innerHTML=data.userinfo.user.phone;
+            		document.getElementById("email").innerHTML=data.userinfo.mail;
+            	}else{
+            		//wrong
+            		window.location.href="/AmazingAd/Webapp/wow/login.jsp"
+            	}
+            },
+            error:function(){
+            	window.location.href="/AmazingAd/Webapp/wow/login.jsp"
+            }
+        });
+    }
+	
+}
+
+$("#logoff").click(function(){
+	logoff();
+});
+
+
+</script>
 </body>
+
+
+
 
 </html>

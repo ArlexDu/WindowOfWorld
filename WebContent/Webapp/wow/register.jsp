@@ -56,7 +56,7 @@
                         	<div class="ava_all">
                                <label>
 							   <img id="portrait" src="/AmazingAd/Webapp/assets/images/avatar.jpg">
-                               <input class="avatar" accept="image/gif, image/jpeg, image/x-png" type="file" name="avatar" onchange="showPreview(this)" />
+                               <input class="avatar" accept="image/gif, image/jpeg, image/x-png" type="file" id="avatar" name="avatar" onchange="showPreview(this)" />
                                </label>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                            <div class="reg_2">	 
                            <div class="form-group">
                           		<label>联系电话</label>
-                              	<input type="text" class="form-control" placeholder="手机号码或固话" name="phone">
+                              	<input type="text" class="form-control" placeholder="手机号码或固话" name="phone" id="phone">
                            </div>
                            <div class="form-group">
                            		<label>邮箱</label>
@@ -102,14 +102,14 @@
                            		<label class="liscense1">广告商执照认证</label>
                            		<img id="liscense_p" src="/AmazingAd/Webapp/assets/images/jiazhao_m.jpg">
                            		<label class="liscense0">本地选取
-                              	<input class="liscense" accept="image/gif, image/jpeg, image/x-png" type="file" name="licensecard" onchange="showPreview1(this)"/>
+                              	<input class="liscense" accept="image/gif, image/jpeg, image/x-png" type="file" id="licensecard" name="licensecard" onchange="showPreview1(this)"/>
                            		</label>
                            </div>
                            <div class="picture">
                            		<label class="identity1">身份证照片认证</label>
                            		<img id="identity_p" src="/AmazingAd/Webapp/assets/images/id.jpg">
                            		<label class="identity0">本地选取
-                              	<input class="identity" accept="image/gif, image/jpeg, image/x-png" type="file" name="identitycard" onchange="showPreview2(this)" />
+                              	<input class="identity" accept="image/gif, image/jpeg, image/x-png" type="file" id="identitycard" name="identitycard" onchange="showPreview2(this)" />
                            		</label>
                            </div>
                            </div>	
@@ -203,6 +203,32 @@
             </div>
         </div>
     </div>
+	<script>
+
+	$(document).ready(function(){
+		$('#phone').blur(function(){
+			$.ajax({
+	            type: "POST",
+	            url : "/AmazingAd/web/advertiser/hasuser",
+	            data : {
+	            	phone:document.register.phone.value
+	            	},
+	            success: function(response){
+	                if(response=="true"){
+// 	                	alert("此手机号已注册，请选择其他手机号");
+	                	$('#myModal0').modal('show');
+	            		$("#reg_context").html("此手机号已注册，请选择其他手机号");
+	            		$('#phone').val("");
+	                }
+	            },
+	            error:function(){
+	            	window.location.href="/AmazingAd/Webapp/wow/register.jsp";
+	            }
+	        });
+		    
+		  });
+		});
 	
+	</script>
 </body>
 </html>

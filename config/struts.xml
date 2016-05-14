@@ -44,12 +44,22 @@
 	<package name="edu.tongji.amazing.action.web.advertiser"
 		namespace="/web/advertiser" extends="struts-default,json-default">
 		<action name="register" class="advertiserAction" method="register">
-			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="success" type="redirect">/Webapp/wow/account.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="login" class="advertiserAction" method="login">
 		</action>
+		<action name="hasuser" class="advertiserAction" method="hasuser">
+		</action>
 		<action name="getallads" class="advertiserAction" method="getAllAdByPhone">
+			<result name="success" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="getuserinfo" class="advertiserAction" method="getUserInfo">
+			<result name="success" type="json">
+				<param name="root">data</param>
+			</result>
 		</action>
 		<action name="addad" class="addadpost" method="newAdvertisement">
 			<result name="success">/Website/Pages/success.jsp</result>
@@ -59,11 +69,11 @@
 		    <result name="success">/Website/Pages/success.jsp</result>
 		    <result name="fail">/Website/Pages/success.jsp</result>
 		</action>
-		<action name="test" class="administratorAction" method="test">
-		    <result name="success" type="json">
-		        <param name="root">data</param>
-		    </result>
-		</action>
+<!-- 		<action name="test" class="administratorAction" method="test"> -->
+<!-- 		    <result name="success" type="json"> -->
+<!-- 		        <param name="root">data</param> -->
+<!-- 		    </result> -->
+<!-- 		</action> -->
 	</package>
 	
 	<!-- android端对应的user action -->
