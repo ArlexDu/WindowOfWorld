@@ -28,9 +28,13 @@ public interface IGeneralDao<T> {
 	
 	//得到当前的数量
 	public int GetNumbers(String phone);
+	
 	//得到最近的一条记录
 	public T GetLast(String phone); 
 	
 	public User IsUserExist(String phone);
+	
+	//得到最近的一条记录
+	public String GetUsernameByPhone(String phone) throws Exception; 
 	
 }

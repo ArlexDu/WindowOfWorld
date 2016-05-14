@@ -1,5 +1,6 @@
 package edu.tongji.amazing.dao.impl;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,10 +11,12 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.type.StandardBasicTypes;
 import org.springframework.stereotype.Repository;
 
 import edu.tongji.amazing.dao.IGeneralDao;
 import edu.tongji.amazing.model.CarOwner;
+import edu.tongji.amazing.model.Finance;
 import edu.tongji.amazing.model.User;
 
 /*
@@ -191,6 +194,19 @@ public class GeneralDao<T> implements IGeneralDao<T> {
 		transaction.commit();
 		session.close();
 		return user;
+	}
+	@Override
+	public String GetUsernameByPhone(String phone) throws Exception {
+		// TODO Auto-generated method stub
+		String sql = "select username from wowuser where phone = '"+phone+"'";
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		List list = session.createSQLQuery(sql)
+				.addScalar("username",StandardBasicTypes.STRING).list();
+		String username = (String) list.iterator().next();
+	    transaction.commit();
+		session.close();
+		return username;
 	}
 
 }
