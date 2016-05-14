@@ -59,11 +59,11 @@ public class LoginAction extends ActionSupport {
 		}
 		return "success";
 	}
-	//鐢ㄤ簬鐧诲綍鏃跺悗鍒ゆ柇鐢ㄦ埛鏄惁瀛樺湪 /android/isuser?phone=
+	//用于登录时后判断用户是否存在 /android/isuser?phone=
 	public String IsUser() throws Exception {
 		// TODO Auto-generated method stub
 		data = new HashMap<String,Object>();
-		//鍒ゆ柇鏄惁鏈夋鐢ㄦ埛
+		//判断是否有此用户
 		if(service.IsUserExist(phone)==null){
 			data.put(defined.Error, defined.NOUSER);
 		}else{
