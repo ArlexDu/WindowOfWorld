@@ -239,7 +239,7 @@ window.onload = function () {
         $.get("http://localhost:8080/AmazingAd/web/advertiser/charge?phone="+ phone +"&charge=" +x);
        
         $('#myModal').modal('hide');
-        location.reload(true);
+        window.location.reload();
       });
     
     if(phone!=null){
