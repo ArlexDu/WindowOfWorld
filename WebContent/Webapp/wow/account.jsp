@@ -39,10 +39,7 @@
                         <a class="page-scroll" href="upload.jsp">上传广告</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="owner.jsp">个人信息</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="home.jsp">退出</a>
+                        <a class="page-scroll" href="home.jsp" id="logoff">退出</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#AppModal" data-toggle="modal">App</a>
@@ -61,178 +58,51 @@
             </div>
         </div>
     </header>
-
-    <!-- 活动 -->
-    <section id="portfolio" class="bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">近期活动</h2>
-                    <h3 class="section-subheading text-muted"></h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover"></div>
-                        <img src="../assets/images/portfolio/roundicons.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>活动标题</h4>
-                        <p class="text-muted">Web Design</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover"></div>
-                        <img src="../assets/images/portfolio/startup-framework.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>活动标题</h4>
-                        <p class="text-muted">Web Design</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover"></div>
-                        <img src="../assets/images/portfolio/treehouse.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>活动标题</h4>
-                        <p class="text-muted">Web Design</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     
-    <!-- 广告罗列 -->
+    <!-- 个人信息 -->
     <section id="about">
-        <div class="container">
-            <div class="row">
+    	<div class="container">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">最新广告</h2>
+                    <h2 class="section-heading">个人信息</h2>
                     <h3 class="section-subheading text-muted"></h3>
                 </div>
-            </div>
             <div class="row">
-                <div class="col-lg-12">
-                    <ul class="timeline ad_time">
-                        <li>
-                            <div class="timeline-image" onclick="ad_more(1);">
-		                        <img class="img-circle img-responsive" src="../assets/images/about/1.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>时间：2016-3-1到2016-3-2</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">广告内容！</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image" onclick="ad_more(2);">
-                                <img class="img-circle img-responsive" src="../assets/images/about/2.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>时间：2016-3-1到2016-3-2</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">广告内容！</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image" onclick="ad_more(3);">
-                                <img class="img-circle img-responsive" src="../assets/images/about/3.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>时间：2016-3-1到2016-3-2</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">广告内容！</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image" onclick="ad_more(4);">
-                                <img class="img-circle img-responsive" src="../assets/images/about/4.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>时间：2016-3-1到2016-3-2</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">广告内容！</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <h4>更多广告<br>敬请期待!</h4>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="col-lg-3">
+                	<label>
+              	    <img id="portrait1" src="">
+              	    </label>	
+                </div>
+                <div class="col-lg-9">
+                	<table class="table table-hover account">
+                    <tr><td style="width:40%;">公司名称</td><td id="username" style="width:60%;" colspan="2"></td></tr>
+                    <tr><td>法人姓名</td><td id="realname" colspan="2"></td></tr>
+                    <tr><td>账户余额</td><td id="money" style="width:460px;"></td>
+                    <td class="addmoneytd" style="width:40px;"><span class="glyphicon glyphicon-yen addmoney" data-toggle="modal" data-target="#myModal"></span></td></tr>
+                    <tr><td>联系电话</td><td id="phone" colspan="2"></td></tr>
+                    <tr><td>联系邮箱</td><td id="email" colspan="2"></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- 广告罗列 -->
+        <div class="row account-ad-show">
+            <hr>
+        	<div class="col-lg-12 text-center">
+                    <h2 class="section-heading">最新广告</h2>
+            </div>
+            <div class="col-lg-12 shijian">
+            	<div class="col-lg-6">
+	                <ul class="timeline ad_time" id="shijiantiao">
+	                </ul>
+                </div>
+                <div class="col-lg-6">
+                	<ul class="timeline ad_time" id="shijiantiao1">
+	                </ul>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!--广告发布历史-->
-    <section id="portfolio" class="bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">广告发布历史</h2>
-                    <h2 class="section-heading">&nbsp;</h2>
-                </div>
-            </div>
-            <div class="row">
-	        <table class="table table-hover table-bordered">
-			<tr class="table-header">
-				<td style="width:10%;">广告编号</td>
-				<td style="width:50%;">广告内容</td>
-				<td style="width:10%;">发布日期</td>
-				<td style="width:10%;">截止日期</td>
-				<td style="width:10%;">金额</td>
-				<td style="width:10%;" colspan="2">操作</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>专业综合</td>
-				<td>2016.3.1</td>
-				<td>2016.4.1</td>
-				<td>5</td>
-				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
-				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>专业综合</td>
-				<td>2016.3.1</td>
-				<td>2016.4.1</td>
-				<td>5</td>
-				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
-				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>专业综合</td>
-				<td>2016.3.1</td>
-				<td>2016.4.1</td>
-				<td>5</td>
-				<td><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
-				<td><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
-			</tr>
-			</table>
-			</div>
-        </div>
-    </section>
-   
-
+      
     <footer>
         <div class="container">
             <div class="row">
@@ -259,58 +129,6 @@
         </div>
     </footer>
 
-	<!-- 活动部分详情 -->
-    <!-- 活动1 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-        	<div class="row">
-                 <div class="col-lg-8 col-lg-offset-2">
-                     <div class="modal-body">
-                         <h2>活动标题</h2>
-                         <p class="item-intro text-muted">副标题.</p>
-                         <img class="img-responsive img-centered" src="../assets/images/portfolio/roundicons-free.png" alt="">
-                         <p>活动内容</p>
-                         <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
-                     </div>
-                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 活动 2 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-        	<div class="row">
-                 <div class="col-lg-8 col-lg-offset-2">
-                     <div class="modal-body">
-                         <h2>活动标题</h2>
-                         <p class="item-intro text-muted">副标题.</p>
-                         <img class="img-responsive img-centered" src="../assets/images/portfolio/startup-framework-preview.png" alt="">
-                         <p>活动内容</p>
-                         <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
-                     </div>
-                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 活动 3 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-        	<div class="row">
-                 <div class="col-lg-8 col-lg-offset-2">
-                     <div class="modal-body">
-                         <h2>活动标题</h2>
-                         <p class="item-intro text-muted">副标题.</p>
-                         <img class="img-responsive img-centered" src="../assets/images/portfolio/treehouse-preview.png" alt="">
-                         <p>活动内容</p>
-                         <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
-                     </div>
-                 </div>
-            </div>
-        </div>
-    </div>
-    
     <!--APP二维码-->
     <div class="portfolio-modal modal fade" id="AppModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
@@ -331,35 +149,46 @@
                  <div class="col-lg-8 col-lg-offset-2">
                      <div class="modal-body">
                          <h2>广告详细信息</h2>
-                         <form>
                          <table class="table table-hover table-bordered">
-                         <tr><th>广告编号</th><td id="ad_num"></td>
-                         </tr>
-                 	     <tr><th>广告内容</th><td id="ad_co"></td>
-                 	     </tr>
-                         <tr><th>广告发布时间</th>
-                         <td>
-                         <input id="ad_begin" type="text" name="begin-date" onclick="ad_date();">
-						 </td>
-                         </tr>
-                         <tr><th>广告结束时间</th>
-                         <td>
-                         <input id="ad_end" type="text" name="end-date" onclick="ad_date1();">
-                         </td>
-                         </tr>
+                         <tr><th>广告编号</th><td id="ad_num"></td></tr>
+                         <tr><th>广告标题</th><td id="ad_title"></td></tr>
+                 	     <tr><th>广告内容</th><td id="ad_co"></td></tr>
+                 	     <tr><th>广告状态</th><td id="ad_status"></td></tr>
+                 	     <tr><th>广告费用</th><td id="ad_fare">0</td></tr>
                          <tr><th>广告发布时段</th><td id="ad_time"></td>
                          </tr>
                          <tr><th>广告发布地段</th><td id="ad_diduan"></td>
                          </tr>
                          </table>
-                         <input type="submit" class="btn btn-primary" value="修改"/>
-                         </form>
                          <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
                      </div>
                  </div>
              </div>
         </div>
     </div>
+    
+    <!--充钱模态框 -->
+	<div class="modal fade" id="myModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" style="width:30%">
+			    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				        <h4 class="modal-title" id="myModalLabel">请输入金额</h4>
+				      </div>
+				      <div class="modal-body">
+				        <div class="input-group">
+						  <span class="input-group-addon">$</span>
+						  <input id="money_input" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+						  <span class="input-group-addon">.00</span>
+					  	</div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+				        <button type="button" class="btn btn-default" id="modal_finish">确 认</button>
+				      </div>
+			    </div>
+		  </div>
+	</div>
 
 	<script src="../assets/js/check.js"></script>
     <script src="../assets/js/jquery.js"></script>
@@ -372,7 +201,139 @@
     <script src="../assets/js/agency.js"></script>
     <script src="../assets/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
 
+function logoff() {
+    eraseCookie("userphone");
+}
+function eraseCookie(name) {
+    createCookie(name,"",-1);
+}
+function createCookie(name,value,hours) {
+    if (hours) {
+        var date = new Date();
+        date.setTime(date.getTime()+(hours*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/AmazingAd/Webapp/wow";
+}
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+window.onload = function () {
+ var phone=readCookie('userphone'); 
+ 
+    console.log("phone",phone);
+    
+    $('#modal_finish').click(function () {
+        var x = $('#money_input').val();
+        $.get("http://localhost:8080/AmazingAd/web/advertiser/charge?phone="+ phone +"&charge=" +x);
+       
+        $('#myModal').modal('hide');
+        location.reload(true);
+      });
+    
+    if(phone!=null){
+    	$("div.intro-lead-in").text("Hello "+phone);
+    	$.ajax({
+            type: "POST",
+            url : "/AmazingAd/web/advertiser/getuserinfo",
+            data : {
+	            	phone:phone,
+            		},
+            success: function(response){
+             	var result = JSON.stringify(response, null, 3);    
+            	data =(new Function("","return "+result))();
+            	console.log(data);
+            	if(data.errCode==1){
+            		console.log("userinfo",data.userinfo);
+//             		document.getElementById("portrait1").src=data.userinfo.user.avatar;
+					$("#portrait1").attr("src",data.userinfo.user.avatar);
+            		document.getElementById("username").innerHTML=data.userinfo.user.username;
+            		document.getElementById("realname").innerHTML=data.userinfo.user.realname;
+            		document.getElementById("money").innerHTML=data.userinfo.user.balace;
+            		document.getElementById("phone").innerHTML=data.userinfo.user.phone;
+            		document.getElementById("email").innerHTML=data.userinfo.mail;
+            	}else{
+            		//wrong
+            		window.location.href="/AmazingAd/Webapp/wow/login.jsp"
+            	}
+            },
+            error:function(){
+            	window.location.href="/AmazingAd/Webapp/wow/login.jsp"
+            }
+        });
+    	
+    	var ad_data;
+    	
+    	$.ajax({
+            type: "GET",
+            url : "/AmazingAd/web/advertiser/getallads?phone="+phone,
+            success: function(response){
+            	var result = JSON.stringify(response, null, 3);    
+            	ad_data =(new Function("","return "+result))();
+            	console.log(ad_data);
+            	var ad_size=ad_data.adList.length;
+            	var i;
+            	for(i=0;i<ad_size;i++){
+					var li = "<li class='timeline-inverted'>"+
+							 "<div class='timeline-image' onclick='ad_more("+i+");'>"+
+							 "<img class='img-circle img-responsive' src='../assets/images/about/4.jpg' alt='''>"+
+							 "</div>"+
+							 "<div class='timeline-panel'>"+
+							 "<div class='timeline-heading'><h4 id='title"+i+"'></h4></div>"+
+							 "<div class='timeline-body'><p class='text-muted' id='context"+i+"'></p></div>"+
+							 "<div class='nosee'><p id='id"+i+"'></p><p id='status"+i+"'></p><p id='placeandtime"+i+"'></p></div>"+
+							 "</div></li>";
+					if(i%2==0){
+						$("#shijiantiao").append(li);
+					}else{
+						$("#shijiantiao1").append(li);}
+            		eval("document.getElementById('title"+i+"').innerHTML=ad_data.adList["+i+"].title");
+            		eval("document.getElementById('id"+i+"').innerHTML=ad_data.adList["+i+"].id");
+            		eval("document.getElementById('context"+i+"').innerHTML=ad_data.adList["+i+"].content");
+            		eval("document.getElementById('status"+i+"').innerHTML=ad_data.adList["+i+"].status");
+            	}
+            },
+            error:function(){
+            	//window.location.href="/AmazingAd/Webapp/wow/login.jsp"
+            }
+        });
+    }
+}
+
+$("#logoff").click(function(){
+	logoff();
+});
+
+function ad_more(a){		//单个广告详细信息
+	var b = a;
+	$('#adModal').modal('show');
+	var ad_num = document.getElementById("id"+b).innerHTML;
+	var ad_title = document.getElementById("title"+b).innerHTML;
+ 	var ad_co = document.getElementById("context"+b).innerHTML;
+ 	var ad_status = document.getElementById("status"+b).innerHTML;
+	$("#ad_num").html(ad_num);
+	$("#ad_title").html(ad_title);
+  	$("#ad_co").text(ad_co);
+	$("#ad_status").html(ad_status);
+// 	$("#ad_time").text(ad_data.adList[a].id);
+// 	$("#ad_diduan").text(ad_data.adList[a].id);
+}
+
+</script>
 </body>
+
+
+
 
 </html>

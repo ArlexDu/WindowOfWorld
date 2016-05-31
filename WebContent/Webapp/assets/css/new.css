@@ -1,9 +1,10 @@
 body{text-align:center;}
+footer{background-color:#f6f6f6}
 .page-scroll {font-size: 1.0em;}
 .login {margin: 0 auto;}
 .btn-xl{width:180px; height:60px;border-radius:10px; margin-top:20px;}
-.form-group{display:block;}
-.form-control{float:right; border-radius:10px; margin-top:20px;}
+.form-group{overflow:}
+/* .form-control{float:right; border-radius:10px; margin-top:20px;} */
 section#contact .form-group{display:block;margin-top:1px}
 .btn-primary{width:150px;margin-top:10px;}
 .table{ position:relative; 
@@ -11,10 +12,10 @@ section#contact .form-group{display:block;margin-top:1px}
 		background-color:#fff; 
 		border:3px solid #c0c0c0; 
 		border-radius:10px; 
-		height: 350px;
 		vertical-align:middle; 
 		text-align:center;
 		color: black;
+		font-size:1.2em;
 		z-index:5;}
 .table-header{font-size:1.5em; font-weight:bolder; text-align:center; background-color:#F5F5F5;}
 
@@ -23,7 +24,7 @@ section#contact .form-group{display:block;margin-top:1px}
 
 .reg_font input{float:right;}
 
-#portrait{ width:120px; height:120px; vertical-align:middle; margin-right:180px;}
+#portrait{ width:120px; height:120px; vertical-align:middle;}
 
 div.reg_2{display:none;}
 div.reg_3{display:none; width:555px; height:565px;}
@@ -31,18 +32,16 @@ div.reg_3{display:none; width:555px; height:565px;}
 .ava_all{margin-top:50px;}
 .avatar{visibility:hidden;}
 
-#liscense_p{ width:250px; height:150px; margin-top:30px; margin-left:50px;}
-#identity_p{ width:250px; height:150px; margin-top:30px; margin-left:50px;}
+#liscense_p{ width:250px; height:150px; margin-top:30px; margin-left:50px; background:white;}
+#identity_p{ width:250px; height:150px; margin-top:30px; margin-left:50px; background:white;}
 .picture{width:565px; height:270px;}
 
 .liscense1{margin-right:0px;}
-.picture .liscense0{background-color:none;width:250px; height:30px; margin-left:250px;}
-.picture .liscense0:hover{background-color:#808080;width:250px; height:30px; margin-left:250px;}
+.picture .liscense0 img:hover{opacity:0.5}
 .liscense{visibility:hidden;}
 
 .identity1{margin-right:0px;}
-.picture .identity0{background-color:none;width:250px; height:30px; margin-left:250px;}
-.picture .identity0:hover{background-color:#808080;width:250px; height:30px; margin-left:250px;}
+.picture .identity0 img:hover{opacity:0.5}
 .identity{visibility:hidden;}
 
 #reg_change1{font-size:30px;margin-top:260px;margin-left:2px;} 
@@ -59,13 +58,16 @@ div.reg_3{display:none; width:555px; height:565px;}
 .ava_all img:hover{opacity:0.5}
 #portrait:hover{opacity:0.5}
 
+
 .adtype1{display:none;}
-.adtype2{display:none;margin-top:30px;}
+.adtype2{display:none;}
 .adtype{margin-left:85px;width:100px;}
 .adtype:hover{background-color:#00FF7F; width:100px; margin-left:85px;}
+.adtype0{margin-left:55px;width:100px;}
+.adtype0:hover{background-color:#00FF7F; width:100px; margin-left:55px;}
 
 .ad1{width:565px;height:640px;}
-.ad2{display:none;width:565px;height:600px;}
+.ad2{display:none;width:565px;}
 .ad_change span{display:block;}
 #ad_change1{font-size:30px;margin-top:200px;margin-left:40px;display:none;}
 #ad_change2{font-size:30px;margin-top:200px;margin-left:40px;}
@@ -73,8 +75,7 @@ div.reg_3{display:none; width:555px; height:565px;}
 #ad_change2:hover{background-color:#393539;font-size:30px;margin-top:200px;margin-left:40px;}
 
 #ad_picture{width:400px;height:250px;margin-top:30px;}
-.ad_picture{margin-left:200px;;width:100px;height:30px;margin-right:200px;}
-.ad_picture:hover{background-color:#393539;vertical-align: middle;width:100px;height:30px;}
+.ad_picture img:hover{opacity:0.5}
 
 .ad_one th{width:30%;}
 .ad_one td{font-size:1.5em;}
@@ -88,4 +89,29 @@ div.reg_3{display:none; width:555px; height:565px;}
 #pw{width:150px;margin-top:50px;margin-right:300px;}
 #pw:hover{width:150px;margin-top:50px;margin-right:300px;background-color:#00FF7F;}
 
-#map{width:560px; height:400px; overflow: hidden; margin-top:50px;}
+#map{width:500px; height:400px; overflow: hidden; margin-top:50px;}
+
+#area{display:none;}
+
+.plus:hover{background-color:#393539;}
+.minus:hover{background-color:#393539;}
+
+#portrait1{width:150px;height:150px;}
+
+.place1{display:none;}
+.place2{display:none;}
+
+.adedit{color:#FA8072;}
+.adedit:hover{color:#DC143C;}
+
+.quxiao{margin-top:30px;border:none;overflow£ºhidden}
+.quxiao h3{color:white;font-size:1.5em;}
+
+.nosee{display:none;}
+
+.addmoneytd{background-color:#e8e8e8;}
+.addmoneytd:hover{background-color:#D1D1D1;}
+.addmoney{float:right;}
+
+.account-ad-show{margin-top:30px;}
+.shijian{margin-top:30px;}

@@ -39,6 +39,12 @@ public class AdvertisementPlaceAndTime {
 	@Column(name = "place")
 	private String place;
 	
+	@Column(name = "begindate")
+	private String begindate;
+	
+	@Column(name ="enddate")
+	private String enddate;
+	
 	private String adid;
 	
 	public AdvertisementPlaceAndTime() {
@@ -107,6 +113,31 @@ public class AdvertisementPlaceAndTime {
 	public void setPlace(String place) {
 		this.place = place;
 	}
+
+
+
+	public String getBegindate() {
+		return begindate;
+	}
+
+
+
+	public void setBegindate(String begindate) {
+		this.begindate = begindate;
+	}
+
+
+
+	public String getEnddate() {
+		return enddate;
+	}
+
+
+
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
+	}
+
 
 	
 	
