@@ -7,7 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -37,20 +39,20 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	@Resource(name="administratorservice")
 	private IAdministratorService service;
 	
-	//用于展示的用户
+	//鐢ㄤ簬灞曠ず鐨勭敤鎴�
 	private List<User> users;
 	
-	//获得的广告
+	//鑾峰緱鐨勫箍鍛�
 	private List<Advertisement> advertisements;
 	
-	//用于展示的支出信息
+	//鐢ㄤ簬灞曠ず鐨勬敮鍑轰俊鎭�
 	private List<Balance> balances;
 	
 	private HttpServletRequest request;
 	
 	/*
-	 * 管理员登录的接口 /web/administrator/login
-	 * 参数：
+	 * 绠＄悊鍛樼櫥褰曠殑鎺ュ彛 /web/administrator/login
+	 * 鍙傛暟锛�
 	 *   @phone
 	 *   @password
 	 */
@@ -60,26 +62,30 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	
 	
 	public String Login() throws Exception {
-		// TODO Auto-generated method stub、
+		// TODO Auto-generated method stub銆�
 		if(service.login(phone, password)){
 			getHomeData();
+			HttpSession session = request.getSession();
+			session.setAttribute("phone", phone);
+			session.setAttribute("password", password);
 			return "success";
 		}else{
-			return "pswwrong";
+			return "fail";
 		}
 	}
 	
 	/*
-	 * 管理员的注册   /web/administrator/register
-	 * 参数：
-	 *    @手机号
-	 *    @密码
-	 *    @身份证号码
-	 *    @真实的姓名
-	 *    @身份证的照片 
+	 * 绠＄悊鍛樼殑娉ㄥ唽   /web/administrator/register
+	 * 鍙傛暟锛�
+	 *    @鎵嬫満鍙�
+	 *    @瀵嗙爜
+	 *    @韬唤璇佸彿鐮�
+	 *    @鐪熷疄鐨勫鍚�
+	 *    @韬唤璇佺殑鐓х墖 
 	 */
 	private String identity;
 	private String realname;
+	private String username;
 	private File identityCard;
 	private String identityCardContentType;
 	@Resource(name = "filetool")
@@ -94,6 +100,7 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	public String register() throws Exception{
 		
 		adminstrator.setPhone(phone);
+		adminstrator.setUsername(username);
 		adminstrator.setPassword(password);
 		adminstrator.setIdentity(identity);
 		adminstrator.setRealname(realname);
@@ -102,13 +109,16 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 		String time = String.valueOf(new Date().getTime());
 		adminstrator.setTime(time);
 		if(identityCard!=null){
+			System.out.println("图片上传");
 			String path = request.getSession().getServletContext().getRealPath("/IdentityCard");
+			System.out.println(path);
 			path = upload.SaveFile(identityCard, path, identityCardContentType);
 			String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
+			System.out.println(urlpath);
 			adminstrator.setIdentityCard(urlpath);
 		}
 		service.addAdministrator(adminstrator);
-		return "success";//转移到一个正在等管理员审核界面（不允许未经审核通过就登录）,管理员这个注册不需要发验证码或者激活操作
+		return "success";//杞Щ鍒颁竴涓鍦ㄧ瓑绠＄悊鍛樺鏍哥晫闈紙涓嶅厑璁告湭缁忓鏍搁�氳繃灏辩櫥褰曪級,绠＄悊鍛樿繖涓敞鍐屼笉闇�瑕佸彂楠岃瘉鐮佹垨鑰呮縺娲绘搷浣�
 	}
 	
 	public String test() throws Exception{
@@ -118,7 +128,7 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	
 	
 	/*
-	 * 获得home.jsp的数据
+	 * 鑾峰緱home.jsp鐨勬暟鎹�
 	 */
 	
 	private HashMap<String, Object> data;
@@ -128,10 +138,11 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 //			data = new HashMap<String,Object>();
 		    users = service.getShowUsers();
 			advertisements = service.getShowAdvertisements();
-			//获得展示的广告
+			//鑾峰緱灞曠ず鐨勫箍鍛�
 			List<ShowAdvertisement> showadvertisements = new ArrayList<ShowAdvertisement>();
 			for(int i=0;i<advertisements.size();i++){
 				ShowAdvertisement sa = new ShowAdvertisement();
+				sa.setId(advertisements.get(i).getId());
 				sa.setUsername(service.GetUsernameByPhone(advertisements.get(i).getPhone()));
 				sa.setPhone(advertisements.get(i).getPhone());
 				sa.setPrice(advertisements.get(i).getPrice());
@@ -141,7 +152,7 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 				showadvertisements.add(sa);
 			}
 			balances = service.getShowBalance();
-			//获得展示的财务
+			//鑾峰緱灞曠ず鐨勮储鍔�
 			List<ShowBalance> showbalances = new ArrayList<ShowBalance>();
 			for(int i=0;i<balances.size();i++){
 				ShowBalance sbal = new ShowBalance();
@@ -169,14 +180,18 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	}
 	
 	/*
-	 *  广告的审核信息   /web/administrator/advertisement
-	 *  参数：
+	 *  骞垮憡鐨勫鏍镐俊鎭�   /web/administrator/advertisement
+	 *  鍙傛暟锛�
 	 *   @id
 	 */
 	@Resource(name = "advertisementservice")
 	private IAdvertisementService advertisementservice;
 	private String id;
 	public String advertisementdata(){
+		if(request.getSession().getAttribute("phone")==null)
+		{
+			return "unlog";
+		}
 		try{
 			Advertisement advertisement = advertisementservice.GetAd(id);
 			ServletActionContext.getRequest().setAttribute("advertisement",advertisement);
@@ -187,21 +202,25 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	}
 	
 	/*
-	 * 广告审核结果 /web/administrator/examineadvertisement
-	 * 参数：
+	 * 骞垮憡瀹℃牳缁撴灉 /web/administrator/examineadvertisement
+	 * 鍙傛暟锛�
 	 *   @id
 	 *   @phone
-	 *   @result //审核结果   1：通过  -1：不通过
-	 *   @title //广告的主题
+	 *   @result //瀹℃牳缁撴灉   1锛氶�氳繃  -1锛氫笉閫氳繃
+	 *   @title //骞垮憡鐨勪富棰�
 	 */
 	@Resource(name = "sendmessage")
 	private SendMessage sendmessage;
 	private String result;
-	private String title;//广告的主题
+	private String title;//骞垮憡鐨勪富棰�
 	public String examineAdvertisement() throws Exception{
+		if(request.getSession().getAttribute("phone")==null)
+		{
+			return "unlog";
+		}
 		try{
 			service.changeAdvertisementStatus(id, result);
-//			短信通知
+//			鐭俊閫氱煡
 	        sendmessage.SendAdvertisementExamineResult(phone, result, title);
 			return "success";
 		}catch(Exception e){
@@ -210,8 +229,8 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	}
 	
 	/*
-	 *  用户的审核信息  /web/administrator/user
-	 *  参数：
+	 *  鐢ㄦ埛鐨勫鏍镐俊鎭�  /web/administrator/user
+	 *  鍙傛暟锛�
 	 *   @phone
 	 *   @userclass 
 	 */
@@ -226,31 +245,35 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	private String userstate;
 	
 	public String userdata(){
+		if(request.getSession().getAttribute("phone")==null)
+		{
+			return "unlog";
+		}
 		try{
 			if(userstate.equals("1")){
-				if(userclass.equals("1")){//管理员
+				if(userclass.equals("1")){//绠＄悊鍛�
 					User user =service.getAdministratorinfo(phone);
 					ServletActionContext.getRequest().setAttribute("userinfo",user);
 					return "check1";
-				}else if(userclass.equals("2")) {//广告商
+				}else if(userclass.equals("2")) {//骞垮憡鍟�
 					Advertiser advertiser = advertiserservice.getAdvertisementinfo(phone);
 					ServletActionContext.getRequest().setAttribute("userinfo",advertiser);
 					return "check2";
-				}else{//车主
+				}else{//杞︿富
 					CarOwner carowner = carownerservice.getUserbyPhone(phone);
 					ServletActionContext.getRequest().setAttribute("userinfo",carowner);
 					return "check3";
 				}
 			}else{
-				if(userclass.equals("1")){//管理员
+				if(userclass.equals("1")){//绠＄悊鍛�
 					User user =service.getAdministratorinfo(phone);
 					ServletActionContext.getRequest().setAttribute("userinfo",user);
 					return "success1";
-				}else if(userclass.equals("2")) {//广告商
+				}else if(userclass.equals("2")) {//骞垮憡鍟�
 					Advertiser advertiser = advertiserservice.getAdvertisementinfo(phone);
 					ServletActionContext.getRequest().setAttribute("userinfo",advertiser);
 					return "success2";
-				}else{//车主
+				}else{//杞︿富
 					CarOwner carowner = carownerservice.getUserbyPhone(phone);
 					ServletActionContext.getRequest().setAttribute("userinfo",carowner);
 					return "success3";
@@ -262,17 +285,21 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	}
 	
 	/* 
-	 *  用户的审核结果 /web/administrator/examineuser
-	 *  参数：
+	 *  鐢ㄦ埛鐨勫鏍哥粨鏋� /web/administrator/examineuser
+	 *  鍙傛暟锛�
 	 *   @phone
-	 *   @result //审核结果   1：通过  -1：不通过
-	 *   @userclass //用户的类别
+	 *   @result //瀹℃牳缁撴灉   1锛氶�氳繃  -1锛氫笉閫氳繃
+	 *   @userclass //鐢ㄦ埛鐨勭被鍒�
 	 *
 	 */
 	public String examineUser() throws Exception{
+		if(request.getSession().getAttribute("phone")==null)
+		{
+			return "unlog";
+		}
 		try{
 			service.changeUserStatus(phone, result);
-//			短信通知
+//			鐭俊閫氱煡
 	        sendmessage.SendUserExamineResult(phone, result, userclass);
 			return "success";
 		}catch(Exception e){
@@ -286,6 +313,10 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	 */
 	
 	public String wholeFinance() throws Exception{
+		if(request.getSession().getAttribute("phone")==null)
+		{
+			return "unlog";
+		}
 		try{
 			List<Finance> finances = service.wholefinace();
 			ServletActionContext.getRequest().setAttribute("finance",finances);
@@ -296,17 +327,23 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	}
 	
 	/*
-	 * 分页获得user的列表
-	 *  参数：
-	 *     @pagenum //当前页数
+	 * 鍒嗛〉鑾峰緱user鐨勫垪琛�
+	 *  鍙傛暟锛�
+	 *     @pagenum //褰撳墠椤垫暟
 	 */
 	private String pagenum;
 	
 	public String UserTable() throws Exception{
+		if(request.getSession().getAttribute("phone")==null)
+		{
+			return "unlog";
+		}
 		try{
 			int num = Integer.parseInt(pagenum);
 			List<User> users = service.UserTable(num);
 			ServletActionContext.getRequest().setAttribute("users",users);
+			HttpSession session = request.getSession();
+			session.setAttribute("pagenum", pagenum);
 			return "success";
 		}catch(Exception e){
 			return "fail";
@@ -314,26 +351,34 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	}
 	
 	/*
-	 * 分页获得广告的列表
-	 *  参数：
-	 *     @pagenum //当前页数
+	 * 鍒嗛〉鑾峰緱骞垮憡鐨勫垪琛�
+	 *  鍙傛暟锛�
+	 *     @pagenum //褰撳墠椤垫暟
 	 */
 	public String AdvertisementTable() throws Exception{
+		if(request.getSession().getAttribute("phone")==null)
+		{
+			return "unlog";
+		}
 		try{
 			int num = Integer.parseInt(pagenum);
 			List<Advertisement> advertisements = service.AdvertisementTable(num);
-			//获得展示的广告
+			//鑾峰緱灞曠ず鐨勫箍鍛�
 			List<ShowAdvertisement> showadvertisements = new ArrayList<ShowAdvertisement>();
 			for(int i=0;i<advertisements.size();i++){
 				ShowAdvertisement sa = new ShowAdvertisement();
+				sa.setId(advertisements.get(i).getId());
 				sa.setUsername(service.GetUsernameByPhone(advertisements.get(i).getPhone()));
 				sa.setPhone(advertisements.get(i).getPhone());
 				sa.setPrice(advertisements.get(i).getPrice());
 				sa.setStatus(advertisements.get(i).getStatus());
 				sa.setDate(advertisements.get(i).getTime());
+				sa.setTitle(advertisements.get(i).getTitle());
 				showadvertisements.add(sa);
 			}
 			ServletActionContext.getRequest().setAttribute("advertisements",showadvertisements);
+			HttpSession session = request.getSession();
+			session.setAttribute("pagenum1", pagenum);
 			return "success";
 		}catch(Exception e){
 			return "fail";
@@ -341,15 +386,19 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	}
 	
 	/*
-	 * 分页获得收支的列表
-	 *  参数：
-	 *     @pagenum //当前页数
+	 * 鍒嗛〉鑾峰緱鏀舵敮鐨勫垪琛�
+	 *  鍙傛暟锛�
+	 *     @pagenum //褰撳墠椤垫暟
 	 */
 	public String BalanceTable() throws Exception{
+		if(request.getSession().getAttribute("phone")==null)
+		{
+			return "unlog";
+		}
 		try{
 			int num = Integer.parseInt(pagenum);
 			List<Balance> balances = service.BalanceTable(num);
-			//获得展示的财务
+			//鑾峰緱灞曠ず鐨勮储鍔�
 			List<ShowBalance> showbalances = new ArrayList<ShowBalance>();
 			for(int i=0;i<balances.size();i++){
 				ShowBalance sbal = new ShowBalance();
@@ -408,7 +457,15 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 	public void setRealname(String realname) {
 		this.realname = realname;
 	}
+	
+	public String getUsername() {
+		return username;
+	}
 
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 	public File getIdentityCard() {
 		return identityCard;
 	}
