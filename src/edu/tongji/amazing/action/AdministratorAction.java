@@ -137,6 +137,7 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 				sa.setPrice(advertisements.get(i).getPrice());
 				sa.setStatus(advertisements.get(i).getStatus());
 				sa.setDate(advertisements.get(i).getTime());
+				sa.setTitle(advertisements.get(i).getTitle());
 				showadvertisements.add(sa);
 			}
 			balances = service.getShowBalance();

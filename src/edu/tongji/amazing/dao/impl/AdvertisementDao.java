@@ -30,10 +30,11 @@ public class AdvertisementDao extends GeneralDao<Advertisement> implements IAdve
     protected  SessionFactory factory;
 
 	@Override
-	public List<Advertisement> SendAdvertise(double lon1, double lon2, double lat1, double lat2 ,int time) throws Exception {
+	public List<Advertisement> SendAdvertise(double lon1, double lon2, double lat1, double lat2 ,int time,long date) throws Exception {
 		// TODO Auto-generated method stub
 		String hql = "from Advertisement where id in (select adid from AdvertisementPlaceAndTime where begin_time <= "+time
 				      +" and end_time >= "+time
+				      +" and begindate <= "+date+" and enddate >= "+date
 				      + " and longitude between "+lon1+" and "+lon2+" and latitude between "
 				      +lat1+" and "+lat2+")";
 		Session session = factory.openSession();

@@ -84,8 +84,9 @@ public class AdvertisementService implements IAdvertisementService {
 //		System.out.println("end_lon is "+end_lon);
 		Date date = new Date();
 		int hour = date.getHours();
+		long d = System.currentTimeMillis();
 //		System.out.println("hour is "+hour);
-		return dao.SendAdvertise(start_lon, end_lon, start_lat, end_lat, hour);
+		return dao.SendAdvertise(start_lon, end_lon, start_lat, end_lat, hour,d);
 	}
 
 	@Override
