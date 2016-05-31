@@ -84,7 +84,7 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
   	public void addBullet(){
   		bullet.setPhone("100000001");
   		bullet.setTime("2016-04-23");
-  		bullet.setContent("动画城");
+  		bullet.setContent("鍔ㄧ敾鍩�");
   		bullet.setTitle("wobufu");
 		bulletService.addBullet(bullet);
   	}
@@ -132,7 +132,7 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
       adservice.AddNewAd(advertisement);
 	}
   	/*
-  	 * 测试定点投放
+  	 * 娴嬭瘯瀹氱偣鎶曟斁
   	 */
 //  	@Test
     public void sendad(){
@@ -140,7 +140,7 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 		    List<Advertisement> ads = adservice.SendAdvertise("121.49854302406311", "31.28540017791541");
     		Place[] places = Place.values();
     		for(Place curplace : places){
-    			//当前坐标周围有这个地点
+    			//褰撳墠鍧愭爣鍛ㄥ洿鏈夎繖涓湴鐐�
     			System.out.println("name is "+curplace.getName());
     			System.out.println("code is "+curplace.getCode());
     			if(adservice.getfrombaidu("121.49854302406311", "31.28540017791541", curplace.getCode())){
@@ -150,7 +150,7 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
     		 for(int i = 0; i<ads.size();i++){
 				 System.out.println("advertisement's content is "+ads.get(i).getContent());
 			 }
-//    		adservice.getfrombaidu("121.49854302406311", "31.28540017791541", "学校");
+//    		adservice.getfrombaidu("121.49854302406311", "31.28540017791541", "瀛︽牎");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -158,7 +158,7 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
     }
 	@Resource(name="administratorservice")
 	private IAdministratorService adminservice;
-//    @Test
+    @Test
     public void wholeFinance() throws Exception{
 		try{
 			List<Finance> finaces = adminservice.wholefinace();
@@ -171,7 +171,7 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 			e.printStackTrace();
 		}
 	}
-  	@Test
+//  	@Test
     public void AdvertisementTable() throws Exception{
 		try{
 			int num = Integer.parseInt("1");

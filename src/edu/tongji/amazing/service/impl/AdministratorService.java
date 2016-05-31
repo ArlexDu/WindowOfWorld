@@ -1,9 +1,11 @@
 package edu.tongji.amazing.service.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
 
 import edu.tongji.amazing.dao.impl.AdministratorDao;
@@ -12,6 +14,7 @@ import edu.tongji.amazing.model.Balance;
 import edu.tongji.amazing.model.Finance;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdministratorService;
+import edu.tongji.amazing.tool.ComparaFinance;
 @Service("administratorservice")
 public class AdministratorService implements IAdministratorService{
 
@@ -80,7 +83,10 @@ public class AdministratorService implements IAdministratorService{
 	@Override
 	public List<Finance> wholefinace() throws Exception {
 		// TODO Auto-generated method stub
-		return dao.wholefinace();
+		List<Finance> list =  dao.wholefinace();
+		ComparaFinance comparator = new ComparaFinance();
+		Collections.sort(list,comparator);
+		return list;
 	}
 	@Override
 	public List<User> UserTable(int pagenum) throws Exception {

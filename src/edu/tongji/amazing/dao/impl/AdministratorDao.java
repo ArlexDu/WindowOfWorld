@@ -56,7 +56,7 @@ public class AdministratorDao extends GeneralDao<User> implements IAdministrator
 	@Override
 	public int getallusers() throws Exception {
 		// TODO Auto-generated method stub
-		String hql = "select count(*) from User where not (userclass = 1)";
+		String hql = "select count(*) from User";
 		Session session = Factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);
@@ -209,8 +209,9 @@ public class AdministratorDao extends GeneralDao<User> implements IAdministrator
 				.addScalar("outgoing",StandardBasicTypes.DOUBLE)
 				.addScalar("finance_date",StandardBasicTypes.STRING).list();
 		List<Finance> finances = new ArrayList<Finance>();
-		for(int i = 0; i< list.size(); i++){
-			Object[] ob =(Object[])list.iterator().next();
+		Iterator it = list.iterator();
+		while(it.hasNext()){
+			Object[] ob =(Object[])it.next();
 			Finance finance = new Finance();
 			finance.setIncome((double)ob[0]);
 			finance.setOutgoing((double)ob[1]);

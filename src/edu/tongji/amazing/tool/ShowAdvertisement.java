@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 @Component("showadvertisement")
 public class ShowAdvertisement {
 
+	private Long id;
 	private String username;
 	private String title;
 	private String price;
@@ -12,6 +13,14 @@ public class ShowAdvertisement {
 	private String date;
 	private String status;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public String getUsername() {
 		return username;
 	}
