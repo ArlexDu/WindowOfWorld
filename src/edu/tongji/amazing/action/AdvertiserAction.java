@@ -3,6 +3,7 @@ package edu.tongji.amazing.action;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +23,11 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.Advertiser;
+import edu.tongji.amazing.model.Balance;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdvertisementService;
 import edu.tongji.amazing.service.IAdvertiserService;
+import edu.tongji.amazing.service.IBalanceService;
 import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.service.impl.AdvertiserService;
@@ -58,7 +61,16 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 	private String mail;
 	@Resource(name="user")
 	private User user;
+	private float charge;
 	
+	public float getCharge() {
+		return charge;
+	}
+
+	public void setCharge(float charge) {
+		this.charge = charge;
+	}
+
 	/*  婵烇綀顕ф慨鐐哄棘閹殿喗鐣辨鐐茬仢閹诧繝宕敓锟�
 	 *  闁告瑥鍊归弳鐔兼晬閿燂拷
 	 *    @avatar
@@ -231,6 +243,34 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 		return "success";
 	}
 
+	@Resource(name = "balanceservice")
+	private IBalanceService balanceservice;
+	
+	@Resource(name = "balance")
+	private Balance balance;
+
+	//充值
+	public String charge() throws Exception {
+
+		data = new HashMap<String, Object>();
+		balance.setMoney(Float.toString(charge));
+		balance.setPhone(phone);
+		balance.setReason("charge");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 璁剧疆鏃ユ湡鏍煎紡
+		String time = df.format(new Date());// new Date()涓鸿幏鍙栧綋鍓嶇郴缁熸椂闂�
+		balance.setTime(time);
+		if (!balanceservice.changeBalance(balance)) {
+			data.put(defined.Error, defined.FAIL);
+			return "success";
+		}
+		data.put(defined.Error, defined.SUCCESS);
+		return "success";
+//		System.out.println(phone);
+//		System.out.println(charge);
+//		return "success";
+	}
+
+	
 	/*
 	 * 闂侇収鍠氶鍫濃攽閿熻棄煤閿燂拷  
 	 *  闁告瑥鍊归弳鐔兼晬閿燂拷

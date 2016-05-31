@@ -86,10 +86,19 @@
 				<param name="root">data</param>
 			</result>
 		</action>
+		<action name="charge" class="advertiserAction" method="charge">
+			<result name="success" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
 		<action name="addad" class="advertisementaction" method="newAdvertisement">
 			<result name="success">/Website/Pages/success.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
+		<action name="testad" class="myadvertisement" method="newad">
+			<result name="success" type="redirect">/Webapp/wow/uploadad.jsp</result>
+		</action>
+		
 		<action name="active" class="advertiserAction" method="ActiveAccount">
 		    <result name="success">/Website/Pages/success.jsp</result>
 		    <result name="fail">/Website/Pages/success.jsp</result>

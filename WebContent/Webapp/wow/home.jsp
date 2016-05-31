@@ -44,7 +44,7 @@
                         <a class="page-scroll" href="#portfolio">活动</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">广告</a>
+                        <a class="page-scroll" href="#team">团队</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="login.jsp">登录</a>
@@ -61,8 +61,7 @@
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">Welcome To Our Web!</div>
-                <div class="intro-heading">It's Nice To Meet You</div>
+                <div class="intro-lead-in">欢迎加入世界之窗</div>
                 <a href="#services" class="page-scroll btn btn-xl">了解更多</a>
             </div>
         </div>
@@ -110,12 +109,10 @@
     <!-- 活动介绍 ，包含6个-->
     <section id="portfolio" class="bg-light-gray">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">活动</h2>
-                    <h3 class="section-subheading text-muted"></h3>
-                </div>
-            </div>
+             <div class="col-lg-12 text-center">
+                 <h2 class="section-heading">活动</h2>
+                 <h3 class="section-subheading text-muted"></h3>
+             </div>
             <div class="row">
                 <div class="col-md-4 col-sm-6 portfolio-item">
                     <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
@@ -200,85 +197,6 @@
                         <h4>活动标题</h4>
                         <p class="text-muted">Web Design</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 广告罗列 -->
-    <section id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">最新广告</h2>
-                    <h3 class="section-subheading text-muted"></h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="timeline">
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="../assets/images/about/1.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>2016-3</h4>
-                                    <h4 class="subheading">广告标题</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">广告内容！</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="../assets/images/about/2.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>2016-3</h4>
-                                    <h4 class="subheading">广告标题</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">广告内容！</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="../assets/images/about/3.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>2016-4</h4>
-                                    <h4 class="subheading">广告标题</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">广告内容！</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="../assets/images/about/4.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>2016-4</h4>
-                                    <h4 class="subheading">广告标题</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">广告内容！</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <h4>更多广告<br>敬请期待!</h4>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>

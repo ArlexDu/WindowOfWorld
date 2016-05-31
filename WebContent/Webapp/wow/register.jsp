@@ -100,15 +100,15 @@
                            <div class="reg_3">
                            <div class="picture">
                            		<label class="liscense1">广告商执照认证</label>
-                           		<img id="liscense_p" src="/AmazingAd/Webapp/assets/images/jiazhao_m.jpg">
-                           		<label class="liscense0">本地选取
+                           		<label class="liscense0">
+								<img id="liscense_p" src="/AmazingAd/Webapp/assets/images/liscencecard.jpg">
                               	<input class="liscense" accept="image/gif, image/jpeg, image/x-png" type="file" id="licensecard" name="licensecard" onchange="showPreview1(this)"/>
                            		</label>
                            </div>
                            <div class="picture">
                            		<label class="identity1">身份证照片认证</label>
-                           		<img id="identity_p" src="/AmazingAd/Webapp/assets/images/id.jpg">
-                           		<label class="identity0">本地选取
+                           		<label class="identity0">
+                           		<img id="identity_p" src="/AmazingAd/Webapp/assets/images/idcard.jpg">
                               	<input class="identity" accept="image/gif, image/jpeg, image/x-png" type="file" id="identitycard" name="identitycard" onchange="showPreview2(this)" />
                            		</label>
                            </div>
@@ -171,7 +171,7 @@
 	      </div>
 	      <div class="modal-body">注册成功</div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 	      </div>
 	    </div>
 	  </div>
@@ -185,7 +185,7 @@
 	      </div>
 	      <div class="modal-body" id="reg_context"></div>
 	      <div class="modal-footer">
-	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 	      </div>
 	    </div>
 	  </div>

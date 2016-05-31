@@ -16,7 +16,7 @@ function check_login(){
             	window.location.href="/AmazingAd/Webapp/wow/account.jsp"
             }else{
             	$('#myModal0').modal('show');
-        		$("#reg_context").html(response);
+        		$("#login_context").html(response);
                 return false;
             }
         }
@@ -164,8 +164,8 @@ function check_reg(){                        //注册验证
 }            
 
 function adtype1(){
-	$(".adtype1").fadeIn("slow");
 	$(".adtype2").fadeOut("slow");
+	$(".adtype1").fadeIn("slow");
 }
 function adtype2(){
 	$(".adtype1").fadeOut("slow");
@@ -195,45 +195,35 @@ function showPreview_ad(source) {  //上传身份证图片预览
 	}
 }
 
-function date() {
-    $('#datetimepicker').datetimepicker({
-    	format: "yyyy-mm-dd",
-        autoclose: true,
-        todayBtn: true,
-        todayHighlight: true,
-        showMeridian: true,
-        pickerPosition: "bottom-left",
-        language: 'zh-CN',
-        startView: 2,//月视图
-        minView: 2//日期时间选择器所能够提供的最精确的时间选择视图
-    });
-}
+//function date() {         //上传广告开始发布日期
+//    $('#datetimepicker').datetimepicker({
+//    	format: "yyyy-mm-dd",
+//        autoclose: true,
+//        todayBtn: true,
+//        todayHighlight: true,
+//        showMeridian: true,
+//        pickerPosition: "bottom-left",
+//        language: 'zh-CN',
+//        startView: 2,//月视图
+//        minView: 2//日期时间选择器所能够提供的最精确的时间选择视图
+//    });
+//}
+//
+//function date1() {         //上传广告结束发布日期
+//    $('#datetimepicker1').datetimepicker({
+//    	format: "yyyy-mm-dd",
+//        autoclose: true,
+//        todayBtn: true,
+//        todayHighlight: true,
+//        showMeridian: true,
+//        pickerPosition: "bottom-left",
+//        language: 'zh-CN',
+//        startView: 2,//月视图
+//        minView: 2//日期时间选择器所能够提供的最精确的时间选择视图
+//    });
+//}
 
-function date1() {
-    $('#datetimepicker1').datetimepicker({
-    	format: "yyyy-mm-dd",
-        autoclose: true,
-        todayBtn: true,
-        todayHighlight: true,
-        showMeridian: true,
-        pickerPosition: "bottom-left",
-        language: 'zh-CN',
-        startView: 2,//月视图
-        minView: 2//日期时间选择器所能够提供的最精确的时间选择视图
-    });
-}
-
-function ad_more(id){		//广告信息
-	$('#adModal').modal('show');
-	$("#ad_num").html(id);
-	$("#ad_co").text("广告内容");
-	$("#ad_begin").val("2016-05-01");
-	$("#ad_end").val("2016-05-01");
-	$("#ad_time").text(id);
-	$("#ad_diduan").text(id);
-}
-
-function ad_date() {
+function ad_date() {         //单个广告开始发布日期
     $("#ad_begin").datetimepicker({
     	format: "yyyy-mm-dd",
         autoclose: true,
@@ -246,7 +236,7 @@ function ad_date() {
         minView: 2//日期时间选择器所能够提供的最精确的时间选择视图
     });
 }
-function ad_date1() {
+function ad_date1() {         //单个广告结束发布日期
     $("#ad_end").datetimepicker({
     	format: "yyyy-mm-dd",
         autoclose: true,
@@ -271,35 +261,52 @@ function selcetall(thisform){
     }  
 }
 
-function check_upload(){
-	var title=document.upload.title.value;			//广告标题
-	var context=document.upload.context.value;		//文字广告
-	var ad_card=document.getElementById("ad_card").value;   	//图片广告begin_time
-	var begin_time=document.upload.begin_time.value;	//开始日期
-	var end_time=document.upload.end_time.value;		//结束日期
-	var time=document.upload.time.value;				//发布时段
-	var area=document.upload.area.value;				//发布地段
-	
-	if(title==""){
-		$('#uploadModal').modal('show');
-		$("#upload_context").html("广告标题不能为空");
-		return false;
-	}
-	if(context==""&&ad_card==""){
-		$('#uploadModal').modal('show');
-		$("#upload_context").html("文字广告和图片广告不能同时为空");
-		return false;
-	}
-	if(context!=""&&ad_card!=""){
-		var ad_context=context;
-	}
+var num=1;
+function ta_more(){                 //添加遗憾时段地段输入
+	console.log("clear");
+	num=num+1;
+	var t="<tr id='"+num+"'><th>"+num+"</th>" +
+			"<td><input type='text' id='time"+num+"' name='showtime' readonly='readonly'></td>" +
+			"<td><input type='text' id='length"+num+"' name='length' readonly='readonly'></td>" +
+			"<td><input type='text' id='area"+num+"' name='showarea' readonly='readonly'></td>" +
+			"<td class='nosee'><input type='checkbox' id='areatype"+num+"' name='type' onclick='changetype(this)' readonly='readonly'></td>" +
+			"<td><a id='minus"+num+"' class='glyphicon glyphicon-minus minus'></a></td></tr>";
+	$("#table_ta").append(t);
+	$("#minus"+num).click(function(){
+		$("#"+num+"").remove();
+		num=num-1;
+		console.log("number",num);
+	});
 }
 
-function time_more(){
-	$('#time_more').slideDown('show');
-	$('#minus').slideDown('show');
+function timearea(){            //选定时段和地段坐标填入表格
+	var time=document.upload1.time.value;
+	var tlength=document.upload1.tlength.value;
+	var lng=document.getElementById("lng").innerHTML; 
+	var lat=document.getElementById("lat").innerHTML; 
+	eval("document.upload.time"+num+".value=time");
+	eval("document.upload.length"+num+".value=tlength");
+	eval("document.upload.area"+num+".value=lng+'@'+lat"); 
+	eval("document.getElementById('areatype"+num+"').checked=true"); 
+	eval("document.getElementById('areatype"+num+"').onclick()");
 }
-function time_less(){
-	$('#time_more').slideUp('show');
-	$('#minus').slideUp('show');
+
+function timearea1(){      		//选定时段和地段类型填入表格
+	var time=document.upload1.time.value;
+	var tlength=document.upload1.tlength.value;
+	var area_type=document.upload1.area_type.value;
+	eval("document.getElementById('time"+num+"').value=time");
+	eval("document.upload.length"+num+".value=tlength");
+	eval("document.getElementById('area"+num+"').value=area_type"); 
+	eval("document.getElementById('areatype"+num+"').checked=false");
+	eval("document.getElementById('areatype"+num+"').onclick()");
+}
+
+function placetype1(){
+	$(".place2").fadeOut("slow");
+	$(".place1").fadeIn("slow");
+}
+function placetype2(){
+	$(".place1").fadeOut("slow");
+	$(".place2").fadeIn("slow");
 }
