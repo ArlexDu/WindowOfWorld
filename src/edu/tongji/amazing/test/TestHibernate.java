@@ -158,7 +158,7 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
     }
 	@Resource(name="administratorservice")
 	private IAdministratorService adminservice;
-    @Test
+//    @Test
     public void wholeFinance() throws Exception{
 		try{
 			List<Finance> finaces = adminservice.wholefinace();
