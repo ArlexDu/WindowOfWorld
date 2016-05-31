@@ -116,20 +116,20 @@
     <script src="../assets/js/check.js"></script>
     
     <!-- 登录出错弹出 -->
-	<div class="modal fade" id="login_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+<div class="modal fade" id="myModal0" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h4 class="modal-title" id="myModalLabel">登录提示</h4>
+	        <h4 class="modal-title" id="myModalLabel">登录信息出错</h4>
 	      </div>
-	      <div class="modal-body">账号密码出错</div>
+	      <div class="modal-body" id="reg_context"></div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	      </div>
 	    </div>
 	  </div>
 	</div>
-
     <!--APP二维码-->
     <div class="portfolio-modal modal fade" id="AppModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
@@ -143,6 +143,5 @@
         </div>
     </div>
     
-
 </body>
 </html>

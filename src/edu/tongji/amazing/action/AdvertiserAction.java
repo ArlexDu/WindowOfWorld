@@ -3,9 +3,11 @@ package edu.tongji.amazing.action;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -21,18 +23,21 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.Advertiser;
+import edu.tongji.amazing.model.Balance;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdvertisementService;
 import edu.tongji.amazing.service.IAdvertiserService;
+import edu.tongji.amazing.service.IBalanceService;
 import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.service.ICarOwnerService;
+import edu.tongji.amazing.service.impl.AdvertiserService;
 import edu.tongji.amazing.tool.SendEmail;
 import edu.tongji.amazing.tool.FileTools;
 @Controller("advertiserAction")
 public class AdvertiserAction extends ActionSupport implements ServletRequestAware{
 
 	@Resource(name = "advertiserservice")
-	private IAdvertiserService service;
+	private AdvertiserService service;
 	
 	@Resource(name = "carownerservice")
 	private ICarOwnerService userservice;
@@ -45,7 +50,8 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 	@Resource(name = "advertiser")
 	private Advertiser advertiser;
 	
-//	鏂扮殑骞垮憡鍟嗘敞鍐�
+	
+//	闁哄倹澹嗗▓鎴︾嵁閸喗鍟為柛鐔锋閺佺偤宕橀敓锟�
 	private String phone;
 	private String username;
 	private String realname;
@@ -55,9 +61,18 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 	private String mail;
 	@Resource(name="user")
 	private User user;
+	private float charge;
 	
-	/*  娣诲姞鏂扮殑骞垮憡鍟�
-	 *  鍙傛暟锛�
+	public float getCharge() {
+		return charge;
+	}
+
+	public void setCharge(float charge) {
+		this.charge = charge;
+	}
+
+	/*  婵烇綀顕ф慨鐐哄棘閹殿喗鐣辨鐐茬仢閹诧繝宕敓锟�
+	 *  闁告瑥鍊归弳鐔兼晬閿燂拷
 	 *    @avatar
 	 *    @licence
 	 *    @licensecard
@@ -85,6 +100,7 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 	@Resource(name = "define")
 	private Defined defined;
 	
+	
 	public String register() throws Exception{
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/plain;charset=utf-8");
@@ -95,24 +111,21 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 				path = upload.SaveFile(avatar, path, avatarContentType);
 				String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				user.setAvatar(urlpath);
-				System.out.println("avatar>>");
-				System.out.println("url:"+urlpath);
+//				System.out.println("url:"+urlpath);
 			}
 			if(licensecard != null){
 				String path = request.getSession().getServletContext().getRealPath("/Businesslicense");
 				path = upload.SaveFile(licensecard, path, licensecardContentType);
 				String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				advertiser.setLicensecard(urlpath);
-				System.out.println("licensecard>>");
-				System.out.println("url:"+urlpath);
+//				System.out.println("url:"+urlpath);
 			}
 			if(identitycard != null){
 				String path = request.getSession().getServletContext().getRealPath("/IdentityCard");
 				path = upload.SaveFile(identitycard, path, identitycardContentType);
 				String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				user.setIdentityCard(urlpath);
-				System.out.println("identitycard>>");
-				System.out.println("url:"+urlpath);
+//				System.out.println("url:"+urlpath);
 			}
 			user.setBalace(0.0f);
 			user.setCredit(0.0f);
@@ -121,40 +134,46 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 			user.setPhone(phone);
 			user.setRealname(realname);
 			user.setUsername(username);
-			
-			System.out.println(identity);
-			System.out.println(password);
-			System.out.println(phone);
-			System.out.println(realname);
-			System.out.println(username);
-			
-			user.setUserclass("2");//骞垮憡鍟�
-			user.setStatus("-2");//鏈縺娲�
-			String time = String.valueOf(new Date().getTime());//瀛樺偍鏃堕棿鎴�
+			user.setUserclass("2");//妤犵偛鐏濋幉锟犲疮閿燂拷
+			user.setStatus("-2");//闁哄牜浜濈缓鍝劽洪敓锟�
+			String time = String.valueOf(new Date().getTime());//閻庢稒锚閸嬪秹寮崼鏇燂紵闁硅揪鎷�
 			user.setTime(time);
 			advertiser.setLicense(licence);
 			advertiser.setPhone(phone);
 			
 			advertiser.setMail(mail);
-			System.out.println(licence);
-			System.out.println(phone);
-			System.out.println(mail);
-			
 			advertiser.setUser(user);
 			service.addAdvertise(advertiser);
-//			out.print("true");
-//			out.flush();
-//			sendemail.send(mail,phone);
+			sendemail.send(mail,phone);
+			
+			Cookie cooki; 
+			cooki=new Cookie("userphone",phone);//鐢ㄦ埛ID 
+			cooki.setMaxAge(60*60);//cookie鏃堕棿 
+			cooki.setPath("/AmazingAd/Webapp/wow"); //鏍规嵁涓汉鐨勪笉鐢紝鍦ㄤ笉鍚屽姛鑳界殑璺緞涓嬪垱寤� 
+			response.addCookie(cooki); 
 			
 			return "success";
 			
 		}catch(Exception e){
-//			out.print("false");
-//			out.flush();
 			return "fail";
 		}
 	}
 	
+	public void hasuser(){
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/plain;charset=utf-8");
+		PrintWriter out=null;
+		try {
+			out= response.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if(userservice.IsUserExist(phone)==null)
+			out.print("false");
+		else 
+			out.print("true");
+			out.flush();
+	}
 	
 	public void login(){
 		
@@ -167,29 +186,24 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 			e.printStackTrace();
 		}
 		
-		System.out.println(phone);
-		System.out.println(password);
-		
+//		System.out.println(phone);
+//		System.out.println(password);
+	
 		try{
 			
-			if(userservice.getUserbyPhone(phone)==null){
-				out.println("no such user");
+			if(userservice.IsUserExist(phone)==null){
+				out.print("娌℃湁姝ょ敤鎴�");
 				out.flush();
 			}else if(userservice.checkUser(phone, password)){
-				out.println("success");
+				Cookie cooki; 
+				cooki=new Cookie("userphone",phone);//鐢ㄦ埛ID 
+				cooki.setMaxAge(60*60);//cookie鏃堕棿 
+				cooki.setPath("/AmazingAd/Webapp/wow"); //鏍规嵁涓汉鐨勪笉鐢紝鍦ㄤ笉鍚屽姛鑳界殑璺緞涓嬪垱寤� 
+				response.addCookie(cooki); 
+				out.print("success");
 				out.flush();
-				//设置cookie
-		        // 创建一个Cookie,包括(key,value).
-		        Cookie cookie = new Cookie("userphone", phone);
-		        // 设置Cookie的生命周期,如果设置为负值的话,关闭浏览器就失效.
-		        cookie.setMaxAge(60*60*24);
-		        // 设置Cookie路径,不设置的话为当前路径(对于Servlet来说为request.getContextPath() + web.xml里配置的该Servlet的url-pattern路径部分)
-		        cookie.setPath("/AmazingAd/Webapp/wow");
-		        // 输出Cookie
-		        response.addCookie(cookie);
-			
 			}else{
-				out.println("wrong password");
+				out.print("瀵嗙爜閿欒");
 				out.flush();
 			}
 			
@@ -198,20 +212,68 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 			System.out.println(e);
 		}
 		
-		
-		
 	}
 	
-	public void getAllAdByPhone(){
-		System.out.println(phone);
+	public String getAllAdByPhone(){
+//		System.out.println(phone);
 		List<Advertisement> ads=adservice.GetAdsList(phone);
-		System.out.println(ads.size());
+		data= new HashMap<String, Object>();
 		
+		 if(ads.size()==0){
+			 data.put(defined.Error, defined.FAIL);
+		 }else{
+			 data.put(defined.Error, defined.SUCCESS);
+			 data.put("adList", ads); 
+		 }
+		return "success";
 	}
+	
+	public String getUserInfo(){
+		try {
+			advertiser=service.getAdvertisementinfo(phone);
+			data= new HashMap<String, Object>();
+			 data.put(defined.Error, defined.SUCCESS);
+			 advertiser.getUser().setPassword("");//灞忚斀鏁忔劅淇℃伅
+			 data.put("userinfo", advertiser); 
+		} catch (Exception e) {
+			data.put(defined.Error, defined.FAIL);
+			e.printStackTrace();
+		}
+		
+		return "success";
+	}
+
+	@Resource(name = "balanceservice")
+	private IBalanceService balanceservice;
+	
+	@Resource(name = "balance")
+	private Balance balance;
+
+	//充值
+	public String charge() throws Exception {
+
+		data = new HashMap<String, Object>();
+		balance.setMoney(Float.toString(charge));
+		balance.setPhone(phone);
+		balance.setReason("charge");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 璁剧疆鏃ユ湡鏍煎紡
+		String time = df.format(new Date());// new Date()涓鸿幏鍙栧綋鍓嶇郴缁熸椂闂�
+		balance.setTime(time);
+		if (!balanceservice.changeBalance(balance)) {
+			data.put(defined.Error, defined.FAIL);
+			return "success";
+		}
+		data.put(defined.Error, defined.SUCCESS);
+		return "success";
+//		System.out.println(phone);
+//		System.out.println(charge);
+//		return "success";
+	}
+
 	
 	/*
-	 * 閭婵�娲�  
-	 *  鍙傛暟锛�
+	 * 闂侇収鍠氶鍫濃攽閿熻棄煤閿燂拷  
+	 *  闁告瑥鍊归弳鐔兼晬閿燂拷
 	 *  @phone
 	 */
 	public String ActiveAccount() throws Exception{
@@ -224,9 +286,9 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 		return "success";
 	}
 	
-	/* 鏇存柊骞垮憡鍟嗕俊鎭� (寰呭畾)
-	 * 鍙厑璁告洿鎹㈡墜鏈哄彿锛岄偖绠憋紝鏄电О锛屽瘑鐮侊紙鎴戣寰楄繖浜涚殑鏇存敼闇�瑕佷竴涓釜鏉ユ敼鑰屼笉鏄竴璧锋敼鐨勶級
-	 * 鍙傛暟锛�
+	/* 闁哄洤鐡ㄩ弻濠囩嵁閸喗鍟為柛鐔锋娣囧﹪骞侀敓锟� (鐎垫澘鎳庨悾锟�)
+	 * 闁告瑯浜滈崢鎴犳媼閸涘﹥绾柟骞垮灪婢ф粓寮甸崫鍕▏闁挎稑鐭傞崑鏍不閹插绀夐柡鍕暩琚ㄩ柨娑樿嫰閻︽垿鎯嶆笟濠勭闁瑰瓨鍨奸～搴☆嚗濡ゅ嫮绠瑰ù婊勭〒濞堟垿寮寸�涙ɑ鏆梻鍥锋嫹閻熸洑妞掔粩瀛樼▔椤忓啴鍤嬮柡澶堝劜閺佸ジ鎳撶仦鑲╃憹闁哄嫷鍨粩瀵告導闁垮鏆柣銊ュ缁憋拷
+	 * 闁告瑥鍊归弳鐔兼晬閿燂拷
 	 *    @phone
 	 *    @authcode
 	 *    @password
@@ -240,7 +302,7 @@ public class AdvertiserAction extends ActionSupport implements ServletRequestAwa
 			user.setPhone(phone);
 			user.setRealname(realname);
 			user.setUsername(username);
-			user.setStatus("0");//鏈鏍�
+			user.setStatus("0");//闁哄牜浜滈鎼佸冀閿燂拷
 			advertiser.setPhone(phone);
 			advertiser.setUser(user);
 //			if(service.Advertise(advertiser)){

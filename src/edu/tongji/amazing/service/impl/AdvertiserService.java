@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import edu.tongji.amazing.action.PadAction.ad;
 import edu.tongji.amazing.dao.impl.AdvertiserDao;
 import edu.tongji.amazing.model.Advertiser;
 import edu.tongji.amazing.model.User;
@@ -36,6 +37,22 @@ public class AdvertiserService implements IAdvertiserService{
 		// TODO Auto-generated method stub
 		return dao.IsUserExist(phone);
 	}
+	@Override
+	public boolean updateAdvertise(Advertiser advertiser) {
+		// TODO Auto-generated method stub
+		return dao.Update(advertiser);
+	}
+	@Override
+	public boolean charge(String phone,float num) {
+		// TODO Auto-generated method stub
+		Advertiser advertiser = dao.getUserbyPhone(phone);
+		User user= advertiser.getUser();
+		float balance= user.getBalace();
+		user.setBalace(balance+num);
+		advertiser.setUser(user);
+		return dao.Update(advertiser);
+	}
+	
 
 
 }
