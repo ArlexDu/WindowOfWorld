@@ -22,44 +22,52 @@
 		</action>
 
 		<action name="register" class="administratorAction" method="register">
-			<result name="success">/Webapp/admin/not-vetted.jsp</result>
+			<result name="success" type="redirect">/Webapp/admin/not-vetted.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 
 		<action name="advertisement" class="administratorAction" method="advertisementdata">
+			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
 			<result name="success">/Webapp/admin/adcheck.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="user" class="administratorAction" method="userdata">
+			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
 			<result name="success3">/Webapp/admin/usercheck.jsp</result>
 			<result name="success2">/Webapp/admin/usercheck1.jsp</result>
 			<result name="success1">/Webapp/admin/usercheck2.jsp</result>
-			<result name="check1">/Webapp/admin/user.jsp</result>
-			<result name="check2">/Webapp/admin/user.jsp</result>
+			<result name="check1">/Webapp/admin/user2.jsp</result>
+			<result name="check2">/Webapp/admin/user1.jsp</result>
 			<result name="check3">/Webapp/admin/user.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="examineadvertisement" class="administratorAction" method="examineAdvertisement">
-			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
+			<result name="success" type="redirect">../../web/administator/advertisementtable?pagenum=1</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="examineuser" class="administratorAction" method="examineUser">
-			<result name="success">/Webapp/admin/users.jsp</result>
+			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
+			<result name="success" type="redirect">../../web/administator/usertable?pagenum=1</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="finances" class="administratorAction" method="wholeFinance">
-			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
+			<result name="success"></result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="usertable" class="administratorAction" method="UserTable">
-			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
+			<result name="success">/Webapp/admin/users.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="advertisementtable" class="administratorAction" method="AdvertisementTable">
-			<result name="success">/Website/Pages/success.jsp</result>
+			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
+			<result name="success">/Webapp/admin/ads.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="balancetable" class="administratorAction" method="BalanceTable">
+			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
 			<result name="success">/Website/Pages/success.jsp</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
