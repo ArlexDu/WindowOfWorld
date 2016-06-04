@@ -51,6 +51,7 @@ public class MyAdvertisementAdction extends ActionSupport {
 		  System.out.println("showinfo>>>"+showinfo);
 		  if(character.length()>0){
 			  advertisement.setContent(character);
+			  advertisement.setAdvertisementclass("0");
 		  }
 		  else if(picture != null){
 			  	HttpServletRequest request = ServletActionContext.getRequest();
@@ -58,8 +59,10 @@ public class MyAdvertisementAdction extends ActionSupport {
 				path = upload.SaveFile(picture, path, pictureContentType);
 				String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				advertisement.setContent(urlpath);
+				advertisement.setAdvertisementclass("1");
 		  }else{
 			  advertisement.setContent("error");
+			  advertisement.setAdvertisementclass("0");
 		  }
 		  int price=0;
 		try{
