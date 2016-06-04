@@ -51,6 +51,7 @@ public class MyAdvertisementAdction extends ActionSupport {
 		  System.out.println("showinfo>>>"+showinfo);
 		  if(character.length()>0){
 			  advertisement.setContent(character);
+			  advertisement.setAdvertisementclass("0");
 		  }
 		  else if(picture != null){
 			  	HttpServletRequest request = ServletActionContext.getRequest();
@@ -58,9 +59,12 @@ public class MyAdvertisementAdction extends ActionSupport {
 				path = upload.SaveFile(picture, path, pictureContentType);
 				String urlpath = defined.baseurl+"/AmazingAd" + path.split("AmazingAd")[1].replace('\\', '/');
 				advertisement.setContent(urlpath);
+				advertisement.setAdvertisementclass("1");
 		  }else{
 			  advertisement.setContent("error");
+			  advertisement.setAdvertisementclass("0");
 		  }
+		  int price=0;
 		try{
 			JSONObject jsonObject = JSONObject.fromObject(showinfo);
 			JSONArray jsonArray = jsonObject.getJSONArray("showinfo");
@@ -85,8 +89,14 @@ public class MyAdvertisementAdction extends ActionSupport {
 				
 				String tempdate=time.substring(0, 10);
 				String hour=time.substring(11);
-			    placeandtime.setBegin_time(Integer.toString(Integer.parseInt(hour)));
-			    placeandtime.setEnd_time(Integer.toString(Integer.parseInt(hour)+Integer.parseInt(length)));
+				int begin=Integer.parseInt(hour);
+			    placeandtime.setBegin_time(Integer.toString(begin));
+			    int end = Integer.parseInt(hour)+Integer.parseInt(length);
+			    placeandtime.setEnd_time(Integer.toString(end));
+			    for(int j = begin;j<=end;j++){
+			    	price+=defined.adprice[j];
+			    }
+			    
 			    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 			    long startdate=sdf.parse(tempdate).getTime();
 			    long enddate=startdate+24*60*60*1000;
@@ -95,12 +105,14 @@ public class MyAdvertisementAdction extends ActionSupport {
 			    advertisement.getPlaceandtime().add(placeandtime);
 			}
 
-			adservice.AddNewAd(advertisement);
+			
 		}catch (JSONException e) {
 
 			e.printStackTrace();
 
 		}
+		advertisement.setPrice(Integer.toString(price));
+		adservice.AddNewAd(advertisement);
 		return "success";
 	}
 	

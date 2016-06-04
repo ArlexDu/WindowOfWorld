@@ -8,8 +8,8 @@ function check_login(){
         type: "POST",
         url : "/AmazingAd/web/advertiser/login",
         data : {
-            	phone:phone,
-            	password:pw
+            	"phone":phone,
+            	"password":pw
         		},
         success: function(response){
             if(response=="success"){

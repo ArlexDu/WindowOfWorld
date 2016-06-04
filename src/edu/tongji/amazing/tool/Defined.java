@@ -17,4 +17,5 @@ public class Defined {
 	public final int RrgisteredUSER = 104; //已经注册的用户
 	public final int BARRAGEEXIST = 110;  //弹幕快捷键已经被使用
 	public final int BARRAGENOEXIST = 111;  //弹幕快捷键没有被使用
+	public final int[] adprice = {1,1,1,1,1,1,2,2,2,2,3,3,3,3,3,3,3,3,3,3,2,2,1,1};
 }
