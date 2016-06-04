@@ -83,6 +83,7 @@ public class SendMessage {
 
 
         //修改为您要发送的手机号
+    	System.out.println("phone is "+phone+" status is "+status);
         String mobile = phone;
         String text = "";
         if(status.equals("1")){//通过
@@ -96,7 +97,11 @@ public class SendMessage {
 		}else{//不通过
 			text = "很抱歉！您的账户未通过审核！请仔细填写您的认证信息后再次提交~";
 		}
-        sendSms(define.apikey, text, mobile);
+        try{
+        	sendSms(define.apikey, text, mobile);
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
     }
     /**
      * 智能匹配模版接口发短信
@@ -109,6 +114,7 @@ public class SendMessage {
      */
 
     public String sendSms(String apikey, String text, String mobile) throws IOException {
+    	System.out.println("send message");
         Map<String, String> params = new HashMap<String, String>();
         params.put("apikey", apikey);
         params.put("text", text);

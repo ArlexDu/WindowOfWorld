@@ -107,7 +107,7 @@ public class AdministratorDao extends GeneralDao<User> implements IAdministrator
 	@Override
 	public List<User> getShowUsers() throws Exception {
 		// TODO Auto-generated method stub
-		String hql = "from User where rownum<7 order by time desc ";
+		String hql = "from User  where (status = 1 or status = 0) and rownum<7 order by time desc";
 		Session session = Factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);
@@ -227,7 +227,7 @@ public class AdministratorDao extends GeneralDao<User> implements IAdministrator
 	@Override
 	public List<User> UserTable(int pagenum) throws Exception {
 		// TODO Auto-generated method stub
-		String hql = "from User order by time desc ";
+		String hql = "from User where (status = 0 or status = 1) order by time desc";
 		Session session = Factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);

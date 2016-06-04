@@ -209,11 +209,15 @@ public class PadAction extends ActionSupport {
     				rawads.addAll(adservice.SpecialShowAdvertisements(curplace.getCode()));
     			}
     		}
+    		String select = String.valueOf((int)((Math.random())*2));//0 1
     		for(int i=0;i<rawads.size();i++){
     			ad a = new ad();
-    			a.setSort(rawads.get(i).getAdvertisementclass());
-    			a.setContent(rawads.get(i).getContent());
-    			advertisements.add(a);
+    			String sort = rawads.get(i).getAdvertisementclass();
+    			if(sort.equals(select)){
+    				a.setSort(rawads.get(i).getAdvertisementclass());
+        			a.setContent(rawads.get(i).getContent());
+        			advertisements.add(a);
+    			}
     		}
     		String p_id = service.getProduct(phone);
     		push.send(p_id, advertisements,"3");
