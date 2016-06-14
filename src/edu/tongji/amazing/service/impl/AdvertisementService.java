@@ -66,10 +66,10 @@ public class AdvertisementService implements IAdvertisementService {
 		// TODO Auto-generated method stub
 		double lon = Double.parseDouble(longitude);
 		double lat = Double.parseDouble(latitude);
-		//100米对应的纬度
-		double round_lat = 1.0/111000*100;
-		//100米对应的经度
-		double round_lon = 1.0/111000*Math.cos(lat)*100;
+		//1000米对应的纬度
+		double round_lat = 1.0/111000*1000;
+		//1000米对应的经度
+		double round_lon = 1.0/111000*Math.cos(lat)*1000;
 //		System.out.println("round_lat is "+round_lat);
 //		System.out.println("round_lon is "+round_lon);
 		//查找经度的范围
@@ -101,11 +101,13 @@ public class AdvertisementService implements IAdvertisementService {
 		return dao.SpecialShowAdvertisements(place);
 	}
 	
+/*	http://api.map.baidu.com/place/v2/search?query=school&page_size=1&page_num=0&scope=1&location=31.287519,121.22006&radius=2000&output=json&ak=buPZFGnRf6EhZaEKHHdQswbMRMSqcGx5
+*/
 	@Override
 	public boolean getfrombaidu(String lon, String lat,String place) throws Exception {
 		CloseableHttpClient client = HttpClients.createDefault();
 		String searchurl = "http://api.map.baidu.com/place/v2/search?query="+place+"&"
-				+ "page_size=1&page_num=0&scope=1&location="+lat+","+lon+"&radius=200"
+				+ "page_size=1&page_num=0&scope=1&location="+lat+","+lon+"&radius=1000"
 				+ "&output=json&ak="+Defined.Baiduapk;
 		HttpGet get = new HttpGet(searchurl);
 		CloseableHttpResponse response = null;

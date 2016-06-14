@@ -205,8 +205,8 @@ public class PadAction extends ActionSupport {
     		Place[] places = Place.values();
     		for(Place curplace : places){
     			//当前坐标周围有这个地点
-    			if(adservice.getfrombaidu(longitude, latitude, curplace.getCode())){
-    				rawads.addAll(adservice.SpecialShowAdvertisements(curplace.getCode()));
+    			if(adservice.getfrombaidu(longitude, latitude, curplace.getName())){
+    				rawads.addAll(adservice.SpecialShowAdvertisements(curplace.getName()));
     			}
     		}
     		String select = String.valueOf((int)((Math.random())*2));//0 1
