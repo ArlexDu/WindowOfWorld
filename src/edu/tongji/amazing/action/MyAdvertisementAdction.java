@@ -109,7 +109,7 @@ public class MyAdvertisementAdction extends ActionSupport {
 			    placeandtime.setBegin_time(Integer.toString(begin));
 			    int end = Integer.parseInt(hour)+Integer.parseInt(length);
 			    placeandtime.setEnd_time(Integer.toString(end));
-			    for(int j = begin;j<=end;j++){
+			    for(int j = begin;j<end;j++){
 			    	price+=defined.adprice[j];
 			    }
 			    
@@ -122,7 +122,7 @@ public class MyAdvertisementAdction extends ActionSupport {
 			}
 
 			
-		}catch (JSONException e) {
+		}catch (Exception e) {
 
 			e.printStackTrace();
 			return "fail";
