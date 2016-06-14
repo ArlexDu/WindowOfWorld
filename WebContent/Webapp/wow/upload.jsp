@@ -52,9 +52,6 @@
                     <li>
                         <a class="page-scroll" href="home.jsp">退出</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#AppModal" data-toggle="modal">App</a>
-                    </li>
                 </ul>
             </div>
         </div>

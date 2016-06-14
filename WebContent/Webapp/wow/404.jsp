@@ -42,9 +42,6 @@
                     <li>
                         <a class="page-scroll" href="home.jsp">首页</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#AppModal" data-toggle="modal">App</a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -71,27 +68,14 @@
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-arrow-circle-up"></i></a>
-                        </li>
-                    </ul>
+<!--                     <ul class="list-inline social-buttons"> -->
+<!--                         <li><a href="#"><i class="fa fa-arrow-circle-up"></i></a> -->
+<!--                         </li> -->
+<!--                     </ul> -->
                 </div>
             </div>
         </div>
     </footer>
-
-    <!--APP二维码-->
-    <div class="portfolio-modal modal fade" id="AppModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <h2>扫二维码下载APP</h2>
-                        <img class="img-responsive img-centered" src="../assets/images/portfolio/dreams-preview.png" alt="">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
-                    </div>
-            </div>
-        </div>
-    </div>
 
     <!-- jQuery -->
     <script src="../assets/js/jquery.js"></script>

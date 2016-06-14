@@ -30,9 +30,11 @@ import javax.annotation.Resource;
 @Service("sendmessage")
 public class SendMessage {
 
+	//查账户信息的http地址
+    private static String URI_GET_USER_INFO = "https://sms.yunpian.com/v2/user/get.json";
+	
     //智能匹配模版发送接口的http地址
     private static String URI_SEND_SMS = "https://sms.yunpian.com/v1/sms/send.json";
-
     //编码格式。发送编码格式统一用UTF-8
     private static String ENCODING = "UTF-8";
     
@@ -57,7 +59,8 @@ public class SendMessage {
         Random random = new Random();
         code = (int)(random.nextFloat()*1000000);
 //        System.out.println("code is "+code);
-        String text = "【WOW】您的验证码是"+code;
+          String text = "【WOW】您的验证码是"+code;
+      //    String text = "【WOW】怎么回事？"+code;
         //发短信调用示例
         sendSms(define.apikey, text, mobile);
     }
@@ -123,6 +126,12 @@ public class SendMessage {
         return post(URI_SEND_SMS, params);
     }
 
+    public static String getUserInfo(String apikey) throws IOException, URISyntaxException {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("apikey", apikey);
+        return post(URI_GET_USER_INFO, params);
+    }
+    
     /**
      * 基于HttpClient 4.3的通用POST方法
      *

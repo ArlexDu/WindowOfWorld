@@ -129,12 +129,14 @@ public class PadAction extends ActionSupport {
 			// System.out.println("key is "+key);
 			String p_id = service.getProduct(phone);
 			barrage = bulletService.GetBarrageByKey(phone, key);
-			bag send = new bag();
-			send.setContent(barrage.getContent());
-			send.setColor(barrage.getColor());
-			send.setSize(barrage.getSize());
-			push.send(p_id, send, "1");
-			data.put(define.Error, define.SUCCESS);
+			if(barrage != null){
+				bag send = new bag();
+				send.setContent(barrage.getContent());
+				send.setColor(barrage.getColor());
+				send.setSize(barrage.getSize());
+				push.send(p_id, send, "1");
+				data.put(define.Error, define.SUCCESS);	
+			}
 		} catch (Exception e) {
 			data.put(define.Error, define.FAIL);
 			e.printStackTrace();

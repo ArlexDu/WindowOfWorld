@@ -135,7 +135,7 @@
             <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <h2>扫二维码下载APP</h2>
-                        <img class="img-responsive img-centered" src="../assets/images/portfolio/dreams-preview.png" alt="">
+                        <img class="img-responsive img-centered" src="../assets/images/portfolio/erweima.png" alt="">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
                     </div>
             </div>
@@ -153,7 +153,7 @@
                          <tr><th>广告编号</th><td id="ad_num"></td></tr>
                          <tr><th>广告标题</th><td id="ad_title"></td></tr>
                  	     <tr><th>广告内容</th><td id="ad_co"></td></tr>
-<!--                  	     <tr><th>广告状态</th><td id="ad_status"></td></tr> -->
+                 	     <tr><th>广告状态</th><td id="ad_status"></td></tr>
                  	     <tr><th>广告费用</th><td id="ad_fare"></td></tr>
 <!--                          <tr><th>广告发布时段</th><td id="ad_time"></td> -->
 <!--                          </tr> -->
@@ -283,13 +283,14 @@ window.onload = function () {
             success: function(response){
             	var result = JSON.stringify(response, null, 3);    
             	ad_data =(new Function("","return "+result))();
-            	console.log(ad_data);
+            //	console.log(ad_data);
             	var ad_size=ad_data.adList.length;
             	var i;
+            	var reg =/^http:/;
             	for(i=0;i<ad_size;i++){
 					var li = "<li class='timeline-inverted'>"+
 							 "<div class='timeline-image' onclick='ad_more("+i+");'>"+
-							 "<img class='img-circle img-responsive' src='../assets/images/about/4.jpg' alt='''>"+
+							 "<img id ='image"+i+"' class='img-circle img-responsive' style=\"width:100%;height:100%\" src='../assets/images/about/4.jpg' alt='''>"+
 							 "</div>"+
 							 "<div class='timeline-panel'>"+
 							 "<div class='timeline-heading'><h4 id='title"+i+"'></h4></div>"+
@@ -302,7 +303,13 @@ window.onload = function () {
 						$("#shijiantiao1").append(li);}
             		eval("document.getElementById('title"+i+"').innerHTML=ad_data.adList["+i+"].title");
             		eval("document.getElementById('id"+i+"').innerHTML=ad_data.adList["+i+"].id");
-            		eval("document.getElementById('context"+i+"').innerHTML=ad_data.adList["+i+"].content");
+            		if(ad_data.adList[i].content.match(reg)){
+            			eval("document.getElementById('context"+i+"').innerHTML='图片广告'");
+            			var id = "image"+i;
+            			document.getElementById(id).src=ad_data.adList[i].content;
+            		}else{
+            			eval("document.getElementById('context"+i+"').innerHTML=ad_data.adList["+i+"].content");
+            		}
             		eval("document.getElementById('status"+i+"').innerHTML=ad_data.adList["+i+"].status");
             		eval("document.getElementById('ad_money"+i+"').innerHTML=ad_data.adList["+i+"].price");
             	}
@@ -326,10 +333,18 @@ function ad_more(a){		//单个广告详细信息
  	var ad_co = document.getElementById("context"+b).innerHTML;
  	var ad_status = document.getElementById("status"+b).innerHTML;
  	var ad_price = document.getElementById("ad_money"+b).innerHTML;
+ 	var status;
 	$("#ad_num").html(ad_num);
 	$("#ad_title").html(ad_title);
   	$("#ad_co").text(ad_co);
-	$("#ad_status").html(ad_status);
+  	if(ad_status == "1"){
+  		status = "审核通过";
+  	}else if(ad_status == "0"){
+  		status ="待审核";
+  	}else{
+  		status= "审核未通过";
+  	}
+	$("#ad_status").html(status);
 	$("#ad_fare").text(ad_price);
 // 	$("#ad_time").text(ad_data.adList[a].id);
 // 	$("#ad_diduan").text(ad_data.adList[a].id);

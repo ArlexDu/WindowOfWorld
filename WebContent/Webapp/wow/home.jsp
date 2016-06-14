@@ -378,7 +378,7 @@
             <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <h2>扫二维码下载APP</h2>
-                        <img class="img-responsive img-centered" src="../assets/images/portfolio/dreams-preview.png" alt="">
+                        <img class="img-responsive img-centered" src="../assets/images/portfolio/erweima.png" alt="">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
                     </div>
             </div>

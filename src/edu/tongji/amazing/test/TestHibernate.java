@@ -205,8 +205,10 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
     @Test
     public void SendMessage(){
     	try {
-			sendmessage.SendAdvertisementExamineResult("15021799675","1","wahahaha");
+		//	sendmessage.SendAdvertisementExamineResult("15021799675","1","wahahaha");
     	//	sendmessage.SendAuthCode("15021799675");
+    		String text = sendmessage.getUserInfo("1d2113d4b2e5178c1d097916c5f691e8");
+    		System.out.println(text);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

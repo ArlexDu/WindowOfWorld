@@ -39,9 +39,6 @@
                     <li>
                         <a class="page-scroll" href="login.jsp">返回</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#AppModal" data-toggle="modal">App</a>
-                    </li>
                 </ul>
             </div>
         </div>
