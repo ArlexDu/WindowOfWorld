@@ -48,7 +48,7 @@
 		</action>
 		<action name="examineuser" class="administratorAction" method="examineUser">
 			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
-			<result name="success" type="redirect">../../web/administator/usertable?pagenum=1</result>
+			<result name="success" type="redirect">usertable?pagenum=1</result>
 			<result name="fail">/Webapp/admin/404.html</result>
 		</action>
 		<action name="finances" class="administratorAction" method="wholeFinance">

@@ -167,8 +167,7 @@ String path = request.getContextPath();
         <label>身份证号</label>
         <input type="text" value=<%=userIDcard.get(0) %> class="input-xlarge">
 		<label>身份证照</label>
-      	<input type="text" value=<%=userIDcardpic.get(0) %> class="input-xlarge">
-      	<a id="example1-1" title="" href="#jiazhao" data-toggle="modal"><img alt="" src=<%=userIDcardpic.get(0) %>  style="width:250px;"/></a>
+      	<a id="example1-1" title="" href="#IDcard" data-toggle="modal"><img alt="" src=<%=userIDcardpic.get(0) %>  style="width:250px;"/></a>
       </div>
 	  <div class="span6">
 	  <label>手机号</label>
@@ -202,9 +201,14 @@ String path = request.getContextPath();
             </div>
         </div>
     </div>
+    <div class="portfolio-modal modal fade" id="IDcard" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <img class="img-responsive img-centered" src=<%=userIDcardpic.get(0) %> alt="">
+        </div>
+    </div>
     <div class="portfolio-modal modal fade" id="jiazhao" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
-            <img class="img-responsive img-centered" src="../../Webapp/assets/images/jiazhao.jpg" alt="">
+            <img class="img-responsive img-centered" src="<%=userjiazhao.get(0) %>" alt="">
         </div>
     </div>
 

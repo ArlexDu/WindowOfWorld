@@ -80,16 +80,13 @@
 				ownername.add(i, "null");
 			else
 				ownername.add(i, ad.getUsername().toString());
-			if(ad.getDate()==null)
-				adtime.add(i, "null");
-			else
-				adtime.add(i, ad.getDate().toString());
+			
 			if(ad.getPrice()==null)
 				adprice.add(i, "null");
 			else
 				adprice.add(i, ad.getPrice().toString());
 			if(ad.getStatus()==null)
-				adstatus.add(i, "null");
+				adstatus.add(i, "未审核");
 			else if(ad.getStatus().toString().equals("0"))
 				adstatus.add(i, "未审核");
 			else
@@ -182,7 +179,6 @@
         <tr>
           <th>#</th>
           <th>广告商姓名</th>
-          <th>广告发布时间</th>
           <th>广告主题</th>
 		  <th>广告状态</th>
 		  <th>广告价格</th>
@@ -198,7 +194,7 @@
             			<form id="form<%=i %>"action="<%=path%>/web/administator/advertisement" method="post">
             				<td><%=i+1 %></td>
             				<td><%=ownername.get(i) %></td>
-            				<td><%=adtime.get(i) %></td>
+            				
             				<td><%=adtitle.get(i) %></td>
              				<td><%=adstatus.get(i) %></td>
             				<td><%=adprice.get(i) %></td>

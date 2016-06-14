@@ -153,12 +153,12 @@
                          <tr><th>广告编号</th><td id="ad_num"></td></tr>
                          <tr><th>广告标题</th><td id="ad_title"></td></tr>
                  	     <tr><th>广告内容</th><td id="ad_co"></td></tr>
-                 	     <tr><th>广告状态</th><td id="ad_status"></td></tr>
-                 	     <tr><th>广告费用</th><td id="ad_fare">0</td></tr>
-                         <tr><th>广告发布时段</th><td id="ad_time"></td>
-                         </tr>
-                         <tr><th>广告发布地段</th><td id="ad_diduan"></td>
-                         </tr>
+<!--                  	     <tr><th>广告状态</th><td id="ad_status"></td></tr> -->
+                 	     <tr><th>广告费用</th><td id="ad_fare"></td></tr>
+<!--                          <tr><th>广告发布时段</th><td id="ad_time"></td> -->
+<!--                          </tr> -->
+<!--                          <tr><th>广告发布地段</th><td id="ad_diduan"></td> -->
+<!--                          </tr> -->
                          </table>
                          <button type="button" class="btn btn-primary" data-dismiss="modal">关      闭</button>
                      </div>
@@ -265,11 +265,11 @@ window.onload = function () {
             		document.getElementById("email").innerHTML=data.userinfo.mail;
             	}else{
             		//wrong
-            		window.location.href="/AmazingAd/Webapp/wow/login.jsp"
+            		//window.location.href="/AmazingAd/Webapp/wow/login.jsp"
             	}
             },
             error:function(){
-            	window.location.href="/AmazingAd/Webapp/wow/login.jsp"
+            	//window.location.href="/AmazingAd/Webapp/wow/login.jsp"
             }
         });
     	
@@ -292,7 +292,7 @@ window.onload = function () {
 							 "<div class='timeline-panel'>"+
 							 "<div class='timeline-heading'><h4 id='title"+i+"'></h4></div>"+
 							 "<div class='timeline-body'><p class='text-muted' id='context"+i+"'></p></div>"+
-							 "<div class='nosee'><p id='id"+i+"'></p><p id='status"+i+"'></p><p id='placeandtime"+i+"'></p></div>"+
+							 "<div class='nosee'><p id='id"+i+"'></p><p id='status"+i+"'></p><p id='ad_money"+i+"'></p></div>"+
 							 "</div></li>";
 					if(i%2==0){
 						$("#shijiantiao").append(li);
@@ -302,6 +302,7 @@ window.onload = function () {
             		eval("document.getElementById('id"+i+"').innerHTML=ad_data.adList["+i+"].id");
             		eval("document.getElementById('context"+i+"').innerHTML=ad_data.adList["+i+"].content");
             		eval("document.getElementById('status"+i+"').innerHTML=ad_data.adList["+i+"].status");
+            		eval("document.getElementById('ad_money"+i+"').innerHTML=ad_data.adList["+i+"].price");
             	}
             },
             error:function(){
@@ -322,10 +323,12 @@ function ad_more(a){		//单个广告详细信息
 	var ad_title = document.getElementById("title"+b).innerHTML;
  	var ad_co = document.getElementById("context"+b).innerHTML;
  	var ad_status = document.getElementById("status"+b).innerHTML;
+ 	var ad_price = document.getElementById("ad_money"+b).innerHTML;
 	$("#ad_num").html(ad_num);
 	$("#ad_title").html(ad_title);
   	$("#ad_co").text(ad_co);
 	$("#ad_status").html(ad_status);
+	$("#ad_fare").text(ad_price);
 // 	$("#ad_time").text(ad_data.adList[a].id);
 // 	$("#ad_diduan").text(ad_data.adList[a].id);
 }

@@ -38,10 +38,7 @@
 			else
 				ownername.add( ad.getPhone().toString());
 			
-			if(ad.getTime()==null)
-				adtime.add( "null");
-			else
-				adtime.add( ad.getTime().toString());
+			
 			
 			if(ad.getTitle()==null)
 				adtitle.add( "null");
@@ -58,9 +55,9 @@
 				adclassch.add( "null");
 				adclass.add( "null");
 			}
-			else if(ad.getAdvertisementclass().equals("-1"))
+			else if(ad.getAdvertisementclass().equals("0"))
 			{
-				adclassch.add("-1");
+				adclassch.add("0");
 				adclass.add( "文字");
 			}
 			else
@@ -69,10 +66,7 @@
 				adclass.add( "图片");
 			}
 			
-			if(ad.getPriority()==null)
-				adprio.add( "null");
-			else
-				adprio.add( ad.getPriority().toString());
+			
 			
 			if(ad.getPrice()==null)
 				adprice.add( "null");
@@ -80,7 +74,7 @@
 				adprice.add( ad.getPrice().toString());
 			
 			if(ad.getStatus()==null)
-				adstatus.add( "null");
+				adstatus.add( "0");
 			else
 				adstatus.add( ad.getStatus().toString());
 			
@@ -206,16 +200,14 @@ String path = request.getContextPath();
       <div class="span6">
 		<label>广告商手机号</label>
         <input type="text" value=<%=ownername.get(0) %> class="input-xlarge">
-        <label>广告发布时间</label>
-        <input type="text" value=<%=adtime.get(0) %> class="input-xlarge">
-        <label>广告优先级</label>
-        <input type="text" value=<%=adprio.get(0) %> class="input-xlarge">
+        
         <label>广告价格</label>
         <input type="text" value=<%=adprice.get(0) %> class="input-xlarge"> 
+        <label>广告类型</label>
+        <input type="text" value=<%=adclass.get(0) %> class="input-xlarge">
       </div >
 	  <div class="span6">
-	  <label>广告类型</label>
-        <input type="text" value=<%=adclass.get(0) %> class="input-xlarge">
+	  
         <label>广告主题</label>
         <input type="text" value=<%=adtitle.get(0) %> class="input-xlarge">
         <label>详情</label>
@@ -226,7 +218,7 @@ String path = request.getContextPath();
         <input type="text" value=<%=adcon.get(0) %> class="input-xlarge">
         <%		
         	}
-        	else if(adclassch.get(0).equals("-1"))//文字类型
+        	else if(adclassch.get(0).equals("0"))//文字类型
         	{
         %>
         <input type="text" value=<%=adcon.get(0) %> class="input-xlarge">
@@ -235,7 +227,7 @@ String path = request.getContextPath();
         	else if(adclassch.get(0).equals("1"))//图片类型
         	{
         %>
-        <input type="text" value=<%=adcon.get(0) %> class="input-xlarge">
+        <a id="example1-1" title="" href="#guanggao" data-toggle="modal"><img alt="" src=<%=adcon.get(0) %>  style="width:250px;"/></a>
         <%
         	}
         	else
@@ -351,7 +343,7 @@ String path = request.getContextPath();
     </div>
     <div class="portfolio-modal modal fade" id="guanggao" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
-            <img class="img-responsive img-centered" src="../assets/images/guanggao1.jpg" alt="" >
+            <img class="img-responsive img-centered" src=<%=adcon.get(0) %> alt="" >
         </div>
     </div>
 
