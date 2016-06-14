@@ -20,7 +20,11 @@ import com.opensymphony.xwork2.ActionSupport;
 import edu.tongji.amazing.action.PadAction.ad;
 import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.AdvertisementPlaceAndTime;
+import edu.tongji.amazing.model.Advertiser;
 import edu.tongji.amazing.service.IAdvertisementService;
+import edu.tongji.amazing.service.IAdvertiserService;
+import edu.tongji.amazing.service.ICarOwnerService;
+import edu.tongji.amazing.service.impl.AdvertiserService;
 import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.tool.FileTools;
 import net.sf.json.JSONArray;
@@ -40,6 +44,10 @@ public class MyAdvertisementAdction extends ActionSupport {
 	private Defined defined;
 	private String pictureContentType;
 	
+	
+	@Resource(name = "advertiserservice")
+	private IAdvertiserService advertiserservice;
+	
 	private HttpServletRequest request;
 	@Resource(name = "advertisement")
   	private Advertisement advertisement;
@@ -47,12 +55,18 @@ public class MyAdvertisementAdction extends ActionSupport {
   	private IAdvertisementService adservice;
 	public String newad() throws Exception{
 
+		Advertiser advertiser = advertiserservice.getAdvertisementinfo(phone);
+		
+		if(!advertiser.getUser().getStatus().equals("1")){
+			return "nopermission";
+		}
+		
 		  advertisement.setPhone(phone);
 		  advertisement.setTitle(title);
 		  System.out.println("showinfo>>>"+showinfo);
+		  advertisement.setStatus("0");
 		  if(character.length()>0){
 			  advertisement.setContent(character);
-			  advertisement.setStatus("0");
 			  advertisement.setAdvertisementclass("0");
 		  }
 		  else if(picture != null){
@@ -111,6 +125,7 @@ public class MyAdvertisementAdction extends ActionSupport {
 		}catch (JSONException e) {
 
 			e.printStackTrace();
+			return "fail";
 
 		}
 		advertisement.setPrice(Integer.toString(price));

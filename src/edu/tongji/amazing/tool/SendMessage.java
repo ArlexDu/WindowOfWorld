@@ -70,12 +70,13 @@ public class SendMessage {
         String mobile = phone;
         String text = "";
         if(status.equals("1")){//通过
-			text = "恭喜您！您的"+title+"[广告]已经通过审核！";
+			text = "【WOW】恭喜您！您的"+title+"[广告]已经通过审核！";
 		}else{//不通过
-			text = "很抱歉！您的"+title+"[广告]因为含有不合法的内容所以未通过审核，我们建议您改正之后再发布！";
+			text = "【WOW】很抱歉！您的"+title+"[广告]因为含有不合法的内容所以未通过审核，我们建议您改正之后再发布！";
 		}
         //发短信调用示例
         sendSms(define.apikey, text, mobile);
+        System.out.println("send phone is "+phone);
     }
 
     //发送审核结果
@@ -114,7 +115,7 @@ public class SendMessage {
      */
 
     public String sendSms(String apikey, String text, String mobile) throws IOException {
-    	System.out.println("send message");
+    //	System.out.println("send message");
         Map<String, String> params = new HashMap<String, String>();
         params.put("apikey", apikey);
         params.put("text", text);

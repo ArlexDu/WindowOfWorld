@@ -39,15 +39,7 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="account.jsp">返回</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="home.jsp">首页</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#AppModal" data-toggle="modal">App</a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -59,8 +51,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">尊敬的用户，欢迎加入世界之窗车载广告系统！</h2>
-                    <h2 class="section-heading">请点击以下链接完成邮箱激活账户</h2>
-                    <a href="login.jsp">激活链接</a>
+                    <h2 class="section-heading">请进入邮箱完成账户的激活</h2>
                 </div>
             </div>
             

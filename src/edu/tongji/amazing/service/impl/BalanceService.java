@@ -23,7 +23,7 @@ public class BalanceService implements IBalanceService{
 	@Override
 	public List<Balance> getOrderList(String phone) {
 		// TODO Auto-generated method stub
-		return dao.QueryByPhone(phone);
+		return dao.QueryBalanceByPhone(phone);
 	}
 
 }

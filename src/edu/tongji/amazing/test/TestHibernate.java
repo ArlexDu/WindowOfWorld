@@ -3,6 +3,8 @@ package edu.tongji.amazing.test;
 
 
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,7 @@ import edu.tongji.amazing.service.impl.BulletService;
 import edu.tongji.amazing.service.impl.CarOwnerService;
 import edu.tongji.amazing.tool.FileTools;
 import edu.tongji.amazing.tool.SendEmail;
+import edu.tongji.amazing.tool.SendMessage;
 import edu.tongji.amazing.tool.ShowAdvertisement;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -195,4 +198,18 @@ public class TestHibernate extends AbstractJUnit4SpringContextTests{
 			e.printStackTrace();
 		}
 	}
+    
+    //send message
+	@Resource(name = "sendmessage")
+	private SendMessage sendmessage;
+    @Test
+    public void SendMessage(){
+    	try {
+			sendmessage.SendAdvertisementExamineResult("15021799675","1","wahahaha");
+    	//	sendmessage.SendAuthCode("15021799675");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 }

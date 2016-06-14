@@ -32,6 +32,8 @@ public class AdvertiserService implements IAdvertiserService{
 		// TODO Auto-generated method stub
 		return dao.getUserbyPhone(phone);
 	}
+	
+	
 	@Override
 	public User IsUserExist(String phone) throws Exception {
 		// TODO Auto-generated method stub

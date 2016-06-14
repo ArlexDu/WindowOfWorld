@@ -32,7 +32,7 @@ public class AdvertisementDao extends GeneralDao<Advertisement> implements IAdve
 	@Override
 	public List<Advertisement> SendAdvertise(double lon1, double lon2, double lat1, double lat2 ,int time,long date) throws Exception {
 		// TODO Auto-generated method stub
-		String hql = "from Advertisement where id in (select adid from AdvertisementPlaceAndTime where begin_time <= "+time
+		String hql = "from Advertisement where status = 1 and id in (select adid from AdvertisementPlaceAndTime where begin_time <= "+time
 				      +" and end_time >= "+time
 				      +" and begindate <= "+date+" and enddate >= "+date
 				      + " and longitude between "+lon1+" and "+lon2+" and latitude between "
@@ -62,7 +62,7 @@ public class AdvertisementDao extends GeneralDao<Advertisement> implements IAdve
 	@Override
 	public List<Advertisement> SpecialShowAdvertisements(String place) throws Exception {
 		// TODO Auto-generated method stub
-		String hql = "from Advertisement where id in (select adid from AdvertisementPlaceAndTime where place = '"+place+"')";
+		String hql = "from Advertisement where status = 1 and id in (select adid from AdvertisementPlaceAndTime where place = '"+place+"')";
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(hql);

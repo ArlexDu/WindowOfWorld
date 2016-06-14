@@ -236,7 +236,7 @@ window.onload = function () {
     
     $('#modal_finish').click(function () {
         var x = $('#money_input').val();
-        $.get("http://localhost:8080/AmazingAd/web/advertiser/charge?phone="+ phone +"&charge=" +x);
+        $.get("/AmazingAd/web/advertiser/charge?phone="+ phone +"&charge=" +x);
        
         $('#myModal').modal('hide');
         window.location.reload();
@@ -247,6 +247,7 @@ window.onload = function () {
     	$.ajax({
             type: "POST",
             url : "/AmazingAd/web/advertiser/getuserinfo",
+            async:false,//取消异步请求
             data : {
 	            	phone:phone,
             		},
@@ -278,6 +279,7 @@ window.onload = function () {
     	$.ajax({
             type: "GET",
             url : "/AmazingAd/web/advertiser/getallads?phone="+phone,
+            async:false,//取消异步请求
             success: function(response){
             	var result = JSON.stringify(response, null, 3);    
             	ad_data =(new Function("","return "+result))();

@@ -47,7 +47,7 @@ public class SendEmail {
 		helper.setSubject("欢迎您注册世界之窗 ");
 		helper.setText(
 				"<font color='red'>"
-				+ "请点击一下的连接激活账户：http://10.60.42.70:8080/AmazingAd/web/advertiser/ ?phone="+phone
+				+ "请点击一下的连接激活账户：http://10.60.42.70:8080/AmazingAd/web/advertiser/active?phone="+phone
 				+ "</font>",true);
 		email.send(message);
 	}

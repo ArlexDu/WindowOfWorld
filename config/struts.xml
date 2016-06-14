@@ -23,13 +23,13 @@
 
 		<action name="register" class="administratorAction" method="register">
 			<result name="success" type="redirect">/Webapp/admin/not-vetted.jsp</result>
-			<result name="fail">/Webapp/admin/404.html</result>
+			<result name="fail">/Webapp/admin/404.jsp</result>
 		</action>
 
 		<action name="advertisement" class="administratorAction" method="advertisementdata">
 			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
 			<result name="success">/Webapp/admin/adcheck.jsp</result>
-			<result name="fail">/Webapp/admin/404.html</result>
+			<result name="fail">/Webapp/admin/404.jsp</result>
 		</action>
 		<action name="user" class="administratorAction" method="userdata">
 			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
@@ -39,37 +39,37 @@
 			<result name="check1">/Webapp/admin/user2.jsp</result>
 			<result name="check2">/Webapp/admin/user1.jsp</result>
 			<result name="check3">/Webapp/admin/user.jsp</result>
-			<result name="fail">/Webapp/admin/404.html</result>
+			<result name="fail">/Webapp/admin/404.jsp</result>
 		</action>
 		<action name="examineadvertisement" class="administratorAction" method="examineAdvertisement">
 			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
 			<result name="success" type="redirect">../../web/administator/advertisementtable?pagenum=1</result>
-			<result name="fail">/Webapp/admin/404.html</result>
+			<result name="fail">/Webapp/admin/404.jsp</result>
 		</action>
 		<action name="examineuser" class="administratorAction" method="examineUser">
 			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
 			<result name="success" type="redirect">usertable?pagenum=1</result>
-			<result name="fail">/Webapp/admin/404.html</result>
+			<result name="fail">/Webapp/admin/404.jsp</result>
 		</action>
 		<action name="finances" class="administratorAction" method="wholeFinance">
 			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
 			<result name="success"></result>
-			<result name="fail">/Webapp/admin/404.html</result>
+			<result name="fail">/Webapp/admin/404.jsp</result>
 		</action>
 		<action name="usertable" class="administratorAction" method="UserTable">
 			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
 			<result name="success">/Webapp/admin/users.jsp</result>
-			<result name="fail">/Webapp/admin/404.html</result>
+			<result name="fail">/Webapp/admin/404.jsp</result>
 		</action>
 		<action name="advertisementtable" class="administratorAction" method="AdvertisementTable">
 			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
 			<result name="success">/Webapp/admin/ads.jsp</result>
-			<result name="fail">/Webapp/admin/404.html</result>
+			<result name="fail">/Webapp/admin/404.jsp</result>
 		</action>
 		<action name="balancetable" class="administratorAction" method="BalanceTable">
 			<result name="unlog">/Webapp/admin/sign-in.jsp</result>
 			<result name="success">/Website/Pages/success.jsp</result>
-			<result name="fail">/Webapp/admin/404.html</result>
+			<result name="fail">/Webapp/admin/404.jsp</result>
 		</action>
 	</package>
 	
@@ -77,8 +77,8 @@
 	<package name="edu.tongji.amazing.action.web.advertiser"
 		namespace="/web/advertiser" extends="struts-default,json-default">
 		<action name="register" class="advertiserAction" method="register">
-			<result name="success" type="redirect">/Webapp/wow/account.jsp</result>
-			<result name="fail">/Webapp/admin/404.html</result>
+			<result name="success" type="redirect">/Webapp/wow/checkemail.jsp</result>
+			<result name="fail">/Webapp/wow/404.jsp</result>
 		</action>
 		<action name="login" class="advertiserAction" method="login">
 		</action>
@@ -101,21 +101,18 @@
 		</action>
 		<action name="addad" class="advertisementaction" method="newAdvertisement">
 			<result name="success">/Website/Pages/success.jsp</result>
-			<result name="fail">/Webapp/admin/404.html</result>
+			<result name="fail">/Webapp/wow/404.jsp</result>
 		</action>
 		<action name="testad" class="myadvertisement" method="newad">
 			<result name="success" type="redirect">/Webapp/wow/uploadad.jsp</result>
+			<result name="nopermission" type="redirect">/Webapp/wow/nopermission.jsp</result>
+			<result name="fail" type="redirect">/Webapp/wow/uploadfailed.jsp</result>
 		</action>
 		
 		<action name="active" class="advertiserAction" method="ActiveAccount">
-		    <result name="success">/Website/Pages/success.jsp</result>
-		    <result name="fail">/Website/Pages/success.jsp</result>
+		    <result name="success">/Website/Pages/login.jsp</result>
+		    <result name="fail">/Webapp/wow/404.jsp</result>
 		</action>
-<!-- 		<action name="test" class="administratorAction" method="test"> -->
-<!-- 		    <result name="success" type="json"> -->
-<!-- 		        <param name="root">data</param> -->
-<!-- 		    </result> -->
-<!-- 		</action> -->
 	</package>
 	
 	<!-- android端对应的user action -->

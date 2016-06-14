@@ -26,6 +26,7 @@ public class BulletAction extends ActionSupport{
 	private IBulletService bulletservice;
 	private String method = null;
 	private String id = null;
+	private String updateid = null;
 	private String phone = null;
 	private String content = null;
 	private String title;
@@ -75,6 +76,9 @@ public class BulletAction extends ActionSupport{
 	}
 	
 	//处理 android/barrage/changebarrage 请求
+	/*
+	 * localhost:8888/AmazingAd/android/barrage/changebarrage?phone=15221605290&time=100time&content=content&color=color&size=size&title=title&key=key
+	 */
 	public String changebarrage() throws Exception{
 		 data = new HashMap<String, Object>();
 		 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
@@ -90,12 +94,15 @@ public class BulletAction extends ActionSupport{
 		 if(!bulletservice.clearShortCut(phone, key)){
 			 data.put(defined.Error, defined.FAIL);
 		 }
-		 if(id != null){//更新操作
+		 System.out.println("id is "+updateid);
+		 if(updateid != null){//更新操作
+			 bullet.setId(updateid);
 			 if(bulletservice.updateBullet(bullet)){
 				 data.put(defined.Error, defined.SUCCESS);
 			 }else{
 				 data.put(defined.Error, defined.FAIL);
 			 }
+			 updateid = null;
 		 }else{//添加新的弹幕
 			 if(bulletservice.addBullet(bullet)){
 				 data.put(defined.Error, defined.SUCCESS);
@@ -228,6 +235,12 @@ public class BulletAction extends ActionSupport{
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getUpdateid() {
+		return updateid;
+	}
+	public void setUpdateid(String updateid) {
+		this.updateid = updateid;
 	}
 	
 	
