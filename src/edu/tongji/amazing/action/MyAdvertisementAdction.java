@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import edu.tongji.amazing.action.PadAction.ad;
 import edu.tongji.amazing.model.Advertisement;
 import edu.tongji.amazing.model.AdvertisementPlaceAndTime;
 import edu.tongji.amazing.service.IAdvertisementService;
@@ -51,6 +52,7 @@ public class MyAdvertisementAdction extends ActionSupport {
 		  System.out.println("showinfo>>>"+showinfo);
 		  if(character.length()>0){
 			  advertisement.setContent(character);
+			  advertisement.setStatus("0");
 			  advertisement.setAdvertisementclass("0");
 		  }
 		  else if(picture != null){
