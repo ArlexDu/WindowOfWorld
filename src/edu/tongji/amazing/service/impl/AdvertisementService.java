@@ -66,6 +66,9 @@ public class AdvertisementService implements IAdvertisementService {
 		// TODO Auto-generated method stub
 		double lon = Double.parseDouble(longitude);
 		double lat = Double.parseDouble(latitude);
+		if(lon>135.05||lon<73.33||lat>53.33||lat<3.51){
+			return null;
+		}
 		//1000米对应的纬度
 		double round_lat = 1.0/111000*1000;
 		//1000米对应的经度
@@ -98,6 +101,9 @@ public class AdvertisementService implements IAdvertisementService {
 	@Override
 	public List<Advertisement> SpecialShowAdvertisements(String place) throws Exception {
 		// TODO Auto-generated method stub
+		if(!place.equals("学校")&&!place.equals("医院")&&!place.equals("酒店")){
+			return null;
+		}
 		return dao.SpecialShowAdvertisements(place);
 	}
 	
@@ -105,6 +111,14 @@ public class AdvertisementService implements IAdvertisementService {
 */
 	@Override
 	public boolean getfrombaidu(String lon, String lat,String place) throws Exception {
+		double lond = Double.parseDouble(lon);
+		double latd = Double.parseDouble(lat);
+		if(lond>135.05||lond<73.33||latd>53.33||latd<3.51){
+			return false;
+		}
+		if(!place.equals("学校")&&!place.equals("医院")&&!place.equals("酒店")){
+			return false;
+		}
 		CloseableHttpClient client = HttpClients.createDefault();
 		String searchurl = "http://api.map.baidu.com/place/v2/search?query="+place+"&"
 				+ "page_size=1&page_num=0&scope=1&location="+lat+","+lon+"&radius=1000"

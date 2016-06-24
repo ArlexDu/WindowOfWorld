@@ -62,12 +62,27 @@ public class CarOwnerService implements ICarOwnerService{
 	@Override
 	public String getProduct(String phone) {
 		// TODO Auto-generated method stub
+		if(phone==""){
+			return null;
+		}
+		if(!phone.matches("[0-9]+")){
+			return null;
+		}
+		if(IsUserExist(phone)==null){
+			return null;
+		}
 		return userdao.getProduct(phone);
 	}
 
 	@Override
 	public User IsUserExist(String phone) {
 		// TODO Auto-generated method stub
+		if(phone==""){
+			return null;
+		}
+		if(!phone.matches("[0-9]+")){
+			return null;
+		}
 		return userdao.IsUserExist(phone);
 	}
 

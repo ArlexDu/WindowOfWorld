@@ -20,6 +20,15 @@ public class PushMsgToDevice {
 	//type 1:barrage 2:individuation 3:advertisements
 	public void send(String channelid,Object ob,String type) throws PushClientException,
 			PushServerException {
+		if(channelid.equals("")){
+			return;
+		}
+		if(ob==null){
+			return;
+		}
+		if(!type.equals("1")&&!type.equals("2")&&!type.equals("3")){
+			return;
+		}
 		// 1. get apiKey and secretKey from developer console
 		String apiKey = Defined.Baiduapk;
 		String secretKey = "UPMlWj1SDcEHFsO6SdgPzmyzBKxFdgwe";

@@ -298,7 +298,7 @@ public class AdministratorAction extends ActionSupport implements ServletRequest
 			return "unlog";
 		}
 		try{
-			service.changeUserStatus(phone, result);
+			service.changeUserStatus(phone, result);                             
 //			鐭俊閫氱煡
 	        sendmessage.SendUserExamineResult(phone, result, userclass);
 			return "success";
