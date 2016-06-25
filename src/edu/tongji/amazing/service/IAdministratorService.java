@@ -41,7 +41,7 @@ public interface IAdministratorService {
 	public void changeAdvertisementStatus(String id ,String status) throws Exception;
 	
 	//审核用户结果
-	public void changeUserStatus(String phone,String status) throws Exception;
+	public boolean changeUserStatus(String phone,String status) throws Exception;
 	
 	//获得总的支出
 	public List<Finance> wholefinace()throws Exception;

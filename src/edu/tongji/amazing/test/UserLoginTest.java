@@ -1,6 +1,7 @@
 package edu.tongji.amazing.test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -12,7 +13,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import edu.tongji.amazing.action.ActionTest;
 import edu.tongji.amazing.model.TestingResult;
 import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.tool.FileTools;
@@ -31,61 +31,54 @@ public class UserLoginTest extends AbstractJUnit4SpringContextTests{
 
 	@Resource(name="carownerservice")
 	private ICarOwnerService iCarOwnerService;
-	public boolean UT_TC_001_001_001(){
-		if(iCarOwnerService.IsUserExist("")!=null){
-			return true;	
-		}
-		return false;
-	}
-	public boolean UT_TC_001_001_002(){
-		if(iCarOwnerService.IsUserExist("150abcd9675")!=null){
-			return true;	
-		}
-		return false;
-	}
-	public boolean UT_TC_001_001_003(){
-		if(iCarOwnerService.IsUserExist("15021799675")!=null){
+	public boolean UT_TC_001_001(String phone){
+		if(iCarOwnerService.IsUserExist(phone)!=null){
 			return true;	
 		}
 		return false;
 	}
 	@Test
 	public void T1_IsUserExist_Test(){
-		ArrayList<TestingResult> results = new ArrayList<TestingResult>();
-		TestingResult result1 = excel.getTestingResult("UT_TC_001_001_001",String.valueOf(UT_TC_001_001_001()),"false");
-		results.add(result1);
-		TestingResult result2 = excel.getTestingResult("UT_TC_001_001_002",String.valueOf(UT_TC_001_001_002()),"false");
-		results.add(result2);
-		TestingResult result3 = excel.getTestingResult("UT_TC_001_001_003",String.valueOf(UT_TC_001_001_003()),"true");
-		results.add(result3);
-		excel.SoftwareTesingResult("IsUserExist", results);
+		try {
+			ArrayList<TestingResult> results = new ArrayList<TestingResult>();
+			List<String[]> tests;
+				tests = excel.readExcel("IsUserExist");
+			for(int i=0;i<tests.size();i++){
+				TestingResult result = excel.getTestingResult(tests.get(i)[0],String.valueOf(UT_TC_001_001(tests.get(i)[1])),tests.get(i)[2]);
+				results.add(result);
+			}
+			excel.SoftwareTesingResult("IsUserExist", results);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/*
 	 * 测试checkUser函数
 	 */
 	
-	public boolean UT_TC_001_002_001(){
-		if(iCarOwnerService.checkUser("150217799675","941225")){
-			return true;	
-		}
-		return false;
-	}
-	
-	public boolean UT_TC_001_002_002(){
-		if(iCarOwnerService.checkUser("150217799675","dsy941225")){
+	public boolean UT_TC_001_002(String phone,String password){
+		if(iCarOwnerService.checkUser(phone,password)){
 			return true;	
 		}
 		return false;
 	}
 	@Test
 	public void T2_checkUser_Test(){
-		ArrayList<TestingResult> results = new ArrayList<TestingResult>();
-		TestingResult result1 = excel.getTestingResult("UT_TC_001_002_001",String.valueOf(UT_TC_001_002_001()),"false");
-		results.add(result1);
-		TestingResult result2 = excel.getTestingResult("UT_TC_001_002_002",String.valueOf(UT_TC_001_002_002()),"true");
-		results.add(result2);
-		excel.SoftwareTesingResult("checkUser", results);
+		try {
+			ArrayList<TestingResult> results = new ArrayList<TestingResult>();
+			List<String[]> tests;
+				tests = excel.readExcel("checkUser");
+			for(int i=0;i<tests.size();i++){
+				TestingResult result = excel.getTestingResult(tests.get(i)[0],String.valueOf(UT_TC_001_002(tests.get(i)[1],tests.get(i)[2])),tests.get(i)[3]);
+				results.add(result);
+			}
+			excel.SoftwareTesingResult("checkUser", results);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/*
@@ -93,51 +86,26 @@ public class UserLoginTest extends AbstractJUnit4SpringContextTests{
 	 */
 	@Resource(name="actiontest")
 	ActionTest action;
-	public boolean UT_TC_001_003_001_001(){
-		if(action.LoginAndroidTest("","28850169")!=null){
-			return true;	
-		}
-		return false;
-	}
-	public boolean UT_TC_001_003_001_002(){
-		if(action.LoginAndroidTest("15021799675","")!=null){
-			return true;	
-		}
-		return false;
-	}
-	public boolean UT_TC_001_003_002(){
-		if(action.LoginAndroidTest("15012349675","2885")!=null){
-			return true;	
-		}
-		return false;
-	}
-	
-	public boolean UT_TC_001_003_003(){
-		if(action.LoginAndroidTest("150abcd9675","28850169")!=null){
-			return true;	
-		}
-		return false;
-	}
-	
-	public boolean UT_TC_001_003_004(){
-		if(action.LoginAndroidTest("15021799675","dsy941225")!=null){
+	public boolean UT_TC_001_003(String phone,String password){
+		if(action.LoginAndroidTest(phone,password)!=null){
 			return true;	
 		}
 		return false;
 	}
 	@Test
-	public void T3_LoginAndroid(){
-		ArrayList<TestingResult> results = new ArrayList<TestingResult>();
-		TestingResult result1_1 = excel.getTestingResult("UT_TC_001_003_001_001",String.valueOf(UT_TC_001_003_001_001()),"false");
-		results.add(result1_1);
-		TestingResult result1_2 = excel.getTestingResult("UT_TC_001_003_001_002",String.valueOf(UT_TC_001_003_001_002()),"false");
-		results.add(result1_2);
-		TestingResult result2 = excel.getTestingResult("UT_TC_001_003_002",String.valueOf(UT_TC_001_003_002()),"false");
-		results.add(result2);
-		TestingResult result3 = excel.getTestingResult("UT_TC_001_003_003",String.valueOf(UT_TC_001_003_003()),"false");
-		results.add(result3);
-		TestingResult result4 = excel.getTestingResult("UT_TC_001_003_004",String.valueOf(UT_TC_001_003_004()),"true");
-		results.add(result4);
-		excel.SoftwareTesingResult("checkUser", results);
+	public void T3_LoginAndroid_Test(){
+		try {
+			ArrayList<TestingResult> results = new ArrayList<TestingResult>();
+			List<String[]> tests;
+				tests = excel.readExcel("LoginAndroid");
+			for(int i=0;i<tests.size();i++){
+				TestingResult result = excel.getTestingResult(tests.get(i)[0],String.valueOf(UT_TC_001_002(tests.get(i)[1],tests.get(i)[2])),tests.get(i)[3]);
+				results.add(result);
+			}
+			excel.SoftwareTesingResult("LoginAndroid", results);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

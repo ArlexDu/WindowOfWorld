@@ -17,6 +17,15 @@ public class BalanceService implements IBalanceService{
 	@Override
 	public boolean changeBalance(Balance balance) {
 		// TODO Auto-generated method stub
+		if(balance == null){
+			return false;
+		}
+		if(balance.getMoney().equals("")||balance.getPhone().equals("")||balance.getReason().equals("")){
+			return false;
+		}
+		if(balance.getMoney()== null||balance.getPhone()== null||balance.getReason()== null){
+			return false;
+		}
 		return dao.Insert(balance);
 	}
 

@@ -16,7 +16,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.baidu.yun.push.exception.PushClientException;
 import com.baidu.yun.push.exception.PushServerException;
 
-import edu.tongji.amazing.action.ActionTest;
 import edu.tongji.amazing.action.PadAction;
 import edu.tongji.amazing.action.PadAction.ad;
 import edu.tongji.amazing.model.TestingResult;

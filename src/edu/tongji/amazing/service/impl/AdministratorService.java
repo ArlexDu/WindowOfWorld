@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.junit.experimental.categories.Categories.IncludeCategory;
 import org.springframework.stereotype.Service;
 
 import edu.tongji.amazing.dao.impl.AdministratorDao;
@@ -14,6 +15,7 @@ import edu.tongji.amazing.model.Balance;
 import edu.tongji.amazing.model.Finance;
 import edu.tongji.amazing.model.User;
 import edu.tongji.amazing.service.IAdministratorService;
+import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.tool.ComparaFinance;
 @Service("administratorservice")
 public class AdministratorService implements IAdministratorService{
@@ -75,10 +77,18 @@ public class AdministratorService implements IAdministratorService{
 		// TODO Auto-generated method stub
 		dao.changeAdvertisementStatus(id, status);
 	}
+	@Resource
+	private ICarOwnerService icar;
 	@Override
-	public void changeUserStatus(String phone, String status) throws Exception {
+	public boolean changeUserStatus(String phone, String status) throws Exception {
 		// TODO Auto-generated method stub
-		dao.changeUserStatus(phone, status);
+		if(icar.IsUserExist(phone)==null){
+			return false;
+		}
+		if(!status.equals("1")&&!status.equals("0")&&!status.equals("-1")){
+			return false;
+		}
+		return dao.changeUserStatus(phone, status);
 	}
 	@Override
 	public List<Finance> wholefinace() throws Exception {

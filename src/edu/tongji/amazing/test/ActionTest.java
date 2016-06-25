@@ -1,6 +1,8 @@
-package edu.tongji.amazing.action;
+package edu.tongji.amazing.test;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,13 +22,20 @@ import com.baidu.yun.push.model.PushMsgToSingleDeviceRequest;
 import com.baidu.yun.push.model.PushMsgToSingleDeviceResponse;
 import com.mchange.v2.c3p0.impl.NewProxyPreparedStatement;
 
+import edu.tongji.amazing.action.PadAction;
 import edu.tongji.amazing.action.PadAction.Place;
 import edu.tongji.amazing.action.PadAction.ad;
 import edu.tongji.amazing.model.Advertisement;
+import edu.tongji.amazing.model.Balance;
+import edu.tongji.amazing.model.Bullet;
+import edu.tongji.amazing.service.IAdministratorService;
 import edu.tongji.amazing.service.IAdvertisementService;
+import edu.tongji.amazing.service.IBalanceService;
+import edu.tongji.amazing.service.IBulletService;
 import edu.tongji.amazing.service.ICarOwnerService;
 import edu.tongji.amazing.tool.Defined;
 import edu.tongji.amazing.tool.PushMsgToDevice;
+import edu.tongji.amazing.tool.SendMessage;
 import net.sf.json.JSONObject;
 
 @Controller("actiontest")
@@ -196,5 +205,132 @@ public class ActionTest {
 			e.printStackTrace();
 		}
 		return "result";
+	}
+	/*
+	 * changebalance
+	 */
+	@Resource(name = "balanceservice")
+	private IBalanceService balanceservice;
+	
+	@Resource(name = "balance")
+	private Balance balance;
+	public String Changebill(String money,String phone,String reason) throws Exception {
+
+		if(money.equals("")||phone.equals("")||reason.equals("")){
+			return null;
+		}
+		if(!money.matches("^[-+]?\\d+(\\.\\d+)?$")){
+			return null;
+		}
+		if(!phone.matches("[0-9]+")){
+			return null;
+		}
+		if(service.IsUserExist(phone)==null){
+			return null;
+		}
+		data = new HashMap<String, Object>();
+		balance.setMoney(money);
+		balance.setPhone(phone);
+		balance.setReason(reason);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
+		String time = df.format(new Date());// new Date()为获取当前系统时间
+		balance.setTime(time);
+		Balance b = new Balance();
+		b.setMoney("100");
+		b.setPhone("15021799675");
+		b.setReason("充值");
+		if (!balanceservice.changeBalance(b)) {
+			data.put(defined.Error, defined.FAIL);
+			return "result";
+		}
+		data.put(defined.Error, defined.SUCCESS);
+		return "result";
+	}
+	/*
+	 * examinUser
+	 */
+	@Resource(name="administratorservice")
+	private IAdministratorService adminservice;
+	@Resource(name = "sendmessage")
+	private SendMessage sendmessage;
+	public String examineUser(String phone,String result,String userclass) throws Exception{
+		if(phone.equals("")||result.equals("")||userclass.equals("")){
+			return null;
+		}
+		try{
+			adminservice.changeUserStatus("15021799675", "1");                             
+//			鐭俊閫氱煡
+	        sendmessage.SendUserExamineResult("15021799675", "1", "3");
+			return "success";
+		}catch(Exception e){
+			return "fail";
+		}
+	}
+	/*
+	 * changebarrage
+	 */
+	@Resource(name="bullet")
+	private Bullet bullet;
+	@Resource(name = "bulletservice")
+	private IBulletService bulletservice;
+	public String changebarrage(String updateid,String phone,String content,String color,String size,String title,String key) throws Exception{
+		if(phone.equals("")||content.equals("")||color.equals("")||size.equals("")||title.equals("")||key.equals("")){
+			return null;
+		}
+		if(!phone.matches("[0-9]+")||!size.matches("[0-9]+")){
+			return null;
+		}
+		if(service.IsUserExist(phone)==null){
+			return null;
+		}
+		if(!color.matches("^#[0-9a-fA-F]{6}$")){
+			return null;
+		}
+		data = new HashMap<String, Object>();
+		 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+	     String time = df.format(new Date());// new Date()为获取当前系统时间
+//	     System.out.println("barrage phone is "+phone);
+		 bullet.setPhone(phone);
+		 bullet.setTime(time);
+		 bullet.setContent(content);
+		 bullet.setColor(color);
+		 bullet.setSize(size);
+		 bullet.setTitle(title);
+		 bullet.setKey(key);
+		 if(!bulletservice.clearShortCut(phone, key)){
+			 data.put(defined.Error, defined.FAIL);
+		 }
+		 System.out.println("id is "+updateid);
+		 if(updateid != null&&!updateid.equals("")){//更新操作
+			bullet.setId(updateid);
+			bullet.setPhone("15021799675");
+			bullet.setTime("2016/6/24");
+			bullet.setContent("我很开心");
+			bullet.setColor("#ff0000");
+			bullet.setSize("16");
+			bullet.setTitle("哈哈哈");
+			bullet.setKey("1");
+			 if(bulletservice.updateBullet(bullet)){
+				 data.put(defined.Error, defined.SUCCESS);
+			 }else{
+				 data.put(defined.Error, defined.FAIL);
+			 }
+			 updateid = null;
+		 }else{//添加新的弹幕
+				bullet.setPhone("15021799675");
+				bullet.setTime("2016/6/24");
+				bullet.setContent("我很开心");
+				bullet.setColor("#ff0000");
+				bullet.setSize("16");
+				bullet.setTitle("哈哈哈");
+				bullet.setKey("1");
+			 if(bulletservice.addBullet(bullet)){
+				 data.put(defined.Error, defined.SUCCESS);
+			 }else{
+				 data.put(defined.Error, defined.FAIL);
+			 }
+
+		 }
+		 return "success";
 	}
 }

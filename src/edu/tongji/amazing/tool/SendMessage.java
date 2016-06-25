@@ -12,6 +12,8 @@ import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 import org.springframework.stereotype.Service;
 
+import edu.tongji.amazing.service.ICarOwnerService;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -82,10 +84,20 @@ public class SendMessage {
         System.out.println("send phone is "+phone);
     }
 
+    @Resource
+    private ICarOwnerService icar;
     //发送审核结果
-    public void SendUserExamineResult(String phone,String status,String userclass) throws IOException, URISyntaxException{
+    public boolean SendUserExamineResult(String phone,String status,String userclass) throws IOException, URISyntaxException{
 
-
+         if(icar.IsUserExist(phone)==null){
+        	 return false;
+         }
+         if(!status.equals("1")&&!status.equals("-1")&&!status.equals("0")){
+        	 return false;
+         }
+         if(!userclass.equals("1")&&!userclass.equals("2")&&!userclass.equals("3")){
+        	 return false;
+         }
         //修改为您要发送的手机号
     	System.out.println("phone is "+phone+" status is "+status);
         String mobile = phone;
@@ -103,8 +115,10 @@ public class SendMessage {
 		}
         try{
         	sendSms(define.apikey, text, mobile);
+        	return true;
         }catch(Exception e){
         	e.printStackTrace();
+        	return false;
         }
     }
     /**

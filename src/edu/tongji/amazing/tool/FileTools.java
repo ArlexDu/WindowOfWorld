@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,6 +13,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 import edu.tongji.amazing.model.TestingResult;
+import jxl.Cell;
+import jxl.Sheet;
 import jxl.Workbook;
 import jxl.format.Alignment;
 import jxl.format.Border;
@@ -63,7 +66,7 @@ public class FileTools {
 	 */
 	 public void SoftwareTesingResult(String functionname,List<TestingResult> results) {
 	        try {
-	        	File file = new File("E:\\单元测试.xls");
+	        	File file = new File("E:\\SoftwareTesting\\单元测试.xls");
 	        	 //设置函数字体
                 WritableFont fonttitle = new WritableFont(WritableFont.ARIAL,14,WritableFont.BOLD,false,UnderlineStyle.NO_UNDERLINE,Colour.BLUE);  
                 
@@ -209,4 +212,33 @@ public class FileTools {
 		}
 		return result;
 	 }
+	 
+	 //从excel中读取测试用例
+	 public List<String[]> readExcel(String excel) throws Exception{
+		   
+		    //创建一个list用来存读取的内容
+		    List<String[]> list =new ArrayList<String[]>();
+		    Workbook rwb = null;
+		    Cell cell = null;
+		    File excelFile = new File("E:\\SoftwareTesting\\"+excel+".xls");
+		    //创建输入流
+		    InputStream stream = new FileInputStream(excelFile);
+		    //获取Excel文件对象
+		    rwb = Workbook.getWorkbook(stream);
+		    //获取文件的指定工作表 默认的第一个
+		    Sheet sheet = rwb.getSheet(0);
+		    //行数(表头的目录不需要，从1开始)
+		    for(int i = 0;i<sheet.getRows();i++){
+		    //创建一个数组 用来存储每一列的值
+			    String[] str = new String[sheet.getColumns()];
+			    //列数
+			    for(int j =0;j<sheet.getColumns();j++){
+				    //获取第i行，第j列的值
+				    cell = sheet.getCell(j, i);
+				    str[j] = cell.getContents();
+			    }
+			    list.add(str);
+		    }
+		    return list;
+		    }
 }

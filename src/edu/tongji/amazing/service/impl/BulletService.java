@@ -39,12 +39,20 @@ public class BulletService implements IBulletService {
 	//增加新的弹幕
 	@Override
 	public boolean addBullet(Bullet bullet){
+		if(bullet.getColor().equals("")||bullet.getContent().equals("")||bullet.getId().equals("")
+				||bullet.getPhone().equals("")||bullet.getSize().equals("")||bullet.getColor().equals("")
+				||bullet.getTime().equals("")||bullet.getTitle().equals("")){
+			return false;
+		}
 		return bulletdao.Insert(bullet);
 	}
 
 	@Override
 	public boolean clearShortCut(String phone, String key) {
 		// TODO Auto-generated method stub
+		if(phone.equals("")||key.equals("")){
+			return false;
+		}
 		return bulletdao.clearShortCut(phone, key);
 	}
 
@@ -75,6 +83,11 @@ public class BulletService implements IBulletService {
 	@Override
 	public boolean updateBullet(Bullet bullet) {
 		// TODO Auto-generated method stub
+		if(bullet.getColor().equals("")||bullet.getContent().equals("")||bullet.getId().equals("")
+				||bullet.getPhone().equals("")||bullet.getSize().equals("")||bullet.getColor().equals("")
+				||bullet.getTime().equals("")||bullet.getTitle().equals("")){
+			return false;
+		}
 		return bulletdao.Update(bullet);
 	}
 

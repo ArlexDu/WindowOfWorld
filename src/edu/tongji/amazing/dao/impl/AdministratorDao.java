@@ -187,8 +187,9 @@ public class AdministratorDao extends GeneralDao<User> implements IAdministrator
 	}
 
 	@Override
-	public void changeUserStatus(String phone, String status) throws Exception {
+	public boolean changeUserStatus(String phone, String status) throws Exception {
 		// TODO Auto-generated method stub
+		try{
 		String hql = "Update User set status = '"+status+"' where id = '"+phone+"'";
 		Session session = Factory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -196,6 +197,10 @@ public class AdministratorDao extends GeneralDao<User> implements IAdministrator
 		query.executeUpdate();
 		transaction.commit();
 		session.close();
+		return true;
+		}catch(Exception e){
+			return false;
+		}
 	}
 
 	@Override
